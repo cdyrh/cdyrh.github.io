@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>池帝的随笔</title>
+  <meta name="description" content="记录生活，分享思考，探索世界。" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌸</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700&family=ZCOOL+XiaoWei&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --pink-50: #fff5f7;
+      --pink-100: #ffe0e8;
+      --pink-200: #ffb3c6;
+      --pink-400: #f472a0;
+      --pink-500: #e8568a;
+      --pink-600: #c93f73;
+      --text-primary: #2d1a24;
+      --text-secondary: #7a5060;
+      --text-muted: #a88090;
+      --bg-page: #fffbfc;
+      --bg-card: #ffffff;
+      --border: #f0d0dc;
+      --radius: 16px;
+      --shadow: 0 2px 20px rgba(232,86,138,0.08);
+      --shadow-hover: 0 8px 32px rgba(232,86,138,0.18);
+      --font-body: 'Noto Serif SC', 'SimSun', Georgia, serif;
+      --font-title: 'ZCOOL XiaoWei', 'STXingkai', serif;
+      --transition: 0.25s ease;
+    }
+    [data-theme="dark"] {
+      --bg-page: #1a0d12; --bg-card: #241319; --border: #3d2030;
+      --text-primary: #f5e0e8; --text-secondary: #c9a0b0; --text-muted: #8a6070;
+      --shadow: 0 2px 16px rgba(0,0,0,0.4); --shadow-hover: 0 8px 32px rgba(232,86,138,0.25);
+      --pink-50: #2d1a24; --pink-100: #3d2030;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--bg-page); color: var(--text-primary); line-height: 1.8; font-size: 16px; transition: background var(--transition), color var(--transition); }
+    a { color: var(--pink-500); text-decoration: none; }
+    a:hover { color: var(--pink-600); }
+
+    /* 顶部彩条 */
+    body::before {
+      content: '';
+      position: fixed; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, #ffb3c6, #f472a0, #c93f73, #f472a0, #ffb3c6);
+      background-size: 200% 100%;
+      animation: rainbow 4s linear infinite; z-index: 200;
+    }
+    @keyframes rainbow { 0%{background-position:0%} 100%{background-position:200%} }
+
+    /* 樱花飘落 */
+    .sakura-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; }
+    .petal {
+      position: absolute; top: -20px; font-size: 16px; opacity: 0;
+      animation: fall linear infinite;
+      user-select: none;
+    }
+    @keyframes fall {
+      0% { transform: translateX(0) rotate(0deg) scale(1); opacity: 0.8; top: -30px; }
+      100% { transform: translateX(var(--drift)) rotate(720deg) scale(0.6); opacity: 0; top: 110vh; }
+    }
+
+    /* Header */
+    .site-header {
+      background: rgba(255,251,252,0.92); border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      position: sticky; top: 3px; z-index: 100;
+    }
+    [data-theme="dark"] .site-header { background: rgba(26,13,18,0.92); }
+    .header-inner {
+      max-width: 900px; margin: 0 auto; padding: 0 2rem;
+      height: 58px; display: flex; align-items: center; gap: 1rem;
+    }
+    .site-logo { display: flex; align-items: center; gap: 8px; color: var(--text-primary) !important; font-family: var(--font-title); font-size: 1.25rem; font-weight: 700; }
+    .logo-flower { font-size: 1.4rem; animation: spin 10s linear infinite; display: inline-block; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .site-nav { display: flex; gap: 0.5rem; margin-left: auto; align-items: center; }
+    .site-nav a { color: var(--text-secondary); font-size: 0.9rem; padding: 5px 14px; border-radius: 20px; transition: all var(--transition); }
+    .site-nav a:hover, .site-nav a.active { color: var(--pink-500); background: var(--pink-100); }
+    .theme-toggle { background: none; border: 1.5px solid var(--border); border-radius: 20px; padding: 5px 12px; cursor: pointer; font-size: 0.85rem; color: var(--text-secondary); transition: all var(--transition); }
+    .theme-toggle:hover { border-color: var(--pink-400); color: var(--pink-500); }
+    .header-tagline { text-align: center; font-family: var(--font-title); font-size: 0.8rem; color: var(--pink-400); padding: 5px 0 7px; letter-spacing: 0.18em; border-top: 1px solid var(--border); background: var(--pink-50); }
+    [data-theme="dark"] .header-tagline { background: #2d1a24; }
+
+    /* Main */
+    .main-content { min-height: calc(100vh - 200px); padding: 3rem 2rem; max-width: 900px; margin: 0 auto; position: relative; z-index: 1; animation: fadeIn 0.5s ease; }
+    @keyframes fadeIn { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+
+    /* Hero */
+    .hero { text-align: center; padding: 3.5rem 1rem 3rem; }
+    .hero-avatar { width: 90px; height: 90px; border-radius: 50%; background: linear-gradient(135deg, var(--pink-200), var(--pink-400)); display: flex; align-items: center; justify-content: center; font-size: 3rem; margin: 0 auto 1.5rem; box-shadow: 0 4px 20px rgba(232,86,138,0.3); animation: pulse 3s ease-in-out infinite; }
+    @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.05)} }
+    .hero-title { font-family: var(--font-title); font-size: clamp(2.2rem, 5vw, 3.2rem); color: var(--pink-600); margin-bottom: 0.75rem; }
+    .hero-sub { color: var(--text-secondary); font-size: 1rem; max-width: 460px; margin: 0 auto 1.5rem; }
+    .hero-badges { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+    .badge { display: inline-flex; align-items: center; gap: 5px; font-size: 0.82rem; padding: 5px 14px; border-radius: 20px; background: var(--pink-100); color: var(--pink-600); border: 1px solid var(--pink-200); }
+
+    /* Section */
+    .section-title { font-family: var(--font-title); font-size: 1.3rem; color: var(--text-primary); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
+    .section-title::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, var(--border), transparent); }
+
+    /* Posts grid */
+    .posts-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem; margin-bottom: 2.5rem; }
+    .post-card {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 1.6rem; box-shadow: var(--shadow); transition: transform var(--transition), box-shadow var(--transition);
+      display: flex; flex-direction: column; gap: 0.65rem; cursor: pointer;
+    }
+    .post-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); border-color: var(--pink-200); }
+    .post-card-top { display: flex; align-items: center; justify-content: space-between; }
+    .post-card-date { font-size: 0.78rem; color: var(--text-muted); }
+    .post-tag { display: inline-block; background: var(--pink-100); color: var(--pink-600); font-size: 0.73rem; padding: 2px 10px; border-radius: 20px; border: 1px solid var(--pink-200); }
+    [data-theme="dark"] .post-tag { background: #3d2030; border-color: #5a3040; }
+    .post-card-title { font-family: var(--font-title); font-size: 1.1rem; color: var(--text-primary); line-height: 1.5; }
+    .post-card-title a { color: inherit; }
+    .post-card-title a:hover { color: var(--pink-500); }
+    .post-card-summary { font-size: 0.88rem; color: var(--text-secondary); flex: 1; line-height: 1.7; }
+    .read-more { font-size: 0.83rem; color: var(--pink-500); align-self: flex-start; display: flex; align-items: center; gap: 4px; transition: gap var(--transition); }
+    .read-more:hover { gap: 8px; }
+
+    /* CTA */
+    .view-all { text-align: center; margin-top: 0.5rem; }
+    .btn-outline { display: inline-block; border: 1.5px solid var(--pink-400); color: var(--pink-500); border-radius: 30px; padding: 10px 32px; font-size: 0.9rem; transition: all var(--transition); }
+    .btn-outline:hover { background: var(--pink-500); color: #fff; border-color: var(--pink-500); transform: translateY(-2px); }
+
+    /* About card */
+    .about-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 2.5rem; box-shadow: var(--shadow); max-width: 660px; margin: 0 auto; }
+    .about-header { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1.5rem; }
+    .about-avatar { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--pink-200), var(--pink-400)); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; flex-shrink: 0; }
+    .about-name { font-family: var(--font-title); font-size: 1.8rem; color: var(--pink-600); }
+    .about-slogan { color: var(--text-secondary); font-size: 0.9rem; margin-top: 4px; }
+    .about-body { color: var(--text-secondary); line-height: 1.9; }
+    .about-body p { margin-bottom: 1rem; }
+    .about-contacts { display: flex; gap: 0.75rem; margin-top: 1.5rem; flex-wrap: wrap; }
+    .contact-link { display: inline-flex; align-items: center; gap: 6px; padding: 7px 18px; border-radius: 20px; background: var(--pink-100); color: var(--pink-600); font-size: 0.85rem; border: 1px solid var(--pink-200); transition: all var(--transition); }
+    .contact-link:hover { background: var(--pink-500); color: #fff; border-color: var(--pink-500); }
+
+    /* Single post */
+    .single-wrap { max-width: 720px; margin: 0 auto; }
+    .single-header { text-align: center; padding-bottom: 2rem; border-bottom: 1px dashed var(--border); margin-bottom: 2.5rem; }
+    .single-meta { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem; display: flex; gap: 8px; justify-content: center; align-items: center; flex-wrap: wrap; }
+    .single-title { font-family: var(--font-title); font-size: clamp(1.6rem, 4vw, 2.4rem); color: var(--text-primary); line-height: 1.4; margin-bottom: 0.75rem; }
+    .single-desc { color: var(--text-secondary); font-size: 1rem; }
+    .prose { line-height: 1.9; }
+    .prose h2 { font-family: var(--font-title); font-size: 1.4rem; color: var(--text-primary); margin: 2rem 0 0.75rem; border-left: 3px solid var(--pink-400); padding-left: 0.75rem; }
+    .prose h3 { font-family: var(--font-title); font-size: 1.2rem; color: var(--pink-600); margin: 1.5rem 0 0.5rem; }
+    .prose p { margin-bottom: 1.25rem; }
+    .prose blockquote { border-left: 3px solid var(--pink-300); background: var(--pink-50); padding: 0.8rem 1.25rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0; color: var(--text-secondary); font-style: italic; }
+    .prose a { border-bottom: 1px dashed var(--pink-300); }
+    .prose a:hover { border-bottom-color: var(--pink-500); }
+    .single-footer { margin-top: 3rem; padding-top: 2rem; border-top: 1px dashed var(--border); text-align: center; }
+    .back-btn { display: inline-flex; align-items: center; gap: 6px; color: var(--text-secondary); font-size: 0.9rem; padding: 8px 20px; border: 1px solid var(--border); border-radius: 20px; transition: all var(--transition); }
+    .back-btn:hover { color: var(--pink-500); border-color: var(--pink-400); background: var(--pink-50); }
+
+    /* Footer */
+    .site-footer { background: var(--pink-50); border-top: 1px solid var(--border); padding: 2.5rem 2rem; text-align: center; position: relative; z-index: 1; }
+    [data-theme="dark"] .site-footer { background: #1e0f16; }
+    .footer-tagline { font-family: var(--font-title); font-size: 1.2rem; color: var(--pink-500); letter-spacing: 0.2em; margin-bottom: 0.75rem; }
+    .footer-info { font-size: 0.85rem; color: var(--text-muted); }
+    .footer-info a { color: var(--text-muted); }
+    .footer-info a:hover { color: var(--pink-500); }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg-page); }
+    ::-webkit-scrollbar-thumb { background: var(--pink-200); border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--pink-400); }
+    ::selection { background: var(--pink-200); color: var(--pink-600); }
+
+    /* Page system */
+    .page { display: none; }
+    .page.active { display: block; animation: fadeIn 0.4s ease; }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .header-inner { padding: 0 1rem; }
+      .main-content { padding: 2rem 1rem; }
+      .posts-grid { grid-template-columns: 1fr; }
+      .site-nav a { font-size: 0.82rem; padding: 4px 10px; }
+      .hero { padding: 2.5rem 0 2rem; }
+      .about-header { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <!-- 樱花飘落容器 -->
+  <div class="sakura-container" id="sakuraContainer"></div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="site-logo" href="#" onclick="showPage('home'); return false;">
+        <span class="logo-flower">🌸</span>
+        <span>池帝的随笔</span>
+      </a>
+      <nav class="site-nav">
+        <a href="#" onclick="showPage('home'); return false;" id="nav-home" class="active">首页</a>
+        <a href="#" onclick="showPage('posts'); return false;" id="nav-posts">文章</a>
+        <a href="#" onclick="showPage('about'); return false;" id="nav-about">关于</a>
+      </nav>
+      <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">🌙</button>
+    </div>
+    <div class="header-tagline">池帝萬歲萬歲萬萬歲</div>
+  </header>
+
+  <!-- ===== 首页 ===== -->
+  <div id="page-home" class="page active">
+    <main class="main-content">
+      <section class="hero">
+        <div class="hero-avatar">🌸</div>
+        <h1 class="hero-title">池帝的随笔</h1>
+        <p class="hero-sub">记录生活，分享思考，探索世界。</p>
+        <div class="hero-badges">
+          <span class="badge">✍️ 随笔</span>
+          <span class="badge">🌿 生活</span>
+          <span class="badge">💭 思考</span>
+          <span class="badge">📮 0d@live.com</span>
+        </div>
+      </section>
+
+      <h2 class="section-title">🌸 最新文章</h2>
+      <div class="posts-grid" id="posts-grid"></div>
+
+      <div class="view-all">
+        <a href="#" class="btn-outline" onclick="showPage('posts'); return false;">查看全部文章 🌸</a>
+      </div>
+    </main>
+  </div>
+
+  <!-- ===== 文章列表页 ===== -->
+  <div id="page-posts" class="page">
+    <main class="main-content">
+      <h2 class="section-title">📖 全部文章</h2>
+      <div class="posts-grid" id="posts-grid-all"></div>
+    </main>
+  </div>
+
+  <!-- ===== 关于页 ===== -->
+  <div id="page-about" class="page">
+    <main class="main-content">
+      <div class="about-card">
+        <div class="about-header">
+          <div class="about-avatar">🌸</div>
+          <div>
+            <div class="about-name">池帝</div>
+            <div class="about-slogan">池帝萬歲萬歲萬萬歲</div>
+          </div>
+        </div>
+        <div class="about-body">
+          <p>你好，我是池帝，这里是我的个人随笔空间。</p>
+          <p>我喜欢记录生活中的点点滴滴，写下所思所想，分享那些让我心动的时刻。文字是我与世界对话的方式。</p>
+          <p>如果你也喜欢安静地思考、认真地生活，希望我们的文字能在某个瞬间产生共鸣。</p>
+          <p>欢迎通过以下方式联系我，期待与你交流 🌸</p>
+        </div>
+        <div class="about-contacts">
+          <a href="mailto:0d@live.com" class="contact-link">📮 0d@live.com</a>
+          <a href="https://github.com/cdyrh" target="_blank" class="contact-link">🐙 GitHub</a>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- ===== 文章详情页 ===== -->
+  <div id="page-post" class="page">
+    <main class="main-content">
+      <div class="single-wrap">
+        <div class="single-header">
+          <div class="single-meta" id="post-meta"></div>
+          <h1 class="single-title" id="post-title"></h1>
+          <p class="single-desc" id="post-desc"></p>
+        </div>
+        <div class="prose" id="post-content"></div>
+        <div class="single-footer">
+          <a href="#" class="back-btn" onclick="showPage('posts'); return false;">← 返回文章列表</a>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-tagline">池帝萬歲萬歲萬萬歲</div>
+    <div class="footer-info">
+      © 2025 池帝的随笔 · <a href="mailto:0d@live.com">0d@live.com</a> · 用 🌸 与爱构建
+    </div>
+  </footer>
+
+  <script>
+  // ===== 文章数据 =====
+  const posts = [
+    {
+      id: 1,
+      title: "你好，世界 🌸",
+      date: "2025-06-09",
+      tags: ["随笔"],
+      description: "这是这个小角落诞生的第一篇文章，写给未来的自己，也写给路过的你。",
+      content: `
+        <p>你好，世界。</p>
+        <p>这是博客的第一篇文章。每一个开始，都带着某种仪式感——就好像清晨第一杯热茶，或者翻开一本崭新的笔记本时，那种想要把所有美好填满的冲动。</p>
+        <p>我一直想有一个属于自己的地方，可以不为任何人写作，只是记录，只是表达。不追热点，不刻意，只是把生活里那些值得被记住的片段，放到这里慢慢存着。</p>
+        <h2>为什么叫"随笔"？</h2>
+        <p>因为我不想给自己太多限制。随笔，就是随手写下的笔记，随性记录的文字。它可以是一段心情，一个观察，一次思考，也可以只是一句话。</p>
+        <blockquote>文字是时间的胶水，把那些容易流逝的瞬间粘住。</blockquote>
+        <p>希望这里能成为一个真实的地方。欢迎你，路过的朋友 🌸</p>
+      `
+    },
+    {
+      id: 2,
+      title: "一个人的下午",
+      date: "2025-06-07",
+      tags: ["生活"],
+      description: "阳光，咖啡，一本书，以及难得的安静。",
+      content: `
+        <p>今天难得有一个完整的下午，只属于自己。</p>
+        <p>窗外的阳光懒懒地斜进来，照在书页上，形成一块暖黄色的光斑。我泡了一杯很淡的茶，坐在窗边，什么都不想做，只是坐着。</p>
+        <h2>关于独处</h2>
+        <p>有时候我觉得，人是需要独处的。不是孤独，而是那种主动选择的安静。在那种状态里，你才能听到自己内心的声音，才能想清楚很多平时想不清楚的事。</p>
+        <p>今天下午我想到了很多：想到了小时候的某个夏天，想到了一个许久不联系的朋友，想到了自己最近有没有好好生活。</p>
+        <blockquote>生活不在别处，就在此刻这杯茶，这片阳光，这一个安静的下午。</blockquote>
+        <p>晚些时候，我拿出手机，给那个久未联系的朋友发了一条消息。就写了四个字：你还好吗。</p>
+        <p>他回复说，挺好的，你呢？</p>
+        <p>我说，也挺好的。</p>
+        <p>这已经足够了 🌸</p>
+      `
+    },
+    {
+      id: 3,
+      title: "关于做计划这件事",
+      date: "2025-06-01",
+      tags: ["思考"],
+      description: "我是一个喜欢做计划的人，但也是一个经常打破计划的人。",
+      content: `
+        <p>我是一个喜欢做计划的人。</p>
+        <p>每年年初，我都会认真地写一份年度计划，密密麻麻的，看上去很厉害的样子。然后大约在三月份，我会把它翻出来看看，发现已经有一半没有执行。</p>
+        <h2>计划的意义</h2>
+        <p>后来我想清楚了一件事：计划的意义，从来不是让你完全按照它执行，而是让你在某个迷茫的时刻有一个方向可以参考。</p>
+        <p>就像航海中的地图——你不会完全按照地图上画的路线走，但你需要它来确认自己大致在正确的方向上。</p>
+        <blockquote>计划不是锁链，而是一盏灯。它不规定你的路，只是照亮前方一小段。</blockquote>
+        <h2>接受不完美</h2>
+        <p>现在我做计划的方式变了。我只定三件最重要的事，其他的都是"如果有余力就做"。这样完成率高了，心情也好多了。</p>
+        <p>你也可以试试 🌸</p>
+      `
+    }
+  ];
+
+  // ===== 渲染文章卡片 =====
+  function renderCards(containerId, items) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    container.innerHTML = items.map(p => `
+      <article class="post-card" onclick="showPost(${p.id})">
+        <div class="post-card-top">
+          <span class="post-card-date">${formatDate(p.date)}</span>
+          ${p.tags.length ? `<span class="post-tag">${p.tags[0]}</span>` : ''}
+        </div>
+        <h3 class="post-card-title"><a href="#" onclick="event.preventDefault(); showPost(${p.id})">${p.title}</a></h3>
+        <p class="post-card-summary">${p.description}</p>
+        <span class="read-more">阅读全文 <span>→</span></span>
+      </article>
+    `).join('');
+  }
+
+  function formatDate(dateStr) {
+    const d = new Date(dateStr);
+    return `${d.getFullYear()}年${String(d.getMonth()+1).padStart(2,'0')}月${String(d.getDate()).padStart(2,'0')}日`;
+  }
+
+  // ===== 页面切换 =====
+  function showPage(name) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-' + name).classList.add('active');
+    document.querySelectorAll('.site-nav a').forEach(a => a.classList.remove('active'));
+    const navEl = document.getElementById('nav-' + name);
+    if (navEl) navEl.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (name === 'posts') renderCards('posts-grid-all', posts);
+    if (name === 'home') renderCards('posts-grid', posts.slice(0, 6));
+  }
+
+  function showPost(id) {
+    const post = posts.find(p => p.id === id);
+    if (!post) return;
+    document.getElementById('post-title').textContent = post.title;
+    document.getElementById('post-desc').textContent = post.description;
+    document.getElementById('post-meta').innerHTML = `<span>${formatDate(post.date)}</span>${post.tags.map(t => `<span class="post-tag">${t}</span>`).join('')}`;
+    document.getElementById('post-content').innerHTML = post.content;
+    showPage('post');
+    document.querySelectorAll('.site-nav a').forEach(a => a.classList.remove('active'));
+    document.getElementById('nav-posts').classList.add('active');
+  }
+
+  // ===== 主题切换 =====
+  function toggleTheme() {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    document.documentElement.setAttribute('data-theme', isDark ? '' : 'dark');
+    document.getElementById('themeToggle').textContent = isDark ? '🌙' : '☀️';
+    localStorage.setItem('theme', isDark ? '' : 'dark');
+  }
+
+  // ===== 樱花飘落 =====
+  function createSakura() {
+    const container = document.getElementById('sakuraContainer');
+    const petals = ['🌸', '🌺', '🌼', '🍀'];
+    for (let i = 0; i < 15; i++) {
+      const petal = document.createElement('div');
+      petal.className = 'petal';
+      petal.textContent = petals[Math.floor(Math.random() * petals.length)];
+      petal.style.cssText = `
+        left: ${Math.random() * 100}%;
+        font-size: ${Math.random() * 10 + 10}px;
+        animation-duration: ${Math.random() * 8 + 6}s;
+        animation-delay: ${Math.random() * 10}s;
+        --drift: ${(Math.random() - 0.5) * 200}px;
+        opacity: 0;
+      `;
+      container.appendChild(petal);
+    }
+  }
+
+  // ===== 初始化 =====
+  (function init() {
+    // 主题
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      document.getElementById('themeToggle').textContent = '☀️';
+    }
+    // 渲染首页
+    renderCards('posts-grid', posts.slice(0, 6));
+    // 樱花
+    createSakura();
+  })();
+  </script>
+</body>
+</html>
