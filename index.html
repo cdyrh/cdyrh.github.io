@@ -453,9 +453,6 @@
     </div>
     <button class="btn btn-primary" onclick="doLogin()">🌸 进入后台</button>
     <div class="login-err" id="login-err">❌ 用户名或密码错误</div>
-    <p style="margin-top:1.5rem;font-size:.8rem;color:var(--text-muted)">
-      默认密码：admin20230731（请登录后修改）
-    </p>
   </div>
 </div>
 
@@ -1168,7 +1165,7 @@ function handleMediaUpload(input){
       insertText = `<audio src="${dataUrl}" controls style="width:100%;margin:1rem 0"></audio>`;
     } else if(mediaType === 'attachment'){
       const ext = file.name.split('.').pop().toLowerCase();
-      const iconMap = {zip:'📦',rar:'📦',7z:'📦',pdf:'📄',doc:'📝',docx:'📝',xls:'📊',xlsx:'📊',ppt:'📽️',pptx:'📽️',txt:'📃'};
+      const iconMap = {'zip':'📦','rar':'📦','7z':'📦','pdf':'📄','doc':'📝','docx':'📝','xls':'📊','xlsx':'📊','ppt':'📽️','pptx':'📽️','txt':'📃'};
       const icon = iconMap[ext] || '📎';
       const sizeText = file.size < 1024 ? file.size + ' B' : file.size < 1024*1024 ? (file.size/1024).toFixed(1) + ' KB' : (file.size/(1024*1024)).toFixed(1) + ' MB';
       insertText = `<a class="attach-card" href="${dataUrl}" download="${file.name}" target="_blank"><span class="attach-icon">${icon}</span><span class="attach-info"><div class="attach-name">${file.name}</div><div class="attach-meta">${ext.toUpperCase()} · ${sizeText} · 点击下载</div></span><span class="attach-dl">⬇️</span></a>`;
