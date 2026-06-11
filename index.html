@@ -771,6 +771,7 @@ function showPage(name){
 
 // ======================== 首页渲染 ========================
 function renderHome(){
+  applyConfig();
   const cfg = DB.cfg;
   const q = document.getElementById('search-input').value.trim().toLowerCase();
   let posts = DB.posts.sort((a,b)=>b.id-a.id);
@@ -1071,10 +1072,27 @@ function saveSettings(){
   cfg.email = document.getElementById('s-email').value.trim()||cfg.email;
   cfg.ppp = parseInt(document.getElementById('s-ppp').value)||5;
   DB.cfg = cfg;
-  // 更新页面显示
-  document.querySelector('.hero h1').textContent = cfg.title;
-  document.querySelector('.hero p').textContent = cfg.sub;
+  // 立即更新所有页面显示
+  applyConfig();
   toast('✅ 设置已保存！');
+}
+
+function applyConfig(){
+  const cfg = DB.cfg;
+  document.title = cfg.title + ' 🌸';
+  // 导航栏
+  const navLogo = document.querySelector('.nav-logo');
+  if(navLogo) navLogo.innerHTML = '🌸 ' + cfg.title;
+  // 首页英雄区
+  const heroH1 = document.querySelector('.hero h1');
+  if(heroH1) heroH1.textContent = cfg.title;
+  const heroP = document.querySelector('.hero p');
+  if(heroP) heroP.textContent = cfg.sub;
+  // 关于页
+  const profileBio = document.querySelector('.profile-bio');
+  if(profileBio) profileBio.textContent = cfg.bio;
+  const profileEmail = document.querySelector('.profile-email');
+  if(profileEmail){ profileEmail.textContent = '📮 ' + cfg.email; profileEmail.href = 'mailto:' + cfg.email; }
 }
 
 function changePassword(){
@@ -1257,16 +1275,8 @@ function handleMediaUpload(input){
 // ======================== 初始化 ========================
 window.addEventListener('DOMContentLoaded',()=>{
   if(DB.loggedIn) document.body.classList.add('is-admin');
+  applyConfig();
   renderHome();
-  // 应用配置
-  const cfg = DB.cfg;
-  document.title = cfg.title + ' 🌸';
-  document.querySelector('.hero h1').textContent = cfg.title;
-  document.querySelector('.hero p').textContent = cfg.sub;
-  document.querySelector('.nav-logo').innerHTML = '🌸 ' + cfg.title;
-  document.querySelector('.profile-bio').textContent = cfg.bio;
-  document.querySelector('.profile-email').textContent = '📮 ' + cfg.email;
-  document.querySelector('.profile-email').href = 'mailto:' + cfg.email;
 });
 </script>
 </body>
