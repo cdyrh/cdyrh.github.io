@@ -304,6 +304,15 @@
   .editor-tool-btn{background:var(--card);border:1.5px solid var(--border);border-radius:8px;padding:.35rem .7rem;cursor:pointer;font-family:var(--font);font-size:.82rem;color:var(--text-light);transition:all .2s;line-height:1}
   .editor-tool-btn:hover{background:linear-gradient(135deg,var(--pink),var(--purple));color:#fff;border-color:transparent}
 
+  /* ===== 附件卡片 ===== */
+  .attach-card{display:flex;align-items:center;gap:.8rem;padding:.8rem 1rem;background:var(--pink-pale);border:1.5px solid var(--border);border-radius:var(--radius-sm);max-width:420px;transition:all .2s;cursor:pointer;text-decoration:none;color:var(--text)}
+  .attach-card:hover{transform:translateY(-2px);box-shadow:var(--shadow);border-color:var(--purple-light)}
+  .attach-icon{width:42px;height:42px;border-radius:10px;background:linear-gradient(135deg,var(--pink),var(--purple));display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:#fff;flex-shrink:0}
+  .attach-info{flex:1;min-width:0}
+  .attach-name{font-weight:600;font-size:.92rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .attach-meta{font-size:.78rem;color:var(--text-muted);margin-top:.15rem}
+  .attach-dl{font-size:1.1rem;color:var(--purple);flex-shrink:0}
+
   /* ===== 新建按钮 ===== */
   .fab{position:fixed;bottom:2rem;right:2rem;width:56px;height:56px;
     background:linear-gradient(135deg,var(--pink),var(--purple));
@@ -530,6 +539,8 @@
             <button type="button" class="editor-tool-btn" onclick="uploadMedia('image')" title="插入图片">🖼️ 图片</button>
             <button type="button" class="editor-tool-btn" onclick="uploadMedia('video')" title="插入视频">🎬 视频</button>
             <button type="button" class="editor-tool-btn" onclick="uploadMedia('audio')" title="插入音频">🎵 音频</button>
+            <span style="width:1px;height:20px;background:var(--border);margin:0 .2rem"></span>
+            <button type="button" class="editor-tool-btn" onclick="uploadMedia('attachment')" title="插入附件">📎 附件</button>
           </div>
           <textarea class="form-control" id="f-body" placeholder="开始写作吧… 支持 **粗体** _斜体_ ## 标题 `代码` > 引用"></textarea>
           <input type="file" id="media-input" style="display:none" onchange="handleMediaUpload(this)">
@@ -666,9 +677,12 @@ function uid(){return Date.now()+''+Math.random().toString(36).slice(2,6)}
 // 简易 Markdown 渲染
 function md2html(text){
   if(!text) return '';
-  // 保护 video/audio 标签不被转义
+  // 保护 video/audio/附件卡片 标签不被转义
   const protected = [];
   let temp = text.replace(/<(video|audio)[\s\S]*?<\/\1>/gi, match => {
+    protected.push(match);
+    return `___PROTECTED_${protected.length-1}___`;
+  }).replace(/<a class="attach-card"[\s\S]*?<\/a>/gi, match => {
     protected.push(match);
     return `___PROTECTED_${protected.length-1}___`;
   });
@@ -1115,15 +1129,17 @@ let mediaType = 'image';
 function uploadMedia(type){
   mediaType = type;
   const input = document.getElementById('media-input');
-  input.accept = type==='image'?'image/*':type==='video'?'video/*':'audio/*';
+  input.accept = type==='image'?'image/*':type==='video'?'video/*':type==='audio'?'audio/*':'.zip,.rar,.7z,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt';
   input.click();
 }
 function handleMediaUpload(input){
   const file = input.files[0];
   if(!file) return;
-  const maxSize = mediaType==='image'?2*1024*1024:5*1024*1024;
+  const maxSize = mediaType==='image'?2*1024*1024:mediaType==='attachment'?10*1024*1024:5*1024*1024;
+  const typeLabel = mediaType==='image'?'图片':mediaType==='video'?'视频':mediaType==='audio'?'音频':'附件';
+  const sizeLabel = mediaType==='image'?'2MB':mediaType==='attachment'?'10MB':'5MB';
   if(file.size > maxSize){
-    toast(`❌ 文件过大，${mediaType==='image'?'图片':'视频/音频'}请小于 ${mediaType==='image'?'2MB':'5MB'}`);
+    toast(`❌ 文件过大，${typeLabel}请小于 ${sizeLabel}`);
     input.value = '';
     return;
   }
@@ -1138,6 +1154,12 @@ function handleMediaUpload(input){
       insertText = `<video src="${dataUrl}" controls style="max-width:100%;border-radius:var(--radius-sm);margin:1rem 0"></video>`;
     } else if(mediaType === 'audio'){
       insertText = `<audio src="${dataUrl}" controls style="width:100%;margin:1rem 0"></audio>`;
+    } else if(mediaType === 'attachment'){
+      const ext = file.name.split('.').pop().toLowerCase();
+      const iconMap = {zip:'📦',rar:'📦',7z:'📦',pdf:'📄',doc:'📝',docx:'📝',xls:'📊',xlsx:'📊',ppt:'📽️',pptx:'📽️',txt:'📃'};
+      const icon = iconMap[ext] || '📎';
+      const sizeText = file.size < 1024 ? file.size + ' B' : file.size < 1024*1024 ? (file.size/1024).toFixed(1) + ' KB' : (file.size/(1024*1024)).toFixed(1) + ' MB';
+      insertText = `<a class="attach-card" href="${dataUrl}" download="${file.name}" target="_blank"><span class="attach-icon">${icon}</span><span class="attach-info"><div class="attach-name">${file.name}</div><div class="attach-meta">${ext.toUpperCase()} · ${sizeText} · 点击下载</div></span><span class="attach-dl">⬇️</span></a>`;
     }
     const s = ta.selectionStart;
     const val = ta.value;
@@ -1146,7 +1168,7 @@ function handleMediaUpload(input){
     const needBr = before.length > 0 && !before.endsWith('\n') ? '\n\n' : '';
     ta.value = before + needBr + insertText + '\n\n' + after;
     ta.focus();
-    toast(`✅ ${mediaType==='image'?'图片':mediaType==='video'?'视频':'音频'}已插入`);
+    toast(`✅ ${typeLabel}已插入`);
   };
   reader.readAsDataURL(file);
   input.value = '';
