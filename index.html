@@ -285,6 +285,25 @@
   .stagger-1{animation-delay:.05s}.stagger-2{animation-delay:.1s}
   .stagger-3{animation-delay:.15s}.stagger-4{animation-delay:.2s}
 
+  /* ===== 分享栏 ===== */
+  .share-bar{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;padding:1.2rem;background:var(--card);border-radius:var(--radius);border:1.5px solid var(--border);box-shadow:var(--shadow)}
+  .share-label{color:var(--text-muted);font-size:.9rem;margin-right:.3rem}
+  .share-btn{width:40px;height:40px;border-radius:50%;border:none;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:all .2s;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+  .share-btn:hover{transform:translateY(-3px) scale(1.1)}
+  .share-btn.wx{background:#07c160;color:#fff}
+  .share-btn.qq{background:#12b7f5;color:#fff}
+  .share-btn.wb{background:#e6162d;color:#fff}
+  .share-btn.dd{background:#3370ff;color:#fff}
+  .share-btn.cp{background:var(--purple-pale);color:var(--purple)}
+  .share-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:200;align-items:center;justify-content:center;opacity:0;transition:opacity .3s}
+  .share-modal.show{display:flex;opacity:1}
+  .share-modal-box{background:var(--card);border-radius:var(--radius);border:1.5px solid var(--border);padding:2rem;max-width:340px;width:90%;text-align:center;box-shadow:var(--shadow-hover);animation:fadeInUp .3s ease}
+
+  /* ===== 编辑器工具栏 ===== */
+  .editor-toolbar{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.6rem;padding:.5rem;background:var(--pink-pale);border-radius:var(--radius-sm);border:1.5px solid var(--border);align-items:center}
+  .editor-tool-btn{background:var(--card);border:1.5px solid var(--border);border-radius:8px;padding:.35rem .7rem;cursor:pointer;font-family:var(--font);font-size:.82rem;color:var(--text-light);transition:all .2s;line-height:1}
+  .editor-tool-btn:hover{background:linear-gradient(135deg,var(--pink),var(--purple));color:#fff;border-color:transparent}
+
   /* ===== 新建按钮 ===== */
   .fab{position:fixed;bottom:2rem;right:2rem;width:56px;height:56px;
     background:linear-gradient(135deg,var(--pink),var(--purple));
@@ -378,6 +397,10 @@
     <h1 id="detail-title"></h1>
   </div>
   <div class="post-detail-body" id="detail-body"></div>
+  <!-- 分享区域 -->
+  <div style="max-width:800px;margin:2rem auto;padding:0 1.5rem">
+    <div class="share-bar" id="share-bar"></div>
+  </div>
 </div>
 
 <!-- ======== 关于页 ======== -->
@@ -497,7 +520,19 @@
         </div>
         <div class="form-group">
           <label>文章正文（支持 Markdown）</label>
+          <div class="editor-toolbar">
+            <button type="button" class="editor-tool-btn" onclick="insertMarkdown('**','**')" title="粗体"><b>B</b></button>
+            <button type="button" class="editor-tool-btn" onclick="insertMarkdown('_','_')" title="斜体"><i>I</i></button>
+            <button type="button" class="editor-tool-btn" onclick="insertMarkdown('## ','')" title="标题">H2</button>
+            <button type="button" class="editor-tool-btn" onclick="insertMarkdown('> ','')" title="引用">引用</button>
+            <button type="button" class="editor-tool-btn" onclick="insertMarkdown('```\n','\n```')" title="代码块">代码</button>
+            <span style="width:1px;height:20px;background:var(--border);margin:0 .2rem"></span>
+            <button type="button" class="editor-tool-btn" onclick="uploadMedia('image')" title="插入图片">🖼️ 图片</button>
+            <button type="button" class="editor-tool-btn" onclick="uploadMedia('video')" title="插入视频">🎬 视频</button>
+            <button type="button" class="editor-tool-btn" onclick="uploadMedia('audio')" title="插入音频">🎵 音频</button>
+          </div>
           <textarea class="form-control" id="f-body" placeholder="开始写作吧… 支持 **粗体** _斜体_ ## 标题 `代码` > 引用"></textarea>
+          <input type="file" id="media-input" style="display:none" onchange="handleMediaUpload(this)">
         </div>
         <div class="btn-row">
           <button class="btn-inline btn-save" onclick="savePost()">💾 保存发布</button>
@@ -557,6 +592,17 @@
 </div>
 
 </div><!-- end #app -->
+
+<!-- 分享弹窗 -->
+<div class="share-modal" id="share-modal" onclick="if(event.target===this)closeShareModal()">
+  <div class="share-modal-box">
+    <div style="font-size:2.5rem;margin-bottom:.5rem">💬</div>
+    <h3 style="color:var(--pink-deep);margin-bottom:1rem">微信扫码分享</h3>
+    <img id="share-qr" style="width:180px;height:180px;border-radius:var(--radius-sm);border:1.5px solid var(--border)">
+    <p style="margin-top:1rem;color:var(--text-muted);font-size:.85rem;line-height:1.6">打开微信扫一扫<br>即可分享给好友或朋友圈</p>
+    <button class="btn-inline btn-cancel" onclick="closeShareModal()" style="margin-top:1rem">关闭</button>
+  </div>
+</div>
 
 <!-- FAB 新建文章 -->
 <button class="fab" title="写新文章" onclick="newPost()">✏️</button>
@@ -620,7 +666,13 @@ function uid(){return Date.now()+''+Math.random().toString(36).slice(2,6)}
 // 简易 Markdown 渲染
 function md2html(text){
   if(!text) return '';
-  let html = text
+  // 保护 video/audio 标签不被转义
+  const protected = [];
+  let temp = text.replace(/<(video|audio)[\s\S]*?<\/\1>/gi, match => {
+    protected.push(match);
+    return `___PROTECTED_${protected.length-1}___`;
+  });
+  let html = temp
     .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
     // 代码块
     .replace(/```(\w*)\n([\s\S]*?)```/g,(_,lang,code)=>`<pre><code>${code.trim()}</code></pre>`)
@@ -646,6 +698,10 @@ function md2html(text){
       if(p.includes('<li>')) return `<ul>${p}</ul>`;
       return `<p>${p.replace(/\n/g,'<br>')}</p>`;
     }).join('\n');
+  // 恢复 video/audio 标签
+  protected.forEach((match, i) => {
+    html = html.replace(`___PROTECTED_${i}___`, match);
+  });
   return html;
 }
 
@@ -788,6 +844,7 @@ function openPost(id){
     <span class="post-date">👁️ ${post.views} 次阅读</span>
     ${(post.tags||[]).map(t=>`<span class="tag">${t}</span>`).join('')}`;
   document.getElementById('detail-body').innerHTML = md2html(post.body);
+  renderShare(post);
   showPage('post');
 }
 
@@ -994,6 +1051,105 @@ function changePassword(){
   document.getElementById('p-new').value='';
   document.getElementById('p-confirm').value='';
   toast('🔑 密码修改成功！');
+}
+
+// ======================== 分享功能 ========================
+function renderShare(post){
+  const url = encodeURIComponent(location.href);
+  const title = encodeURIComponent(post.title);
+  const summary = encodeURIComponent(getExcerpt(post.body, 80));
+  document.getElementById('share-bar').innerHTML = `
+    <span class="share-label">分享到：</span>
+    <button class="share-btn wx" title="微信" onclick="shareWeixin()">💬</button>
+    <button class="share-btn qq" title="QQ" onclick="shareQQ('${url}','${title}','${summary}')">🐧</button>
+    <button class="share-btn wb" title="微博" onclick="shareWeibo('${url}','${title}')">👁</button>
+    <button class="share-btn dd" title="钉钉" onclick="shareDingtalk('${url}','${title}')">📌</button>
+    <button class="share-btn cp" title="复制链接" onclick="copyLink()">🔗</button>
+  `;
+}
+function shareWeixin(){
+  const qrUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' + encodeURIComponent(location.href);
+  document.getElementById('share-qr').src = qrUrl;
+  document.getElementById('share-modal').classList.add('show');
+}
+function closeShareModal(){
+  document.getElementById('share-modal').classList.remove('show');
+}
+function shareQQ(url, title, summary){
+  window.open(`https://connect.qq.com/widget/shareqq/index.html?url=${url}&title=${title}&summary=${summary}&source=${encodeURIComponent('池帥の小窝')}`, '_blank', 'width=600,height=500,noopener,noreferrer');
+}
+function shareWeibo(url, title){
+  window.open(`https://service.weibo.com/share/share.php?url=${url}&title=${title}`, '_blank', 'width=600,height=500,noopener,noreferrer');
+}
+function shareDingtalk(url, title){
+  copyLink();
+  toast('🔗 链接已复制，请粘贴到钉钉分享');
+}
+function copyLink(){
+  const url = location.href;
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(url).then(()=>toast('🔗 链接已复制到剪贴板'));
+  } else {
+    const ta = document.createElement('textarea');
+    ta.value = url;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    toast('🔗 链接已复制到剪贴板');
+  }
+}
+
+// ======================== 编辑器工具栏 ========================
+function insertMarkdown(before, after){
+  const ta = document.getElementById('f-body');
+  const s = ta.selectionStart, e = ta.selectionEnd;
+  const val = ta.value;
+  const sel = val.slice(s, e) || '文本';
+  ta.value = val.slice(0, s) + before + sel + after + val.slice(e);
+  ta.focus();
+  const ns = s + before.length + sel.length + after.length;
+  ta.setSelectionRange(ns, ns);
+}
+let mediaType = 'image';
+function uploadMedia(type){
+  mediaType = type;
+  const input = document.getElementById('media-input');
+  input.accept = type==='image'?'image/*':type==='video'?'video/*':'audio/*';
+  input.click();
+}
+function handleMediaUpload(input){
+  const file = input.files[0];
+  if(!file) return;
+  const maxSize = mediaType==='image'?2*1024*1024:5*1024*1024;
+  if(file.size > maxSize){
+    toast(`❌ 文件过大，${mediaType==='image'?'图片':'视频/音频'}请小于 ${mediaType==='image'?'2MB':'5MB'}`);
+    input.value = '';
+    return;
+  }
+  const reader = new FileReader();
+  reader.onload = function(e){
+    const dataUrl = e.target.result;
+    const ta = document.getElementById('f-body');
+    let insertText = '';
+    if(mediaType === 'image'){
+      insertText = `![${file.name}](${dataUrl})`;
+    } else if(mediaType === 'video'){
+      insertText = `<video src="${dataUrl}" controls style="max-width:100%;border-radius:var(--radius-sm);margin:1rem 0"></video>`;
+    } else if(mediaType === 'audio'){
+      insertText = `<audio src="${dataUrl}" controls style="width:100%;margin:1rem 0"></audio>`;
+    }
+    const s = ta.selectionStart;
+    const val = ta.value;
+    const before = val.slice(0, s);
+    const after = val.slice(s);
+    const needBr = before.length > 0 && !before.endsWith('\n') ? '\n\n' : '';
+    ta.value = before + needBr + insertText + '\n\n' + after;
+    ta.focus();
+    toast(`✅ ${mediaType==='image'?'图片':mediaType==='video'?'视频':'音频'}已插入`);
+  };
+  reader.readAsDataURL(file);
+  input.value = '';
 }
 
 // ======================== 粒子动画 ========================
