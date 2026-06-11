@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>池帥の小窝 🌸</title>
+<title>池帥の亦殿 🌸</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌸</text></svg>">
 <style>
   /* ===== 全局变量 ===== */
@@ -332,7 +332,7 @@
 
 <!-- ======== 导航 ======== -->
 <nav id="main-nav">
-  <div class="nav-logo" onclick="showPage('home')">🌸 池帥の小窝</div>
+  <div class="nav-logo" onclick="showPage('home')">🌸 池帥の亦殿</div>
   <div class="nav-links">
     <button class="nav-btn active" id="nav-home" onclick="showPage('home')">🏠 首页</button>
     <button class="nav-btn" id="nav-about" onclick="showPage('about')">💌 关于</button>
@@ -345,7 +345,7 @@
   <!-- 英雄区 -->
   <div class="hero">
     <div class="hero-avatar">🌸</div>
-    <h1>池帥の小窝</h1>
+    <h1>池帥の亦殿</h1>
     <p>记录生活，分享美好，写下每一个值得被记住的瞬间 ✨</p>
     <p><a href="mailto:0d@live.com" style="color:var(--pink-deep);text-decoration:none">📮 0d@live.com</a></p>
     <div class="hero-tags">
@@ -555,7 +555,7 @@
         <h3 style="margin-bottom:1.5rem;color:var(--pink-deep)">⚙️ 网站设置</h3>
         <div class="form-group">
           <label>博客名称</label>
-          <input class="form-control" id="s-title" value="池帥の小窝">
+          <input class="form-control" id="s-title" value="池帥の亦殿">
         </div>
         <div class="form-group">
           <label>副标题 / 口号</label>
@@ -626,7 +626,7 @@ const DB = {
   get posts(){return JSON.parse(localStorage.getItem(this.KEY_POSTS)||'[]')},
   set posts(v){localStorage.setItem(this.KEY_POSTS,JSON.stringify(v))},
   get cfg(){return Object.assign({
-    title:'池帥の小窝',sub:'记录生活，分享美好，写下每一个值得被记住的瞬间 ✨',
+    title:'池帥の亦殿',sub:'记录生活，分享美好，写下每一个值得被记住的瞬间 ✨',
     bio:'喜欢码字、捣鼓技术和发呆的普通人 🌙',
     email:'0d@live.com',ppp:5,
     startDate: new Date().toISOString().slice(0,10)
@@ -646,7 +646,7 @@ if(!localStorage.getItem(DB.KEY_POSTS)){
   DB.posts = [
     {id:1,title:'欢迎来到我的小窝 🌸',cat:'随笔',tags:['欢迎','开始'],cover:'🌸',
      date:fmt(now),views:128,
-     body:`# 欢迎来到池帥の小窝\n\n嗨！你好呀，很高兴你能找到这里～\n\n这是我的个人博客，一个属于我的小小角落。在这里我会分享：\n\n- 🌱 **生活**：日常的碎碎念和小感悟\n- 💻 **技术**：折腾过的工具和学到的东西\n- 📚 **阅读**：书里遇到的好句子和想法\n- 🎵 **音乐**：最近在循环的歌单\n\n如果你也喜欢这种慢慢记录的感觉，欢迎常来坐坐 🍵\n\n> 世界很大，找到一个共鸣的角落，就很值得了。\n\n联系我：0d@live.com`},
+     body:`# 欢迎来到池帥の亦殿\n\n嗨！你好呀，很高兴你能找到这里～\n\n这是我的个人博客，一个属于我的小小角落。在这里我会分享：\n\n- 🌱 **生活**：日常的碎碎念和小感悟\n- 💻 **技术**：折腾过的工具和学到的东西\n- 📚 **阅读**：书里遇到的好句子和想法\n- 🎵 **音乐**：最近在循环的歌单\n\n如果你也喜欢这种慢慢记录的感觉，欢迎常来坐坐 🍵\n\n> 世界很大，找到一个共鸣的角落，就很值得了。\n\n联系我：0d@live.com`},
     {id:2,title:'香蕉放冰箱会变黑，但它其实没坏 🍌',cat:'生活常识',tags:['食物','冷知识'],cover:'🍌',
      date:fmt(new Date(now-86400000)),views:203,
      body:`# 香蕉的"黑化"之路\n\n你是不是也干过这种事：把香蕉放进冰箱保鲜，结果第二天拿出来，皮全黑了，然后一脸嫌弃地扔掉？\n\n**停！那只是它的皮黑了，果肉其实好好的！**\n\n香蕉属于热带水果，最怕冷。低温会破坏它表皮的细胞，导致黑色素沉积——简单说就是"冻伤了脸"，但内心依旧甜美。\n\n> 生活启示：有些人看着黑，心里可甜了 😏\n\n## 正确保存香蕉的姿势\n\n1. **室温悬挂** — 像挂毛巾一样挂起来，它觉得自己还在树上，熟得慢\n2. **保鲜膜裹住根部** — 那里是乙烯释放口，裹住能延缓衰老\n3. **和苹果分开放** — 苹果是催熟界的卷王，放一起香蕉会慌\n\n下次看到黑皮香蕉，别扔，剥开吃了它，你会收获一根超甜的惊喜！`},
@@ -1114,7 +1114,7 @@ function closeShareModal(){
   document.getElementById('share-modal').classList.remove('show');
 }
 function shareQQ(url, title, summary){
-  window.open(`https://connect.qq.com/widget/shareqq/index.html?url=${url}&title=${title}&summary=${summary}&source=${encodeURIComponent('池帥の小窝')}`, '_blank', 'width=600,height=500,noopener,noreferrer');
+  window.open(`https://connect.qq.com/widget/shareqq/index.html?url=${url}&title=${title}&summary=${summary}&source=${encodeURIComponent('池帥の亦殿')}`, '_blank', 'width=600,height=500,noopener,noreferrer');
 }
 function shareWeibo(url, title){
   window.open(`https://service.weibo.com/share/share.php?url=${url}&title=${title}`, '_blank', 'width=600,height=500,noopener,noreferrer');
