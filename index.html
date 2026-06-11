@@ -1,439 +1,1071 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>池帝的随笔</title>
-  <meta name="description" content="记录生活，分享思考，探索世界。" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌸</text></svg>" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700&family=ZCOOL+XiaoWei&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --pink-50: #fff5f7;
-      --pink-100: #ffe0e8;
-      --pink-200: #ffb3c6;
-      --pink-400: #f472a0;
-      --pink-500: #e8568a;
-      --pink-600: #c93f73;
-      --text-primary: #2d1a24;
-      --text-secondary: #7a5060;
-      --text-muted: #a88090;
-      --bg-page: #fffbfc;
-      --bg-card: #ffffff;
-      --border: #f0d0dc;
-      --radius: 16px;
-      --shadow: 0 2px 20px rgba(232,86,138,0.08);
-      --shadow-hover: 0 8px 32px rgba(232,86,138,0.18);
-      --font-body: 'Noto Serif SC', 'SimSun', Georgia, serif;
-      --font-title: 'ZCOOL XiaoWei', 'STXingkai', serif;
-      --transition: 0.25s ease;
-    }
-    [data-theme="dark"] {
-      --bg-page: #1a0d12; --bg-card: #241319; --border: #3d2030;
-      --text-primary: #f5e0e8; --text-secondary: #c9a0b0; --text-muted: #8a6070;
-      --shadow: 0 2px 16px rgba(0,0,0,0.4); --shadow-hover: 0 8px 32px rgba(232,86,138,0.25);
-      --pink-50: #2d1a24; --pink-100: #3d2030;
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: var(--font-body); background: var(--bg-page); color: var(--text-primary); line-height: 1.8; font-size: 16px; transition: background var(--transition), color var(--transition); }
-    a { color: var(--pink-500); text-decoration: none; }
-    a:hover { color: var(--pink-600); }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>池帥の小窝 🌸</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌸</text></svg>">
+<style>
+  /* ===== 全局变量 ===== */
+  :root{
+    --pink:#ff8fab;--pink-light:#ffb3c6;--pink-pale:#fff0f5;--pink-deep:#e85d8a;
+    --purple:#c77dff;--purple-light:#e0aaff;--purple-pale:#f8f0ff;
+    --mint:#64dfdf;--mint-light:#a0f0e8;
+    --yellow:#ffd166;--orange:#ff9f1c;
+    --text:#4a4063;--text-light:#7c6f9f;--text-muted:#b0a8c8;
+    --bg:#fdf4ff;--card:#fff;--border:#f0d9ff;
+    --shadow:0 8px 32px rgba(200,100,200,.12);
+    --shadow-hover:0 16px 48px rgba(200,100,200,.22);
+    --radius:18px;--radius-sm:10px;
+    --font:'LXGW WenKai','Ma Shan Zheng','Noto Serif SC',serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
 
-    /* 顶部彩条 */
-    body::before {
-      content: '';
-      position: fixed; top: 0; left: 0; right: 0; height: 3px;
-      background: linear-gradient(90deg, #ffb3c6, #f472a0, #c93f73, #f472a0, #ffb3c6);
-      background-size: 200% 100%;
-      animation: rainbow 4s linear infinite; z-index: 200;
-    }
-    @keyframes rainbow { 0%{background-position:0%} 100%{background-position:200%} }
+  /* ===== 粒子背景 ===== */
+  #particles{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0}
 
-    /* 樱花飘落 */
-    .sakura-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; }
-    .petal {
-      position: absolute; top: -20px; font-size: 16px; opacity: 0;
-      animation: fall linear infinite;
-      user-select: none;
-    }
-    @keyframes fall {
-      0% { transform: translateX(0) rotate(0deg) scale(1); opacity: 0.8; top: -30px; }
-      100% { transform: translateX(var(--drift)) rotate(720deg) scale(0.6); opacity: 0; top: 110vh; }
-    }
+  /* ===== 布局 ===== */
+  #app{position:relative;z-index:1}
+  .page{display:none;min-height:100vh}
+  .page.active{display:block}
 
-    /* Header */
-    .site-header {
-      background: rgba(255,251,252,0.92); border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-      position: sticky; top: 3px; z-index: 100;
-    }
-    [data-theme="dark"] .site-header { background: rgba(26,13,18,0.92); }
-    .header-inner {
-      max-width: 900px; margin: 0 auto; padding: 0 2rem;
-      height: 58px; display: flex; align-items: center; gap: 1rem;
-    }
-    .site-logo { display: flex; align-items: center; gap: 8px; color: var(--text-primary) !important; font-family: var(--font-title); font-size: 1.25rem; font-weight: 700; }
-    .logo-flower { font-size: 1.4rem; animation: spin 10s linear infinite; display: inline-block; }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    .site-nav { display: flex; gap: 0.5rem; margin-left: auto; align-items: center; }
-    .site-nav a { color: var(--text-secondary); font-size: 0.9rem; padding: 5px 14px; border-radius: 20px; transition: all var(--transition); }
-    .site-nav a:hover, .site-nav a.active { color: var(--pink-500); background: var(--pink-100); }
-    .theme-toggle { background: none; border: 1.5px solid var(--border); border-radius: 20px; padding: 5px 12px; cursor: pointer; font-size: 0.85rem; color: var(--text-secondary); transition: all var(--transition); }
-    .theme-toggle:hover { border-color: var(--pink-400); color: var(--pink-500); }
-    .header-tagline { text-align: center; font-family: var(--font-title); font-size: 0.8rem; color: var(--pink-400); padding: 5px 0 7px; letter-spacing: 0.18em; border-top: 1px solid var(--border); background: var(--pink-50); }
-    [data-theme="dark"] .header-tagline { background: #2d1a24; }
+  /* ===== 导航 ===== */
+  nav{background:rgba(255,255,255,.85);backdrop-filter:blur(12px);
+    border-bottom:2px solid var(--border);padding:0 2rem;
+    display:flex;align-items:center;justify-content:space-between;
+    position:sticky;top:0;z-index:100;height:64px}
+  .nav-logo{font-size:1.4rem;font-weight:700;
+    background:linear-gradient(135deg,var(--pink),var(--purple));
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+    cursor:pointer;display:flex;align-items:center;gap:.4rem}
+  .nav-links{display:flex;gap:1rem;align-items:center}
+  .nav-btn{background:none;border:none;cursor:pointer;font-family:var(--font);
+    font-size:.95rem;color:var(--text-light);padding:.4rem .8rem;border-radius:20px;
+    transition:all .25s}
+  .nav-btn:hover,.nav-btn.active{background:var(--pink-pale);color:var(--pink-deep)}
+  .nav-btn.admin-btn{background:linear-gradient(135deg,var(--pink),var(--purple));
+    color:#fff;padding:.4rem 1rem}
+  .nav-btn.admin-btn:hover{opacity:.9;transform:translateY(-1px)}
 
-    /* Main */
-    .main-content { min-height: calc(100vh - 200px); padding: 3rem 2rem; max-width: 900px; margin: 0 auto; position: relative; z-index: 1; animation: fadeIn 0.5s ease; }
-    @keyframes fadeIn { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+  /* ===== 英雄区 ===== */
+  .hero{text-align:center;padding:5rem 2rem 3rem;
+    background:linear-gradient(160deg,var(--pink-pale),var(--purple-pale),var(--bg))}
+  .hero-avatar{width:120px;height:120px;border-radius:50%;
+    border:4px solid var(--pink-light);
+    background:linear-gradient(135deg,var(--pink-light),var(--purple-light));
+    display:flex;align-items:center;justify-content:center;
+    font-size:3.5rem;margin:0 auto 1.2rem;
+    box-shadow:0 8px 32px rgba(255,143,171,.35);
+    animation:float 4s ease-in-out infinite}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+  .hero h1{font-size:2.4rem;
+    background:linear-gradient(135deg,var(--pink-deep),var(--purple));
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:.5rem}
+  .hero p{color:var(--text-light);font-size:1.05rem;margin-bottom:.8rem}
+  .hero-tags{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin-top:1rem}
+  .tag{background:var(--pink-pale);color:var(--pink-deep);
+    border:1px solid var(--pink-light);border-radius:20px;
+    padding:.25rem .8rem;font-size:.85rem}
 
-    /* Hero */
-    .hero { text-align: center; padding: 3.5rem 1rem 3rem; }
-    .hero-avatar { width: 90px; height: 90px; border-radius: 50%; background: linear-gradient(135deg, var(--pink-200), var(--pink-400)); display: flex; align-items: center; justify-content: center; font-size: 3rem; margin: 0 auto 1.5rem; box-shadow: 0 4px 20px rgba(232,86,138,0.3); animation: pulse 3s ease-in-out infinite; }
-    @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.05)} }
-    .hero-title { font-family: var(--font-title); font-size: clamp(2.2rem, 5vw, 3.2rem); color: var(--pink-600); margin-bottom: 0.75rem; }
-    .hero-sub { color: var(--text-secondary); font-size: 1rem; max-width: 460px; margin: 0 auto 1.5rem; }
-    .hero-badges { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
-    .badge { display: inline-flex; align-items: center; gap: 5px; font-size: 0.82rem; padding: 5px 14px; border-radius: 20px; background: var(--pink-100); color: var(--pink-600); border: 1px solid var(--pink-200); }
+  /* ===== 内容区 ===== */
+  .container{max-width:1100px;margin:0 auto;padding:2rem 1.5rem;
+    display:grid;grid-template-columns:1fr 300px;gap:2rem}
+  @media(max-width:768px){.container{grid-template-columns:1fr}}
 
-    /* Section */
-    .section-title { font-family: var(--font-title); font-size: 1.3rem; color: var(--text-primary); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
-    .section-title::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, var(--border), transparent); }
+  /* ===== 文章卡片 ===== */
+  .posts-grid{display:flex;flex-direction:column;gap:1.5rem}
+  .post-card{background:var(--card);border-radius:var(--radius);
+    border:1.5px solid var(--border);box-shadow:var(--shadow);
+    overflow:hidden;cursor:pointer;transition:all .3s}
+  .post-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover);border-color:var(--pink-light)}
+  .post-card-cover{width:100%;height:180px;object-fit:cover;
+    background:linear-gradient(135deg,var(--pink-pale),var(--purple-pale));
+    display:flex;align-items:center;justify-content:center;font-size:3rem}
+  .post-card-body{padding:1.4rem}
+  .post-meta{display:flex;gap:.8rem;align-items:center;margin-bottom:.6rem;flex-wrap:wrap}
+  .post-cat{background:linear-gradient(135deg,var(--pink),var(--purple));
+    color:#fff;border-radius:20px;padding:.15rem .7rem;font-size:.78rem}
+  .post-date{color:var(--text-muted);font-size:.82rem}
+  .post-card h3{font-size:1.15rem;margin-bottom:.5rem;color:var(--text);line-height:1.5}
+  .post-card p{color:var(--text-light);font-size:.9rem;line-height:1.7;
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .post-footer{display:flex;gap:1rem;padding:.8rem 1.4rem;
+    border-top:1px solid var(--border);background:var(--pink-pale)}
+  .post-stat{color:var(--text-muted);font-size:.82rem;display:flex;align-items:center;gap:.3rem}
 
-    /* Posts grid */
-    .posts-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem; margin-bottom: 2.5rem; }
-    .post-card {
-      background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
-      padding: 1.6rem; box-shadow: var(--shadow); transition: transform var(--transition), box-shadow var(--transition);
-      display: flex; flex-direction: column; gap: 0.65rem; cursor: pointer;
-    }
-    .post-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); border-color: var(--pink-200); }
-    .post-card-top { display: flex; align-items: center; justify-content: space-between; }
-    .post-card-date { font-size: 0.78rem; color: var(--text-muted); }
-    .post-tag { display: inline-block; background: var(--pink-100); color: var(--pink-600); font-size: 0.73rem; padding: 2px 10px; border-radius: 20px; border: 1px solid var(--pink-200); }
-    [data-theme="dark"] .post-tag { background: #3d2030; border-color: #5a3040; }
-    .post-card-title { font-family: var(--font-title); font-size: 1.1rem; color: var(--text-primary); line-height: 1.5; }
-    .post-card-title a { color: inherit; }
-    .post-card-title a:hover { color: var(--pink-500); }
-    .post-card-summary { font-size: 0.88rem; color: var(--text-secondary); flex: 1; line-height: 1.7; }
-    .read-more { font-size: 0.83rem; color: var(--pink-500); align-self: flex-start; display: flex; align-items: center; gap: 4px; transition: gap var(--transition); }
-    .read-more:hover { gap: 8px; }
+  /* ===== 侧栏 ===== */
+  .sidebar{display:flex;flex-direction:column;gap:1.5rem}
+  .widget{background:var(--card);border-radius:var(--radius);
+    border:1.5px solid var(--border);box-shadow:var(--shadow);padding:1.4rem;overflow:hidden}
+  .widget-title{font-size:1rem;font-weight:700;color:var(--pink-deep);
+    margin-bottom:1rem;display:flex;align-items:center;gap:.4rem}
+  .widget-title::before{content:'✦';color:var(--pink-light)}
 
-    /* CTA */
-    .view-all { text-align: center; margin-top: 0.5rem; }
-    .btn-outline { display: inline-block; border: 1.5px solid var(--pink-400); color: var(--pink-500); border-radius: 30px; padding: 10px 32px; font-size: 0.9rem; transition: all var(--transition); }
-    .btn-outline:hover { background: var(--pink-500); color: #fff; border-color: var(--pink-500); transform: translateY(-2px); }
+  /* 个人资料 */
+  .profile-card{text-align:center}
+  .profile-avatar{width:72px;height:72px;border-radius:50%;
+    background:linear-gradient(135deg,var(--pink-light),var(--purple-light));
+    display:flex;align-items:center;justify-content:center;font-size:2rem;
+    margin:0 auto .8rem;border:3px solid var(--pink-light)}
+  .profile-name{font-size:1.05rem;font-weight:700;color:var(--text);margin-bottom:.2rem}
+  .profile-bio{color:var(--text-muted);font-size:.85rem;margin-bottom:.8rem}
+  .profile-email{color:var(--pink-deep);font-size:.82rem;text-decoration:none}
+  .profile-email:hover{text-decoration:underline}
+  .profile-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.5rem;margin-top:1rem}
+  .stat-item{background:var(--pink-pale);border-radius:var(--radius-sm);padding:.5rem;text-align:center}
+  .stat-num{font-size:1.1rem;font-weight:700;color:var(--pink-deep)}
+  .stat-label{font-size:.72rem;color:var(--text-muted)}
 
-    /* About card */
-    .about-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 2.5rem; box-shadow: var(--shadow); max-width: 660px; margin: 0 auto; }
-    .about-header { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1.5rem; }
-    .about-avatar { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--pink-200), var(--pink-400)); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; flex-shrink: 0; }
-    .about-name { font-family: var(--font-title); font-size: 1.8rem; color: var(--pink-600); }
-    .about-slogan { color: var(--text-secondary); font-size: 0.9rem; margin-top: 4px; }
-    .about-body { color: var(--text-secondary); line-height: 1.9; }
-    .about-body p { margin-bottom: 1rem; }
-    .about-contacts { display: flex; gap: 0.75rem; margin-top: 1.5rem; flex-wrap: wrap; }
-    .contact-link { display: inline-flex; align-items: center; gap: 6px; padding: 7px 18px; border-radius: 20px; background: var(--pink-100); color: var(--pink-600); font-size: 0.85rem; border: 1px solid var(--pink-200); transition: all var(--transition); }
-    .contact-link:hover { background: var(--pink-500); color: #fff; border-color: var(--pink-500); }
+  /* 分类 */
+  .cat-list{display:flex;flex-direction:column;gap:.4rem}
+  .cat-item{display:flex;justify-content:space-between;align-items:center;
+    padding:.5rem .8rem;border-radius:var(--radius-sm);cursor:pointer;
+    transition:background .2s;font-size:.9rem}
+  .cat-item:hover{background:var(--pink-pale)}
+  .cat-count{background:var(--pink-pale);color:var(--pink-deep);
+    border-radius:20px;padding:.1rem .5rem;font-size:.78rem}
 
-    /* Single post */
-    .single-wrap { max-width: 720px; margin: 0 auto; }
-    .single-header { text-align: center; padding-bottom: 2rem; border-bottom: 1px dashed var(--border); margin-bottom: 2.5rem; }
-    .single-meta { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem; display: flex; gap: 8px; justify-content: center; align-items: center; flex-wrap: wrap; }
-    .single-title { font-family: var(--font-title); font-size: clamp(1.6rem, 4vw, 2.4rem); color: var(--text-primary); line-height: 1.4; margin-bottom: 0.75rem; }
-    .single-desc { color: var(--text-secondary); font-size: 1rem; }
-    .prose { line-height: 1.9; }
-    .prose h2 { font-family: var(--font-title); font-size: 1.4rem; color: var(--text-primary); margin: 2rem 0 0.75rem; border-left: 3px solid var(--pink-400); padding-left: 0.75rem; }
-    .prose h3 { font-family: var(--font-title); font-size: 1.2rem; color: var(--pink-600); margin: 1.5rem 0 0.5rem; }
-    .prose p { margin-bottom: 1.25rem; }
-    .prose blockquote { border-left: 3px solid var(--pink-300); background: var(--pink-50); padding: 0.8rem 1.25rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0; color: var(--text-secondary); font-style: italic; }
-    .prose a { border-bottom: 1px dashed var(--pink-300); }
-    .prose a:hover { border-bottom-color: var(--pink-500); }
-    .single-footer { margin-top: 3rem; padding-top: 2rem; border-top: 1px dashed var(--border); text-align: center; }
-    .back-btn { display: inline-flex; align-items: center; gap: 6px; color: var(--text-secondary); font-size: 0.9rem; padding: 8px 20px; border: 1px solid var(--border); border-radius: 20px; transition: all var(--transition); }
-    .back-btn:hover { color: var(--pink-500); border-color: var(--pink-400); background: var(--pink-50); }
+  /* 标签云 */
+  .tag-cloud{display:flex;flex-wrap:wrap;gap:.4rem}
 
-    /* Footer */
-    .site-footer { background: var(--pink-50); border-top: 1px solid var(--border); padding: 2.5rem 2rem; text-align: center; position: relative; z-index: 1; }
-    [data-theme="dark"] .site-footer { background: #1e0f16; }
-    .footer-tagline { font-family: var(--font-title); font-size: 1.2rem; color: var(--pink-500); letter-spacing: 0.2em; margin-bottom: 0.75rem; }
-    .footer-info { font-size: 0.85rem; color: var(--text-muted); }
-    .footer-info a { color: var(--text-muted); }
-    .footer-info a:hover { color: var(--pink-500); }
+  /* ===== 文章详情页 ===== */
+  #page-post{padding:2rem 1.5rem;max-width:800px;margin:0 auto}
+  .post-back{background:none;border:none;cursor:pointer;color:var(--pink-deep);
+    font-family:var(--font);font-size:.95rem;display:flex;align-items:center;
+    gap:.4rem;margin-bottom:1.5rem;padding:.4rem .8rem;border-radius:20px;
+    transition:background .2s}
+  .post-back:hover{background:var(--pink-pale)}
+  .post-detail-header{margin-bottom:2rem}
+  .post-detail-header h1{font-size:1.9rem;line-height:1.4;margin-bottom:.8rem;
+    background:linear-gradient(135deg,var(--pink-deep),var(--purple));
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent}
+  .post-detail-body{background:var(--card);border-radius:var(--radius);
+    border:1.5px solid var(--border);box-shadow:var(--shadow);
+    padding:2rem;line-height:1.9;font-size:1rem;color:var(--text)}
+  .post-detail-body h2{color:var(--pink-deep);margin:1.5rem 0 .6rem;font-size:1.2rem}
+  .post-detail-body h3{color:var(--purple);margin:1.2rem 0 .4rem}
+  .post-detail-body p{margin-bottom:1rem}
+  .post-detail-body ul,ol{margin:0 0 1rem 1.5rem}
+  .post-detail-body li{margin-bottom:.3rem}
+  .post-detail-body code{background:var(--pink-pale);color:var(--pink-deep);
+    padding:.1rem .4rem;border-radius:4px;font-size:.9em}
+  .post-detail-body pre{background:#2d2337;color:#f8d7ea;border-radius:var(--radius-sm);
+    padding:1.2rem;overflow-x:auto;margin-bottom:1rem}
+  .post-detail-body blockquote{border-left:3px solid var(--pink-light);
+    padding-left:1rem;color:var(--text-light);font-style:italic;margin-bottom:1rem}
 
-    /* Scrollbar */
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: var(--bg-page); }
-    ::-webkit-scrollbar-thumb { background: var(--pink-200); border-radius: 10px; }
-    ::-webkit-scrollbar-thumb:hover { background: var(--pink-400); }
-    ::selection { background: var(--pink-200); color: var(--pink-600); }
+  /* ===== 登录页 ===== */
+  #page-login{display:flex;align-items:center;justify-content:center;
+    min-height:100vh;padding:2rem;
+    background:linear-gradient(135deg,var(--pink-pale),var(--purple-pale))}
+  .login-card{background:var(--card);border-radius:24px;
+    border:2px solid var(--border);box-shadow:var(--shadow-hover);
+    padding:3rem 2.5rem;width:100%;max-width:400px;text-align:center}
+  .login-icon{font-size:3.5rem;margin-bottom:1rem;animation:float 4s ease-in-out infinite}
+  .login-card h2{font-size:1.5rem;
+    background:linear-gradient(135deg,var(--pink-deep),var(--purple));
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:.3rem}
+  .login-card p{color:var(--text-muted);font-size:.9rem;margin-bottom:2rem}
+  .form-group{text-align:left;margin-bottom:1.2rem}
+  .form-group label{display:block;font-size:.88rem;color:var(--text-light);
+    margin-bottom:.4rem;font-weight:600}
+  .form-control{width:100%;padding:.7rem 1rem;border-radius:var(--radius-sm);
+    border:1.5px solid var(--border);font-family:var(--font);font-size:.95rem;
+    color:var(--text);background:var(--bg);transition:border .2s}
+  .form-control:focus{outline:none;border-color:var(--pink);
+    box-shadow:0 0 0 3px rgba(255,143,171,.15)}
+  .btn{width:100%;padding:.8rem;border-radius:var(--radius-sm);border:none;
+    cursor:pointer;font-family:var(--font);font-size:1rem;font-weight:700;
+    transition:all .25s}
+  .btn-primary{background:linear-gradient(135deg,var(--pink),var(--purple));color:#fff}
+  .btn-primary:hover{opacity:.9;transform:translateY(-2px);
+    box-shadow:0 8px 24px rgba(255,143,171,.4)}
+  .login-err{color:#e85d8a;font-size:.85rem;margin-top:.8rem;display:none}
 
-    /* Page system */
-    .page { display: none; }
-    .page.active { display: block; animation: fadeIn 0.4s ease; }
+  /* ===== 后台 ===== */
+  #page-admin{min-height:100vh;background:var(--pink-pale)}
+  .admin-nav{background:linear-gradient(135deg,var(--pink-deep),var(--purple));
+    padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between}
+  .admin-nav-title{color:#fff;font-size:1.2rem;font-weight:700;display:flex;align-items:center;gap:.5rem}
+  .admin-nav-right{display:flex;gap:.8rem;align-items:center}
+  .admin-btn-sm{background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);
+    color:#fff;border-radius:20px;padding:.35rem .9rem;cursor:pointer;
+    font-family:var(--font);font-size:.85rem;transition:background .2s}
+  .admin-btn-sm:hover{background:rgba(255,255,255,.35)}
 
-    /* Responsive */
-    @media (max-width: 640px) {
-      .header-inner { padding: 0 1rem; }
-      .main-content { padding: 2rem 1rem; }
-      .posts-grid { grid-template-columns: 1fr; }
-      .site-nav a { font-size: 0.82rem; padding: 4px 10px; }
-      .hero { padding: 2.5rem 0 2rem; }
-      .about-header { flex-direction: column; text-align: center; }
-    }
-  </style>
+  .admin-body{max-width:1000px;margin:2rem auto;padding:0 1.5rem}
+  .admin-tabs{display:flex;gap:.5rem;margin-bottom:1.5rem;flex-wrap:wrap}
+  .admin-tab{background:var(--card);border:1.5px solid var(--border);
+    border-radius:20px;padding:.4rem 1rem;cursor:pointer;
+    font-family:var(--font);font-size:.9rem;color:var(--text-light);
+    transition:all .2s}
+  .admin-tab.active,.admin-tab:hover{background:linear-gradient(135deg,var(--pink),var(--purple));
+    color:#fff;border-color:transparent}
+
+  .admin-panel{display:none}
+  .admin-panel.active{display:block}
+
+  /* 文章管理列表 */
+  .post-list-item{background:var(--card);border-radius:var(--radius-sm);
+    border:1.5px solid var(--border);padding:1rem 1.2rem;margin-bottom:.8rem;
+    display:flex;align-items:center;gap:1rem;transition:box-shadow .2s}
+  .post-list-item:hover{box-shadow:var(--shadow)}
+  .post-list-info{flex:1}
+  .post-list-title{font-size:.95rem;font-weight:700;color:var(--text);margin-bottom:.2rem}
+  .post-list-meta{color:var(--text-muted);font-size:.8rem}
+  .post-list-actions{display:flex;gap:.5rem}
+  .action-btn{background:none;border:1.5px solid var(--border);border-radius:8px;
+    padding:.3rem .7rem;cursor:pointer;font-family:var(--font);font-size:.82rem;
+    transition:all .2s}
+  .action-btn.edit{color:var(--purple);border-color:var(--purple-light)}
+  .action-btn.edit:hover{background:var(--purple-pale)}
+  .action-btn.del{color:#e85d8a;border-color:#ffb3c6}
+  .action-btn.del:hover{background:var(--pink-pale)}
+
+  /* 文章编辑器 */
+  .editor-card{background:var(--card);border-radius:var(--radius);
+    border:1.5px solid var(--border);box-shadow:var(--shadow);padding:1.8rem}
+  .editor-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+  @media(max-width:600px){.editor-row{grid-template-columns:1fr}}
+  .editor-card .form-group{margin-bottom:1rem}
+  textarea.form-control{resize:vertical;min-height:280px;line-height:1.7}
+  .btn-row{display:flex;gap:.8rem;margin-top:1.2rem;flex-wrap:wrap}
+  .btn-inline{padding:.6rem 1.4rem;border-radius:var(--radius-sm);border:none;
+    cursor:pointer;font-family:var(--font);font-size:.95rem;font-weight:600;transition:all .25s}
+  .btn-save{background:linear-gradient(135deg,var(--pink),var(--purple));color:#fff}
+  .btn-save:hover{opacity:.9;transform:translateY(-1px)}
+  .btn-cancel{background:var(--card);border:1.5px solid var(--border);color:var(--text-light)}
+  .btn-cancel:hover{background:var(--pink-pale)}
+
+  /* 设置面板 */
+  .settings-card{background:var(--card);border-radius:var(--radius);
+    border:1.5px solid var(--border);box-shadow:var(--shadow);padding:1.8rem}
+
+  /* 空状态 */
+  .empty-state{text-align:center;padding:3rem 1rem;color:var(--text-muted)}
+  .empty-state .icon{font-size:3rem;margin-bottom:1rem}
+
+  /* ===== Toast ===== */
+  #toast{position:fixed;top:80px;right:24px;z-index:9999;
+    background:linear-gradient(135deg,var(--pink),var(--purple));
+    color:#fff;padding:.7rem 1.4rem;border-radius:20px;
+    box-shadow:0 8px 24px rgba(255,143,171,.4);
+    font-size:.9rem;opacity:0;transform:translateX(40px);
+    transition:all .3s;pointer-events:none}
+  #toast.show{opacity:1;transform:translateX(0)}
+
+  /* ===== 搜索栏 ===== */
+  .search-bar{display:flex;gap:.6rem;margin-bottom:1.5rem}
+  .search-input{flex:1;padding:.6rem 1rem;border-radius:20px;
+    border:1.5px solid var(--border);font-family:var(--font);
+    font-size:.92rem;color:var(--text);background:var(--card)}
+  .search-input:focus{outline:none;border-color:var(--pink)}
+  .search-btn{background:linear-gradient(135deg,var(--pink),var(--purple));
+    border:none;border-radius:20px;color:#fff;padding:.6rem 1.2rem;
+    cursor:pointer;font-family:var(--font);font-size:.9rem;transition:opacity .2s}
+  .search-btn:hover{opacity:.85}
+
+  /* ===== 分页 ===== */
+  .pagination{display:flex;gap:.4rem;justify-content:center;margin-top:2rem;flex-wrap:wrap}
+  .page-btn{background:var(--card);border:1.5px solid var(--border);
+    border-radius:var(--radius-sm);padding:.4rem .8rem;cursor:pointer;
+    font-family:var(--font);font-size:.88rem;color:var(--text-light);transition:all .2s}
+  .page-btn.active,.page-btn:hover{background:linear-gradient(135deg,var(--pink),var(--purple));
+    color:#fff;border-color:transparent}
+
+  /* ===== 滚动条 ===== */
+  ::-webkit-scrollbar{width:6px}
+  ::-webkit-scrollbar-track{background:var(--pink-pale)}
+  ::-webkit-scrollbar-thumb{background:var(--pink-light);border-radius:3px}
+
+  /* ===== 动画 ===== */
+  @keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+  .fade-in{animation:fadeInUp .4s ease both}
+  .stagger-1{animation-delay:.05s}.stagger-2{animation-delay:.1s}
+  .stagger-3{animation-delay:.15s}.stagger-4{animation-delay:.2s}
+
+  /* ===== 新建按钮 ===== */
+  .fab{position:fixed;bottom:2rem;right:2rem;width:56px;height:56px;
+    background:linear-gradient(135deg,var(--pink),var(--purple));
+    border:none;border-radius:50%;cursor:pointer;
+    box-shadow:0 8px 24px rgba(255,143,171,.5);
+    font-size:1.5rem;color:#fff;transition:all .3s;
+    display:none;align-items:center;justify-content:center;z-index:50}
+  .fab:hover{transform:scale(1.12) rotate(90deg)}
+  body.is-admin .fab{display:flex}
+</style>
 </head>
 <body>
-  <!-- 樱花飘落容器 -->
-  <div class="sakura-container" id="sakuraContainer"></div>
 
-  <!-- Header -->
-  <header class="site-header">
-    <div class="header-inner">
-      <a class="site-logo" href="#" onclick="showPage('home'); return false;">
-        <span class="logo-flower">🌸</span>
-        <span>池帝的随笔</span>
-      </a>
-      <nav class="site-nav">
-        <a href="#" onclick="showPage('home'); return false;" id="nav-home" class="active">首页</a>
-        <a href="#" onclick="showPage('posts'); return false;" id="nav-posts">文章</a>
-        <a href="#" onclick="showPage('about'); return false;" id="nav-about">关于</a>
-      </nav>
-      <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">🌙</button>
+<canvas id="particles"></canvas>
+
+<div id="app">
+
+<!-- ======== 导航 ======== -->
+<nav id="main-nav">
+  <div class="nav-logo" onclick="showPage('home')">🌸 池帥の小窝</div>
+  <div class="nav-links">
+    <button class="nav-btn active" id="nav-home" onclick="showPage('home')">🏠 首页</button>
+    <button class="nav-btn" id="nav-about" onclick="showPage('about')">💌 关于</button>
+    <button class="nav-btn admin-btn" id="nav-admin-btn" onclick="goAdmin()">⚙️ 管理</button>
+  </div>
+</nav>
+
+<!-- ======== 首页 ======== -->
+<div class="page active" id="page-home">
+  <!-- 英雄区 -->
+  <div class="hero">
+    <div class="hero-avatar">🌸</div>
+    <h1>池帥の小窝</h1>
+    <p>记录生活，分享美好，写下每一个值得被记住的瞬间 ✨</p>
+    <p><a href="mailto:0d@live.com" style="color:var(--pink-deep);text-decoration:none">📮 0d@live.com</a></p>
+    <div class="hero-tags">
+      <span class="tag">🌱 生活</span>
+      <span class="tag">💻 技术</span>
+      <span class="tag">🎵 音乐</span>
+      <span class="tag">📚 读书</span>
+      <span class="tag">🍰 美食</span>
     </div>
-    <div class="header-tagline">池帝萬歲萬歲萬萬歲</div>
-  </header>
+  </div>
 
-  <!-- ===== 首页 ===== -->
-  <div id="page-home" class="page active">
-    <main class="main-content">
-      <section class="hero">
-        <div class="hero-avatar">🌸</div>
-        <h1 class="hero-title">池帝的随笔</h1>
-        <p class="hero-sub">记录生活，分享思考，探索世界。</p>
-        <div class="hero-badges">
-          <span class="badge">✍️ 随笔</span>
-          <span class="badge">🌿 生活</span>
-          <span class="badge">💭 思考</span>
-          <span class="badge">📮 0d@live.com</span>
-        </div>
-      </section>
-
-      <h2 class="section-title">🌸 最新文章</h2>
-      <div class="posts-grid" id="posts-grid"></div>
-
-      <div class="view-all">
-        <a href="#" class="btn-outline" onclick="showPage('posts'); return false;">查看全部文章 🌸</a>
+  <!-- 内容区 -->
+  <div class="container">
+    <main>
+      <div class="search-bar">
+        <input class="search-input" id="search-input" placeholder="🔍 搜索文章…" oninput="renderHome()">
+        <button class="search-btn" onclick="renderHome()">搜索</button>
       </div>
+      <div id="posts-container" class="posts-grid"></div>
+      <div id="pagination" class="pagination"></div>
     </main>
+    <aside class="sidebar">
+      <div class="widget profile-card fade-in stagger-1">
+        <div class="profile-avatar">🌸</div>
+        <div class="profile-name">池帥</div>
+        <div class="profile-bio">喜欢码字、捣鼓技术和发呆的普通人 🌙</div>
+        <a href="mailto:0d@live.com" class="profile-email">📮 0d@live.com</a>
+        <div class="profile-stats">
+          <div class="stat-item"><div class="stat-num" id="stat-posts">0</div><div class="stat-label">文章</div></div>
+          <div class="stat-item"><div class="stat-num" id="stat-cats">0</div><div class="stat-label">分类</div></div>
+          <div class="stat-item"><div class="stat-num" id="stat-days">0</div><div class="stat-label">天</div></div>
+        </div>
+      </div>
+
+      <div class="widget fade-in stagger-2">
+        <div class="widget-title">文章分类</div>
+        <div id="cat-list" class="cat-list"></div>
+      </div>
+
+      <div class="widget fade-in stagger-3">
+        <div class="widget-title">标签云</div>
+        <div id="tag-cloud" class="tag-cloud"></div>
+      </div>
+
+      <div class="widget fade-in stagger-4">
+        <div class="widget-title">最近更新</div>
+        <div id="recent-posts"></div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<!-- ======== 文章详情页 ======== -->
+<div class="page" id="page-post">
+  <button class="post-back" onclick="showPage('home')">← 返回列表</button>
+  <div class="post-detail-header">
+    <div class="post-meta" id="detail-meta"></div>
+    <h1 id="detail-title"></h1>
+  </div>
+  <div class="post-detail-body" id="detail-body"></div>
+</div>
+
+<!-- ======== 关于页 ======== -->
+<div class="page" id="page-about">
+  <div style="max-width:700px;margin:3rem auto;padding:0 1.5rem">
+    <div class="post-detail-body" style="text-align:center;padding:3rem">
+      <div style="font-size:5rem;margin-bottom:1rem;animation:float 4s ease-in-out infinite">🌸</div>
+      <h2 style="font-size:1.8rem;background:linear-gradient(135deg,var(--pink-deep),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1rem">关于池帥</h2>
+      <p>嗨～我是池帥，一个喜欢在互联网角落里写字的人。</p>
+      <p>这里会有我对生活的碎碎念，也有我学到的技术笔记，还有偶尔迸发的奇思妙想。</p>
+      <p>不算活跃，但会持续更新 :)</p>
+      <div style="margin:2rem 0;padding:1.5rem;background:var(--pink-pale);border-radius:var(--radius-sm);border:1.5px dashed var(--pink-light)">
+        <p>📮 联系我：<a href="mailto:0d@live.com" style="color:var(--pink-deep)">0d@live.com</a></p>
+        <p style="margin-top:.5rem;color:var(--text-muted);font-size:.9rem">回复可能比较慢，请耐心等待 🌙</p>
+      </div>
+      <div class="hero-tags" style="justify-content:center;margin-top:1rem">
+        <span class="tag">🎵 喜欢音乐</span>
+        <span class="tag">📚 爱看书</span>
+        <span class="tag">💻 爱折腾</span>
+        <span class="tag">🍵 喝茶</span>
+        <span class="tag">🌙 夜猫子</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======== 登录页 ======== -->
+<div class="page" id="page-login">
+  <div class="login-card">
+    <div class="login-icon">🔑</div>
+    <h2>后台管理</h2>
+    <p>请输入管理员密码</p>
+    <div class="form-group">
+      <label>用户名</label>
+      <input class="form-control" id="login-user" type="text" placeholder="admin" value="admin">
+    </div>
+    <div class="form-group">
+      <label>密码</label>
+      <input class="form-control" id="login-pwd" type="password" placeholder="请输入密码"
+        onkeydown="if(event.key==='Enter')doLogin()">
+    </div>
+    <button class="btn btn-primary" onclick="doLogin()">🌸 进入后台</button>
+    <div class="login-err" id="login-err">❌ 用户名或密码错误</div>
+    <p style="margin-top:1.5rem;font-size:.8rem;color:var(--text-muted)">
+      默认密码：admin123（请登录后修改）
+    </p>
+  </div>
+</div>
+
+<!-- ======== 后台页 ======== -->
+<div class="page" id="page-admin">
+  <div class="admin-nav">
+    <div class="admin-nav-title">🌸 博客管理后台</div>
+    <div class="admin-nav-right">
+      <span style="color:rgba(255,255,255,.8);font-size:.88rem">👋 你好，池帥</span>
+      <button class="admin-btn-sm" onclick="showPage('home')">查看博客</button>
+      <button class="admin-btn-sm" onclick="doLogout()">退出</button>
+    </div>
   </div>
 
-  <!-- ===== 文章列表页 ===== -->
-  <div id="page-posts" class="page">
-    <main class="main-content">
-      <h2 class="section-title">📖 全部文章</h2>
-      <div class="posts-grid" id="posts-grid-all"></div>
-    </main>
-  </div>
+  <div class="admin-body">
+    <!-- 统计卡片 -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin-bottom:1.5rem">
+      <div class="widget" style="text-align:center">
+        <div style="font-size:2rem;margin-bottom:.3rem">📝</div>
+        <div style="font-size:1.8rem;font-weight:700;color:var(--pink-deep)" id="admin-stat-posts">0</div>
+        <div style="font-size:.82rem;color:var(--text-muted)">篇文章</div>
+      </div>
+      <div class="widget" style="text-align:center">
+        <div style="font-size:2rem;margin-bottom:.3rem">🏷️</div>
+        <div style="font-size:1.8rem;font-weight:700;color:var(--purple)" id="admin-stat-cats">0</div>
+        <div style="font-size:.82rem;color:var(--text-muted)">个分类</div>
+      </div>
+      <div class="widget" style="text-align:center">
+        <div style="font-size:2rem;margin-bottom:.3rem">🌟</div>
+        <div style="font-size:1.8rem;font-weight:700;color:var(--mint)">♾️</div>
+        <div style="font-size:.82rem;color:var(--text-muted)">快乐无限</div>
+      </div>
+    </div>
 
-  <!-- ===== 关于页 ===== -->
-  <div id="page-about" class="page">
-    <main class="main-content">
-      <div class="about-card">
-        <div class="about-header">
-          <div class="about-avatar">🌸</div>
-          <div>
-            <div class="about-name">池帝</div>
-            <div class="about-slogan">池帝萬歲萬歲萬萬歲</div>
+    <!-- Tabs -->
+    <div class="admin-tabs">
+      <button class="admin-tab active" onclick="switchTab('posts')">📝 文章管理</button>
+      <button class="admin-tab" onclick="switchTab('new')">✏️ 写文章</button>
+      <button class="admin-tab" onclick="switchTab('settings')">⚙️ 网站设置</button>
+      <button class="admin-tab" onclick="switchTab('password')">🔒 修改密码</button>
+    </div>
+
+    <!-- 文章列表 -->
+    <div class="admin-panel active" id="panel-posts">
+      <div id="admin-post-list"></div>
+    </div>
+
+    <!-- 写/编辑文章 -->
+    <div class="admin-panel" id="panel-new">
+      <div class="editor-card">
+        <h3 style="margin-bottom:1.2rem;color:var(--pink-deep)" id="editor-title-label">✏️ 写新文章</h3>
+        <input type="hidden" id="edit-id">
+        <div class="form-group">
+          <label>文章标题 *</label>
+          <input class="form-control" id="f-title" placeholder="给文章起个好听的名字…">
+        </div>
+        <div class="editor-row">
+          <div class="form-group">
+            <label>分类</label>
+            <input class="form-control" id="f-cat" placeholder="生活 / 技术 / 随笔…" list="cat-suggestions">
+            <datalist id="cat-suggestions"></datalist>
+          </div>
+          <div class="form-group">
+            <label>标签（逗号分隔）</label>
+            <input class="form-control" id="f-tags" placeholder="标签1, 标签2…">
           </div>
         </div>
-        <div class="about-body">
-          <p>你好，我是池帝，这里是我的个人随笔空间。</p>
-          <p>我喜欢记录生活中的点点滴滴，写下所思所想，分享那些让我心动的时刻。文字是我与世界对话的方式。</p>
-          <p>如果你也喜欢安静地思考、认真地生活，希望我们的文字能在某个瞬间产生共鸣。</p>
-          <p>欢迎通过以下方式联系我，期待与你交流 🌸</p>
+        <div class="form-group">
+          <label>封面 Emoji（可选）</label>
+          <input class="form-control" id="f-cover" placeholder="🌸 / 🌙 / 💻 / 🎵 …" maxlength="4">
         </div>
-        <div class="about-contacts">
-          <a href="mailto:0d@live.com" class="contact-link">📮 0d@live.com</a>
-          <a href="https://github.com/cdyrh" target="_blank" class="contact-link">🐙 GitHub</a>
+        <div class="form-group">
+          <label>文章正文（支持 Markdown）</label>
+          <textarea class="form-control" id="f-body" placeholder="开始写作吧… 支持 **粗体** _斜体_ ## 标题 `代码` > 引用"></textarea>
         </div>
-      </div>
-    </main>
-  </div>
-
-  <!-- ===== 文章详情页 ===== -->
-  <div id="page-post" class="page">
-    <main class="main-content">
-      <div class="single-wrap">
-        <div class="single-header">
-          <div class="single-meta" id="post-meta"></div>
-          <h1 class="single-title" id="post-title"></h1>
-          <p class="single-desc" id="post-desc"></p>
-        </div>
-        <div class="prose" id="post-content"></div>
-        <div class="single-footer">
-          <a href="#" class="back-btn" onclick="showPage('posts'); return false;">← 返回文章列表</a>
+        <div class="btn-row">
+          <button class="btn-inline btn-save" onclick="savePost()">💾 保存发布</button>
+          <button class="btn-inline btn-cancel" onclick="cancelEdit()">取消</button>
         </div>
       </div>
-    </main>
-  </div>
-
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="footer-tagline">池帝萬歲萬歲萬萬歲</div>
-    <div class="footer-info">
-      © 2025 池帝的随笔 · <a href="mailto:0d@live.com">0d@live.com</a> · 用 🌸 与爱构建
     </div>
-  </footer>
 
-  <script>
-  // ===== 文章数据 =====
-  const posts = [
-    {
-      id: 1,
-      title: "你好，世界 🌸",
-      date: "2025-06-09",
-      tags: ["随笔"],
-      description: "这是这个小角落诞生的第一篇文章，写给未来的自己，也写给路过的你。",
-      content: `
-        <p>你好，世界。</p>
-        <p>这是博客的第一篇文章。每一个开始，都带着某种仪式感——就好像清晨第一杯热茶，或者翻开一本崭新的笔记本时，那种想要把所有美好填满的冲动。</p>
-        <p>我一直想有一个属于自己的地方，可以不为任何人写作，只是记录，只是表达。不追热点，不刻意，只是把生活里那些值得被记住的片段，放到这里慢慢存着。</p>
-        <h2>为什么叫"随笔"？</h2>
-        <p>因为我不想给自己太多限制。随笔，就是随手写下的笔记，随性记录的文字。它可以是一段心情，一个观察，一次思考，也可以只是一句话。</p>
-        <blockquote>文字是时间的胶水，把那些容易流逝的瞬间粘住。</blockquote>
-        <p>希望这里能成为一个真实的地方。欢迎你，路过的朋友 🌸</p>
-      `
-    },
-    {
-      id: 2,
-      title: "一个人的下午",
-      date: "2025-06-07",
-      tags: ["生活"],
-      description: "阳光，咖啡，一本书，以及难得的安静。",
-      content: `
-        <p>今天难得有一个完整的下午，只属于自己。</p>
-        <p>窗外的阳光懒懒地斜进来，照在书页上，形成一块暖黄色的光斑。我泡了一杯很淡的茶，坐在窗边，什么都不想做，只是坐着。</p>
-        <h2>关于独处</h2>
-        <p>有时候我觉得，人是需要独处的。不是孤独，而是那种主动选择的安静。在那种状态里，你才能听到自己内心的声音，才能想清楚很多平时想不清楚的事。</p>
-        <p>今天下午我想到了很多：想到了小时候的某个夏天，想到了一个许久不联系的朋友，想到了自己最近有没有好好生活。</p>
-        <blockquote>生活不在别处，就在此刻这杯茶，这片阳光，这一个安静的下午。</blockquote>
-        <p>晚些时候，我拿出手机，给那个久未联系的朋友发了一条消息。就写了四个字：你还好吗。</p>
-        <p>他回复说，挺好的，你呢？</p>
-        <p>我说，也挺好的。</p>
-        <p>这已经足够了 🌸</p>
-      `
-    },
-    {
-      id: 3,
-      title: "关于做计划这件事",
-      date: "2025-06-01",
-      tags: ["思考"],
-      description: "我是一个喜欢做计划的人，但也是一个经常打破计划的人。",
-      content: `
-        <p>我是一个喜欢做计划的人。</p>
-        <p>每年年初，我都会认真地写一份年度计划，密密麻麻的，看上去很厉害的样子。然后大约在三月份，我会把它翻出来看看，发现已经有一半没有执行。</p>
-        <h2>计划的意义</h2>
-        <p>后来我想清楚了一件事：计划的意义，从来不是让你完全按照它执行，而是让你在某个迷茫的时刻有一个方向可以参考。</p>
-        <p>就像航海中的地图——你不会完全按照地图上画的路线走，但你需要它来确认自己大致在正确的方向上。</p>
-        <blockquote>计划不是锁链，而是一盏灯。它不规定你的路，只是照亮前方一小段。</blockquote>
-        <h2>接受不完美</h2>
-        <p>现在我做计划的方式变了。我只定三件最重要的事，其他的都是"如果有余力就做"。这样完成率高了，心情也好多了。</p>
-        <p>你也可以试试 🌸</p>
-      `
-    }
-  ];
-
-  // ===== 渲染文章卡片 =====
-  function renderCards(containerId, items) {
-    const container = document.getElementById(containerId);
-    if (!container) return;
-    container.innerHTML = items.map(p => `
-      <article class="post-card" onclick="showPost(${p.id})">
-        <div class="post-card-top">
-          <span class="post-card-date">${formatDate(p.date)}</span>
-          ${p.tags.length ? `<span class="post-tag">${p.tags[0]}</span>` : ''}
+    <!-- 设置 -->
+    <div class="admin-panel" id="panel-settings">
+      <div class="settings-card">
+        <h3 style="margin-bottom:1.5rem;color:var(--pink-deep)">⚙️ 网站设置</h3>
+        <div class="form-group">
+          <label>博客名称</label>
+          <input class="form-control" id="s-title" value="池帥の小窝">
         </div>
-        <h3 class="post-card-title"><a href="#" onclick="event.preventDefault(); showPost(${p.id})">${p.title}</a></h3>
-        <p class="post-card-summary">${p.description}</p>
-        <span class="read-more">阅读全文 <span>→</span></span>
-      </article>
-    `).join('');
+        <div class="form-group">
+          <label>副标题 / 口号</label>
+          <input class="form-control" id="s-sub" value="记录生活，分享美好，写下每一个值得被记住的瞬间 ✨">
+        </div>
+        <div class="form-group">
+          <label>个人简介</label>
+          <input class="form-control" id="s-bio" value="喜欢码字、捣鼓技术和发呆的普通人 🌙">
+        </div>
+        <div class="form-group">
+          <label>联系邮箱</label>
+          <input class="form-control" id="s-email" value="0d@live.com" type="email">
+        </div>
+        <div class="form-group">
+          <label>每页显示文章数</label>
+          <input class="form-control" id="s-ppp" type="number" min="3" max="20" value="5">
+        </div>
+        <button class="btn-inline btn-save" onclick="saveSettings()" style="margin-top:.5rem">💾 保存设置</button>
+      </div>
+    </div>
+
+    <!-- 修改密码 -->
+    <div class="admin-panel" id="panel-password">
+      <div class="settings-card">
+        <h3 style="margin-bottom:1.5rem;color:var(--pink-deep)">🔒 修改密码</h3>
+        <div class="form-group">
+          <label>旧密码</label>
+          <input class="form-control" id="p-old" type="password" placeholder="当前密码">
+        </div>
+        <div class="form-group">
+          <label>新密码</label>
+          <input class="form-control" id="p-new" type="password" placeholder="至少 6 位">
+        </div>
+        <div class="form-group">
+          <label>确认新密码</label>
+          <input class="form-control" id="p-confirm" type="password" placeholder="再输入一次">
+        </div>
+        <button class="btn-inline btn-save" onclick="changePassword()" style="margin-top:.5rem">🔑 确认修改</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end #app -->
+
+<!-- FAB 新建文章 -->
+<button class="fab" title="写新文章" onclick="newPost()">✏️</button>
+
+<!-- Toast -->
+<div id="toast"></div>
+
+<script>
+// ======================== 数据层 ========================
+const DB = {
+  KEY_POSTS:'blog_posts', KEY_CFG:'blog_cfg', KEY_AUTH:'blog_auth',
+  KEY_LOGIN:'blog_login',
+  get posts(){return JSON.parse(localStorage.getItem(this.KEY_POSTS)||'[]')},
+  set posts(v){localStorage.setItem(this.KEY_POSTS,JSON.stringify(v))},
+  get cfg(){return Object.assign({
+    title:'池帥の小窝',sub:'记录生活，分享美好，写下每一个值得被记住的瞬间 ✨',
+    bio:'喜欢码字、捣鼓技术和发呆的普通人 🌙',
+    email:'0d@live.com',ppp:5,
+    startDate: new Date().toISOString().slice(0,10)
+  }, JSON.parse(localStorage.getItem(this.KEY_CFG)||'{}'))},
+  set cfg(v){localStorage.setItem(this.KEY_CFG,JSON.stringify(v))},
+  get pwd(){return localStorage.getItem(this.KEY_AUTH)||'admin123'},
+  set pwd(v){localStorage.setItem(this.KEY_AUTH,v)},
+  get loggedIn(){return sessionStorage.getItem(this.KEY_LOGIN)==='1'},
+  login(){sessionStorage.setItem(this.KEY_LOGIN,'1')},
+  logout(){sessionStorage.removeItem(this.KEY_LOGIN)}
+};
+
+// 默认示例数据
+if(!localStorage.getItem(DB.KEY_POSTS)){
+  const now = new Date();
+  const fmt = d => d.toISOString().slice(0,10);
+  DB.posts = [
+    {id:1,title:'欢迎来到我的小窝 🌸',cat:'随笔',tags:['欢迎','开始'],cover:'🌸',
+     date:fmt(now),views:128,
+     body:`# 欢迎来到池帥の小窝\n\n嗨！你好呀，很高兴你能找到这里～\n\n这是我的个人博客，一个属于我的小小角落。在这里我会分享：\n\n- 🌱 **生活**：日常的碎碎念和小感悟\n- 💻 **技术**：折腾过的工具和学到的东西\n- 📚 **阅读**：书里遇到的好句子和想法\n- 🎵 **音乐**：最近在循环的歌单\n\n如果你也喜欢这种慢慢记录的感觉，欢迎常来坐坐 🍵\n\n> 世界很大，找到一个共鸣的角落，就很值得了。\n\n联系我：0d@live.com`},
+    {id:2,title:'那些让我爱上技术的小工具们 💻',cat:'技术',tags:['工具','效率'],cover:'💻',
+     date:fmt(new Date(now-86400000)),views:89,
+     body:`# 工欲善其事，必先利其器\n\n整理一下最近在用的、觉得很好用的工具。\n\n## 日常必备\n\n- **Obsidian** — 笔记神器，双链和插件生态太强了\n- **Raycast** — macOS 效率启动器，替代了我很多工作流\n- **Typora** — 最舒服的 Markdown 编辑器\n\n## 开发类\n\n- **VS Code** — 不用多说\n- **Warp** — 比 iTerm2 更现代的终端\n\n## 小技巧\n\n\`\`\`bash\n# 快速启动本地服务\npython -m http.server 8080\n\`\`\`\n\n以上这些工具节省了我大量时间，强烈推荐大家试试 ✨`},
+    {id:3,title:'春日漫记 🌿',cat:'生活',tags:['春天','随想'],cover:'🌿',
+     date:fmt(new Date(now-172800000)),views:56,
+     body:`# 春天来了\n\n窗外的玉兰开了，白得透亮。\n\n今天出去走了很久，没有目的地，就是走着看着。风很轻，带着一点草的气息。\n\n有时候觉得，什么都不做，就在某个地方待着发呆，也是一种幸福。\n\n> 慢一点，再慢一点。\n\n不是每件事都需要效率，生活本身就是目的。\n\n拍了几张照片，光线正好，叶子在晃，说不清楚那是一种什么感觉，反正挺好的。`}
+  ];
+}
+
+// ======================== 状态 ========================
+let currentPage = 1;
+let currentCat = null;
+let editingId = null;
+
+// ======================== 工具函数 ========================
+function toast(msg, dur=2500){
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  setTimeout(()=>el.classList.remove('show'), dur);
+}
+
+function uid(){return Date.now()+''+Math.random().toString(36).slice(2,6)}
+
+// 简易 Markdown 渲染
+function md2html(text){
+  if(!text) return '';
+  let html = text
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    // 代码块
+    .replace(/```(\w*)\n([\s\S]*?)```/g,(_,lang,code)=>`<pre><code>${code.trim()}</code></pre>`)
+    // 行内代码
+    .replace(/`([^`]+)`/g,'<code>$1</code>')
+    // 标题
+    .replace(/^### (.+)$/gm,'<h3>$1</h3>')
+    .replace(/^## (.+)$/gm,'<h2>$1</h2>')
+    .replace(/^# (.+)$/gm,'<h2>$1</h2>')
+    // 粗体 / 斜体
+    .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
+    .replace(/_(.+?)_/g,'<em>$1</em>')
+    // 引用
+    .replace(/^> (.+)$/gm,'<blockquote>$1</blockquote>')
+    // 列表
+    .replace(/^- (.+)$/gm,'<li>$1</li>')
+    .replace(/^(\d+)\. (.+)$/gm,'<li>$2</li>')
+    // 换行 → 段落
+    .split('\n\n').map(p=>{
+      p = p.trim();
+      if(!p) return '';
+      if(p.startsWith('<h')||p.startsWith('<pre')||p.startsWith('<blockquote')||p.startsWith('<li')) return p;
+      if(p.includes('<li>')) return `<ul>${p}</ul>`;
+      return `<p>${p.replace(/\n/g,'<br>')}</p>`;
+    }).join('\n');
+  return html;
+}
+
+function getExcerpt(body,len=100){
+  const plain = body.replace(/```[\s\S]*?```/g,'').replace(/[#*`>_]/g,'').replace(/\n+/g,' ').trim();
+  return plain.length>len ? plain.slice(0,len)+'…' : plain;
+}
+
+function formatDate(str){
+  const d = new Date(str);
+  return `${d.getFullYear()}.${String(d.getMonth()+1).padStart(2,'0')}.${String(d.getDate()).padStart(2,'0')}`;
+}
+
+function daysSince(str){
+  return Math.floor((Date.now()-new Date(str))/86400000);
+}
+
+// ======================== 页面切换 ========================
+function showPage(name){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+name).classList.add('active');
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  if(name==='home') document.getElementById('nav-home').classList.add('active');
+  if(name==='about') document.getElementById('nav-about').classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(name==='home') renderHome();
+  if(name==='admin'){renderAdminList(); updateAdminStats();}
+}
+
+// ======================== 首页渲染 ========================
+function renderHome(){
+  const cfg = DB.cfg;
+  const q = document.getElementById('search-input').value.trim().toLowerCase();
+  let posts = DB.posts.sort((a,b)=>b.id-a.id);
+  if(currentCat) posts = posts.filter(p=>p.cat===currentCat);
+  if(q) posts = posts.filter(p=>p.title.toLowerCase().includes(q)||p.body.toLowerCase().includes(q));
+
+  const ppp = cfg.ppp||5;
+  const total = Math.ceil(posts.length/ppp)||1;
+  if(currentPage>total) currentPage=1;
+  const page = posts.slice((currentPage-1)*ppp, currentPage*ppp);
+
+  const container = document.getElementById('posts-container');
+  if(!page.length){
+    container.innerHTML=`<div class="empty-state"><div class="icon">🌙</div><p>这里还没有文章哦～</p></div>`;
+  } else {
+    container.innerHTML = page.map(p=>`
+      <div class="post-card fade-in" onclick="openPost(${p.id})">
+        <div class="post-card-cover">${p.cover||'📝'}</div>
+        <div class="post-card-body">
+          <div class="post-meta">
+            <span class="post-cat">${p.cat||'随笔'}</span>
+            <span class="post-date">📅 ${formatDate(p.date)}</span>
+          </div>
+          <h3>${p.title}</h3>
+          <p>${getExcerpt(p.body)}</p>
+        </div>
+        <div class="post-footer">
+          <span class="post-stat">👁️ ${p.views||0}</span>
+          ${(p.tags||[]).slice(0,3).map(t=>`<span class="tag" style="font-size:.76rem;padding:.1rem .5rem">${t}</span>`).join('')}
+        </div>
+      </div>`).join('');
   }
 
-  function formatDate(dateStr) {
-    const d = new Date(dateStr);
-    return `${d.getFullYear()}年${String(d.getMonth()+1).padStart(2,'0')}月${String(d.getDate()).padStart(2,'0')}日`;
+  // 分页
+  const pag = document.getElementById('pagination');
+  pag.innerHTML = '';
+  for(let i=1;i<=total;i++){
+    const b=document.createElement('button');
+    b.className='page-btn'+(i===currentPage?' active':'');
+    b.textContent=i;
+    b.onclick=()=>{currentPage=i;renderHome();window.scrollTo({top:340,behavior:'smooth'})};
+    pag.appendChild(b);
   }
 
-  // ===== 页面切换 =====
-  function showPage(name) {
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    document.getElementById('page-' + name).classList.add('active');
-    document.querySelectorAll('.site-nav a').forEach(a => a.classList.remove('active'));
-    const navEl = document.getElementById('nav-' + name);
-    if (navEl) navEl.classList.add('active');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    if (name === 'posts') renderCards('posts-grid-all', posts);
-    if (name === 'home') renderCards('posts-grid', posts.slice(0, 6));
+  renderSidebar();
+}
+
+function renderSidebar(){
+  const posts = DB.posts;
+  const cfg = DB.cfg;
+
+  // 统计
+  const cats = [...new Set(posts.map(p=>p.cat).filter(Boolean))];
+  document.getElementById('stat-posts').textContent = posts.length;
+  document.getElementById('stat-cats').textContent = cats.length;
+  document.getElementById('stat-days').textContent = daysSince(cfg.startDate||new Date().toISOString());
+
+  // 分类
+  const catEl = document.getElementById('cat-list');
+  catEl.innerHTML = `<div class="cat-item ${!currentCat?'active':''}" style="${!currentCat?'background:var(--pink-pale);color:var(--pink-deep)':''}" onclick="filterCat(null)"><span>📚 全部</span><span class="cat-count">${posts.length}</span></div>`
+    + cats.map(c=>`<div class="cat-item ${currentCat===c?'active':''}" style="${currentCat===c?'background:var(--pink-pale);color:var(--pink-deep)':''}" onclick="filterCat('${c}')"><span>${c}</span><span class="cat-count">${posts.filter(p=>p.cat===c).length}</span></div>`).join('');
+
+  // 标签云
+  const allTags = posts.flatMap(p=>p.tags||[]);
+  const tagCount = {};
+  allTags.forEach(t=>tagCount[t]=(tagCount[t]||0)+1);
+  const colors = ['var(--pink-pale)','var(--purple-pale)','#e8f9f5','#fff8e7'];
+  const textColors = ['var(--pink-deep)','var(--purple)','var(--mint)','var(--orange)'];
+  document.getElementById('tag-cloud').innerHTML =
+    Object.entries(tagCount).sort((a,b)=>b[1]-a[1]).slice(0,15).map(([t,c],i)=>`
+      <span class="tag" style="background:${colors[i%4]};color:${textColors[i%4]};cursor:pointer;border-color:${textColors[i%4]}" onclick="filterTag('${t}')">${t}${c>1?` (${c})`:''}</span>`).join('');
+
+  // 最近文章
+  document.getElementById('recent-posts').innerHTML = posts.slice(0,4).map(p=>`
+    <div style="padding:.5rem 0;border-bottom:1px dashed var(--border);cursor:pointer" onclick="openPost(${p.id})">
+      <div style="font-size:.88rem;color:var(--text);margin-bottom:.15rem;line-height:1.4">${p.cover||'📝'} ${p.title}</div>
+      <div style="font-size:.76rem;color:var(--text-muted)">${formatDate(p.date)}</div>
+    </div>`).join('');
+}
+
+function filterCat(cat){
+  currentCat = cat;
+  currentPage = 1;
+  renderHome();
+  window.scrollTo({top:340,behavior:'smooth'});
+}
+
+function filterTag(tag){
+  document.getElementById('search-input').value = tag;
+  currentPage = 1;
+  renderHome();
+  window.scrollTo({top:340,behavior:'smooth'});
+}
+
+// ======================== 文章详情 ========================
+function openPost(id){
+  const post = DB.posts.find(p=>p.id==id);
+  if(!post) return;
+  // 增加浏览量
+  const posts = DB.posts;
+  const idx = posts.findIndex(p=>p.id==id);
+  posts[idx].views = (posts[idx].views||0)+1;
+  DB.posts = posts;
+
+  document.getElementById('detail-title').textContent = post.title;
+  document.getElementById('detail-meta').innerHTML = `
+    <span class="post-cat">${post.cat||'随笔'}</span>
+    <span class="post-date">📅 ${formatDate(post.date)}</span>
+    <span class="post-date">👁️ ${post.views} 次阅读</span>
+    ${(post.tags||[]).map(t=>`<span class="tag">${t}</span>`).join('')}`;
+  document.getElementById('detail-body').innerHTML = md2html(post.body);
+  showPage('post');
+}
+
+// ======================== 登录/登出 ========================
+function goAdmin(){
+  if(DB.loggedIn){ showPage('admin'); return; }
+  showPage('login');
+}
+
+function doLogin(){
+  const user = document.getElementById('login-user').value.trim();
+  const pwd = document.getElementById('login-pwd').value;
+  const err = document.getElementById('login-err');
+  if(user==='admin' && pwd===DB.pwd){
+    DB.login();
+    err.style.display='none';
+    document.getElementById('login-pwd').value='';
+    document.body.classList.add('is-admin');
+    showPage('admin');
+    toast('🌸 欢迎回来，池帅！');
+  } else {
+    err.style.display='block';
+    setTimeout(()=>err.style.display='none',3000);
+  }
+}
+
+function doLogout(){
+  DB.logout();
+  document.body.classList.remove('is-admin');
+  showPage('home');
+  toast('已退出登录');
+}
+
+// ======================== 后台 ========================
+function switchTab(tab){
+  document.querySelectorAll('.admin-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.admin-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('panel-'+tab).classList.add('active');
+  event.target.classList.add('active');
+  if(tab==='posts') renderAdminList();
+  if(tab==='settings') loadSettings();
+  if(tab==='new' && !editingId) clearEditor();
+}
+
+function renderAdminList(){
+  const posts = DB.posts.sort((a,b)=>b.id-a.id);
+  const el = document.getElementById('admin-post-list');
+  if(!posts.length){
+    el.innerHTML='<div class="empty-state"><div class="icon">📝</div><p>还没有文章，快去写第一篇吧！</p></div>';
+    return;
+  }
+  el.innerHTML = posts.map(p=>`
+    <div class="post-list-item">
+      <div style="font-size:1.5rem">${p.cover||'📝'}</div>
+      <div class="post-list-info">
+        <div class="post-list-title">${p.title}</div>
+        <div class="post-list-meta">${p.cat||'无分类'} · ${formatDate(p.date)} · 👁️ ${p.views||0}</div>
+      </div>
+      <div class="post-list-actions">
+        <button class="action-btn edit" onclick="editPost(${p.id})">✏️ 编辑</button>
+        <button class="action-btn del" onclick="deletePost(${p.id})">🗑️ 删除</button>
+      </div>
+    </div>`).join('');
+}
+
+function updateAdminStats(){
+  const posts = DB.posts;
+  const cats = [...new Set(posts.map(p=>p.cat).filter(Boolean))];
+  document.getElementById('admin-stat-posts').textContent = posts.length;
+  document.getElementById('admin-stat-cats').textContent = cats.length;
+}
+
+function newPost(){
+  editingId = null;
+  clearEditor();
+  // 切换到写文章 tab
+  document.querySelectorAll('.admin-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.admin-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('panel-new').classList.add('active');
+  document.querySelectorAll('.admin-tab')[1].classList.add('active');
+  if(!DB.loggedIn){goAdmin();return;}
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function clearEditor(){
+  document.getElementById('edit-id').value='';
+  document.getElementById('f-title').value='';
+  document.getElementById('f-cat').value='';
+  document.getElementById('f-tags').value='';
+  document.getElementById('f-cover').value='';
+  document.getElementById('f-body').value='';
+  document.getElementById('editor-title-label').textContent='✏️ 写新文章';
+  // 更新分类建议
+  const cats = [...new Set(DB.posts.map(p=>p.cat).filter(Boolean))];
+  document.getElementById('cat-suggestions').innerHTML = cats.map(c=>`<option value="${c}">`).join('');
+}
+
+function editPost(id){
+  const p = DB.posts.find(x=>x.id==id);
+  if(!p) return;
+  editingId = id;
+  document.getElementById('edit-id').value = id;
+  document.getElementById('f-title').value = p.title;
+  document.getElementById('f-cat').value = p.cat||'';
+  document.getElementById('f-tags').value = (p.tags||[]).join(', ');
+  document.getElementById('f-cover').value = p.cover||'';
+  document.getElementById('f-body').value = p.body||'';
+  document.getElementById('editor-title-label').textContent = '✏️ 编辑文章';
+  // 切换 tab
+  document.querySelectorAll('.admin-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.admin-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('panel-new').classList.add('active');
+  document.querySelectorAll('.admin-tab')[1].classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function cancelEdit(){
+  editingId = null;
+  clearEditor();
+  switchTabDirect('posts');
+}
+
+function switchTabDirect(tab){
+  document.querySelectorAll('.admin-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.admin-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('panel-'+tab).classList.add('active');
+  const map = {posts:0,new:1,settings:2,password:3};
+  document.querySelectorAll('.admin-tab')[map[tab]||0].classList.add('active');
+  if(tab==='posts') renderAdminList();
+}
+
+function savePost(){
+  const title = document.getElementById('f-title').value.trim();
+  const body = document.getElementById('f-body').value.trim();
+  if(!title){toast('❌ 请填写文章标题');return;}
+  if(!body){toast('❌ 请填写文章内容');return;}
+
+  const posts = DB.posts;
+  const tagsStr = document.getElementById('f-tags').value;
+  const tags = tagsStr.split(',').map(t=>t.trim()).filter(Boolean);
+  const data = {
+    title, body,
+    cat: document.getElementById('f-cat').value.trim()||'随笔',
+    cover: document.getElementById('f-cover').value.trim()||'📝',
+    tags,
+    date: new Date().toISOString().slice(0,10)
+  };
+
+  if(editingId){
+    const idx = posts.findIndex(p=>p.id==editingId);
+    posts[idx] = {...posts[idx],...data};
+    DB.posts = posts;
+    toast('✅ 文章已更新！');
+  } else {
+    const maxId = posts.reduce((m,p)=>Math.max(m,p.id),0);
+    DB.posts = [...posts, {...data, id:maxId+1, views:0}];
+    toast('🌸 文章发布成功！');
+  }
+  editingId = null;
+  updateAdminStats();
+  switchTabDirect('posts');
+}
+
+function deletePost(id){
+  if(!confirm('确定删除这篇文章吗？此操作不可撤销 🗑️')) return;
+  DB.posts = DB.posts.filter(p=>p.id!=id);
+  renderAdminList();
+  updateAdminStats();
+  toast('🗑️ 文章已删除');
+}
+
+function loadSettings(){
+  const c = DB.cfg;
+  document.getElementById('s-title').value = c.title;
+  document.getElementById('s-sub').value = c.sub;
+  document.getElementById('s-bio').value = c.bio;
+  document.getElementById('s-email').value = c.email;
+  document.getElementById('s-ppp').value = c.ppp;
+}
+
+function saveSettings(){
+  const cfg = DB.cfg;
+  cfg.title = document.getElementById('s-title').value.trim()||cfg.title;
+  cfg.sub = document.getElementById('s-sub').value.trim()||cfg.sub;
+  cfg.bio = document.getElementById('s-bio').value.trim()||cfg.bio;
+  cfg.email = document.getElementById('s-email').value.trim()||cfg.email;
+  cfg.ppp = parseInt(document.getElementById('s-ppp').value)||5;
+  DB.cfg = cfg;
+  // 更新页面显示
+  document.querySelector('.hero h1').textContent = cfg.title;
+  document.querySelector('.hero p').textContent = cfg.sub;
+  toast('✅ 设置已保存！');
+}
+
+function changePassword(){
+  const old = document.getElementById('p-old').value;
+  const nw = document.getElementById('p-new').value;
+  const cf = document.getElementById('p-confirm').value;
+  if(old!==DB.pwd){toast('❌ 旧密码错误');return;}
+  if(nw.length<6){toast('❌ 新密码至少 6 位');return;}
+  if(nw!==cf){toast('❌ 两次密码不一致');return;}
+  DB.pwd = nw;
+  document.getElementById('p-old').value='';
+  document.getElementById('p-new').value='';
+  document.getElementById('p-confirm').value='';
+  toast('🔑 密码修改成功！');
+}
+
+// ======================== 粒子动画 ========================
+(function initParticles(){
+  const canvas = document.getElementById('particles');
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  const symbols = ['🌸','✨','⭐','💫','🌙','💕','🌿','☁️'];
+
+  function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}
+  resize();
+  window.addEventListener('resize',resize);
+
+  function createParticle(){
+    return {
+      x: Math.random()*canvas.width,
+      y: canvas.height + 20,
+      size: 10 + Math.random()*14,
+      speed: 0.4 + Math.random()*0.8,
+      opacity: 0.25 + Math.random()*0.35,
+      drift: (Math.random()-0.5)*0.5,
+      symbol: symbols[Math.floor(Math.random()*symbols.length)],
+      rotation: Math.random()*Math.PI*2,
+      rotSpeed: (Math.random()-0.5)*0.02
+    };
   }
 
-  function showPost(id) {
-    const post = posts.find(p => p.id === id);
-    if (!post) return;
-    document.getElementById('post-title').textContent = post.title;
-    document.getElementById('post-desc').textContent = post.description;
-    document.getElementById('post-meta').innerHTML = `<span>${formatDate(post.date)}</span>${post.tags.map(t => `<span class="post-tag">${t}</span>`).join('')}`;
-    document.getElementById('post-content').innerHTML = post.content;
-    showPage('post');
-    document.querySelectorAll('.site-nav a').forEach(a => a.classList.remove('active'));
-    document.getElementById('nav-posts').classList.add('active');
+  for(let i=0;i<18;i++){
+    const p=createParticle();
+    p.y=Math.random()*canvas.height;
+    particles.push(p);
   }
 
-  // ===== 主题切换 =====
-  function toggleTheme() {
-    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    document.documentElement.setAttribute('data-theme', isDark ? '' : 'dark');
-    document.getElementById('themeToggle').textContent = isDark ? '🌙' : '☀️';
-    localStorage.setItem('theme', isDark ? '' : 'dark');
+  function animate(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    particles.forEach(p=>{
+      ctx.save();
+      ctx.globalAlpha = p.opacity;
+      ctx.translate(p.x,p.y);
+      ctx.rotate(p.rotation);
+      ctx.font = `${p.size}px serif`;
+      ctx.textAlign='center';
+      ctx.textBaseline='middle';
+      ctx.fillText(p.symbol,0,0);
+      ctx.restore();
+      p.y -= p.speed;
+      p.x += p.drift;
+      p.rotation += p.rotSpeed;
+      if(p.y<-30){ Object.assign(p,createParticle()); }
+    });
+    // 偶尔添加新粒子
+    if(Math.random()<0.015 && particles.length<30) particles.push(createParticle());
+    if(particles.length>30) particles.shift();
+    requestAnimationFrame(animate);
   }
+  animate();
+})();
 
-  // ===== 樱花飘落 =====
-  function createSakura() {
-    const container = document.getElementById('sakuraContainer');
-    const petals = ['🌸', '🌺', '🌼', '🍀'];
-    for (let i = 0; i < 15; i++) {
-      const petal = document.createElement('div');
-      petal.className = 'petal';
-      petal.textContent = petals[Math.floor(Math.random() * petals.length)];
-      petal.style.cssText = `
-        left: ${Math.random() * 100}%;
-        font-size: ${Math.random() * 10 + 10}px;
-        animation-duration: ${Math.random() * 8 + 6}s;
-        animation-delay: ${Math.random() * 10}s;
-        --drift: ${(Math.random() - 0.5) * 200}px;
-        opacity: 0;
-      `;
-      container.appendChild(petal);
-    }
-  }
-
-  // ===== 初始化 =====
-  (function init() {
-    // 主题
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-      document.documentElement.setAttribute('data-theme', 'dark');
-      document.getElementById('themeToggle').textContent = '☀️';
-    }
-    // 渲染首页
-    renderCards('posts-grid', posts.slice(0, 6));
-    // 樱花
-    createSakura();
-  })();
-  </script>
+// ======================== 初始化 ========================
+window.addEventListener('DOMContentLoaded',()=>{
+  if(DB.loggedIn) document.body.classList.add('is-admin');
+  renderHome();
+  // 应用配置
+  const cfg = DB.cfg;
+  document.title = cfg.title + ' 🌸';
+  document.querySelector('.hero h1').textContent = cfg.title;
+  document.querySelector('.hero p').textContent = cfg.sub;
+  document.querySelector('.nav-logo').innerHTML = '🌸 ' + cfg.title;
+  document.querySelector('.profile-bio').textContent = cfg.bio;
+  document.querySelector('.profile-email').textContent = '📮 ' + cfg.email;
+  document.querySelector('.profile-email').href = 'mailto:' + cfg.email;
+});
+</script>
 </body>
 </html>
