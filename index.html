@@ -454,7 +454,7 @@
     <button class="btn btn-primary" onclick="doLogin()">🌸 进入后台</button>
     <div class="login-err" id="login-err">❌ 用户名或密码错误</div>
     <p style="margin-top:1.5rem;font-size:.8rem;color:var(--text-muted)">
-      默认密码：admin123（请登录后修改）
+      默认密码：admin20230731（请登录后修改）
     </p>
   </div>
 </div>
@@ -635,7 +635,7 @@ const DB = {
     startDate: new Date().toISOString().slice(0,10)
   }, JSON.parse(localStorage.getItem(this.KEY_CFG)||'{}'))},
   set cfg(v){localStorage.setItem(this.KEY_CFG,JSON.stringify(v))},
-  get pwd(){return localStorage.getItem(this.KEY_AUTH)||'admin123'},
+  get pwd(){return localStorage.getItem(this.KEY_AUTH)||'admin20230731'},
   set pwd(v){localStorage.setItem(this.KEY_AUTH,v)},
   get loggedIn(){return sessionStorage.getItem(this.KEY_LOGIN)==='1'},
   login(){sessionStorage.setItem(this.KEY_LOGIN,'1')},
