@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎒 三岁宝宝入园全攻略 — 池帥の亦殿</title>
+<meta name="description" content="瓯海区机关幼儿园会昌园区小班新生入园准备全攻略，涵盖物品清单、能力培养、分离焦虑应对、家长配合等全方位指南">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌸</text></svg>">
+<style>
+:root{
+  --pink:#ff8fab;--pink-light:#ffb3c6;--pink-pale:#fff0f5;--pink-deep:#e85d8a;
+  --purple:#c77dff;--purple-light:#e0aaff;--purple-pale:#f8f0ff;
+  --mint:#64dfdf;--mint-light:#a0f0e8;
+  --yellow:#ffd166;--orange:#ff9f1c;
+  --text:#4a4063;--text-light:#7c6f9f;--text-muted:#b0a8c8;
+  --bg:#fdf4ff;--card:#fff;--border:#f0d9ff;
+  --shadow:0 8px 32px rgba(200,100,200,.12);
+  --radius:18px;--radius-sm:10px;
+  --font:'LXGW WenKai','Ma Shan Zheng','Noto Serif SC','KaiTi',serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font);background:linear-gradient(180deg,var(--pink-pale),var(--purple-pale),var(--bg));color:var(--text);min-height:100vh;line-height:1.9}
+.container{max-width:820px;margin:0 auto;padding:2rem 1.5rem 4rem}
+
+/* Hero */
+.hero{text-align:center;padding:3rem 1.5rem 2.5rem;position:relative}
+.hero-badge{display:inline-block;background:linear-gradient(135deg,var(--pink),var(--purple));color:#fff;padding:6px 22px;border-radius:20px;font-size:.88rem;font-weight:700;letter-spacing:2px;margin-bottom:1rem;box-shadow:0 4px 16px rgba(255,143,171,.35)}
+.hero h1{font-size:2rem;background:linear-gradient(135deg,var(--pink-deep),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:.6rem;line-height:1.4}
+.hero .sub{color:var(--text-muted);font-size:1rem}
+.hero .date{color:var(--text-muted);font-size:.85rem;margin-top:.5rem}
+
+/* Cover */
+.cover-wrap{text-align:center;margin:1rem 0 2rem}
+.cover-wrap img{max-width:100%;border-radius:var(--radius);box-shadow:var(--shadow);max-height:400px}
+
+/* Section */
+.section{margin:2.5rem 0}
+.section-title{display:flex;align-items:center;gap:.6rem;margin-bottom:1.2rem;padding-bottom:.6rem;border-bottom:2px dashed var(--border)}
+.section-title .icon{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;background:var(--pink-pale)}
+.section-title h2{font-size:1.3rem;font-weight:700;color:var(--text)}
+
+/* Card */
+.card{background:var(--card);border-radius:var(--radius);border:1.5px solid var(--border);box-shadow:var(--shadow);padding:1.5rem;margin-bottom:1rem;transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-2px);box-shadow:var(--shadow-hover)}
+.card .emoji{font-size:2rem;margin-bottom:.5rem}
+.card h3{font-size:1.05rem;font-weight:700;color:var(--pink-deep);margin-bottom:.6rem}
+.card ul{padding-left:1.2rem}
+.card li{font-size:.92rem;color:var(--text-light);margin-bottom:.4rem}
+.card li::marker{color:var(--pink);content:'✦ '}
+.card.accent-pink{border-left:4px solid var(--pink)}
+.card.accent-yellow{border-left:4px solid var(--yellow)}
+.card.accent-blue{border-left:4px solid var(--mint)}
+.card.accent-green{border-left:4px solid #a0e8a0}
+.card.accent-purple{border-left:4px solid var(--purple)}
+.card.accent-orange{border-left:4px solid var(--orange)}
+
+/* Checklist */
+.checklist{list-style:none;padding:0}
+.checklist li{padding:.6rem .8rem;margin-bottom:.3rem;background:var(--pink-pale);border-radius:8px;font-size:.9rem;display:flex;align-items:flex-start;gap:.5rem}
+.checklist li .mark{flex-shrink:0;font-size:.9rem}
+
+/* Tips */
+.tip{background:linear-gradient(135deg,#fff9db,#fff3e0);border-radius:var(--radius-sm);padding:1.2rem 1.5rem;margin:1rem 0;border:2px dashed var(--yellow)}
+.tip .tip-label{font-weight:700;color:var(--orange);margin-bottom:.4rem;font-size:.95rem}
+.warn{background:linear-gradient(135deg,#fff0f0,#ffe8e8);border-radius:var(--radius-sm);padding:1.2rem 1.5rem;margin:1rem 0;border:2px dashed #ff8a8a}
+.warn .warn-label{font-weight:700;color:#d63031;margin-bottom:.4rem;font-size:.95rem}
+
+/* Timeline */
+.timeline{position:relative;padding-left:2rem;margin:1.5rem 0}
+.timeline::before{content:'';position:absolute;left:.6rem;top:.5rem;bottom:.5rem;width:3px;background:linear-gradient(180deg,var(--pink),var(--yellow),var(--mint),var(--purple));border-radius:3px}
+.timeline-item{position:relative;margin-bottom:1.2rem;padding:1rem 1.2rem;background:var(--card);border-radius:var(--radius-sm);border:1.5px solid var(--border);box-shadow:var(--shadow)}
+.timeline-item::before{content:'';position:absolute;left:-1.6rem;top:1.2rem;width:10px;height:10px;border-radius:50%;background:var(--pink-deep);border:3px solid var(--card);box-shadow:0 0 0 3px var(--pink-light)}
+.timeline-item .phase{font-size:.78rem;font-weight:700;color:var(--pink-deep);letter-spacing:1px}
+.timeline-item h4{font-size:.98rem;margin:.3rem 0}
+
+/* QA */
+.qa-list{margin:1rem 0}
+.qa-item{background:var(--card);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:1.2rem;margin-bottom:.8rem}
+.qa-item .q{font-weight:700;color:var(--pink-deep);margin-bottom:.4rem}
+.qa-item .a{color:var(--text-light);font-size:.92rem}
+
+/* Table */
+.table-wrap{overflow-x:auto;margin:1.5rem 0}
+table{width:100%;border-collapse:collapse;background:var(--card);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);font-size:.9rem}
+thead{background:linear-gradient(135deg,var(--pink),var(--purple))}
+th{color:#fff;padding:.7rem 1rem;text-align:left;font-weight:600}
+td{padding:.6rem 1rem;border-bottom:1px solid var(--border)}
+tr:nth-child(even) td{background:var(--pink-pale)}
+
+/* Footer */
+.footer{text-align:center;padding:3rem 1rem;margin-top:2rem;background:linear-gradient(180deg,var(--card),var(--pink-pale));border-radius:var(--radius);box-shadow:var(--shadow)}
+.footer .heart{font-size:2.5rem;display:block;margin-bottom:.6rem;animation:float 2s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.footer p{color:var(--text-muted);font-size:.92rem}
+.footer .tag{display:inline-block;background:var(--pink-pale);color:var(--pink-deep);padding:4px 16px;border-radius:14px;font-size:.85rem;font-weight:700;margin-top:.6rem;border:1.5px solid var(--pink-light)}
+.footer .home-link{display:inline-block;margin-top:1rem;color:var(--pink-deep);text-decoration:none;font-weight:700;border:1.5px solid var(--pink-light);border-radius:20px;padding:.4rem 1.2rem;transition:all .2s}
+.footer .home-link:hover{background:var(--pink-pale);color:var(--pink-deep)}
+
+/* More posts */
+.more-posts{text-align:center;margin-top:2rem}
+.more-posts a{color:var(--pink-deep);text-decoration:none;font-weight:700;border-bottom:2px dashed var(--pink-light);transition:border-color .2s}
+.more-posts a:hover{border-color:var(--pink-deep)}
+
+@media(max-width:600px){
+  .hero h1{font-size:1.5rem}
+  .section-title h2{font-size:1.1rem}
+  .card{padding:1.2rem}
+}
+</style>
+</head>
+<body>
+
+<!-- Cover Image -->
+<div class="cover-wrap">
+  <img src="cover-kindergarten.png" alt="幼儿园入园准备" onerror="this.style.display='none'">
+</div>
+
+<div class="container">
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-badge">🎉 录取通知书到啦！</div>
+    <h1>三岁宝宝入园全攻略手册</h1>
+    <p class="sub">瓯海区机关幼儿园会昌园区 · 小班新生</p>
+    <p class="date">2026年6月12日 · 录取纪念日</p>
+  </div>
+
+  <!-- 开篇 -->
+  <div class="card">
+    <p>亲爱的爸爸妈妈们，首先要恭喜你们——宝宝收到了幼儿园的录取通知书，即将迈出人生中第一个独立的脚步！🎊</p>
+    <p style="margin-top:.6rem">对于三岁的小宝贝来说，从家里走向幼儿园是一个巨大的转变。他们会兴奋、会紧张、会哭闹，这全部都是<b style="color:var(--orange)">最正常不过</b>的事情。作为家长，我们能做的就是用心的准备和温柔的陪伴。</p>
+    <p style="margin-top:.6rem">这份攻略涵盖了<b style="color:var(--pink-deep)">物品准备、能力培养、心理建设、分离焦虑应对、家长配合</b>五大维度，希望能帮你从容地陪宝宝走好这第一步。</p>
+  </div>
+
+  <!-- 一、物品准备 -->
+  <div class="section">
+    <div class="section-title">
+      <div class="icon">🎒</div>
+      <h2>一、入园物品准备清单</h2>
+    </div>
+
+    <div class="card accent-pink">
+      <div class="emoji">👕</div>
+      <h3>衣物类</h3>
+      <ul class="checklist">
+        <li><span class="mark">✅</span> 替换衣裤 × 2-3套（含上衣、裤子、内裤、袜子），缝上姓名贴</li>
+        <li><span class="mark">✅</span> 室内软底鞋 × 1双（防滑、易穿脱、不系带）</li>
+        <li><span class="mark">✅</span> 备用外套 × 1件（应对空调温差）</li>
+        <li><span class="mark">✅</span> 汗巾 × 2-3条（纯棉、吸汗、标注姓名）</li>
+        <li><span class="mark">✅</span> 围兜/防水饭兜 × 1-2个</li>
+        <li><span class="mark">❌</span> <b>不要穿洞洞鞋</b>，存在安全隐患</li>
+        <li><span class="mark">❌</span> <b>不要佩戴饰品</b>（项链、手链等）</li>
+      </ul>
+    </div>
+
+    <div class="card accent-yellow">
+      <div class="emoji">🛏️</div>
+      <h3>寝具类</h3>
+      <ul class="checklist">
+        <li><span class="mark">✅</span> 小被子 × 1条（根据季节选择厚薄）</li>
+        <li><span class="mark">✅</span> 小枕头 × 1个</li>
+        <li><span class="mark">✅</span> 床垫/褥子（按园方要求尺寸准备）</li>
+        <li><span class="mark">✅</span> <b>全部标注姓名</b>，用不掉色的记号笔或绣名字</li>
+      </ul>
+    </div>
+
+    <div class="card accent-blue">
+      <div class="emoji">🎒</div>
+      <h3>日常用品</h3>
+      <ul class="checklist">
+        <li><span class="mark">✅</span> 小书包 × 1个（轻便、尺寸适合3岁宝宝）</li>
+        <li><span class="mark">✅</span> 水杯 × 1个（吸管杯或敞口杯，避免玻璃材质）</li>
+        <li><span class="mark">✅</span> 姓名贴纸/姓名印章（衣服、书包、杯子全要贴）</li>
+        <li><span class="mark">✅</span> 一寸/两寸照片若干（用于标记床位、水杯位等）</li>
+        <li><span class="mark">✅</span> 安抚物品（如小玩偶、妈妈的手帕等）——可选</li>
+      </ul>
+    </div>
+
+    <div class="card accent-green">
+      <div class="emoji">📋</div>
+      <h3>证件材料类</h3>
+      <ul class="checklist">
+        <li><span class="mark">✅</span> 录取通知书</li>
+        <li><span class="mark">✅</span> 户口本（原件+复印件）</li>
+        <li><span class="mark">✅</span> 出生医学证明</li>
+        <li><span class="mark">✅</span> 预防接种证（"小绿本"）</li>
+        <li><span class="mark">✅</span> 入园体检报告（妇幼保健院）</li>
+        <li><span class="mark">✅</span> 父母身份证复印件</li>
+      </ul>
+    </div>
+
+    <div class="warn">
+      <div class="warn-label">⚠️ 特别注意</div>
+      <ul style="padding-left:1.2rem;font-size:.9rem">
+        <li>如需在园服药，药品必须写清<b>班级、姓名、药名、用法用量</b>，并提供医生处方。</li>
+        <li>请勿自带食品或生日蛋糕来园，防止食物过敏或中毒风险。</li>
+        <li>有特殊体质（过敏史、高热惊厥等）务必<b>提前如实告知园方</b>。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 二、能力培养 -->
+  <div class="section">
+    <div class="section-title">
+      <div class="icon">🌟</div>
+      <h2>二、宝宝入园前能力培养</h2>
+    </div>
+
+    <div class="card accent-purple">
+      <div class="emoji">🍽️</div>
+      <h3>生活自理能力</h3>
+      <ul>
+        <li><b>独立进餐：</b>会用勺子自己吃饭，不追喂。练习用敞口杯喝水。</li>
+        <li><b>如厕表达：</b>能主动说"老师，我要尿尿/拉臭臭"。逐步戒掉白天的尿不湿。</li>
+        <li><b>穿脱衣物：</b>会自己穿脱简单的鞋子、外套，认识自己的物品。</li>
+        <li><b>午睡习惯：</b>提前调整作息，与幼儿园午睡时间（12:00-14:30左右）同步。</li>
+      </ul>
+    </div>
+
+    <div class="card accent-orange">
+      <div class="emoji">💬</div>
+      <h3>语言表达能力</h3>
+      <ul>
+        <li>教会宝宝清楚表达基本需求：渴了、饿了、要上厕所、不舒服。</li>
+        <li>能用语言表达情绪，<b>不要以哭代替说话</b>。</li>
+        <li>会说"请"、"谢谢"、"对不起"等礼貌用语。</li>
+      </ul>
+    </div>
+
+    <div class="card accent-green">
+      <div class="emoji">🤝</div>
+      <h3>社交交往能力</h3>
+      <ul>
+        <li>多创造和同龄小朋友一起玩的机会。</li>
+        <li>教会宝宝：不打人、不抓人、不抢玩具。</li>
+        <li>学会用语言解决小冲突，而非肢体对抗。</li>
+        <li>培养分享意识，但也要尊重宝宝的"物权意识"。</li>
+      </ul>
+    </div>
+
+    <div class="tip">
+      <div class="tip-label">💡 小c提醒</div>
+      <p style="font-size:.9rem">这些能力不用追求完美！入园后老师在集体环境中会持续引导。关键是<b>提前一个月左右</b>开始有意识地练习，让宝宝有心理准备和能力基础就行。</p>
+    </div>
+  </div>
+
+  <!-- 三、心理建设 -->
+  <div class="section">
+    <div class="section-title">
+      <div class="icon">💝</div>
+      <h2>三、心理建设——让宝宝爱上幼儿园</h2>
+    </div>
+
+    <div class="card accent-purple">
+      <div class="emoji">📚</div>
+      <h3>提前"种草"幼儿园</h3>
+      <ul>
+        <li>读幼儿园主题绘本：《我爱幼儿园》《魔法亲亲》《幼儿园的一天》等。</li>
+        <li>经常用<b>积极正向</b>的语言描述幼儿园："幼儿园有好多玩具！""老师会带你们玩好玩的游戏！"</li>
+        <li>路过幼儿园时，带宝宝看看、指指："这就是你的幼儿园哦，好漂亮！"</li>
+      </ul>
+    </div>
+
+    <div class="card accent-blue">
+      <div class="emoji">🎭</div>
+      <h3>角色扮演预演</h3>
+      <ul>
+        <li>在家模拟"上幼儿园"：假装送宝宝、和"老师"打招呼、玩游戏、吃饭、午睡、妈妈来接。</li>
+        <li>让宝宝扮演老师，你当小朋友，增强掌控感。</li>
+        <li>用玩偶演示整个流程，降低陌生环境的恐惧。</li>
+      </ul>
+    </div>
+
+    <div class="tip">
+      <div class="tip-label">⚠️ 绝对不要做的事</div>
+      <ul style="padding-left:1.2rem;font-size:.9rem">
+        <li>❌ 不要用"不听话就送你去幼儿园"来威胁宝宝。</li>
+        <li>❌ 不要说"你再哭，老师会凶你"。</li>
+        <li>❌ 不要偷偷溜走——这会让宝宝觉得被"抛弃"。</li>
+      </ul>
+      <p style="font-size:.9rem;margin-top:.6rem">幼儿园应该是宝宝期待的地方，不是惩罚的场所。</p>
+    </div>
+  </div>
+
+  <!-- 四、分离焦虑 -->
+  <div class="section">
+    <div class="section-title">
+      <div class="icon">🫂</div>
+      <h2>四、分离焦虑——温柔而坚定的告别</h2>
+    </div>
+
+    <div class="card">
+      <p style="font-size:.95rem">分离焦虑不是宝宝"不乖"，而是大脑发育的正常表现。2-4岁的孩子离开熟悉的家人和环境产生焦虑，<b style="color:var(--orange)">是完全健康的反应</b>。一般来说，入园第2-4天是哭闹高峰期，之后会逐渐好转。</p>
+    </div>
+
+    <div class="card accent-pink">
+      <div class="emoji">🤗</div>
+      <h3>设计专属告别仪式</h3>
+      <ul>
+        <li>固定一个简短的仪式：比如"三秒充电抱抱" + 击掌 + "下午准时来接你！"</li>
+        <li>每次都用同样的流程，建立宝宝的安全预期。</li>
+        <li>告别后<b>坚定离开</b>，不要一步三回头。</li>
+        <li>研究表明：固定告别仪式可让适应期<b>缩短40%</b>。</li>
+      </ul>
+    </div>
+
+    <div class="card accent-yellow">
+      <div class="emoji">🧸</div>
+      <h3>允许携带"安抚物"</h3>
+      <ul>
+        <li>带一件有妈妈味道的物品：喷过妈妈香水的手帕、小玩偶。</li>
+        <li>安抚物是宝宝的"心理安全岛"，在陌生环境中提供熟悉感。</li>
+        <li>注意：安抚物不要太大，不影响集体活动。</li>
+      </ul>
+    </div>
+
+    <div class="card accent-green">
+      <div class="emoji">🎉</div>
+      <h3>接园时分——正向引导</h3>
+      <ul>
+        <li>准时接！不要让宝宝最后一个被接走。</li>
+        <li>路上问正面问题："今天玩了什么好玩的？""认识了哪个小朋友？"</li>
+        <li>❌ 不要问"今天哭了吗？""有人欺负你吗？"——这暗示幼儿园是可怕的。</li>
+        <li>可以设计"放学后的小仪式"：比如回家路上一起吃个小点心。</li>
+      </ul>
+    </div>
+
+    <!-- 梯度适应 -->
+    <div class="section">
+      <div class="section-title">
+        <div class="icon">📅</div>
+        <h2>建议梯度适应计划</h2>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="phase">第 1 周</div>
+        <h4>半天适应期</h4>
+        <p style="font-size:.9rem;color:var(--text-light)">每天上午入园2小时，只参与游戏活动。家长在园外等候，中午接回家。</p>
+      </div>
+      <div class="timeline-item">
+        <div class="phase">第 2 周</div>
+        <h4>延长至午餐后</h4>
+        <p style="font-size:.9rem;color:var(--text-light)">在幼儿园待到午饭后，体验吃点心、集体游戏。吃完午饭接回家，暂不午睡。</p>
+      </div>
+      <div class="timeline-item">
+        <div class="phase">第 3 周</div>
+        <h4>过渡到全天</h4>
+        <p style="font-size:.9rem;color:var(--text-light)">尝试在园午睡，下午接回。逐步适应完整作息。如宝宝特别抗拒，可再放慢节奏。</p>
+      </div>
+      <div class="timeline-item">
+        <div class="phase">第 4 周起</div>
+        <h4>正常全天在园</h4>
+        <p style="font-size:.9rem;color:var(--text-light)">建立稳定的入园节奏。此时大多数宝宝已基本适应，能主动参与活动、和小朋友互动。</p>
+      </div>
+    </div>
+
+    <div class="tip">
+      <div class="tip-label">📊 数据参考</div>
+      <p style="font-size:.9rem">研究显示：经过科学梯度适应后，86%的孩子能在2个月内主动完成分离流程，夜间惊醒次数减少62%。</p>
+    </div>
+  </div>
+
+  <!-- 五、家长自身准备 -->
+  <div class="section">
+    <div class="section-title">
+      <div class="icon">👨‍👩‍👧</div>
+      <h2>五、家长自身要做好的准备</h2>
+    </div>
+
+    <div class="card">
+      <p style="font-size:.95rem">你知道吗？<b style="color:var(--pink-deep)">家长的焦虑会"传染"给宝宝</b>。研究数据表明：情绪稳定的家长，其孩子的分离焦虑持续时间平均缩短40%。所以，你自己的心态调整同样重要！</p>
+    </div>
+
+    <div class="card accent-orange">
+      <div class="emoji">😌</div>
+      <h3>管理好自己的情绪</h3>
+      <ul>
+        <li>送园时保持<b>愉快、轻松</b>的表情和语气。</li>
+        <li>告别时说"下午来接你哦，好好玩！"而不是"妈妈也舍不得你……"</li>
+        <li>你自己的语气和表情，是宝宝判断"这里是否安全"的最重要信号。</li>
+        <li>如果忍不住想哭，转过身再掉眼泪，别让宝宝看到。</li>
+      </ul>
+    </div>
+
+    <div class="card accent-blue">
+      <div class="emoji">📝</div>
+      <h3>相信老师，积极沟通</h3>
+      <ul>
+        <li>把宝宝的性格特点、喜好、习惯提前告诉老师。</li>
+        <li>关于喝水、大小便、吃饭、午睡等，老师都有专业流程，不必过度担心。</li>
+        <li>与老师保持良好沟通，但不要<b>频繁打扰</b>。老师需要在园全身心照顾孩子。</li>
+      </ul>
+    </div>
+
+    <div class="card accent-pink">
+      <div class="emoji">⚡</div>
+      <h3>坚持送园，不心软</h3>
+      <ul>
+        <li>不要因为孩子哭就不送——这会让孩子产生"哭有用"的经验。</li>
+        <li>坚持每天送（除非生病），帮助建立稳定的节奏。</li>
+        <li>可以适当提前接，但不要随意请假。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 六、生理过渡 -->
+  <div class="section">
+    <div class="section-title">
+      <div class="icon">💪</div>
+      <h2>六、宝宝生理过渡与健康守护</h2>
+    </div>
+
+    <div class="card accent-green">
+      <div class="emoji">😴</div>
+      <h3>调整作息生物钟</h3>
+      <ul>
+        <li>提前1个月按幼儿园作息：早上7:00起床，12:00-14:30午睡，晚上20:30-21:00入睡。</li>
+        <li>逐步过渡，每天微调15-30分钟。</li>
+      </ul>
+    </div>
+
+    <div class="card accent-yellow">
+      <div class="emoji">🍎</div>
+      <h3>饮食过渡</h3>
+      <ul>
+        <li>提前适应幼儿园饮食节奏：早餐→早点→午餐→午点。</li>
+        <li>减少零食，保证正餐食欲。练习用勺子20分钟内吃完饭。</li>
+      </ul>
+    </div>
+
+    <div class="card accent-blue">
+      <div class="emoji">💉</div>
+      <h3>入园体检和疫苗</h3>
+      <ul>
+        <li>按园方要求完成入园体检（一般在指定妇幼保健院）。</li>
+        <li>检查预防接种是否齐全，缺的及时补种。</li>
+        <li>入园前1-2周避免去人多密集场所，减少感染风险。</li>
+      </ul>
+    </div>
+
+    <div class="card accent-purple">
+      <div class="emoji">🛡️</div>
+      <h3>免疫力过渡期</h3>
+      <ul>
+        <li><b>做好心理准备：</b>入园头半年，宝宝可能会比以前更容易生病——这几乎是必经之路。</li>
+        <li>保证充足睡眠、均衡营养、适量户外运动。</li>
+        <li>教会宝宝七步洗手法，养成勤洗手习惯。</li>
+        <li>接种流感疫苗（秋季入园前可咨询医生）。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 七、Q&A -->
+  <div class="section">
+    <div class="section-title">
+      <div class="icon">❓</div>
+      <h2>七、常见问题 Q&A</h2>
+    </div>
+
+    <div class="qa-list">
+      <div class="qa-item">
+        <div class="q">😢 宝宝一直哭怎么办？</div>
+        <div class="a">正常！第2-4天是哭闹高峰。坚定送园、愉快告别、准时接。一般1-3周逐渐好转。如果超过3周持续严重哭闹，可咨询儿童心理科。</div>
+      </div>
+      <div class="qa-item">
+        <div class="q">🥺 宝宝回家后情绪很差？</div>
+        <div class="a">在幼儿园"表现好"消耗了大量能量，回家后"释放"情绪是正常的。多给予拥抱和安抚，不要过多追问和指责。</div>
+      </div>
+      <div class="qa-item">
+        <div class="q">🍚 在幼儿园不肯吃饭？</div>
+        <div class="a">先和老师沟通了解情况。可能是环境陌生或不喜欢某样食物。在家不要追着喂补，保持正常进餐节奏。</div>
+      </div>
+      <div class="qa-item">
+        <div class="q">😱 宝宝不愿在幼儿园拉臭臭？</div>
+        <div class="a">非常常见！因为在家习惯的如厕环境变了。不要强迫，和老师沟通后慢慢引导，多数会自然解决。</div>
+      </div>
+      <div class="qa-item">
+        <div class="q">🛌 午睡困难？</div>
+        <div class="a">提前在家调整午睡时间与幼儿园同步。可以带一个熟悉的安抚物帮助入睡。老师通常有循序渐进的引导。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 八、时间节点 -->
+  <div class="section">
+    <div class="section-title">
+      <div class="icon">⏰</div>
+      <h2>八、时间节点速查表</h2>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>时间节点</th><th>事项</th></tr>
+        </thead>
+        <tbody>
+          <tr><td style="font-weight:700;color:var(--pink-deep)">6月中</td><td>收到录取通知，确认入园，加入家长群</td></tr>
+          <tr><td style="font-weight:700;color:var(--orange)">6月-7月</td><td>完成入园体检、材料准备、疫苗接种确认</td></tr>
+          <tr><td style="font-weight:700;color:#f39c12">7月-8月</td><td>开始作息调整、自理能力训练、心理预热</td></tr>
+          <tr><td style="font-weight:700;color:#2ecc71">8月中</td><td>物品采购（衣物、寝具、姓名贴等全部就位）</td></tr>
+          <tr><td style="font-weight:700;color:#3498db">8月下旬</td><td>参加家长会/开放日，带宝宝熟悉园区环境</td></tr>
+          <tr><td style="font-weight:700;color:var(--purple)">9月1日</td><td>🎉 正式入园！愉快告别，准时接园</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span class="heart">💖</span>
+    <p>恭喜宝宝迈出人生独立的第一步！</p>
+    <p>这是成长的礼物，也是爱的见证。</p>
+    <div class="tag">🏫 瓯海区机关幼儿园会昌园区 · 小班</div>
+    <p style="font-size:.8rem;margin-top:.8rem">2026年6月12日 整理 · 祝每个小宝贝快乐入园，健康成长！</p>
+    <p style="font-size:.8rem">—— 来自小c的用心整理 ⚡</p>
+    <a href="/" class="home-link">← 回到 池帥の亦殿</a>
+  </div>
+
+  <div class="more-posts">
+    <a href="/">← 回到博客首页查看更多文章</a>
+  </div>
+
+</div>
+
+</body>
+</html>
