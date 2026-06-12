@@ -371,7 +371,7 @@
       <div class="widget profile-card fade-in stagger-1">
         <div class="profile-avatar">🌸</div>
         <div class="profile-name">池帥</div>
-        <div class="profile-bio">喜欢码字、捣鼓技术和发呆的普通人 🌙</div>
+        <div class="profile-bio">喜欢文艺、捣鼓技术和华丽的普通人 🌙</div>
         <a href="mailto:0d@live.com" class="profile-email">📮 0d@live.com</a>
         <div class="profile-stats">
           <div class="stat-item"><div class="stat-num" id="stat-posts">0</div><div class="stat-label">文章</div></div>
@@ -563,7 +563,7 @@
         </div>
         <div class="form-group">
           <label>个人简介</label>
-          <input class="form-control" id="s-bio" value="喜欢码字、捣鼓技术和发呆的普通人 🌙">
+          <input class="form-control" id="s-bio" value="喜欢文艺、捣鼓技术和华丽的普通人 🌙">
         </div>
         <div class="form-group">
           <label>联系邮箱</label>
@@ -627,7 +627,7 @@ const DB = {
   set posts(v){localStorage.setItem(this.KEY_POSTS,JSON.stringify(v))},
   get cfg(){return Object.assign({
     title:'池帥の亦殿',sub:'记录生活，分享美好，写下每一个值得被记住的瞬间 ✨',
-    bio:'喜欢码字、捣鼓技术和发呆的普通人 🌙',
+    bio:'喜欢文艺、捣鼓技术和华丽的普通人 🌙',
     email:'0d@live.com',ppp:5,
     startDate: new Date().toISOString().slice(0,10)
   }, JSON.parse(localStorage.getItem(this.KEY_CFG)||'{}'))},
