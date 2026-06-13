@@ -1376,50 +1376,17 @@ function filterTag(tag){
 
 // ======================== 文章详情 ========================
 function openPost(id){
-  const allPosts = DB.posts;
-  const post = allPosts.find(p=>p.id==id);
-  if(!post) return;
-  if(post.private && !DB.loggedIn){ toast('🔒 该文章仅管理员可见'); return; }
-  if(post.draft && !DB.loggedIn){ toast('📋 草稿文章不可见'); return; }
-
-  // 增加浏览量
-  const idx = allPosts.findIndex(p=>p.id==id);
-  allPosts[idx].views = (allPosts[idx].views||0)+1;
-  DB.posts = allPosts;
-
-  // SEO meta
-  const desc = post.desc || getExcerpt(post.body, 150);
-  document.getElementById('meta-desc').setAttribute('content', desc);
-  document.getElementById('meta-kw').setAttribute('content', (post.tags||[]).join(','));
-  document.title = post.title + ' - ' + DB.cfg.title;
-
-  document.getElementById('detail-title').textContent = post.title;
-  const words = countWords(post.body||'');
-  document.getElementById('detail-meta').innerHTML = `
-    <span class="post-cat">${post.cat||'随笔'}</span>
-    <span class="post-date">📅 ${formatDate(post.date)}</span>
-    <span class="post-date">👁️ ${post.views} 次阅读</span>
-    ${(post.tags||[]).map(t=>`<span class="tag" style="cursor:pointer" onclick="filterTag('${t}');goBack()">${t}</span>`).join('')}`;
-  document.getElementById('post-stats-bar').innerHTML = `
-    <span>📖 ${words} 字</span>
-    <span>⏱ ${readTime(words)}</span>
-    <span>💬 ${((DB.comments[post.id]||[]).length)} 条评论</span>
-    ${post.top?'<span>📌 置顶</span>':''}`;
-
-  const bodyHtml = md2html(post.body, currentSearch);
-  document.getElementById('detail-body').innerHTML = bodyHtml;
-
-  // 代码高亮
-  document.querySelectorAll('#detail-body pre code').forEach(block => {
-    try{ hljs.highlightElement(block); }catch(e){}
-  });
-
-  // 生成 TOC
-  buildTOC();
-
-  renderShare(post);
-  renderComments(post.id);
-  showPage('post');
+  // 跳转到独立文章页面
+  const post = DB.posts.find(p => p.id == id);
+  if (post) {
+    // 构建文件名：post_{id}.html
+    const url = 'blog_posts/post_' + post.id + '.html';
+    // 在新标签页打开
+    window.open(url, '_blank');
+    return;
+  }
+  // 如果找不到文章，显示错误
+  toast('文章不存在 :(');
 }
 
 function buildTOC(){
