@@ -2,28 +2,28 @@
 <html lang="zh-CN" data-theme="light">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>咖啡为什么越喝越困？☕ - 池帅の亦殿</title>
 <meta name="description" content="咖啡为什么越喝越困？☕">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌸</text></svg>">
 
-<!-- 字体加载 -->
+<!-- 中文字体 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=ZCOOL+YaTi&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 
 <style>
 /* ===== CSS Reset ===== */
-*, *::before, *::after {
-  box-sizing: border-box;
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-/* ===== CSS 变量 ===== */
+/* ===== 主题变量 ===== */
 :root {
   --pink: #ff8fab;
   --pink-light: #ffb3c6;
@@ -36,9 +36,8 @@
   --text-light: #7c6f9f;
   --text-muted: #b0a8c8;
   --bg: #fdf4ff;
-  --card: #fff;
+  --card: #ffffff;
   --border: #f0d9ff;
-  --shadow: 0 8px 32px rgba(200, 100, 200, 0.12);
   --radius: 18px;
   --radius-sm: 10px;
 }
@@ -52,21 +51,19 @@
   --border: #3d2d5a;
   --pink-pale: #2d1a2e;
   --purple-pale: #201630;
-  --shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
 
 body {
-  font-family: 'Noto Serif SC', 'ZCOOL YaTi', 'SimSun', 'STSong', serif;
+  font-family: 'Noto Serif SC', 'SimSun', 'STSong', serif;
   background: var(--bg);
   color: var(--text);
   line-height: 1.8;
   transition: background 0.3s, color 0.3s;
   padding-top: 64px;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-/* ===== 导航 ===== */
+/* ===== 导航栏 ===== */
 .nav {
   background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(12px);
@@ -137,11 +134,18 @@ body {
   background: var(--pink-pale);
 }
 
-/* ===== 文章容器 ===== */
+/* ===== 文章容器（核心修复：确保居中）===== */
+.post-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 2rem 1rem;
+}
+
 .post-container {
   max-width: 800px;
-  margin: 2rem auto;
-  padding: 0 1.5rem;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .post-header {
@@ -196,7 +200,7 @@ body {
   background: var(--card);
   border-radius: var(--radius);
   border: 1.5px solid var(--border);
-  box-shadow: var(--shadow);
+  box-shadow: 0 8px 32px rgba(200, 100, 200, 0.12);
   padding: 2.5rem;
   margin-bottom: 2rem;
   font-size: 1.05rem;
@@ -306,7 +310,7 @@ body {
   background: var(--card);
   border-radius: var(--radius);
   border: 1.5px solid var(--border);
-  box-shadow: var(--shadow);
+  box-shadow: 0 8px 32px rgba(200, 100, 200, 0.12);
   margin-bottom: 2rem;
 }
 
@@ -371,8 +375,7 @@ body {
   z-index: 0;
 }
 
-.post-container,
-#back-home {
+.post-wrapper {
   position: relative;
   z-index: 1;
 }
@@ -393,18 +396,19 @@ body {
 </nav>
 
 <!-- 文章 -->
-<div class="post-container">
-  <div class="post-header">
-    <div class="post-cover">☕</div>
-    <h1 class="post-title">咖啡为什么越喝越困？☕</h1>
-    <div class="post-meta">
-      <span>📅 2026-06-02</span>
-      <span>📂 生活常识</span>
+<div class="post-wrapper">
+  <div class="post-container">
+    <div class="post-header">
+      <div class="post-cover">☕</div>
+      <h1 class="post-title">咖啡为什么越喝越困？☕</h1>
+      <div class="post-meta">
+        <span>📅 2026-06-02</span>
+        <span>📂 生活常识</span>
+      </div>
+      <div class="post-tags" id="post-tags"></div>
     </div>
-    <div class="post-tags" id="post-tags"></div>
-  </div>
   
-  <div class="post-body" id="post-body">
+    <div class="post-body" id="post-body">
 <h1>咖啡提神？你可能喝反了</h1>
 <p>很多人喝咖啡是为了提神，结果越喝越困，甚至直接睡着。</p>
 <h2>咖啡因的工作原理</h2>
@@ -418,18 +422,19 @@ body {
 </ul>
 <h2>终极技巧</h2>
 <p>**喝咖啡+小睡20分钟** — 咖啡因起效大约需要20分钟，趁这段时间眯一会，醒来腺苷被清除了一部分，咖啡因刚好上岗，双重提神！</p>
-  </div>
+    </div>
   
-  <div class="share-bar">
-    <span class="share-label">分享到：</span>
-    <button class="share-btn wx" onclick="shareWX()" title="微信分享">💬</button>
-    <button class="share-btn qq" onclick="shareQQ()" title="QQ分享">🐧</button>
-    <button class="share-btn wb" onclick="shareWB()" title="微博分享">📢</button>
-    <button class="share-btn cp" onclick="copyLink()" title="复制链接">🔗</button>
-  </div>
+    <div class="share-bar">
+      <span class="share-label">分享到：</span>
+      <button class="share-btn wx" onclick="shareWX()" title="微信分享">💬</button>
+      <button class="share-btn qq" onclick="shareQQ()" title="QQ分享">🐧</button>
+      <button class="share-btn wb" onclick="shareWB()" title="微博分享">📢</button>
+      <button class="share-btn cp" onclick="copyLink()" title="复制链接">🔗</button>
+    </div>
   
-  <div class="back-home" id="back-home">
-    <a href="./">← 返回首页 池帅の亦殿</a>
+    <div class="back-home" id="back-home">
+      <a href="./">← 返回首页 池帅の亦殿</a>
+    </div>
   </div>
 </div>
 
