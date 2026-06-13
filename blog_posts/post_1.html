@@ -1860,11 +1860,14 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
 // ======================== 初始化 ========================
 window.addEventListener('DOMContentLoaded',()=>{
-  initTheme();
-  initStats();
-  if(DB.loggedIn) document.body.classList.add('is-admin');
-  applyConfig();
-  renderHome();
+  var saved = localStorage.getItem('blog_theme');
+  if(saved) document.documentElement.setAttribute('data-theme', saved);
+  // 启动粒子
+  if(typeof initParticles === 'function') initParticles();
+  // 代码高亮
+  if(typeof hljs !== 'undefined'){
+    document.querySelectorAll('pre code').forEach(function(b){ hljs.highlightElement(b); });
+  }
 });
 
 // 分享功能
