@@ -97,6 +97,48 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:
   padding:.35rem .7rem;cursor:pointer;font-size:1rem;transition:all .2s;color:var(--text-light);margin-left:1rem}
 #dark-toggle:hover{background:var(--pink-pale)}
 </style>
+
+    <style>
+    /* ===== TOC (文章目录) ===== */
+    .toc-box {
+      background: var(--pink-pale, #fff0f5);
+      border-radius: 10px;
+      border: 1.5px solid var(--border, #f0d9ff);
+      padding: 1rem 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+    .toc-title {
+      font-weight: 700;
+      color: var(--pink-deep, #e85d8a);
+      margin-bottom: 0.6rem;
+      font-size: 0.92rem;
+    }
+    .toc-list {
+      list-style: none;
+      padding: 0;
+    }
+    .toc-list li {
+      line-height: 2;
+    }
+    .toc-list a {
+      color: var(--text-light, #7c6f9f);
+      text-decoration: none;
+      font-size: 0.88rem;
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+      display: block;
+      transition: all 0.15s;
+    }
+    .toc-list a:hover {
+      color: var(--pink-deep, #e85d8a);
+      background: rgba(255, 143, 171, 0.1);
+    }
+    .toc-list .toc-h3 {
+      padding-left: 1.2rem;
+      font-size: 0.84rem;
+    }
+    </style>
+    
 </head>
 <body>
 
@@ -132,12 +174,18 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:
   </div>
   
   <!-- 文章正文 -->
-  <div class="post-body" id="post-body">
+  
+    <!-- TOC 目录导航 -->
+    <div class="toc-box" id="toc-box" style="display:none">
+      <div class="toc-title">📋 文章目录</div>
+      <ul class="toc-list" id="toc-list"></ul>
+    </div>
+    <div class="post-body" id="post-body">
     <h1>袜子失踪之谜</h1>
 <p>洗衣机大概是这个世界上最神秘的"黑洞"，而袜子就是它最爱的猎物。</p>
-<h2>科学解释（认真的）</h2>
+<h2 id="科学解释认真的" >科学解释（认真的）</h2>
 <ol><li><strong>静电吸附</strong> — 洗衣机高速旋转产生静电，小只的袜子容易吸附在滚筒缝隙或排水管里</li><li><strong>尺寸劣势</strong> — 袜子太小，容易卷进床单、裤腿里，被"绑架"了</li><li><strong>脱水甩飞</strong> — 高速脱水时，轻薄的袜子可能被甩到洗衣机角落</li></ol>
-<h2>防丢小妙招</h2>
+<h2 id="防丢小妙招" >防丢小妙招</h2>
 <ul><li><strong>买一样的袜子</strong> — 全是黑袜子，丢一只也无所谓，随便凑一对</li><li><strong>用洗衣袋</strong> — 把袜子装进网状洗衣袋，集体行动，一个都不能少</li></ul>
   </div>
   
@@ -203,5 +251,48 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
+
+    
+    <script>
+    // ======================== 文章目录 TOC ========================
+    function buildTOC() {
+      var body = document.getElementById('post-body');
+      if (!body) return;
+      var headings = body.querySelectorAll('h2, h3');
+      var tocBox = document.getElementById('toc-box');
+      var tocList = document.getElementById('toc-list');
+      if (headings.length < 2) {
+        if (tocBox) tocBox.style.display = 'none';
+        return;
+      }
+      if (tocBox) tocBox.style.display = 'block';
+      var tocHTML = '';
+      for (var i = 0; i < headings.length; i++) {
+        var h = headings[i];
+        var level = h.tagName === 'H3' ? 'toc-h3' : '';
+        var id = h.id;
+        var text = h.textContent;
+        // 使用闭包来避免引号问题
+        tocHTML += '<li class="' + level + '"><a href="#' + id + '" onclick="scrollToHeading(\' + id + '\')">' + text + '</a></li>';
+      }
+      if (tocList) tocList.innerHTML = tocHTML;
+    }
+    
+    function scrollToHeading(id) {
+      var el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({behavior: 'smooth'});
+      }
+      return false;
+    }
+    
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', buildTOC);
+    } else {
+      buildTOC();
+    }
+    </script>
+    
+    
 </body>
 </html>

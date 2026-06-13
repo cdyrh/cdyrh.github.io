@@ -97,6 +97,48 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:
   padding:.35rem .7rem;cursor:pointer;font-size:1rem;transition:all .2s;color:var(--text-light);margin-left:1rem}
 #dark-toggle:hover{background:var(--pink-pale)}
 </style>
+
+    <style>
+    /* ===== TOC (文章目录) ===== */
+    .toc-box {
+      background: var(--pink-pale, #fff0f5);
+      border-radius: 10px;
+      border: 1.5px solid var(--border, #f0d9ff);
+      padding: 1rem 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+    .toc-title {
+      font-weight: 700;
+      color: var(--pink-deep, #e85d8a);
+      margin-bottom: 0.6rem;
+      font-size: 0.92rem;
+    }
+    .toc-list {
+      list-style: none;
+      padding: 0;
+    }
+    .toc-list li {
+      line-height: 2;
+    }
+    .toc-list a {
+      color: var(--text-light, #7c6f9f);
+      text-decoration: none;
+      font-size: 0.88rem;
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+      display: block;
+      transition: all 0.15s;
+    }
+    .toc-list a:hover {
+      color: var(--pink-deep, #e85d8a);
+      background: rgba(255, 143, 171, 0.1);
+    }
+    .toc-list .toc-h3 {
+      padding-left: 1.2rem;
+      font-size: 0.84rem;
+    }
+    </style>
+    
 </head>
 <body>
 
@@ -132,7 +174,13 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:
   </div>
   
   <!-- 文章正文 -->
-  <div class="post-body" id="post-body">
+  
+    <!-- TOC 目录导航 -->
+    <div class="toc-box" id="toc-box" style="display:none">
+      <div class="toc-title">📋 文章目录</div>
+      <ul class="toc-list" id="toc-list"></ul>
+    </div>
+    <div class="post-body" id="post-body">
     <h1>为什么看别人打哈欠我也想打？</h1>
 <p>读到这篇文章标题的时候，你有没有已经打了一个哈欠？如果有，恭喜你，你被传染了。</p>
 <p>科学家研究发现，打哈欠传染跟<strong>镜像神经元</strong>有关。这些神经元的作用是让你"感同身受"——看到别人受伤你会觉得疼，看到别人笑你也想笑，看到别人打哈欠……你就困了。</p>
@@ -202,5 +250,48 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
+
+    
+    <script>
+    // ======================== 文章目录 TOC ========================
+    function buildTOC() {
+      var body = document.getElementById('post-body');
+      if (!body) return;
+      var headings = body.querySelectorAll('h2, h3');
+      var tocBox = document.getElementById('toc-box');
+      var tocList = document.getElementById('toc-list');
+      if (headings.length < 2) {
+        if (tocBox) tocBox.style.display = 'none';
+        return;
+      }
+      if (tocBox) tocBox.style.display = 'block';
+      var tocHTML = '';
+      for (var i = 0; i < headings.length; i++) {
+        var h = headings[i];
+        var level = h.tagName === 'H3' ? 'toc-h3' : '';
+        var id = h.id;
+        var text = h.textContent;
+        // 使用闭包来避免引号问题
+        tocHTML += '<li class="' + level + '"><a href="#' + id + '" onclick="scrollToHeading(\' + id + '\')">' + text + '</a></li>';
+      }
+      if (tocList) tocList.innerHTML = tocHTML;
+    }
+    
+    function scrollToHeading(id) {
+      var el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({behavior: 'smooth'});
+      }
+      return false;
+    }
+    
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', buildTOC);
+    } else {
+      buildTOC();
+    }
+    </script>
+    
+    
 </body>
 </html>

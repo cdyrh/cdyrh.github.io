@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>切洋葱不哭的秘密 😭 - 池帅の亦殿</title>
+<title>切洋葱不哭的秘密 😭 - 池帥の亦殿</title>
 <meta name="description" content="切洋葱不哭的秘密 😭">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌸</text></svg>">
 
@@ -380,6 +380,48 @@ body {
   z-index: 1;
 }
 </style>
+
+    <style>
+    /* ===== TOC (文章目录) ===== */
+    .toc-box {
+      background: var(--pink-pale, #fff0f5);
+      border-radius: 10px;
+      border: 1.5px solid var(--border, #f0d9ff);
+      padding: 1rem 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+    .toc-title {
+      font-weight: 700;
+      color: var(--pink-deep, #e85d8a);
+      margin-bottom: 0.6rem;
+      font-size: 0.92rem;
+    }
+    .toc-list {
+      list-style: none;
+      padding: 0;
+    }
+    .toc-list li {
+      line-height: 2;
+    }
+    .toc-list a {
+      color: var(--text-light, #7c6f9f);
+      text-decoration: none;
+      font-size: 0.88rem;
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+      display: block;
+      transition: all 0.15s;
+    }
+    .toc-list a:hover {
+      color: var(--pink-deep, #e85d8a);
+      background: rgba(255, 143, 171, 0.1);
+    }
+    .toc-list .toc-h3 {
+      padding-left: 1.2rem;
+      font-size: 0.84rem;
+    }
+    </style>
+    
 </head>
 <body>
 
@@ -388,7 +430,7 @@ body {
 
 <!-- 导航 -->
 <nav class="nav">
-  <a href="../" class="nav-logo">池帅の亦殿 🌸</a>
+  <a href="../" class="nav-logo">池帥の亦殿 🌸</a>
   <div class="nav-actions">
     <a href="../" class="nav-back">← 返回首页</a>
     <button id="dark-toggle" onclick="toggleDark()">🌙</button>
@@ -408,12 +450,18 @@ body {
       <div class="post-tags" id="post-tags"></div>
     </div>
   
+    
+    <!-- TOC 目录导航 -->
+    <div class="toc-box" id="toc-box" style="display:none">
+      <div class="toc-title">📋 文章目录</div>
+      <ul class="toc-list" id="toc-list"></ul>
+    </div>
     <div class="post-body" id="post-body">
 <h1>我和洋葱的和解之路</h1>
 <p>每次切洋葱都哭得像个失恋的人？你不是一个人。</p>
-<h2>为什么洋葱让人哭</h2>
+<h2 id="为什么洋葱让人哭" >为什么洋葱让人哭</h2>
 <p>洋葱被切开时，细胞破裂释放出一种叫<strong>蒜氨酸酶</strong>的东西，和另一种物质反应后生成<strong>丙硫醛-S-氧化物</strong>。这玩意儿挥发到空气中，刺激眼睛产生泪水。</p>
-<h2>不哭秘籍（亲测有效）</h2>
+<h2 id="不哭秘籍亲测有效" >不哭秘籍（亲测有效）</h2>
 <p>1. <strong>冷藏后再切</strong> — 低温降低酶的活性，挥发物减少</p>
 <p>2. <strong>刀沾水切</strong> — 水溶性物质被刀上的水吸附，减少挥发</p>
 <p>3. <strong>用锋利的刀</strong> — 钝刀挤压细胞，酶释放更多；快刀干净利落</p>
@@ -430,7 +478,7 @@ body {
     </div>
   
     <div class="back-home" id="back-home">
-      <a href="../">← 返回首页 池帅の亦殿</a>
+      <a href="../">← 返回首页 池帥の亦殿</a>
     </div>
   </div>
 </div>
@@ -539,5 +587,48 @@ document.getElementById("post-tags").innerHTML = ['厨房', '技巧'].map(functi
   return '<span class="tag">' + t + '</span>';
 }).join("");
 </script>
+
+    
+    <script>
+    // ======================== 文章目录 TOC ========================
+    function buildTOC() {
+      var body = document.getElementById('post-body');
+      if (!body) return;
+      var headings = body.querySelectorAll('h2, h3');
+      var tocBox = document.getElementById('toc-box');
+      var tocList = document.getElementById('toc-list');
+      if (headings.length < 2) {
+        if (tocBox) tocBox.style.display = 'none';
+        return;
+      }
+      if (tocBox) tocBox.style.display = 'block';
+      var tocHTML = '';
+      for (var i = 0; i < headings.length; i++) {
+        var h = headings[i];
+        var level = h.tagName === 'H3' ? 'toc-h3' : '';
+        var id = h.id;
+        var text = h.textContent;
+        // 使用闭包来避免引号问题
+        tocHTML += '<li class="' + level + '"><a href="#' + id + '" onclick="scrollToHeading(\' + id + '\')">' + text + '</a></li>';
+      }
+      if (tocList) tocList.innerHTML = tocHTML;
+    }
+    
+    function scrollToHeading(id) {
+      var el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({behavior: 'smooth'});
+      }
+      return false;
+    }
+    
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', buildTOC);
+    } else {
+      buildTOC();
+    }
+    </script>
+    
+    
 </body>
 </html>

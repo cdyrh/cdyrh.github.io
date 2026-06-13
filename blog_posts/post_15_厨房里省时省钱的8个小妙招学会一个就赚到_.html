@@ -97,6 +97,48 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:
   padding:.35rem .7rem;cursor:pointer;font-size:1rem;transition:all .2s;color:var(--text-light);margin-left:1rem}
 #dark-toggle:hover{background:var(--pink-pale)}
 </style>
+
+    <style>
+    /* ===== TOC (文章目录) ===== */
+    .toc-box {
+      background: var(--pink-pale, #fff0f5);
+      border-radius: 10px;
+      border: 1.5px solid var(--border, #f0d9ff);
+      padding: 1rem 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+    .toc-title {
+      font-weight: 700;
+      color: var(--pink-deep, #e85d8a);
+      margin-bottom: 0.6rem;
+      font-size: 0.92rem;
+    }
+    .toc-list {
+      list-style: none;
+      padding: 0;
+    }
+    .toc-list li {
+      line-height: 2;
+    }
+    .toc-list a {
+      color: var(--text-light, #7c6f9f);
+      text-decoration: none;
+      font-size: 0.88rem;
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+      display: block;
+      transition: all 0.15s;
+    }
+    .toc-list a:hover {
+      color: var(--pink-deep, #e85d8a);
+      background: rgba(255, 143, 171, 0.1);
+    }
+    .toc-list .toc-h3 {
+      padding-left: 1.2rem;
+      font-size: 0.84rem;
+    }
+    </style>
+    
 </head>
 <body>
 
@@ -132,58 +174,64 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:
   </div>
   
   <!-- 文章正文 -->
-  <div class="post-body" id="post-body">
+  
+    <!-- TOC 目录导航 -->
+    <div class="toc-box" id="toc-box" style="display:none">
+      <div class="toc-title">📋 文章目录</div>
+      <ul class="toc-list" id="toc-list"></ul>
+    </div>
+    <div class="post-body" id="post-body">
     <h1>厨房里那些"早知道就好了"的小技巧</h1>
 <p>做饭这件事，会做不难，但做得快、做得好、还不浪费，那才叫本事。</p>
 <p>今天分享8个厨房小妙招——不花什么钱，不需要什么工具，但学会了，做饭省一半时间，食材少浪费一半。</p>
 <p>每一个都是厨房老手的"不传之秘"。</p>
 <p>!<a href="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80" target="_blank">厨房小妙招</a></p>
-<h2>1. 柠檬+微波炉=3分钟深度清洁</h2>
+<h2 id="1-柠檬微波炉3分钟深度清洁" >1. 柠檬+微波炉=3分钟深度清洁</h2>
 <p>微波炉用久了，内壁溅满油渍菜汤，擦也擦不掉？</p>
 <strong>不用买清洁剂。</strong> 切半个柠檬，放进一碗水里，微波炉高火加热3分钟。等里面积满水蒸气，再用抹布轻轻一擦——所有顽固油垢轻松脱落！
 <p>> <strong>原理：</strong> 柠檬酸+高温蒸汽是天然的油污溶解剂，比化学清洁剂更安全。</p>
 <p>加热后的柠檬水也别浪费，擦完微波炉顺便擦擦水槽和台面，整个厨房都是淡淡柠檬香。</p>
-<h2>2. 鸡蛋新鲜不新鲜，一杯水就知道</h2>
+<h2 id="2-鸡蛋新鲜不新鲜一杯水就知道" >2. 鸡蛋新鲜不新鲜，一杯水就知道</h2>
 <p>鸡蛋放冰箱久了，忘了哪几个先买的。敲开一个坏的，整盘菜都毁了。</p>
 <strong>浮水测试法：</strong> 把鸡蛋放进一碗冷水里——
 <ul><li>🥚 <strong>沉底平躺</strong> = 非常新鲜，放心吃</li><li>🥚 <strong>沉底但微微立起</strong> = 一周左右，完全没问题</li><li>🥚 <strong>浮在水中间</strong> = 大约3周了，赶紧吃掉</li><li>🥚 <strong>浮到水面</strong> = 坏了！别打开，直接扔</li></ul>
 <p>> 鸡蛋放久了内部水分蒸发，气室变大，所以会浮起来。</p>
 <p>!<a href="https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?w=800&q=80" target="_blank">新鲜鸡蛋</a></p>
-<h2>3. 快速剥蒜：摇一摇，皮就掉了</h2>
+<h2 id="3-快速剥蒜摇一摇皮就掉了" >3. 快速剥蒜：摇一摇，皮就掉了</h2>
 <p>每次做饭最烦剥蒜——指甲缝里全是蒜味，皮粘在手指上甩不掉。</p>
 <strong>终极技巧：</strong> 把整颗蒜瓣放进一个带盖的密封罐（或两个不锈钢盆扣在一起），用力摇20-30秒。打开一看，蒜皮全部分离，蒜瓣光溜溜的！
 <p>> <strong>原理：</strong> 摇晃时蒜瓣互相碰撞+摩擦，蒜皮被震松脱落。</p>
 <p>如果没有罐子，用刀面拍一下蒜瓣也可以——皮裂开一剥就掉，但蒜会被拍扁，适合需要蒜末的场景。</p>
-<h2>4. 蔬菜保鲜：一张厨房纸就够了</h2>
+<h2 id="4-蔬菜保鲜一张厨房纸就够了" >4. 蔬菜保鲜：一张厨房纸就够了</h2>
 <p>买回来的绿叶菜，放冰箱两天就蔫了、烂了。</p>
 <strong>秘诀：</strong> 用厨房纸（或干净毛巾）把菜包起来，再放进保鲜袋密封。厨房纸吸收多余水分，防止叶片被水泡烂；同时保持微湿环境，菜不会干蔫。
 <ul><li>🥬 生菜/菠菜：包好冷藏，能保鲜一周以上</li><li>🥕 胡萝卜/芹菜：切好后泡在水里冷藏，三天依旧脆</li><li>🍄 蘑菇：千万别洗！用厨房纸包好放纸袋里冷藏</li></ul>
 <p>> 蘑菇像海绵，一洗就吸水，炒出来一锅水。吃之前再快速冲一下就好。</p>
-<h2>5. 砧板除味：盐+柠檬=全新</h2>
+<h2 id="5-砧板除味盐柠檬全新" >5. 砧板除味：盐+柠檬=全新</h2>
 <p>木砧板切过鱼、蒜、洋葱之后，味道怎么洗都去不掉。</p>
 <strong>两步除味法：</strong>
 <ol><li>在砧板上撒一层粗盐</li><li>用半个柠檬当"刷子"，使劲擦，让盐粒磨掉表层污渍</li><li>冲洗干净，晾干</li></ol>
 <p>不仅去味，还能杀菌。柠檬酸天然消毒，比漂白水安心多了。</p>
 <p>> 每月做一次深度清洁，砧板能用好几年。</p>
 <p>!<a href="https://images.unsplash.com/photo-1605092676920-8ac5ae40ee7c?w=800&q=80" target="_blank">柠檬清洁</a></p>
-<h2>6. 快速解冻：别再用微波炉了</h2>
+<h2 id="6-快速解冻别再用微波炉了" >6. 快速解冻：别再用微波炉了</h2>
 <p>下班回家肉还是冻得硬邦邦的？微波炉解冻容易外面熟了里面还是冰。</p>
 <strong>正确方法：</strong> 把冻肉连包装袋一起，放进一盆<strong>冷水</strong>里（不要用热水！）。每10-15分钟换一次水。
 <ul><li>一盒鸡胸肉：大约30分钟解冻完毕</li><li>一块牛排：大约20分钟</li></ul>
 <p>> <strong>为什么不能用热水？</strong> 外面用热水泡，外层的肉可能已经进入"细菌繁殖温度区"（5°C-60°C），里面还冻着。冷水解冻虽然慢一点，但全程安全。</p>
 <p>如果特别着急，可以把肉切成薄片再冻——用的时候直接下锅，根本不用解冻！</p>
-<h2>7. 冰箱异味终结者：咖啡渣的妙用</h2>
+<h2 id="7-冰箱异味终结者咖啡渣的妙用" >7. 冰箱异味终结者：咖啡渣的妙用</h2>
 <p>冰箱偶尔有怪味，放了一堆吸味剂还是不管用？</p>
 <strong>咖啡渣是免费的天然除味剂。</strong> 把晾干的咖啡渣装在一个开口小碗里，放进冰箱角落。咖啡渣的多孔结构能强力吸附异味分子。
 <ul><li>替换周期：约2-4周</li><li>没有咖啡渣？小苏打也可以！</li></ul>
 <p>> 顺便一说：咖啡渣还能当花肥、去角质、清洁下水道油腻，用处太多了，别急着扔。</p>
 <p>另外，冰箱里放<strong>一卷没用过的卫生纸</strong>也能吸味——吸满异味后换一卷新的就行。便宜好用。</p>
-<h2>8. 土豆发芽怎么办？放个苹果就老实了</h2>
+<h2 id="8-土豆发芽怎么办放个苹果就老实了" >8. 土豆发芽怎么办？放个苹果就老实了</h2>
 <p>土豆买多了，过几天就冒芽。发芽的土豆含有<strong>龙葵素</strong>，有毒，不能吃。</p>
 <strong>一个神奇的保鲜方法：</strong> 在装土豆的袋子里放一个苹果。
 <p>苹果会释放<strong>乙烯气体</strong>，这种气体能抑制土豆的发芽。亲测有效，能多放两周！</p>
 <p>> <strong>注意：</strong> 但苹果别和绿叶菜放一起——乙烯会加速绿叶菜变黄变老。</p>
-<h2>总结</h2>
+<h2 id="总结" >总结</h2>
 <table><thead><tr><th>问题</th><th>解决方案</th><th>难度</th></tr></thead><tbody><tr><td>微波炉油腻</td><td>柠檬水加热3分钟</td><td>⭐</td></tr><tr><td>鸡蛋新不新鲜</td><td>泡水里看看沉浮</td><td>⭐</td></tr><tr><td>大蒜难剥</td><td>密封罐摇30秒</td><td>⭐</td></tr><tr><td>蔬菜爱烂</td><td>厨房纸包好再冷藏</td><td>⭐</td></tr><tr><td>砧板有异味</td><td>盐+柠檬擦一遍</td><td>⭐⭐</td></tr><tr><td>肉来不及解冻</td><td>冷水泡，每15分钟换水</td><td>⭐</td></tr><tr><td>冰箱有怪味</td><td>放咖啡渣或小苏打</td><td>⭐</td></tr><tr><td>土豆总发芽</td><td>袋子里放个苹果</td><td>⭐</td></tr></tbody></table>
 <p>八个技巧，一个比一个简单，一个比一个实用。厨房里最值钱的东西，不是那口几千块的锅，而是一个聪明的脑袋和一个愿意动手的人。</p>
 <p>> 生活嘛，就是学着用最聪明的方式，把每一件小事都做得漂漂亮亮。 🍳</p>
@@ -251,5 +299,48 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
+
+    
+    <script>
+    // ======================== 文章目录 TOC ========================
+    function buildTOC() {
+      var body = document.getElementById('post-body');
+      if (!body) return;
+      var headings = body.querySelectorAll('h2, h3');
+      var tocBox = document.getElementById('toc-box');
+      var tocList = document.getElementById('toc-list');
+      if (headings.length < 2) {
+        if (tocBox) tocBox.style.display = 'none';
+        return;
+      }
+      if (tocBox) tocBox.style.display = 'block';
+      var tocHTML = '';
+      for (var i = 0; i < headings.length; i++) {
+        var h = headings[i];
+        var level = h.tagName === 'H3' ? 'toc-h3' : '';
+        var id = h.id;
+        var text = h.textContent;
+        // 使用闭包来避免引号问题
+        tocHTML += '<li class="' + level + '"><a href="#' + id + '" onclick="scrollToHeading(\' + id + '\')">' + text + '</a></li>';
+      }
+      if (tocList) tocList.innerHTML = tocHTML;
+    }
+    
+    function scrollToHeading(id) {
+      var el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({behavior: 'smooth'});
+      }
+      return false;
+    }
+    
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', buildTOC);
+    } else {
+      buildTOC();
+    }
+    </script>
+    
+    
 </body>
 </html>

@@ -97,6 +97,48 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:
   padding:.35rem .7rem;cursor:pointer;font-size:1rem;transition:all .2s;color:var(--text-light);margin-left:1rem}
 #dark-toggle:hover{background:var(--pink-pale)}
 </style>
+
+    <style>
+    /* ===== TOC (文章目录) ===== */
+    .toc-box {
+      background: var(--pink-pale, #fff0f5);
+      border-radius: 10px;
+      border: 1.5px solid var(--border, #f0d9ff);
+      padding: 1rem 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+    .toc-title {
+      font-weight: 700;
+      color: var(--pink-deep, #e85d8a);
+      margin-bottom: 0.6rem;
+      font-size: 0.92rem;
+    }
+    .toc-list {
+      list-style: none;
+      padding: 0;
+    }
+    .toc-list li {
+      line-height: 2;
+    }
+    .toc-list a {
+      color: var(--text-light, #7c6f9f);
+      text-decoration: none;
+      font-size: 0.88rem;
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+      display: block;
+      transition: all 0.15s;
+    }
+    .toc-list a:hover {
+      color: var(--pink-deep, #e85d8a);
+      background: rgba(255, 143, 171, 0.1);
+    }
+    .toc-list .toc-h3 {
+      padding-left: 1.2rem;
+      font-size: 0.84rem;
+    }
+    </style>
+    
 </head>
 <body>
 
@@ -132,42 +174,48 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:
   </div>
   
   <!-- 文章正文 -->
-  <div class="post-body" id="post-body">
+  
+    <!-- TOC 目录导航 -->
+    <div class="toc-box" id="toc-box" style="display:none">
+      <div class="toc-title">📋 文章目录</div>
+      <ul class="toc-list" id="toc-list"></ul>
+    </div>
+    <div class="post-body" id="post-body">
     <h1>不开空调热到融化，开了又心疼电费？</h1>
 <p>六月一到，气温"噌噌"往上涨。不开空调吧，风扇吹出来的都是热风；开了吧，月底电费单一看，心比空调还凉。</p>
 <p>其实，空调开对了，比不开还省心。今天分享6个空调使用秘诀，让你凉快不费电！</p>
 <p>!<a href="https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=800&q=80" target="_blank">空调使用技巧</a></p>
-<h2>1. 温度设26°C，既凉快又省电</h2>
+<h2 id="1-温度设26c既凉快又省电" >1. 温度设26°C，既凉快又省电</h2>
 <p>很多人一开空调就调到18°C，觉得越低越凉快。错了。</p>
 <p>空调的制冷原理是<strong>把室内热量搬运到室外</strong>。你设18°C和设26°C，空调吹出来的冷风温度其实是一样的——区别在于<strong>它什么时候停</strong>。</p>
 <p>设18°C，房间永远达不到，压缩机就一直转，像狂奔的马拉松选手，电表也跟着狂奔；设26°C，到达目标温度后压缩机自动降频或暂停，省电效果立竿见影。</p>
 <p>> <strong>冷知识：</strong> 每调高1°C，能省约7%-10%的电。从20°C调到26°C，能省将近一半！</p>
-<h2>2. 风向朝上吹，冷气从天而降</h2>
+<h2 id="2-风向朝上吹冷气从天而降" >2. 风向朝上吹，冷气从天而降</h2>
 <p>你有没有发现：开了空调，脚是凉的，头还是热的？</p>
 <p>这是因为冷空气比热空气<strong>重</strong>，会自然下沉。如果你把出风口朝下吹，冷气全堆在地上，上半身根本感受不到。</p>
 <strong>正确姿势：</strong> 出风口调到水平或略微朝上，让冷气从天花板开始慢慢"淋"下来，整个房间均匀降温，体感舒适度翻倍！
 <p>> 制热时反过来：热空气轻，风口朝下吹，热气从脚底暖到全身。</p>
 <p>!<a href="https://images.unsplash.com/photo-1598475340352-9e0ac5d2cf00?w=800&q=80" target="_blank">空调风向技巧</a></p>
-<h2>3. 先开大风，凉了再调小</h2>
+<h2 id="3-先开大风凉了再调小" >3. 先开大风，凉了再调小</h2>
 <p>你是不是一开空调就调成小风，觉得这样省电？</p>
 <p>又错了。空调最耗电的阶段是<strong>降温阶段</strong>——也就是房间从热变凉的过程。大风量能更快完成降温，让压缩机早点进入省电的"低频模式"。</p>
 <strong>正确操作：</strong> 刚开空调时开大风量+低温度（比如24°C），等房间凉下来后再调到26°C+自动风速。比一直小风慢慢吹更省电。
-<h2>4. 拉上窗帘，别让阳光跟你抢冷气</h2>
+<h2 id="4-拉上窗帘别让阳光跟你抢冷气" >4. 拉上窗帘，别让阳光跟你抢冷气</h2>
 <p>太阳光透过窗户照射进来，相当于一个免费的"暖风机"在房间里工作。你空调辛辛苦苦制冷，太阳光笑嘻嘻地加热，这仗打得毫无意义。</p>
 <strong>夏天白天出门或开空调时，拉上遮光窗帘。</strong> 这一个小小的动作，能让室内温度降低3-5°C，空调少干很多活。
 <p>推荐使用<strong>浅色遮光窗帘</strong>——浅色反射阳光，深色反而吸热。</p>
-<h2>5. 巧用"除湿模式"，比制冷更舒服</h2>
+<h2 id="5-巧用除湿模式比制冷更舒服" >5. 巧用"除湿模式"，比制冷更舒服</h2>
 <p>空调遥控器上有个"除湿模式"（通常是水滴图标 💧），很多人从来没用过。</p>
 <strong>什么时候用除湿模式？</strong>
 <ul><li>梅雨季、桑拿天——空气湿度大，身上黏糊糊，但温度其实不是特别高（28-32°C）</li><li>除湿模式下，压缩机间歇工作，主要目标是抽走空气中的水分</li></ul>
 <p>湿度降低后，汗液更容易蒸发——而蒸发吸热才是人体降温的主要方式！所以有时候除湿模式比制冷模式体感更舒服，而且更省电。</p>
 <p>> <strong>注意：</strong> 真正高温天（35°C以上）还是要用制冷模式，除湿降不了那么多温度。</p>
-<h2>6. 定期洗滤网，别让空调"戴口罩呼吸"</h2>
+<h2 id="6-定期洗滤网别让空调戴口罩呼吸" >6. 定期洗滤网，别让空调"戴口罩呼吸"</h2>
 <p>你上次洗空调滤网是什么时候？不记得了是吧。</p>
 <p>滤网堵了，就像让空调戴着N95口罩跑步——出风量变小、制冷效果变差、压缩机工作时间变长，电费自然上去。</p>
 <strong>建议每个月洗一次滤网。</strong> 取下来用水冲一冲，晾干再装回去，3分钟搞定。不仅省电，吹出来的风也更干净！
 <p>> 如果开空调时有异味，那滤网可能已经发霉了，赶紧拆下来深度清洁。</p>
-<h2>总结</h2>
+<h2 id="总结" >总结</h2>
 <table><thead><tr><th>秘诀</th><th>效果</th></tr></thead><tbody><tr><td>设26°C</td><td>省电30%+</td></tr><tr><td>风口朝上</td><td>降温更均匀</td></tr><tr><td>先大后小</td><td>快速降温更省电</td></tr><tr><td>拉窗帘</td><td>降低3-5°C</td></tr><tr><td>善用除湿</td><td>桑拿天神器</td></tr><tr><td>洗滤网</td><td>效果翻倍</td></tr></tbody></table>
 <p>记住这6招，这个夏天你可以在凉爽中优雅地看电费单——而不是颤抖着看 😎</p>
 <p>> 省电不是为了省钱（虽然确实省钱），更是为了不让空调累坏了。毕竟，夏天还长着呢！</p>
@@ -235,5 +283,48 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
+
+    
+    <script>
+    // ======================== 文章目录 TOC ========================
+    function buildTOC() {
+      var body = document.getElementById('post-body');
+      if (!body) return;
+      var headings = body.querySelectorAll('h2, h3');
+      var tocBox = document.getElementById('toc-box');
+      var tocList = document.getElementById('toc-list');
+      if (headings.length < 2) {
+        if (tocBox) tocBox.style.display = 'none';
+        return;
+      }
+      if (tocBox) tocBox.style.display = 'block';
+      var tocHTML = '';
+      for (var i = 0; i < headings.length; i++) {
+        var h = headings[i];
+        var level = h.tagName === 'H3' ? 'toc-h3' : '';
+        var id = h.id;
+        var text = h.textContent;
+        // 使用闭包来避免引号问题
+        tocHTML += '<li class="' + level + '"><a href="#' + id + '" onclick="scrollToHeading(\' + id + '\')">' + text + '</a></li>';
+      }
+      if (tocList) tocList.innerHTML = tocHTML;
+    }
+    
+    function scrollToHeading(id) {
+      var el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({behavior: 'smooth'});
+      }
+      return false;
+    }
+    
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', buildTOC);
+    } else {
+      buildTOC();
+    }
+    </script>
+    
+    
 </body>
 </html>

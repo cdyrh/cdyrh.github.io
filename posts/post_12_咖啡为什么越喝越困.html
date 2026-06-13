@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>咖啡为什么越喝越困？☕ — 池帅の亦殿</title>
+<title>咖啡为什么越喝越困？☕ — 池帥の亦殿</title>
 <meta name="description" content="# 咖啡提神？你可能喝反了  很多人喝咖啡是为了提神，结果越喝越困，甚至直接睡着。  ## 咖啡因的工作原理  人体疲劳时会分泌一种叫**腺苷**的物质，它和大">
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
@@ -43,11 +43,52 @@ body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC",sa
   .header { flex-direction:column; gap:0.5rem; }
 }
 </style>
+
+    <style>
+    .toc-box {
+      background: var(--pink-pale, #fff0f5);
+      border-radius: 10px;
+      border: 1.5px solid var(--border, #f0d9ff);
+      padding: 1rem 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+    .toc-title {
+      font-weight: 700;
+      color: var(--pink-deep, #e85d8a);
+      margin-bottom: 0.6rem;
+      font-size: 0.92rem;
+    }
+    .toc-list {
+      list-style: none;
+      padding: 0;
+    }
+    .toc-list li {
+      line-height: 2;
+    }
+    .toc-list a {
+      color: var(--text-light, #7c6f9f);
+      text-decoration: none;
+      font-size: 0.88rem;
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+      display: block;
+      transition: all 0.15s;
+    }
+    .toc-list a:hover {
+      color: var(--pink-deep, #e85d8a);
+      background: rgba(255, 143, 171, 0.1);
+    }
+    .toc-list .toc-h3 {
+      padding-left: 1.2rem;
+      font-size: 0.84rem;
+    }
+    </style>
+    
 </head>
 <body>
 
 <header class="header">
-  <a href="/" class="logo">🌸 池帅の亦殿</a>
+  <a href="/" class="logo">🌸 池帥の亦殿</a>
   <nav class="nav">
     <a href="/">首页</a>
     <a href="/#archive">归档</a>
@@ -69,13 +110,13 @@ body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC",sa
 <br>
 <p>很多人喝咖啡是为了提神，结果越喝越困，甚至直接睡着。</p>
 <br>
-<h2>咖啡因的工作原理</h2>
+<h2 id="咖啡因的工作原理" >咖啡因的工作原理</h2>
 <br>
 <p>人体疲劳时会分泌一种叫<strong>腺苷</strong>的物质，它和大脑受体结合，你就会觉得困。</p>
 <br>
 <p>咖啡因的作用是<strong>抢占腺苷的座位</strong>——它先坐到受体上，腺苷就没地方结合了，你就不困了。</p>
 <br>
-<h2>最佳喝咖啡时间</h2>
+<h2 id="最佳喝咖啡时间" >最佳喝咖啡时间</h2>
 <br>
 <ul>
 <li>**上午9:30-11:30** — 皮质醇下降，咖啡效果最佳</li>
@@ -83,7 +124,7 @@ body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC",sa
 <li>**睡前6小时内别喝** — 否则你可能数羊数到明天早上</li>
 </ul>
 <br>
-<h2>终极技巧</h2>
+<h2 id="终极技巧" >终极技巧</h2>
 <br>
 <p><strong>喝咖啡+小睡20分钟</strong> — 咖啡因起效大约需要20分钟，趁这段时间眯一会，醒来腺苷被清除了一部分，咖啡因刚好上岗，双重提神！</p>
     </div>
@@ -97,7 +138,7 @@ body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC",sa
 </div>
 
 <footer class="footer">
-  <p>© 2026 池帅の亦殿</p>
+  <p>© 2026 池帥の亦殿</p>
   <p style="margin-top:0.5rem;font-size:0.8rem;">2026-06-02 发布 • 独立页面</p>
 </footer>
 
@@ -120,5 +161,35 @@ function copyLink() {
 }
 </script>
 
+
+    <script>
+    function buildTOC() {
+      var body = document.getElementById('post-body');
+      if (!body) return;
+      var headings = body.querySelectorAll('h2, h3');
+      var tocBox = document.getElementById('toc-box');
+      var tocList = document.getElementById('toc-list');
+      if (headings.length < 2) {
+        if (tocBox) tocBox.style.display = 'none';
+        return;
+      }
+      if (tocBox) tocBox.style.display = 'block';
+      var tocHTML = '';
+      for (var i = 0; i < headings.length; i++) {
+        var h = headings[i];
+        var level = h.tagName === 'H3' ? 'toc-h3' : '';
+        var id = h.id;
+        var text = h.textContent;
+        tocHTML += '<li class="' + level + '"><a href="#' + id + '" onclick="event.preventDefault();var el=document.getElementById('' + id + '');if(el){el.scrollIntoView({behavior://'smooth'});}return false;">' + text + '</a></li>';
+      }
+      if (tocList) tocList.innerHTML = tocHTML;
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', buildTOC);
+    } else {
+      buildTOC();
+    }
+    </script>
+    
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>香蕉放冰箱会变黑，但它其实没坏 🍌 - 池帅の亦殿</title>
+<title>香蕉放冰箱会变黑，但它其实没坏 🍌 - 池帥の亦殿</title>
 <meta name="description" content="香蕉放冰箱会变黑，但它其实没坏 🍌">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌸</text></svg>">
 
@@ -380,6 +380,48 @@ body {
   z-index: 1;
 }
 </style>
+
+    <style>
+    /* ===== TOC (文章目录) ===== */
+    .toc-box {
+      background: var(--pink-pale, #fff0f5);
+      border-radius: 10px;
+      border: 1.5px solid var(--border, #f0d9ff);
+      padding: 1rem 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+    .toc-title {
+      font-weight: 700;
+      color: var(--pink-deep, #e85d8a);
+      margin-bottom: 0.6rem;
+      font-size: 0.92rem;
+    }
+    .toc-list {
+      list-style: none;
+      padding: 0;
+    }
+    .toc-list li {
+      line-height: 2;
+    }
+    .toc-list a {
+      color: var(--text-light, #7c6f9f);
+      text-decoration: none;
+      font-size: 0.88rem;
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+      display: block;
+      transition: all 0.15s;
+    }
+    .toc-list a:hover {
+      color: var(--pink-deep, #e85d8a);
+      background: rgba(255, 143, 171, 0.1);
+    }
+    .toc-list .toc-h3 {
+      padding-left: 1.2rem;
+      font-size: 0.84rem;
+    }
+    </style>
+    
 </head>
 <body>
 
@@ -388,7 +430,7 @@ body {
 
 <!-- 导航 -->
 <nav class="nav">
-  <a href="../" class="nav-logo">池帅の亦殿 🌸</a>
+  <a href="../" class="nav-logo">池帥の亦殿 🌸</a>
   <div class="nav-actions">
     <a href="../" class="nav-back">← 返回首页</a>
     <button id="dark-toggle" onclick="toggleDark()">🌙</button>
@@ -408,13 +450,19 @@ body {
       <div class="post-tags" id="post-tags"></div>
     </div>
   
+    
+    <!-- TOC 目录导航 -->
+    <div class="toc-box" id="toc-box" style="display:none">
+      <div class="toc-title">📋 文章目录</div>
+      <ul class="toc-list" id="toc-list"></ul>
+    </div>
     <div class="post-body" id="post-body">
 <h1>香蕉的"黑化"之路</h1>
 <p>你是不是也干过这种事：把香蕉放进冰箱保鲜，结果第二天拿出来，皮全黑了，然后一脸嫌弃地扔掉？</p>
 <p><strong>停！那只是它的皮黑了，果肉其实好好的！</strong></p>
 <p>香蕉属于热带水果，最怕冷。低温会破坏它表皮的细胞，导致黑色素沉积——简单说就是"冻伤了脸"，但内心依旧甜美。</p>
 <blockquote>生活启示：有些人看着黑，心里可甜了 😏</blockquote>
-<h2>正确保存香蕉的姿势</h2>
+<h2 id="正确保存香蕉的姿势" >正确保存香蕉的姿势</h2>
 <p>1. <strong>室温悬挂</strong> — 像挂毛巾一样挂起来，它觉得自己还在树上，熟得慢</p>
 <p>2. <strong>保鲜膜裹住根部</strong> — 那里是乙烯释放口，裹住能延缓衰老</p>
 <p>3. <strong>和苹果分开放</strong> — 苹果是催熟界的卷王，放一起香蕉会慌</p>
@@ -429,7 +477,7 @@ body {
     </div>
   
     <div class="back-home" id="back-home">
-      <a href="../">← 返回首页 池帅の亦殿</a>
+      <a href="../">← 返回首页 池帥の亦殿</a>
     </div>
   </div>
 </div>
@@ -538,5 +586,48 @@ document.getElementById("post-tags").innerHTML = ['食物', '冷知识'].map(fun
   return '<span class="tag">' + t + '</span>';
 }).join("");
 </script>
+
+    
+    <script>
+    // ======================== 文章目录 TOC ========================
+    function buildTOC() {
+      var body = document.getElementById('post-body');
+      if (!body) return;
+      var headings = body.querySelectorAll('h2, h3');
+      var tocBox = document.getElementById('toc-box');
+      var tocList = document.getElementById('toc-list');
+      if (headings.length < 2) {
+        if (tocBox) tocBox.style.display = 'none';
+        return;
+      }
+      if (tocBox) tocBox.style.display = 'block';
+      var tocHTML = '';
+      for (var i = 0; i < headings.length; i++) {
+        var h = headings[i];
+        var level = h.tagName === 'H3' ? 'toc-h3' : '';
+        var id = h.id;
+        var text = h.textContent;
+        // 使用闭包来避免引号问题
+        tocHTML += '<li class="' + level + '"><a href="#' + id + '" onclick="scrollToHeading(\' + id + '\')">' + text + '</a></li>';
+      }
+      if (tocList) tocList.innerHTML = tocHTML;
+    }
+    
+    function scrollToHeading(id) {
+      var el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({behavior: 'smooth'});
+      }
+      return false;
+    }
+    
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', buildTOC);
+    } else {
+      buildTOC();
+    }
+    </script>
+    
+    
 </body>
 </html>

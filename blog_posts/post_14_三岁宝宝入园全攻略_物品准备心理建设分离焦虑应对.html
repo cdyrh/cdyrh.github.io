@@ -97,6 +97,48 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:
   padding:.35rem .7rem;cursor:pointer;font-size:1rem;transition:all .2s;color:var(--text-light);margin-left:1rem}
 #dark-toggle:hover{background:var(--pink-pale)}
 </style>
+
+    <style>
+    /* ===== TOC (文章目录) ===== */
+    .toc-box {
+      background: var(--pink-pale, #fff0f5);
+      border-radius: 10px;
+      border: 1.5px solid var(--border, #f0d9ff);
+      padding: 1rem 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+    .toc-title {
+      font-weight: 700;
+      color: var(--pink-deep, #e85d8a);
+      margin-bottom: 0.6rem;
+      font-size: 0.92rem;
+    }
+    .toc-list {
+      list-style: none;
+      padding: 0;
+    }
+    .toc-list li {
+      line-height: 2;
+    }
+    .toc-list a {
+      color: var(--text-light, #7c6f9f);
+      text-decoration: none;
+      font-size: 0.88rem;
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+      display: block;
+      transition: all 0.15s;
+    }
+    .toc-list a:hover {
+      color: var(--pink-deep, #e85d8a);
+      background: rgba(255, 143, 171, 0.1);
+    }
+    .toc-list .toc-h3 {
+      padding-left: 1.2rem;
+      font-size: 0.84rem;
+    }
+    </style>
+    
 </head>
 <body>
 
@@ -132,15 +174,21 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:
   </div>
   
   <!-- 文章正文 -->
-  <div class="post-body" id="post-body">
+  
+    <!-- TOC 目录导航 -->
+    <div class="toc-box" id="toc-box" style="display:none">
+      <div class="toc-title">📋 文章目录</div>
+      <ul class="toc-list" id="toc-list"></ul>
+    </div>
+    <div class="post-body" id="post-body">
     <h1>🎒 三岁宝宝入园全攻略</h1>
 <p>> 🏫 为瓯海区机关幼儿园会昌园区2026级新生宝宝量身定制</p>
 <p>亲爱的爸爸妈妈们，首先要恭喜你们——宝宝收到了幼儿园的录取通知书，即将迈出人生第一个独立的脚步！🎊</p>
 <p>这份攻略涵盖<strong>物品准备、能力培养、心理建设、分离焦虑应对、家长配合、生理过渡</strong>六大维度，是根据2026年最新入园政策整理的全方位指南。</p>
 <p>!<a href="/cover-kindergarten.png" target="_blank">入园准备</a></p>
-<h2>📋 五大维度全覆盖</h2>
+<h2 id="-五大维度全覆盖" >📋 五大维度全覆盖</h2>
 <ul><li>🎒 <strong>物品准备清单</strong>：衣物、寝具、日常用品、证件材料，一个不落</li><li>🌟 <strong>能力培养指南</strong>：生活自理、语言表达、社交交往，提前练好</li><li>💝 <strong>心理建设方法</strong>：绘本种草、角色扮演、实地熟悉</li><li>🫂 <strong>分离焦虑应对</strong>：告别仪式、安抚物、正向引导、梯度适应</li><li>👨‍👩‍👧 <strong>家长配合要点</strong>：情绪管理、家校沟通、坚持送园</li></ul>
-<h2>👉 查看完整攻略</h2>
+<h2 id="-查看完整攻略" >👉 查看完整攻略</h2>
 <p>点击下方链接查看完整版（含详细清单、Q&A、时间节点速查表）：</p>
 <strong><a href="/kindergarten-prep.html" target="_blank">📖 查看完整入园攻略 →</a></strong>
 <hr>
@@ -209,5 +257,48 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
+
+    
+    <script>
+    // ======================== 文章目录 TOC ========================
+    function buildTOC() {
+      var body = document.getElementById('post-body');
+      if (!body) return;
+      var headings = body.querySelectorAll('h2, h3');
+      var tocBox = document.getElementById('toc-box');
+      var tocList = document.getElementById('toc-list');
+      if (headings.length < 2) {
+        if (tocBox) tocBox.style.display = 'none';
+        return;
+      }
+      if (tocBox) tocBox.style.display = 'block';
+      var tocHTML = '';
+      for (var i = 0; i < headings.length; i++) {
+        var h = headings[i];
+        var level = h.tagName === 'H3' ? 'toc-h3' : '';
+        var id = h.id;
+        var text = h.textContent;
+        // 使用闭包来避免引号问题
+        tocHTML += '<li class="' + level + '"><a href="#' + id + '" onclick="scrollToHeading(\' + id + '\')">' + text + '</a></li>';
+      }
+      if (tocList) tocList.innerHTML = tocHTML;
+    }
+    
+    function scrollToHeading(id) {
+      var el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({behavior: 'smooth'});
+      }
+      return false;
+    }
+    
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', buildTOC);
+    } else {
+      buildTOC();
+    }
+    </script>
+    
+    
 </body>
 </html>

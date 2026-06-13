@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>为什么袜子总是丢一只？🧦 - 池帅の亦殿</title>
+<title>为什么袜子总是丢一只？🧦 - 池帥の亦殿</title>
 <meta name="description" content="为什么袜子总是丢一只？🧦">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌸</text></svg>">
 
@@ -380,6 +380,48 @@ body {
   z-index: 1;
 }
 </style>
+
+    <style>
+    /* ===== TOC (文章目录) ===== */
+    .toc-box {
+      background: var(--pink-pale, #fff0f5);
+      border-radius: 10px;
+      border: 1.5px solid var(--border, #f0d9ff);
+      padding: 1rem 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+    .toc-title {
+      font-weight: 700;
+      color: var(--pink-deep, #e85d8a);
+      margin-bottom: 0.6rem;
+      font-size: 0.92rem;
+    }
+    .toc-list {
+      list-style: none;
+      padding: 0;
+    }
+    .toc-list li {
+      line-height: 2;
+    }
+    .toc-list a {
+      color: var(--text-light, #7c6f9f);
+      text-decoration: none;
+      font-size: 0.88rem;
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+      display: block;
+      transition: all 0.15s;
+    }
+    .toc-list a:hover {
+      color: var(--pink-deep, #e85d8a);
+      background: rgba(255, 143, 171, 0.1);
+    }
+    .toc-list .toc-h3 {
+      padding-left: 1.2rem;
+      font-size: 0.84rem;
+    }
+    </style>
+    
 </head>
 <body>
 
@@ -388,7 +430,7 @@ body {
 
 <!-- 导航 -->
 <nav class="nav">
-  <a href="../" class="nav-logo">池帅の亦殿 🌸</a>
+  <a href="../" class="nav-logo">池帥の亦殿 🌸</a>
   <div class="nav-actions">
     <a href="../" class="nav-back">← 返回首页</a>
     <button id="dark-toggle" onclick="toggleDark()">🌙</button>
@@ -408,14 +450,20 @@ body {
       <div class="post-tags" id="post-tags"></div>
     </div>
   
+    
+    <!-- TOC 目录导航 -->
+    <div class="toc-box" id="toc-box" style="display:none">
+      <div class="toc-title">📋 文章目录</div>
+      <ul class="toc-list" id="toc-list"></ul>
+    </div>
     <div class="post-body" id="post-body">
 <h1>袜子失踪之谜</h1>
 <p>洗衣机大概是这个世界上最神秘的"黑洞"，而袜子就是它最爱的猎物。</p>
-<h2>科学解释（认真的）</h2>
+<h2 id="科学解释认真的" >科学解释（认真的）</h2>
 <p>1. <strong>静电吸附</strong> — 洗衣机高速旋转产生静电，小只的袜子容易吸附在滚筒缝隙或排水管里</p>
 <p>2. <strong>尺寸劣势</strong> — 袜子太小，容易卷进床单、裤腿里，被"绑架"了</p>
 <p>3. <strong>脱水甩飞</strong> — 高速脱水时，轻薄的袜子可能被甩到洗衣机角落</p>
-<h2>防丢小妙招</h2>
+<h2 id="防丢小妙招" >防丢小妙招</h2>
 <ul>
 <li><strong>买一样的袜子</strong> — 全是黑袜子，丢一只也无所谓，随便凑一对</li>
 <li><strong>用洗衣袋</strong> — 把袜子装进网状洗衣袋，集体行动，一个都不能少</li>
@@ -431,7 +479,7 @@ body {
     </div>
   
     <div class="back-home" id="back-home">
-      <a href="../">← 返回首页 池帅の亦殿</a>
+      <a href="../">← 返回首页 池帥の亦殿</a>
     </div>
   </div>
 </div>
@@ -540,5 +588,48 @@ document.getElementById("post-tags").innerHTML = ['趣味', '冷知识'].map(fun
   return '<span class="tag">' + t + '</span>';
 }).join("");
 </script>
+
+    
+    <script>
+    // ======================== 文章目录 TOC ========================
+    function buildTOC() {
+      var body = document.getElementById('post-body');
+      if (!body) return;
+      var headings = body.querySelectorAll('h2, h3');
+      var tocBox = document.getElementById('toc-box');
+      var tocList = document.getElementById('toc-list');
+      if (headings.length < 2) {
+        if (tocBox) tocBox.style.display = 'none';
+        return;
+      }
+      if (tocBox) tocBox.style.display = 'block';
+      var tocHTML = '';
+      for (var i = 0; i < headings.length; i++) {
+        var h = headings[i];
+        var level = h.tagName === 'H3' ? 'toc-h3' : '';
+        var id = h.id;
+        var text = h.textContent;
+        // 使用闭包来避免引号问题
+        tocHTML += '<li class="' + level + '"><a href="#' + id + '" onclick="scrollToHeading(\' + id + '\')">' + text + '</a></li>';
+      }
+      if (tocList) tocList.innerHTML = tocHTML;
+    }
+    
+    function scrollToHeading(id) {
+      var el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({behavior: 'smooth'});
+      }
+      return false;
+    }
+    
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', buildTOC);
+    } else {
+      buildTOC();
+    }
+    </script>
+    
+    
 </body>
 </html>

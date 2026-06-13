@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>池帥の亦殿 🌸</title>
-<meta name="description" id="meta-desc" content="池帅的个人博客，记录生活，分享美好">
+<meta name="description" id="meta-desc" content="池帥的个人博客，记录生活，分享美好">
 <meta name="keywords" id="meta-kw" content="博客,生活,技术,随笔">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌸</text></svg>">
 <!-- RSS -->
-<link rel="alternate" type="application/rss+xml" title="池帅の亦殿 RSS" href="#rss">
+<link rel="alternate" type="application/rss+xml" title="池帥の亦殿 RSS" href="#rss">
 <!-- highlight.js -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
@@ -546,7 +546,7 @@ body.is-admin .fab{display:flex}
 
 <!-- ======== 导航 ======== -->
 <nav id="main-nav">
-  <div class="nav-logo" onclick="showPage('home')">🌸 池帅の亦殿</div>
+  <div class="nav-logo" onclick="showPage('home')">🌸 池帥の亦殿</div>
   <div class="nav-links">
     <button class="nav-btn active" id="nav-home" onclick="showPage('home')">🏠 首页</button>
     <button class="nav-btn" id="nav-archive" onclick="showPage('archive')">📅 归档</button>
@@ -561,7 +561,7 @@ body.is-admin .fab{display:flex}
   <!-- 英雄区 -->
   <div class="hero">
     <div class="hero-avatar">🌸</div>
-    <h1>池帅の亦殿</h1>
+    <h1>池帥の亦殿</h1>
     <p>记录生活，分享美好，写下每一个值得被记住的瞬间 ✨</p>
     <p><a href="mailto:0d@live.com" style="color:var(--pink-deep);text-decoration:none">📮 0d@live.com</a></p>
     <div class="hero-tags">
@@ -587,7 +587,7 @@ body.is-admin .fab{display:flex}
     <aside class="sidebar">
       <div class="widget profile-card fade-in stagger-1">
         <div class="profile-avatar">🌸</div>
-        <div class="profile-name">池帅</div>
+        <div class="profile-name">池帥</div>
         <div class="profile-bio">喜欢文艺、捣鼓技术和华丽的普通人 🌙</div>
         <a href="mailto:0d@live.com" class="profile-email">📮 0d@live.com</a>
         <div class="profile-stats">
@@ -698,8 +698,8 @@ body.is-admin .fab{display:flex}
   <div style="max-width:700px;margin:3rem auto;padding:0 1.5rem">
     <div class="post-detail-body" style="text-align:center;padding:3rem">
       <div style="font-size:5rem;margin-bottom:1rem;animation:float 4s ease-in-out infinite">🌸</div>
-      <h2 style="font-size:1.8rem;background:linear-gradient(135deg,var(--pink-deep),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1rem">关于池帅</h2>
-      <p>嗨～我是池帅，一个喜欢在互联网角落里写字的人。</p>
+      <h2 style="font-size:1.8rem;background:linear-gradient(135deg,var(--pink-deep),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1rem">关于池帥</h2>
+      <p>嗨～我是池帥，一个喜欢在互联网角落里写字的人。</p>
       <p>这里会有我对生活的碎碎念，也有我学到的技术笔记，还有偶尔迸发的奇思妙想。</p>
       <p>不算活跃，但会持续更新 :)</p>
       <div style="margin:2rem 0;padding:1.5rem;background:var(--pink-pale);border-radius:var(--radius-sm);border:1.5px dashed var(--pink-light)">
@@ -742,7 +742,7 @@ body.is-admin .fab{display:flex}
   <div class="admin-nav">
     <div class="admin-nav-title">🌸 博客管理后台</div>
     <div class="admin-nav-right">
-      <span style="color:rgba(255,255,255,.8);font-size:.88rem">👋 你好，池帅</span>
+      <span style="color:rgba(255,255,255,.8);font-size:.88rem">👋 你好，池帥</span>
       <button class="admin-btn-sm" onclick="showPage('home')">查看博客</button>
       <button class="admin-btn-sm" onclick="doLogout()">退出</button>
     </div>
@@ -892,7 +892,7 @@ body.is-admin .fab{display:flex}
         <h3 style="margin-bottom:1.5rem;color:var(--pink-deep)">⚙️ 网站设置</h3>
         <div class="form-group">
           <label>博客名称</label>
-          <input class="form-control" id="s-title" value="池帅の亦殿">
+          <input class="form-control" id="s-title" value="池帥の亦殿">
         </div>
         <div class="form-group">
           <label>副标题 / 口号</label>
@@ -976,7 +976,7 @@ const DB = {
   get posts(){return JSON.parse(localStorage.getItem(this.KEY_POSTS)||'[]')},
   set posts(v){localStorage.setItem(this.KEY_POSTS,JSON.stringify(v))},
   get cfg(){return Object.assign({
-    title:'池帅の亦殿',sub:'记录生活，分享美好，写下每一个值得被记住的瞬间 ✨',
+    title:'池帥の亦殿',sub:'记录生活，分享美好，写下每一个值得被记住的瞬间 ✨',
     bio:'喜欢文艺、捣鼓技术和华丽的普通人 🌙',
     email:'0d@live.com',ppp:5,
     startDate: new Date().toISOString().slice(0,10)
@@ -1463,7 +1463,7 @@ if(!localStorage.getItem(DB.KEY_POSTS)){
       id:1,title:'欢迎来到我的小窝 🌸',
       cat:'随笔',tags:['欢迎','开始'],cover:'🌸',
       date:'2026-06-13',views:128,top:false,draft:false,
-      body:`# 欢迎来到池帅の亦殿
+      body:`# 欢迎来到池帥の亦殿
 
 嗨！你好呀，很高兴你能找到这里～
 
@@ -1873,7 +1873,7 @@ function doLogin(){
     document.getElementById('login-pwd').value='';
     document.body.classList.add('is-admin');
     showPage('admin');
-    toast('🌸 欢迎回来，池帅！');
+    toast('🌸 欢迎回来，池帥！');
   } else {
     err.style.display='block';
     setTimeout(()=>err.style.display='none',3000);
