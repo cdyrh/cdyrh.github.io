@@ -6,79 +6,376 @@
 <title>夏天开空调又凉快又省电的6个秘诀 ❄️ - 池帅の亦殿</title>
 <meta name="description" content="夏天开空调又凉快又省电的6个秘诀 ❄️">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌸</text></svg>">
+
+<!-- 字体加载 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=ZCOOL+YaTi&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
 <style>
+/* ===== CSS Reset ===== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 /* ===== CSS 变量 ===== */
-:root{
-  --pink:#ff8fab;--pink-light:#ffb3c6;--pink-pale:#fff0f5;--pink-deep:#e85d8a;
-  --purple:#c77dff;--purple-light:#e0aaff;--purple-pale:#f8f0ff;
-  --text:#4a4063;--text-light:#7c6f9f;--text-muted:#b0a8c8;
-  --bg:#fdf4ff;--card:#fff;--border:#f0d9ff;
-  --shadow:0 8px 32px rgba(200,100,200,.12);
-  --radius:18px;--radius-sm:10px;
+:root {
+  --pink: #ff8fab;
+  --pink-light: #ffb3c6;
+  --pink-pale: #fff0f5;
+  --pink-deep: #e85d8a;
+  --purple: #c77dff;
+  --purple-light: #e0aaff;
+  --purple-pale: #f8f0ff;
+  --text: #4a4063;
+  --text-light: #7c6f9f;
+  --text-muted: #b0a8c8;
+  --bg: #fdf4ff;
+  --card: #fff;
+  --border: #f0d9ff;
+  --shadow: 0 8px 32px rgba(200, 100, 200, 0.12);
+  --radius: 18px;
+  --radius-sm: 10px;
 }
-[data-theme="dark"]{
-  --text:#e2d9f3;--text-light:#c4b5e0;--text-muted:#8b7aaf;
-  --bg:#1a1225;--card:#241a34;--border:#3d2d5a;
-  --pink-pale:#2d1a2e;--purple-pale:#201630;
-  --shadow:0 8px 32px rgba(0,0,0,.4);
+
+[data-theme="dark"] {
+  --text: #e2d9f3;
+  --text-light: #c4b5e0;
+  --text-muted: #8b7aaf;
+  --bg: #1a1225;
+  --card: #241a34;
+  --border: #3d2d5a;
+  --pink-pale: #2d1a2e;
+  --purple-pale: #201630;
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'LXGWenKai','Ma Shan Zheng','Noto Serif SC',serif;background:var(--bg);color:var(--text);line-height:1.8;transition:background .3s,color .3s;padding-top:64px}
+
+body {
+  font-family: 'Noto Serif SC', 'ZCOOL YaTi', 'SimSun', 'STSong', serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
+  transition: background 0.3s, color 0.3s;
+  padding-top: 64px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
 /* ===== 导航 ===== */
-.nav{background:rgba(255,255,255,.85);backdrop-filter:blur(12px);border-bottom:2px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;position:fixed;top:0;left:0;right:0;z-index:100;height:64px}
-[data-theme="dark"] .nav{background:rgba(26,18,37,.88)}
-.nav-logo{font-size:1.2rem;font-weight:700;background:linear-gradient(135deg,var(--pink),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
-.nav-actions{display:flex;align-items:center;gap:.8rem}
-.nav-back{background:none;border:1.5px solid var(--border);border-radius:20px;padding:.35rem .9rem;cursor:pointer;font-family:var(--font);font-size:.9rem;color:var(--text-light);transition:all .2s;text-decoration:none;display:inline-block}
-.nav-back:hover{background:var(--pink-pale)}
-#dark-toggle{background:none;border:1.5px solid var(--border);border-radius:20px;padding:.35rem .7rem;cursor:pointer;font-size:1rem;transition:all .2s;color:var(--text-light)}
-#dark-toggle:hover{background:var(--pink-pale)}
+.nav {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 2px solid var(--border);
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: 64px;
+}
+
+[data-theme="dark"] .nav {
+  background: rgba(26, 18, 37, 0.92);
+}
+
+.nav-logo {
+  font-size: 1.2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-decoration: none;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.nav-back {
+  background: none;
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  padding: 0.35rem 0.9rem;
+  cursor: pointer;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 0.9rem;
+  color: var(--text-light);
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.nav-back:hover {
+  background: var(--pink-pale);
+}
+
+#dark-toggle {
+  background: none;
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  padding: 0.35rem 0.7rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s;
+  color: var(--text-light);
+}
+
+#dark-toggle:hover {
+  background: var(--pink-pale);
+}
 
 /* ===== 文章容器 ===== */
-.post-container{max-width:800px;margin:2rem auto;padding:0 1.5rem}
-.post-header{text-align:center;margin-bottom:2rem;padding:2rem 0}
-.post-cover{font-size:4rem;margin-bottom:1rem}
-.post-title{font-size:2rem;margin-bottom:.8rem;background:linear-gradient(135deg,var(--pink-deep),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.post-meta{color:var(--text-muted);font-size:.9rem;margin-bottom:1rem}
-.post-meta span{margin:0 .5rem}
-.post-tags{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin-top:.8rem}
-.tag{background:var(--pink-pale);color:var(--pink-deep);padding:.2rem .7rem;border-radius:12px;font-size:.8rem}
+.post-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+}
+
+.post-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 2rem 0;
+}
+
+.post-cover {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.post-title {
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
+  background: linear-gradient(135deg, var(--pink-deep), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.4;
+}
+
+.post-meta {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.post-meta span {
+  margin: 0 0.5rem;
+}
+
+.post-tags {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 0.8rem;
+}
+
+.tag {
+  background: var(--pink-pale);
+  color: var(--pink-deep);
+  padding: 0.2rem 0.7rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+}
 
 /* ===== 文章正文 ===== */
-.post-body{background:var(--card);border-radius:var(--radius);border:1.5px solid var(--border);box-shadow:var(--shadow);padding:2rem;margin-bottom:2rem}
-.post-body h1,.post-body h2,.post-body h3,.post-body h4{color:var(--pink-deep);margin:1.5rem 0 .8rem}
-.post-body p{margin-bottom:1rem;line-height:2}
-.post-body ul,.post-body ol{margin:0 0 1rem 1.5rem}
-.post-body li{margin-bottom:.5rem}
-.post-body code:not(pre code){background:var(--pink-pale);color:var(--pink-deep);padding:.1rem .4rem;border-radius:4px;font-size:.9em}
-.post-body pre{border-radius:var(--radius-sm);margin-bottom:1rem;overflow-x:auto;padding:1rem}
-.post-body blockquote{border-left:3px solid var(--pink-light);padding-left:1rem;color:var(--text-light);font-style:italic;margin-bottom:1rem;background:var(--pink-pale);border-radius:0 var(--radius-sm) var(--radius-sm) 0;padding:.8rem 1rem}
-.post-body table{width:100%;border-collapse:collapse;margin-bottom:1rem;font-size:.92rem}
-.post-body th{background:linear-gradient(135deg,var(--pink),var(--purple));color:#fff;padding:.6rem .8rem;text-align:left}
-.post-body td{padding:.55rem .8rem;border-bottom:1px solid var(--border)}
-.post-body img{max-width:100%;border-radius:12px;margin:1rem 0}
+.post-body {
+  background: var(--card);
+  border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+  box-shadow: var(--shadow);
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  font-size: 1.05rem;
+  line-height: 2;
+}
+
+.post-body h1,
+.post-body h2,
+.post-body h3,
+.post-body h4 {
+  color: var(--pink-deep);
+  margin: 1.8rem 0 1rem;
+  line-height: 1.4;
+}
+
+.post-body h1 { font-size: 1.6rem; }
+.post-body h2 { font-size: 1.4rem; }
+.post-body h3 { font-size: 1.2rem; }
+
+.post-body p {
+  margin-bottom: 1.2rem;
+  line-height: 2;
+}
+
+.post-body ul,
+.post-body ol {
+  margin: 0 0 1.2rem 1.5rem;
+  padding-left: 0.5rem;
+}
+
+.post-body li {
+  margin-bottom: 0.6rem;
+  line-height: 1.8;
+}
+
+.post-body code:not(pre code) {
+  background: var(--pink-pale);
+  color: var(--pink-deep);
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.9em;
+  font-family: 'Courier New', monospace;
+}
+
+.post-body pre {
+  border-radius: var(--radius-sm);
+  margin-bottom: 1.2rem;
+  overflow-x: auto;
+  padding: 1.2rem;
+  background: #282c34;
+}
+
+.post-body blockquote {
+  border-left: 3px solid var(--pink-light);
+  padding: 0.8rem 1.2rem;
+  color: var(--text-light);
+  font-style: italic;
+  margin-bottom: 1.2rem;
+  background: var(--pink-pale);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.post-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.2rem;
+  font-size: 0.92rem;
+}
+
+.post-body th {
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  color: #fff;
+  padding: 0.6rem 0.8rem;
+  text-align: left;
+}
+
+.post-body td {
+  padding: 0.55rem 0.8rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.post-body img {
+  max-width: 100%;
+  border-radius: 12px;
+  margin: 1rem 0;
+}
+
+.post-body a {
+  color: var(--pink-deep);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--pink-light);
+  transition: all 0.2s;
+}
+
+.post-body a:hover {
+  color: var(--purple);
+  border-bottom-color: var(--purple);
+}
 
 /* ===== 分享栏 ===== */
-.share-bar{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;padding:1.2rem;background:var(--card);border-radius:var(--radius);border:1.5px solid var(--border);box-shadow:var(--shadow);margin-bottom:2rem}
-.share-label{color:var(--text-muted);font-size:.9rem;margin-right:.3rem}
-.share-btn{width:40px;height:40px;border-radius:50%;border:none;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:all .2s;box-shadow:0 2px 8px rgba(0,0,0,.08)}
-.share-btn:hover{transform:translateY(-3px) scale(1.1)}
-.share-btn.wx{background:#07c160;color:#fff}
-.share-btn.qq{background:#12b7f5;color:#fff}
-.share-btn.wb{background:#e6162d;color:#fff}
-.share-btn.cp{background:var(--purple-pale);color:var(--purple)}
+.share-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  padding: 1.2rem;
+  background: var(--card);
+  border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+  box-shadow: var(--shadow);
+  margin-bottom: 2rem;
+}
+
+.share-label {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-right: 0.3rem;
+}
+
+.share-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.share-btn:hover {
+  transform: translateY(-3px) scale(1.1);
+}
+
+.share-btn.wx { background: #07c160; color: #fff; }
+.share-btn.qq { background: #12b7f5; color: #fff; }
+.share-btn.wb { background: #e6162d; color: #fff; }
+.share-btn.cp { background: var(--purple-pale); color: var(--purple); }
 
 /* ===== 返回首页 ===== */
-.back-home{text-align:center;margin:2rem 0}
-.back-home a{display:inline-block;padding:.8rem 2rem;border-radius:24px;background:linear-gradient(135deg,var(--pink),var(--purple));color:#fff;text-decoration:none;font-weight:700;transition:opacity .2s}
-.back-home a:hover{opacity:.85}
+.back-home {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.back-home a {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  border-radius: 24px;
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  transition: opacity 0.2s;
+}
+
+.back-home a:hover {
+  opacity: 0.85;
+}
 
 /* ===== 粒子背景 ===== */
-#particles{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0}
-.post-container,#back-home{position:relative;z-index:1}
+#particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.post-container,
+#back-home {
+  position: relative;
+  z-index: 1;
+}
 </style>
 </head>
 <body>
@@ -109,135 +406,53 @@ body{font-family:'LXGWenKai','Ma Shan Zheng','Noto Serif SC',serif;background:va
   
   <div class="post-body" id="post-body">
 <h1>不开空调热到融化，开了又心疼电费？</h1>
-
-<p>
-六月一到，气温"噌噌"往上涨。不开空调吧，风扇吹出来的都是热风；开了吧，月底电费单一看，心比空调还凉。
-</p>
-
-<p>
-其实，空调开对了，比不开还省心。今天分享6个空调使用秘诀，让你凉快不费电！
-</p>
-
-<p>
-!<a href="https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=800&q=80">空调使用技巧</a>
-</p>
-
+<p>六月一到，气温"噌噌"往上涨。不开空调吧，风扇吹出来的都是热风；开了吧，月底电费单一看，心比空调还凉。</p>
+<p>其实，空调开对了，比不开还省心。今天分享6个空调使用秘诀，让你凉快不费电！</p>
+<p>![空调使用技巧](https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=800&q=80)</p>
 <h2>1. 温度设26°C，既凉快又省电</h2>
-
-<p>
-很多人一开空调就调到18°C，觉得越低越凉快。错了。
-</p>
-
-<p>
-空调的制冷原理是<strong>把室内热量搬运到室外</strong>。你设18°C和设26°C，空调吹出来的冷风温度其实是一样的——区别在于<strong>它什么时候停</strong>。
-</p>
-
-<p>
-设18°C，房间永远达不到，压缩机就一直转，像狂奔的马拉松选手，电表也跟着狂奔；设26°C，到达目标温度后压缩机自动降频或暂停，省电效果立竿见影。
-</p>
-
-<p>
-> <strong>冷知识：</strong> 每调高1°C，能省约7%-10%的电。从20°C调到26°C，能省将近一半！
-</p>
-
+<p>很多人一开空调就调到18°C，觉得越低越凉快。错了。</p>
+<p>空调的制冷原理是**把室内热量搬运到室外**。你设18°C和设26°C，空调吹出来的冷风温度其实是一样的——区别在于**它什么时候停**。</p>
+<p>设18°C，房间永远达不到，压缩机就一直转，像狂奔的马拉松选手，电表也跟着狂奔；设26°C，到达目标温度后压缩机自动降频或暂停，省电效果立竿见影。</p>
+<blockquote>**冷知识：** 每调高1°C，能省约7%-10%的电。从20°C调到26°C，能省将近一半！</blockquote>
 <h2>2. 风向朝上吹，冷气从天而降</h2>
-
-<p>
-你有没有发现：开了空调，脚是凉的，头还是热的？
-</p>
-
-<p>
-这是因为冷空气比热空气<strong>重</strong>，会自然下沉。如果你把出风口朝下吹，冷气全堆在地上，上半身根本感受不到。
-</p>
-
-<strong>正确姿势：</strong> 出风口调到水平或略微朝上，让冷气从天花板开始慢慢"淋"下来，整个房间均匀降温，体感舒适度翻倍！
-
-<p>
-> 制热时反过来：热空气轻，风口朝下吹，热气从脚底暖到全身。
-</p>
-
-<p>
-!<a href="https://images.unsplash.com/photo-1598475340352-9e0ac5d2cf00?w=800&q=80">空调风向技巧</a>
-</p>
-
+<p>你有没有发现：开了空调，脚是凉的，头还是热的？</p>
+<p>这是因为冷空气比热空气**重**，会自然下沉。如果你把出风口朝下吹，冷气全堆在地上，上半身根本感受不到。</p>
+<p>**正确姿势：** 出风口调到水平或略微朝上，让冷气从天花板开始慢慢"淋"下来，整个房间均匀降温，体感舒适度翻倍！</p>
+<blockquote>制热时反过来：热空气轻，风口朝下吹，热气从脚底暖到全身。</blockquote>
+<p>![空调风向技巧](https://images.unsplash.com/photo-1598475340352-9e0ac5d2cf00?w=800&q=80)</p>
 <h2>3. 先开大风，凉了再调小</h2>
-
-<p>
-你是不是一开空调就调成小风，觉得这样省电？
-</p>
-
-<p>
-又错了。空调最耗电的阶段是<strong>降温阶段</strong>——也就是房间从热变凉的过程。大风量能更快完成降温，让压缩机早点进入省电的"低频模式"。
-</p>
-
-<strong>正确操作：</strong> 刚开空调时开大风量+低温度（比如24°C），等房间凉下来后再调到26°C+自动风速。比一直小风慢慢吹更省电。
-
+<p>你是不是一开空调就调成小风，觉得这样省电？</p>
+<p>又错了。空调最耗电的阶段是**降温阶段**——也就是房间从热变凉的过程。大风量能更快完成降温，让压缩机早点进入省电的"低频模式"。</p>
+<p>**正确操作：** 刚开空调时开大风量+低温度（比如24°C），等房间凉下来后再调到26°C+自动风速。比一直小风慢慢吹更省电。</p>
 <h2>4. 拉上窗帘，别让阳光跟你抢冷气</h2>
-
-<p>
-太阳光透过窗户照射进来，相当于一个免费的"暖风机"在房间里工作。你空调辛辛苦苦制冷，太阳光笑嘻嘻地加热，这仗打得毫无意义。
-</p>
-
-<strong>夏天白天出门或开空调时，拉上遮光窗帘。</strong> 这一个小小的动作，能让室内温度降低3-5°C，空调少干很多活。
-
-<p>
-推荐使用<strong>浅色遮光窗帘</strong>——浅色反射阳光，深色反而吸热。
-</p>
-
+<p>太阳光透过窗户照射进来，相当于一个免费的"暖风机"在房间里工作。你空调辛辛苦苦制冷，太阳光笑嘻嘻地加热，这仗打得毫无意义。</p>
+<p>**夏天白天出门或开空调时，拉上遮光窗帘。** 这一个小小的动作，能让室内温度降低3-5°C，空调少干很多活。</p>
+<p>推荐使用**浅色遮光窗帘**——浅色反射阳光，深色反而吸热。</p>
 <h2>5. 巧用"除湿模式"，比制冷更舒服</h2>
-
-<p>
-空调遥控器上有个"除湿模式"（通常是水滴图标 💧），很多人从来没用过。
-</p>
-
-<strong>什么时候用除湿模式？</strong>
+<p>空调遥控器上有个"除湿模式"（通常是水滴图标 💧），很多人从来没用过。</p>
+<p>**什么时候用除湿模式？**</p>
+<ul>
 <li>梅雨季、桑拿天——空气湿度大，身上黏糊糊，但温度其实不是特别高（28-32°C）</li>
 <li>除湿模式下，压缩机间歇工作，主要目标是抽走空气中的水分</li>
-
-<p>
-湿度降低后，汗液更容易蒸发——而蒸发吸热才是人体降温的主要方式！所以有时候除湿模式比制冷模式体感更舒服，而且更省电。
-</p>
-
-<p>
-> <strong>注意：</strong> 真正高温天（35°C以上）还是要用制冷模式，除湿降不了那么多温度。
-</p>
-
+</ul>
+<p>湿度降低后，汗液更容易蒸发——而蒸发吸热才是人体降温的主要方式！所以有时候除湿模式比制冷模式体感更舒服，而且更省电。</p>
+<blockquote>**注意：** 真正高温天（35°C以上）还是要用制冷模式，除湿降不了那么多温度。</blockquote>
 <h2>6. 定期洗滤网，别让空调"戴口罩呼吸"</h2>
-
-<p>
-你上次洗空调滤网是什么时候？不记得了是吧。
-</p>
-
-<p>
-滤网堵了，就像让空调戴着N95口罩跑步——出风量变小、制冷效果变差、压缩机工作时间变长，电费自然上去。
-</p>
-
-<strong>建议每个月洗一次滤网。</strong> 取下来用水冲一冲，晾干再装回去，3分钟搞定。不仅省电，吹出来的风也更干净！
-
-<p>
-> 如果开空调时有异味，那滤网可能已经发霉了，赶紧拆下来深度清洁。
-</p>
-
+<p>你上次洗空调滤网是什么时候？不记得了是吧。</p>
+<p>滤网堵了，就像让空调戴着N95口罩跑步——出风量变小、制冷效果变差、压缩机工作时间变长，电费自然上去。</p>
+<p>**建议每个月洗一次滤网。** 取下来用水冲一冲，晾干再装回去，3分钟搞定。不仅省电，吹出来的风也更干净！</p>
+<blockquote>如果开空调时有异味，那滤网可能已经发霉了，赶紧拆下来深度清洁。</blockquote>
 <h2>总结</h2>
-
-<p>
-| 秘诀 | 效果 |
-|------|------|
-| 设26°C | 省电30%+ |
-| 风口朝上 | 降温更均匀 |
-| 先大后小 | 快速降温更省电 |
-| 拉窗帘 | 降低3-5°C |
-| 善用除湿 | 桑拿天神器 |
-| 洗滤网 | 效果翻倍 |
-</p>
-
-<p>
-记住这6招，这个夏天你可以在凉爽中优雅地看电费单——而不是颤抖着看 😎
-</p>
-
-<p>
-> 省电不是为了省钱（虽然确实省钱），更是为了不让空调累坏了。毕竟，夏天还长着呢！
-</p>
+<p>| 秘诀 | 效果 |</p>
+<p>|------|------|</p>
+<p>| 设26°C | 省电30%+ |</p>
+<p>| 风口朝上 | 降温更均匀 |</p>
+<p>| 先大后小 | 快速降温更省电 |</p>
+<p>| 拉窗帘 | 降低3-5°C |</p>
+<p>| 善用除湿 | 桑拿天神器 |</p>
+<p>| 洗滤网 | 效果翻倍 |</p>
+<p>记住这6招，这个夏天你可以在凉爽中优雅地看电费单——而不是颤抖着看 😎</p>
+<blockquote>省电不是为了省钱（虽然确实省钱），更是为了不让空调累坏了。毕竟，夏天还长着呢！</blockquote>
   </div>
   
   <div class="share-bar">
@@ -352,5 +567,10 @@ window.addEventListener('DOMContentLoaded', function(){
 });
 </script>
 
+<script>
+document.getElementById("post-tags").innerHTML = ['夏天', '省电', '技巧'].map(function(t) {
+  return '<span class="tag">' + t + '</span>';
+}).join("");
+</script>
 </body>
 </html>
