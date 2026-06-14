@@ -268,19 +268,26 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:
   
   <!-- 文章正文 -->
   
-    <!-- TOC 目录导航 -->
-    <div class="toc-box" id="toc-box" style="display:none">
-      <div class="toc-title">📋 文章目录
-</div>
-<ul class="toc-list" id="toc-list"></ul>
-    </div>
-
-<!-- 阅读统计 -->
+    <!-- TOC 文章目录 -->
+    <div class="toc-box" id="toc-box">
+      <div class="toc-title">📋 文章目录</div>
+      <ul class="toc-list">
+        <li><a href="#1-柠檬微波炉3分钟深度清洁">1. 柠檬+微波炉=3分钟深度清洁</a></li>
+        <li><a href="#2-鸡蛋新鲜不新鲜一杯水就知道">2. 鸡蛋新鲜不新鲜，一杯水就知道</a></li>
+        <li><a href="#3-快速剥蒜摇一摇皮就掉了">3. 快速剥蒜：摇一摇，皮就掉了</a></li>
+        <li><a href="#4-蔬菜保鲜一张厨房纸就够了">4. 蔬菜保鲜：一张厨房纸就够了</a></li>
+        <li><a href="#5-砧板除味盐柠檬全新">5. 砧板除味：盐+柠檬=全新</a></li>
+        <li><a href="#6-快速解冻别再用微波炉了">6. 快速解冻：别再用微波炉了</a></li>
+        <li><a href="#7-冰箱异味终结者咖啡渣的妙用">7. 冰箱异味终结者：咖啡渣的妙用</a></li>
+        <li><a href="#8-土豆发芽怎么办放个苹果就老实了">8. 土豆发芽怎么办？放个苹果就老实了</a></li>
+        <li><a href="#总结">总结</a></li>
+      </ul>
+    </div>    <!-- 阅读统计 -->
     <div class="reading-stats" id="reading-stats">
-      <span>📝 字数：<strong id="word-count">-</strong></span>
-      <span>⏱ 阅读：<strong id="read-time">-</strong></span>
+      <span>📝 字数：<strong id="word-count">1,719</strong></span>
+      <span>⏱ 阅读：<strong id="read-time">约 4 分钟</strong></span>
     </div>
-    <div class="post-body" id="post-body">
+<div class="post-body" id="post-body">
     <h1>厨房里那些"早知道就好了"的小技巧</h1>
 <p>做饭这件事，会做不难，但做得快、做得好、还不浪费，那才叫本事。</p>
 <p>今天分享8个厨房小妙招——不花什么钱，不需要什么工具，但学会了，做饭省一半时间，食材少浪费一半。</p>
@@ -403,7 +410,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
     <script>
     // ======================== 文章目录 TOC ========================
-    function buildTOC() {
+    function buildTOC_legacy() { // 静态TOC已替代动态构建
+      return;
       var body = document.getElementById('post-body');
       if (!body) return;
       var headings = body.querySelectorAll('h2, h3');
@@ -435,29 +443,10 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
     
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', buildTOC);
-    } else {
-      buildTOC();
-    }
+    // TOC已改为静态HTML
     </script>
 
 <script>
-// ======================== 阅读统计 ========================
-(function calcStats(){
-  var body = document.getElementById('post-body');
-  if(!body) return;
-  var text = body.textContent || body.innerText || '';
-  var cnChars = (text.match(/[\u4e00-\u9fff\u3400-\u4dbf]/g) || []).length;
-  var totalChars = text.replace(/\s/g, '').length;
-  var wordCount = totalChars;
-  var readMin = Math.max(1, Math.ceil(totalChars / 400));
-  var wcEl = document.getElementById('word-count');
-  var rtEl = document.getElementById('read-time');
-  if(wcEl) wcEl.textContent = wordCount.toLocaleString();
-  if(rtEl) rtEl.textContent = '约 ' + readMin + ' 分钟';
-})();
-
 // ======================== 回到顶部 ========================
 (function backToTop(){
   var btn = document.getElementById('back-to-top');

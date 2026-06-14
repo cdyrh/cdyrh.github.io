@@ -524,19 +524,27 @@ body {
     </div>
   
     
-    <!-- TOC 目录导航 -->
-    <div class="toc-box" id="toc-box" style="display:none">
+    <!-- TOC 文章目录 -->
+    <div class="toc-box" id="toc-box">
       <div class="toc-title">📋 文章目录</div>
-      <ul class="toc-list" id="toc-list"></ul>
-    </div>
-
-    <!-- 阅读统计 -->
+      <ul class="toc-list">
+        <li><a href="#1-衣架全换统一的颜值瞬间翻倍">1. 衣架全换统一的，颜值瞬间翻倍</a></li>
+        <li><a href="#2-学会立式叠衣法找衣服不用翻箱倒柜">2. 学会"立式叠衣法"，找衣服不用翻箱倒柜</a></li>
+        <li><a href="#3-按使用频率分区别按季节">3. 按"使用频率"分区，别按"季节"</a></li>
+        <li><a href="#4-抽屉里加小隔板小东西不乱跑">4. 抽屉里加"小隔板"，小东西不乱跑</a></li>
+        <li><a href="#5-厚外套真空压缩衣柜瞬间多20升">5. 厚外套真空压缩，衣柜瞬间多20升</a></li>
+        <li><a href="#6-鞋盒统一侧面贴图告别开盲盒">6. 鞋盒统一侧面贴图，告别"开盲盒"</a></li>
+        <li><a href="#7-包包的隐身术塞进枕套里">7. 包包的"隐身术"：塞进枕套里</a></li>
+        <li><a href="#8-一件基础款白t的收纳哲学">8. 一件"基础款白T"的收纳哲学</a></li>
+        <li><a href="#9-衣橱香氛防虫一步到位">9. 衣橱香氛+防虫，一步到位</a></li>
+        <li><a href="#写在最后">写在最后</a></li>
+      </ul>
+    </div>    <!-- 阅读统计 -->
     <div class="reading-stats" id="reading-stats">
-      <span>📝 字数：<strong id="word-count">-</strong></span>
-      <span>⏱ 阅读：<strong id="read-time">-</strong></span>
+      <span>📝 字数：<strong id="word-count">1,929</strong></span>
+      <span>⏱ 阅读：<strong id="read-time">约 5 分钟</strong></span>
     </div>
-
-    <div class="post-body" id="post-body">
+<div class="post-body" id="post-body">
 <h1 id="衣服太多塞不下问题不在衣橱在方法">衣服太多塞不下？问题不在衣橱，在方法</h1>
 <p>你有没有过这种崩溃时刻：明明换季了，打开衣橱却发现——</p>
 <ul>
@@ -776,7 +784,8 @@ document.getElementById("post-tags").innerHTML = ['收纳', '衣橱', '整理', 
 
 <script>
 // ======================== 文章目录 TOC ========================
-    function buildTOC() {
+    function buildTOC_legacy() { // 静态TOC已替代动态构建
+      return;
       var body = document.getElementById('post-body');
       if (!body) return;
       var headings = body.querySelectorAll('h2, h3');
@@ -808,29 +817,10 @@ document.getElementById("post-tags").innerHTML = ['收纳', '衣橱', '整理', 
       }
     }
     
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', buildTOC);
-    } else {
-      buildTOC();
-    }
+    // TOC已改为静态HTML
 </script>
 
 <script>
-// ======================== 阅读统计 ========================
-(function calcStats(){
-  var body = document.getElementById('post-body');
-  if(!body) return;
-  var text = body.textContent || body.innerText || '';
-  var cnChars = (text.match(/[\u4e00-\u9fff\u3400-\u4dbf]/g) || []).length;
-  var totalChars = text.replace(/\s/g, '').length;
-  var wordCount = totalChars;
-  var readMin = Math.max(1, Math.ceil(totalChars / 400));
-  var wcEl = document.getElementById('word-count');
-  var rtEl = document.getElementById('read-time');
-  if(wcEl) wcEl.textContent = wordCount.toLocaleString();
-  if(rtEl) rtEl.textContent = '约 ' + readMin + ' 分钟';
-})();
-
 // ======================== 回到顶部 ========================
 (function backToTop(){
   var btn = document.getElementById('back-to-top');

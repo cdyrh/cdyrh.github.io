@@ -182,18 +182,10 @@ body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC",sa
       <span>📅 2026-06-04</span>
       <span>👁️ 298 次阅读</span>
     </div>
-    <h1 class="article-title">🚶 排队时为什么你的队伍最慢？🚶</h1>
-    
-    <!-- TOC 目录导航 -->
-    <div class="toc-box" id="toc-box" style="display:none">
-      <div class="toc-title">📋 文章目录</div>
-      <ul class="toc-list" id="toc-list"></ul>
-    </div>
-
-    <!-- 阅读统计 -->
+    <h1 class="article-title">🚶 排队时为什么你的队伍最慢？🚶</h1>    <!-- 阅读统计 -->
     <div class="reading-stats" id="reading-stats">
-      <span>📝 字数：<strong id="word-count">-</strong></span>
-      <span>⏱ 阅读：<strong id="read-time">-</strong></span>
+      <span>📝 字数：<strong id="word-count">151</strong></span>
+      <span>⏱ 阅读：<strong id="read-time">约 1 分钟</strong></span>
     </div>
 <div class="article-body" id="post-body">
       <h1>排队定律：你选的队永远最慢</h1>
@@ -259,7 +251,8 @@ function copyLink() {
 
 
     <script>
-        function buildTOC() {
+        function buildTOC_legacy() { // 静态TOC已替代动态构建
+      return;
       var body = document.getElementById('post-body');
       if (!body) return;
       var headings = body.querySelectorAll('h2, h3');
@@ -291,29 +284,10 @@ function copyLink() {
       }
     }
     
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', buildTOC);
-    } else {
-      buildTOC();
-    }
+    // TOC已改为静态HTML
     </script>
 
 <script>
-// ======================== 阅读统计 ========================
-(function calcStats(){
-  var body = document.getElementById('post-body');
-  if(!body) return;
-  var text = body.textContent || body.innerText || '';
-  var cnChars = (text.match(/[\u4e00-\u9fff\u3400-\u4dbf]/g) || []).length;
-  var totalChars = text.replace(/\s/g, '').length;
-  var wordCount = totalChars;
-  var readMin = Math.max(1, Math.ceil(totalChars / 400));
-  var wcEl = document.getElementById('word-count');
-  var rtEl = document.getElementById('read-time');
-  if(wcEl) wcEl.textContent = wordCount.toLocaleString();
-  if(rtEl) rtEl.textContent = '约 ' + readMin + ' 分钟';
-})();
-
 // ======================== 回到顶部 ========================
 (function backToTop(){
   var btn = document.getElementById('back-to-top');

@@ -529,19 +529,24 @@ body {
     </div>
   
     
-    <!-- TOC 目录导航 -->
-    <div class="toc-box" id="toc-box" style="display:none">
-      <div class="toc-title">📋 文章目录
-</div>
-<ul class="toc-list" id="toc-list"></ul>
-    </div>
-
-<!-- 阅读统计 -->
+    <!-- TOC 文章目录 -->
+    <div class="toc-box" id="toc-box">
+      <div class="toc-title">📋 文章目录</div>
+      <ul class="toc-list">
+        <li><a href="#1-温度设26c既凉快又省电">1. 温度设26°C，既凉快又省电</a></li>
+        <li><a href="#2-风向朝上吹冷气从天而降">2. 风向朝上吹，冷气从天而降</a></li>
+        <li><a href="#3-先开大风凉了再调小">3. 先开大风，凉了再调小</a></li>
+        <li><a href="#4-拉上窗帘别让阳光跟你抢冷气">4. 拉上窗帘，别让阳光跟你抢冷气</a></li>
+        <li><a href="#5-巧用除湿模式比制冷更舒服">5. 巧用"除湿模式"，比制冷更舒服</a></li>
+        <li><a href="#6-定期洗滤网别让空调戴口罩呼吸">6. 定期洗滤网，别让空调"戴口罩呼吸"</a></li>
+        <li><a href="#总结">总结</a></li>
+      </ul>
+    </div>    <!-- 阅读统计 -->
     <div class="reading-stats" id="reading-stats">
-      <span>📝 字数：<strong id="word-count">-</strong></span>
-      <span>⏱ 阅读：<strong id="read-time">-</strong></span>
+      <span>📝 字数：<strong id="word-count">1,366</strong></span>
+      <span>⏱ 阅读：<strong id="read-time">约 3 分钟</strong></span>
     </div>
-    <div class="post-body" id="post-body">
+<div class="post-body" id="post-body">
 <h1>不开空调热到融化，开了又心疼电费？</h1>
 <p>六月一到，气温"噌噌"往上涨。不开空调吧，风扇吹出来的都是热风；开了吧，月底电费单一看，心比空调还凉。</p>
 <p>其实，空调开对了，比不开还省心。今天分享6个空调使用秘诀，让你凉快不费电！</p>
@@ -728,7 +733,8 @@ document.getElementById("post-tags").innerHTML = ['夏天', '省电', '技巧'].
     
     <script>
     // ======================== 文章目录 TOC ========================
-    function buildTOC() {
+    function buildTOC_legacy() { // 静态TOC已替代动态构建
+      return;
       var body = document.getElementById('post-body');
       if (!body) return;
       var headings = body.querySelectorAll('h2, h3');
@@ -760,29 +766,10 @@ document.getElementById("post-tags").innerHTML = ['夏天', '省电', '技巧'].
       }
     }
     
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', buildTOC);
-    } else {
-      buildTOC();
-    }
+    // TOC已改为静态HTML
     </script>
 
 <script>
-// ======================== 阅读统计 ========================
-(function calcStats(){
-  var body = document.getElementById('post-body');
-  if(!body) return;
-  var text = body.textContent || body.innerText || '';
-  var cnChars = (text.match(/[\u4e00-\u9fff\u3400-\u4dbf]/g) || []).length;
-  var totalChars = text.replace(/\s/g, '').length;
-  var wordCount = totalChars;
-  var readMin = Math.max(1, Math.ceil(totalChars / 400));
-  var wcEl = document.getElementById('word-count');
-  var rtEl = document.getElementById('read-time');
-  if(wcEl) wcEl.textContent = wordCount.toLocaleString();
-  if(rtEl) rtEl.textContent = '约 ' + readMin + ' 分钟';
-})();
-
 // ======================== 回到顶部 ========================
 (function backToTop(){
   var btn = document.getElementById('back-to-top');

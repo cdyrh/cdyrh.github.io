@@ -526,22 +526,12 @@ body {
         <span>📂 生活常识</span>
       </div>
       <div class="post-tags" id="post-tags"></div>
-    </div>
-  
-    
-    <!-- TOC 目录导航 -->
-    <div class="toc-box" id="toc-box" style="display:none">
-      <div class="toc-title">📋 文章目录
-</div>
-<ul class="toc-list" id="toc-list"></ul>
-    </div>
-
-<!-- 阅读统计 -->
+    </div>    <!-- 阅读统计 -->
     <div class="reading-stats" id="reading-stats">
-      <span>📝 字数：<strong id="word-count">-</strong></span>
-      <span>⏱ 阅读：<strong id="read-time">-</strong></span>
+      <span>📝 字数：<strong id="word-count">226</strong></span>
+      <span>⏱ 阅读：<strong id="read-time">约 1 分钟</strong></span>
     </div>
-    <div class="post-body" id="post-body">
+<div class="post-body" id="post-body">
 <h1>为什么看别人打哈欠我也想打？</h1>
 <p>读到这篇文章标题的时候，你有没有已经打了一个哈欠？如果有，恭喜你，你被传染了。</p>
 <p>科学家研究发现，打哈欠传染跟<strong>镜像神经元</strong>有关。这些神经元的作用是让你"感同身受"——看到别人受伤你会觉得疼，看到别人笑你也想笑，看到别人打哈欠……你就困了。</p>
@@ -685,7 +675,8 @@ document.getElementById("post-tags").innerHTML = ['科学', '趣味'].map(functi
     
     <script>
     // ======================== 文章目录 TOC ========================
-    function buildTOC() {
+    function buildTOC_legacy() { // 静态TOC已替代动态构建
+      return;
       var body = document.getElementById('post-body');
       if (!body) return;
       var headings = body.querySelectorAll('h2, h3');
@@ -717,29 +708,10 @@ document.getElementById("post-tags").innerHTML = ['科学', '趣味'].map(functi
       }
     }
     
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', buildTOC);
-    } else {
-      buildTOC();
-    }
+    // TOC已改为静态HTML
     </script>
 
 <script>
-// ======================== 阅读统计 ========================
-(function calcStats(){
-  var body = document.getElementById('post-body');
-  if(!body) return;
-  var text = body.textContent || body.innerText || '';
-  var cnChars = (text.match(/[\u4e00-\u9fff\u3400-\u4dbf]/g) || []).length;
-  var totalChars = text.replace(/\s/g, '').length;
-  var wordCount = totalChars;
-  var readMin = Math.max(1, Math.ceil(totalChars / 400));
-  var wcEl = document.getElementById('word-count');
-  var rtEl = document.getElementById('read-time');
-  if(wcEl) wcEl.textContent = wordCount.toLocaleString();
-  if(rtEl) rtEl.textContent = '约 ' + readMin + ' 分钟';
-})();
-
 // ======================== 回到顶部 ========================
 (function backToTop(){
   var btn = document.getElementById('back-to-top');

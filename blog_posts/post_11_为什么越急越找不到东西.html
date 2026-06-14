@@ -268,19 +268,19 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:
   
   <!-- 文章正文 -->
   
-    <!-- TOC 目录导航 -->
-    <div class="toc-box" id="toc-box" style="display:none">
-      <div class="toc-title">📋 文章目录
-</div>
-<ul class="toc-list" id="toc-list"></ul>
-    </div>
-
-<!-- 阅读统计 -->
+    <!-- TOC 文章目录 -->
+    <div class="toc-box" id="toc-box">
+      <div class="toc-title">📋 文章目录</div>
+      <ul class="toc-list">
+        <li><a href="#大脑在搞什么鬼">大脑在搞什么鬼</a></li>
+        <li><a href="#找东西的正确姿势">找东西的正确姿势</a></li>
+      </ul>
+    </div>    <!-- 阅读统计 -->
     <div class="reading-stats" id="reading-stats">
-      <span>📝 字数：<strong id="word-count">-</strong></span>
-      <span>⏱ 阅读：<strong id="read-time">-</strong></span>
+      <span>📝 字数：<strong id="word-count">201</strong></span>
+      <span>⏱ 阅读：<strong id="read-time">约 1 分钟</strong></span>
     </div>
-    <div class="post-body" id="post-body">
+<div class="post-body" id="post-body">
     <h1>着急的时候，钥匙永远隐身</h1>
 <p>早上要迟到了，钥匙不见了。越着急越找不到，冷静下来往桌上一看——它明明就在那儿。</p>
 <h2 id="大脑在搞什么鬼" >大脑在搞什么鬼</h2>
@@ -356,7 +356,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
     <script>
     // ======================== 文章目录 TOC ========================
-    function buildTOC() {
+    function buildTOC_legacy() { // 静态TOC已替代动态构建
+      return;
       var body = document.getElementById('post-body');
       if (!body) return;
       var headings = body.querySelectorAll('h2, h3');
@@ -388,29 +389,10 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
     
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', buildTOC);
-    } else {
-      buildTOC();
-    }
+    // TOC已改为静态HTML
     </script>
 
 <script>
-// ======================== 阅读统计 ========================
-(function calcStats(){
-  var body = document.getElementById('post-body');
-  if(!body) return;
-  var text = body.textContent || body.innerText || '';
-  var cnChars = (text.match(/[\u4e00-\u9fff\u3400-\u4dbf]/g) || []).length;
-  var totalChars = text.replace(/\s/g, '').length;
-  var wordCount = totalChars;
-  var readMin = Math.max(1, Math.ceil(totalChars / 400));
-  var wcEl = document.getElementById('word-count');
-  var rtEl = document.getElementById('read-time');
-  if(wcEl) wcEl.textContent = wordCount.toLocaleString();
-  if(rtEl) rtEl.textContent = '约 ' + readMin + ' 分钟';
-})();
-
 // ======================== 回到顶部 ========================
 (function backToTop(){
   var btn = document.getElementById('back-to-top');

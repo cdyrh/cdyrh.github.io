@@ -529,19 +529,20 @@ body {
     </div>
   
     
-    <!-- TOC 目录导航 -->
-    <div class="toc-box" id="toc-box" style="display:none">
-      <div class="toc-title">📋 文章目录
-</div>
-<ul class="toc-list" id="toc-list"></ul>
-    </div>
-
-<!-- 阅读统计 -->
+    <!-- TOC 文章目录 -->
+    <div class="toc-box" id="toc-box">
+      <div class="toc-title">📋 文章目录</div>
+      <ul class="toc-list">
+        <li><a href="#咖啡因的工作原理">咖啡因的工作原理</a></li>
+        <li><a href="#最佳喝咖啡时间">最佳喝咖啡时间</a></li>
+        <li><a href="#终极技巧">终极技巧</a></li>
+      </ul>
+    </div>    <!-- 阅读统计 -->
     <div class="reading-stats" id="reading-stats">
-      <span>📝 字数：<strong id="word-count">-</strong></span>
-      <span>⏱ 阅读：<strong id="read-time">-</strong></span>
+      <span>📝 字数：<strong id="word-count">260</strong></span>
+      <span>⏱ 阅读：<strong id="read-time">约 1 分钟</strong></span>
     </div>
-    <div class="post-body" id="post-body">
+<div class="post-body" id="post-body">
 <h1>咖啡提神？你可能喝反了</h1>
 <p>很多人喝咖啡是为了提神，结果越喝越困，甚至直接睡着。</p>
 <h2 id="咖啡因的工作原理" >咖啡因的工作原理</h2>
@@ -693,7 +694,8 @@ document.getElementById("post-tags").innerHTML = ['健康', '冷知识'].map(fun
     
     <script>
     // ======================== 文章目录 TOC ========================
-    function buildTOC() {
+    function buildTOC_legacy() { // 静态TOC已替代动态构建
+      return;
       var body = document.getElementById('post-body');
       if (!body) return;
       var headings = body.querySelectorAll('h2, h3');
@@ -725,29 +727,10 @@ document.getElementById("post-tags").innerHTML = ['健康', '冷知识'].map(fun
       }
     }
     
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', buildTOC);
-    } else {
-      buildTOC();
-    }
+    // TOC已改为静态HTML
     </script>
 
 <script>
-// ======================== 阅读统计 ========================
-(function calcStats(){
-  var body = document.getElementById('post-body');
-  if(!body) return;
-  var text = body.textContent || body.innerText || '';
-  var cnChars = (text.match(/[\u4e00-\u9fff\u3400-\u4dbf]/g) || []).length;
-  var totalChars = text.replace(/\s/g, '').length;
-  var wordCount = totalChars;
-  var readMin = Math.max(1, Math.ceil(totalChars / 400));
-  var wcEl = document.getElementById('word-count');
-  var rtEl = document.getElementById('read-time');
-  if(wcEl) wcEl.textContent = wordCount.toLocaleString();
-  if(rtEl) rtEl.textContent = '约 ' + readMin + ' 分钟';
-})();
-
 // ======================== 回到顶部 ========================
 (function backToTop(){
   var btn = document.getElementById('back-to-top');
