@@ -1,6 +1,4 @@
-<!DOC
-  <button class="backup-btn" onclick="exportBackup()" title="一键导出全站内容">💾 导出备份</button>
-TYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN" data-theme="light">
 <head>
 <meta charset="UTF-8">
@@ -650,7 +648,6 @@ body {
       <button class="share-btn cp" onclick="copyLink()" title="复制链接">🔗</button>
     </div>
   
-    <div 
     <!-- 留言区 -->
     <div class="comment-section" id="comment-section">
       <h3>💬 留言区</h3>
@@ -666,7 +663,7 @@ body {
       <div class="comment-list" id="comment-list"></div>
     </div>
 
-    class="back-home" id="back-home">
+    <div class="back-home" id="back-home">
       <a href="../">← 返回首页 池帅の亦殿</a>
     </div>
   </div>
@@ -969,6 +966,9 @@ function exportBackup(){
 
     <!-- 回到顶部 -->
     <button id="back-to-top" title="回到顶部" onclick="scrollToTop()">⬆</button>
+
+    <!-- 备份按钮 -->
+    <button class="backup-btn" onclick="exportBackup()" title="一键导出全站内容">💾 导出备份</button>
 
 </body>
 </html>
