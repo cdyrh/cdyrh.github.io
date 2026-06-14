@@ -2877,6 +2877,7 @@ if('serviceWorker' in navigator){
 }
 
 // ======================== 初始化 ========================
+window.addEventListener('DOMContentLoaded',()=>{
   initTheme();
   initStats();
   if(DB.loggedIn) document.body.classList.add('is-admin');
