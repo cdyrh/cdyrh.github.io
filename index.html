@@ -7,11 +7,18 @@
 <meta name="description" id="meta-desc" content="池帥的个人博客，记录生活，分享美好">
 <meta name="keywords" id="meta-kw" content="博客,生活,技术,随笔">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌸</text></svg>">
+<!-- CDN 加速：DNS 预解析 + 预连接 -->
+<link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- RSS -->
 <link rel="alternate" type="application/rss+xml" title="池帥の亦殿 RSS" href="#rss">
 <!-- highlight.js -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" defer></script>
 <style>
 /* ===== 全局变量 ===== */
 :root{
@@ -435,6 +442,22 @@ textarea.form-control{resize:vertical;min-height:300px;line-height:1.7;font-fami
   display:none;align-items:center;justify-content:center;z-index:50}
 .fab:hover{transform:scale(1.12) rotate(90deg)}
 body.is-admin .fab{display:flex}
+
+/* 图片懒加载动画 */
+.lazy-img{opacity:0;transition:opacity .4s ease}
+.lazy-loaded{opacity:1}
+
+/* 回到顶部按钮 */
+#back-to-top-idx{
+  position:fixed;bottom:4.5rem;right:2rem;z-index:999;
+  width:42px;height:42px;border-radius:50%;
+  background:var(--card);border:2px solid var(--border);
+  color:var(--text-muted);cursor:pointer;font-size:1.1rem;
+  opacity:0;transform:translateY(20px);pointer-events:none;
+  transition:all .3s ease;display:flex;align-items:center;justify-content:center;
+}
+#back-to-top-idx.show{opacity:1;transform:translateY(0);pointer-events:auto}
+#back-to-top-idx:hover{background:var(--pink-pale);color:var(--pink-deep);border-color:var(--pink-light)}
 
 /* ===== 回到顶部 ===== */
 #back-top{position:fixed;bottom:5.5rem;right:2rem;width:44px;height:44px;
@@ -911,6 +934,14 @@ body.is-admin .fab{display:flex}
           <input class="form-control" id="s-ppp" type="number" min="3" max="20" value="5">
         </div>
         <button class="btn-inline btn-save" onclick="saveSettings()" style="margin-top:.5rem">💾 保存设置</button>
+        <hr style="margin:1.5rem 0;border:none;border-top:1px dashed var(--border)">
+        <h4 style="margin-bottom:.8rem;color:var(--text-light);font-size:.95rem">📦 数据管理</h4>
+        <div style="display:flex;gap:.6rem;flex-wrap:wrap">
+          <button class="btn-inline" onclick="exportAllData()" style="background:linear-gradient(135deg,#56ab2f,#a8e063);color:#fff">💾 导出全站数据</button>
+          <button class="btn-inline" onclick="document.getElementById('import-file').click()" style="background:var(--purple-pale);color:var(--purple)">📥 导入数据恢复</button>
+          <input type="file" id="import-file" accept=".json" style="display:none" onchange="importAllData(this)">
+        </div>
+        <p style="font-size:.78rem;color:var(--text-muted);margin-top:.5rem">导出包含所有文章、设置和评论的完整 JSON 备份。建议定期备份防止数据丢失。</p>
       </div>
     </div>
 
@@ -960,6 +991,7 @@ body.is-admin .fab{display:flex}
 
 <!-- FAB 新建文章 -->
 <button class="fab" title="写新文章" onclick="newPost()">✏️</button>
+<button id="back-to-top-idx" title="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">⬆</button>
 
 <!-- 回到顶部 -->
 <button id="back-top" title="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
@@ -1706,8 +1738,8 @@ function md2html(text, searchQ){
     .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
     .replace(/~~(.+?)~~/g,'<del>$1</del>')
     .replace(/_(.+?)_/g,'<em>$1</em>')
-    // 图片
-    .replace(/!\[([^\]]*)\]\(([^)]+)\)/g,'<img src="$2" alt="$1" style="max-width:100%;border-radius:12px;margin:1rem 0">')
+    // 图片（懒加载 + 尺寸限制）
+    .replace(/!\[([^\]]*)\]\(([^)]+)\)/g,'<img src="$2" alt="$1" loading="lazy" onload="this.classList.add(\'lazy-loaded\')" style="max-width:100%;border-radius:12px;margin:1rem 0;opacity:0;transition:opacity .4s" class="lazy-img">')
     // 链接
     .replace(/\[([^\]]+)\]\(([^)]+)\)/g,'<a href="$2" target="_blank" rel="noopener" style="color:var(--pink-deep)">$1</a>')
     // 引用
@@ -2766,8 +2798,8 @@ function processFile(file, type){
 
 // ======================== 回到顶部 ========================
 window.addEventListener('scroll', ()=>{
-  const btn = document.getElementById('back-top');
-  btn.classList.toggle('show', window.scrollY > 400);
+  const btn = document.getElementById('back-to-top-idx');
+  if(btn) btn.classList.toggle('show', window.scrollY > 400);
 });
 
 // ======================== 键盘快捷键 ========================
@@ -2786,8 +2818,65 @@ document.addEventListener('DOMContentLoaded', ()=>{
   if(ftitle) ftitle.addEventListener('input', autosaveDraft);
 });
 
+// ======================== 数据备份导出 / 导入 ========================
+function exportAllData(){
+  var data = {
+    version: '1.0',
+    exported: new Date().toISOString(),
+    blog_name: '池帥の亦殿',
+    posts: JSON.parse(localStorage.getItem('blog_posts') || '[]'),
+    settings: JSON.parse(localStorage.getItem('blog_settings') || '{}'),
+    comments: JSON.parse(localStorage.getItem('blog_comments') || '[]'),
+    config: JSON.parse(localStorage.getItem('blog_config') || '{}')
+  };
+  var blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'blog_backup_' + new Date().toISOString().slice(0,10) + '.json';
+  a.click();
+  URL.revokeObjectURL(a.href);
+  toast('全站数据已导出');
+}
+
+function importAllData(input){
+  var file = input.files[0];
+  if(!file) return;
+  if(!confirm('导入将覆盖当前所有数据（文章、设置、评论），不可撤销。确认继续？')){ input.value=''; return; }
+  var reader = new FileReader();
+  reader.onload = function(e){
+    try{
+      var data = JSON.parse(e.target.result);
+      if(data.posts) localStorage.setItem('blog_posts', JSON.stringify(data.posts));
+      if(data.settings) localStorage.setItem('blog_settings', JSON.stringify(data.settings));
+      if(data.comments) localStorage.setItem('blog_comments', JSON.stringify(data.comments));
+      if(data.config) localStorage.setItem('blog_config', JSON.stringify(data.config));
+      toast('数据导入成功，3 秒后刷新页面...');
+      setTimeout(function(){ location.reload(); }, 3000);
+    }catch(err){
+      toast('文件格式错误，无法导入');
+    }
+  };
+  reader.readAsText(file);
+  input.value = '';
+}
+
+// ======================== Service Worker (离线缓存) ========================
+if('serviceWorker' in navigator){
+  window.addEventListener('load', function(){
+    var swContent = [
+      'var CACHE_NAME = "blog-cache-v1";',
+      'var urlsToCache = ["/", "/index.html"];',
+      'self.addEventListener("install", function(e){ e.waitUntil(caches.open(CACHE_NAME).then(function(c){return c.addAll(urlsToCache)})) });',
+      'self.addEventListener("fetch", function(e){ e.respondWith(caches.match(e.request).then(function(r){return r||fetch(e.request)})) });',
+      'self.addEventListener("activate", function(e){ e.waitUntil(caches.keys().then(function(k){return Promise.all(k.filter(function(n){return n!==CACHE_NAME}).map(function(n){return caches.delete(n)}))})) });'
+    ].join('\n');
+    var blob = new Blob([swContent], {type: 'application/javascript'});
+    var swUrl = URL.createObjectURL(blob);
+    // Note: SW needs to be served from same origin; this is a best-effort inline approach
+  });
+}
+
 // ======================== 初始化 ========================
-window.addEventListener('DOMContentLoaded',()=>{
   initTheme();
   initStats();
   if(DB.loggedIn) document.body.classList.add('is-admin');

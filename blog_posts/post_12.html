@@ -422,6 +422,84 @@ body {
     }
     </style>
     
+
+    <style>
+    /* ===== 回到顶部按钮 ===== */
+    #back-to-top {
+      position:fixed;bottom:2rem;right:2rem;z-index:999;
+      width:48px;height:48px;border-radius:50%;
+      background:linear-gradient(135deg,var(--pink),var(--purple));
+      color:#fff;border:none;cursor:pointer;font-size:1.3rem;
+      box-shadow:0 4px 16px rgba(200,100,200,.35);
+      opacity:0;transform:translateY(20px);
+      transition:all .3s ease;
+      pointer-events:none;
+      display:flex;align-items:center;justify-content:center;
+    }
+    #back-to-top.show{opacity:1;transform:translateY(0);pointer-events:auto}
+    #back-to-top:hover{transform:translateY(-4px) scale(1.05);box-shadow:0 8px 24px rgba(200,100,200,.5)}
+    
+    /* ===== 阅读统计 ===== */
+    .reading-stats {
+      display:flex;gap:1.2rem;align-items:center;flex-wrap:wrap;
+      font-size:.85rem;color:var(--text-muted);margin-bottom:1.2rem;
+      padding:0.6rem 0;border-bottom:1px dashed var(--border);
+    }
+    .reading-stats span{display:flex;align-items:center;gap:.3rem}
+    
+    /* ===== 图片懒加载 ===== */
+    .post-body img.lazy-img{opacity:0;transition:opacity .4s ease;min-height:80px;background:linear-gradient(135deg,var(--pink-pale),var(--purple-pale));border-radius:12px}
+    .post-body img.lazy-loaded{opacity:1;background:none;min-height:auto}
+    
+    /* ===== 评论/留言区 ===== */
+    .comment-section {
+      background:var(--card);border-radius:var(--radius);
+      border:1.5px solid var(--border);
+      box-shadow:0 8px 32px rgba(200,100,200,.12);
+      padding:1.8rem;margin-bottom:2rem;
+    }
+    .comment-section h3{color:var(--pink-deep);margin-bottom:1rem;font-size:1.1rem}
+    .comment-form{display:flex;flex-direction:column;gap:.8rem}
+    .comment-form input,.comment-form textarea{
+      padding:.7rem 1rem;border-radius:10px;border:1.5px solid var(--border);
+      font-family:var(--font,'Noto Serif SC',serif);
+      font-size:.92rem;color:var(--text);background:var(--bg);
+      transition:border .2s;resize:vertical;
+    }
+    .comment-form input:focus,.comment-form textarea:focus{
+      outline:none;border-color:var(--pink);box-shadow:0 0 0 3px rgba(255,143,171,.1)
+    }
+    .comment-form textarea{min-height:100px}
+    .comment-form .honeypot{position:absolute;left:-9999px;opacity:0;height:0;width:0;overflow:hidden}
+    .comment-submit{
+      align-self:flex-start;padding:.6rem 1.8rem;border-radius:24px;
+      background:linear-gradient(135deg,var(--pink),var(--purple));
+      color:#fff;border:none;cursor:pointer;font-family:var(--font,'Noto Serif SC',serif);
+      font-size:.9rem;font-weight:700;transition:opacity .2s;
+    }
+    .comment-submit:hover{opacity:.85}
+    .comment-list{margin-top:1.5rem}
+    .comment-item{
+      background:var(--bg);border-radius:10px;padding:1rem;margin-bottom:.8rem;
+      border-left:3px solid var(--pink-light);
+    }
+    .comment-item .c-name{font-weight:700;color:var(--pink-deep);font-size:.9rem}
+    .comment-item .c-time{color:var(--text-muted);font-size:.75rem;margin-left:.5rem}
+    .comment-item .c-text{color:var(--text-light);font-size:.9rem;margin-top:.3rem;line-height:1.7}
+    .comment-notice{color:var(--text-muted);font-size:.82rem;margin-top:.5rem}
+    
+    /* ===== 备份导出按钮 ===== */
+    .backup-btn{
+      display:inline-flex;align-items:center;gap:.4rem;
+      padding:.5rem 1.2rem;border-radius:24px;
+      background:var(--card);border:1.5px solid var(--border);
+      color:var(--text-light);cursor:pointer;
+      font-family:var(--font,'Noto Serif SC',serif);font-size:.85rem;
+      transition:all .2s;margin-left:.5rem;
+    }
+    .backup-btn:hover{background:var(--pink-pale);color:var(--pink-deep);border-color:var(--pink-light)}
+    </style>
+
 </head>
 <body>
 
@@ -453,7 +531,13 @@ body {
     
     <!-- TOC 目录导航 -->
     <div class="toc-box" id="toc-box" style="display:none">
-      <div class="toc-title">📋 文章目录</div>
+      <div class="toc-title">📋 文章目录
+</div>
+    <!-- 阅读统计 -->
+    <div class="reading-stats" id="reading-stats">
+      <span>📝 字数：<strong id="word-count">-</strong></span>
+      <span>⏱ 阅读：<strong id="read-time">-</strong></span>
+    </div>
       <ul class="toc-list" id="toc-list"></ul>
     </div>
     <div class="post-body" id="post-body">
@@ -478,12 +562,28 @@ body {
       <button class="share-btn qq" onclick="shareQQ()" title="QQ分享">🐧</button>
       <button class="share-btn wb" onclick="shareWB()" title="微博分享">📢</button>
       <button class="share-btn cp" onclick="copyLink()" title="复制链接">🔗</button>
+    <
+
+    <!-- 留言区 -->
+    <div class="comment-section" id="comment-section">
+      <h3>💬 留言区</h3>
+      <div class="comment-form" id="comment-form">
+        <div class="honeypot" aria-hidden="true">
+          <label>网站</label><input type="text" name="website" id="hp-website" tabindex="-1" autocomplete="off">
+        </div>
+        <input type="text" id="c-name" placeholder="你的昵称（必填）" maxlength="30" required>
+        <textarea id="c-text" placeholder="写点什么吧..." maxlength="1000" required></textarea>
+        <button class="comment-submit" onclick="submitComment()">✨ 发布留言</button>
+        <div class="comment-notice">📌 留言会保存在本地浏览器中，仅你可见</div>
+      </div>
+      <div class="comment-list" id="comment-list"></div>
     </div>
+/div>
   
     <div class="back-home" id="back-home">
       <a href="../">← 返回首页 池帥の亦殿</a>
     </div>
-  </div>
+  <button class="backup-btn" onclick="exportBackup()" title="一键导出全站内容">💾 导出备份</button></div>
 </div>
 
 <script>
@@ -631,7 +731,183 @@ document.getElementById("post-tags").innerHTML = ['健康', '冷知识'].map(fun
       buildTOC();
     }
     </script>
+
+<script>
+// ======================== 阅读统计 ========================
+(function calcStats(){
+  var body = document.getElementById('post-body');
+  if(!body) return;
+  var text = body.textContent || body.innerText || '';
+  var cnChars = (text.match(/[\u4e00-\u9fff\u3400-\u4dbf]/g) || []).length;
+  var totalChars = text.replace(/\s/g, '').length;
+  var wordCount = totalChars;
+  var readMin = Math.max(1, Math.ceil(totalChars / 400));
+  var wcEl = document.getElementById('word-count');
+  var rtEl = document.getElementById('read-time');
+  if(wcEl) wcEl.textContent = wordCount.toLocaleString();
+  if(rtEl) rtEl.textContent = '约 ' + readMin + ' 分钟';
+})();
+
+// ======================== 回到顶部 ========================
+(function backToTop(){
+  var btn = document.getElementById('back-to-top');
+  if(!btn) return;
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if(!ticking){
+      requestAnimationFrame(function(){
+        var y = window.pageYOffset || document.documentElement.scrollTop;
+        if(y > 400){ btn.classList.add('show'); }
+        else { btn.classList.remove('show'); }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, {passive:true});
+})();
+function scrollToTop(){
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+// ======================== 图片懒加载 ========================
+(function lazyLoadImgs(){
+  if(!('IntersectionObserver' in window)) return;
+  var imgs = document.querySelectorAll('.post-body img:not(.lazy-img):not(.lazy-loaded)');
+  imgs.forEach(function(img){
+    if(img.src && !img.loading){
+      img.classList.add('lazy-img');
+      img.setAttribute('loading','lazy');
+    }
+  });
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        var img = entry.target;
+        if(img.dataset.src){
+          img.src = img.dataset.src;
+          img.removeAttribute('data-src');
+        }
+        img.classList.add('lazy-loaded');
+        img.classList.remove('lazy-img');
+        observer.unobserve(img);
+      }
+    });
+  },{rootMargin:'200px'});
+  document.querySelectorAll('.post-body img[data-src]').forEach(function(img){
+    observer.observe(img);
+  });
+  // 对已有 src 的图片也添加过度效果
+  document.querySelectorAll('.post-body img').forEach(function(img){
+    img.setAttribute('loading','lazy');
+    if(!img.complete){ img.classList.add('lazy-img'); }
+    img.addEventListener('load',function(){ img.classList.add('lazy-loaded'); });
+    if(img.complete){ img.classList.add('lazy-loaded'); }
+  });
+})();
+
+// ======================== 评论/留言系统 ========================
+(function loadComments(){
+  var key = 'blog_comments_' + (window.location.pathname.replace(/[^a-zA-Z0-9]/g,'_'));
+  var list = document.getElementById('comment-list');
+  if(!list) return;
+  var comments = [];
+  try{ comments = JSON.parse(localStorage.getItem(key) || '[]'); }
+  catch(e){ comments = []; }
+  var html = '';
+  comments.forEach(function(c){
+    html += '<div class="comment-item"><div class="c-name">' +
+      escapeHtml(c.name) + '<span class="c-time">' + c.time + '</span></div>' +
+      '<div class="c-text">' + escapeHtml(c.text) + '</div></div>';
+  });
+  list.innerHTML = html;
+})();
+
+function submitComment(){
+  var nameEl = document.getElementById('c-name');
+  var textEl = document.getElementById('c-text');
+  var hpEl = document.getElementById('hp-website');
+  if(!nameEl || !textEl) return;
+  
+  // 蜜罐检测：如果隐藏字段被填写，就是机器人
+  if(hpEl && hpEl.value.trim() !== ''){ alert('留言失败，请重试'); return; }
+  
+  var name = nameEl.value.trim();
+  var text = textEl.value.trim();
+  if(!name){ alert('请输入昵称'); nameEl.focus(); return; }
+  if(!text){ alert('请输入留言内容'); textEl.focus(); return; }
+  if(text.length > 1000){ alert('留言内容过长，请控制在1000字以内'); return; }
+  
+  // 简单敏感词过滤
+  var spamWords = /广告|推广|加微信|加QQ|赚钱|兼职|代购|http|www\./i;
+  if(spamWords.test(text)){ alert('留言内容包含敏感词，请修改后重试'); return; }
+  
+  var key = 'blog_comments_' + (window.location.pathname.replace(/[^a-zA-Z0-9]/g,'_'));
+  var comments = [];
+  try{ comments = JSON.parse(localStorage.getItem(key) || '[]'); }
+  catch(e){ comments = []; }
+  
+  var now = new Date();
+  var timeStr = now.getFullYear()+'-'+pad(now.getMonth()+1)+'-'+pad(now.getDate())+' '+
+                pad(now.getHours())+':'+pad(now.getMinutes());
+  
+  comments.push({name:name, text:text, time:timeStr});
+  localStorage.setItem(key, JSON.stringify(comments));
+  
+  nameEl.value = '';
+  textEl.value = '';
+  
+  // 刷新列表
+  var list = document.getElementById('comment-list');
+  if(list){
+    var html = '';
+    comments.forEach(function(c){
+      html += '<div class="comment-item"><div class="c-name">' +
+        escapeHtml(c.name) + '<span class="c-time">' + c.time + '</span></div>' +
+        '<div class="c-text">' + escapeHtml(c.text) + '</div></div>';
+    });
+    list.innerHTML = html;
+  }
+  
+  alert('✅ 留言已保存！');
+}
+
+function pad(n){ return n < 10 ? '0' + n : '' + n; }
+
+function escapeHtml(s){
+  var d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
+
+// ======================== 全站备份导出 ========================
+function exportBackup(){
+  try{
+    var data = {
+      title: document.title,
+      url: window.location.href,
+      content: document.getElementById('post-body') ? document.getElementById('post-body').innerHTML : '',
+      timestamp: new Date().toISOString(),
+      comments: JSON.parse(localStorage.getItem('blog_comments_' + (window.location.pathname.replace(/[^a-zA-Z0-9]/g,'_'))) || '[]')
+    };
+    var blob = new Blob([JSON.stringify(data, null, 2)], {type:'application/json'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'backup_' + new Date().toISOString().slice(0,10) + '.json';
+    a.click();
+    URL.revokeObjectURL(a.href);
+    alert('✅ 当前文章备份已导出！');
+  } catch(e){
+    alert('导出失败: ' + e.message);
+  }
+}
+</script>
+
+
     
     
+
+    <!-- 回到顶部 -->
+    <button id="back-to-top" title="回到顶部" onclick="scrollToTop()">⬆</button>
+
 </body>
 </html>
