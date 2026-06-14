@@ -261,7 +261,7 @@ function copyLink() {
 
 
     <script>
-    function buildTOC() {
+        function buildTOC() {
       var body = document.getElementById('post-body');
       if (!body) return;
       var headings = body.querySelectorAll('h2, h3');
@@ -272,16 +272,27 @@ function copyLink() {
         return;
       }
       if (tocBox) tocBox.style.display = 'block';
-      var tocHTML = '';
+      tocList.innerHTML = '';
       for (var i = 0; i < headings.length; i++) {
         var h = headings[i];
         var level = h.tagName === 'H3' ? 'toc-h3' : '';
-        var id = h.id;
-        var text = h.textContent;
-        tocHTML += '<li class="' + level + '"><a href="#' + id + '" onclick="event.preventDefault();var el=document.getElementById('' + id + '');if(el){el.scrollIntoView({behavior://'smooth'});}return false;">' + text + '</a></li>';
+        var li = document.createElement('li');
+        if (level) li.className = level;
+        var a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.textContent = h.textContent;
+        a.onclick = function(e) {
+          e.preventDefault();
+          var targetId = this.getAttribute('href').slice(1);
+          var el = document.getElementById(targetId);
+          if (el) el.scrollIntoView({behavior: 'smooth'});
+          return false;
+        };
+        li.appendChild(a);
+        tocList.appendChild(li);
       }
-      if (tocList) tocList.innerHTML = tocHTML;
     }
+    
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', buildTOC);
     } else {
