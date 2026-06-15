@@ -338,6 +338,7 @@ document.addEventListener('DOMContentLoaded', () => {
       hljs.highlightBlock(block);
     });
   }
+  buildTOC_legacy();
 });
 </script>
 
@@ -345,8 +346,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     <script>
     // ======================== 文章目录 TOC ========================
-    function buildTOC_legacy() { // 静态TOC已替代动态构建
-      return;
+    function buildTOC_legacy() { // 动态重建 TOC - 已修复
       var body = document.getElementById('post-body');
       if (!body) return;
       var headings = body.querySelectorAll('h2, h3');

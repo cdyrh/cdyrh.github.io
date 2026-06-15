@@ -778,6 +778,7 @@ window.addEventListener('DOMContentLoaded', function(){
       try{ hljs.highlightElement(b); }catch(e){}
     });
   }
+  buildTOC_legacy();
 });
 </script>
 
@@ -789,8 +790,7 @@ document.getElementById("post-tags").innerHTML = ["去污", "衣服", "清洁", 
 
 <script>
 // ======================== 文章目录 TOC ========================
-    function buildTOC_legacy() { // 静态TOC已替代动态构建
-      return;
+    function buildTOC_legacy() { // 动态重建 TOC - 已修复
       var body = document.getElementById('post-body');
       if (!body) return;
       var headings = body.querySelectorAll('h2, h3');

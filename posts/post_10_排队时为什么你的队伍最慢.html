@@ -251,8 +251,7 @@ function copyLink() {
 
 
     <script>
-        function buildTOC_legacy() { // 静态TOC已替代动态构建
-      return;
+        function buildTOC_legacy() { // 动态重建 TOC - 已修复
       var body = document.getElementById('post-body');
       if (!body) return;
       var headings = body.querySelectorAll('h2, h3');
@@ -284,7 +283,7 @@ function copyLink() {
       }
     }
     
-    // TOC已改为静态HTML
+    buildTOC_legacy();
     </script>
 
 <script>
