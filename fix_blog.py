@@ -38,7 +38,7 @@ def generate_static_toc(headings):
     toc_html = '    <!-- TOC 文章目录 -->\n'
     toc_html += '    <div class="toc-box" id="toc-box">\n'
     toc_html += '      <div class="toc-title">📋 文章目录</div>\n'
-    toc_html += '      <ul class="toc-list">\n'
+    toc_html += '      <ul class="toc-list" id="toc-list">\n'
 
     for tag, id_val, text in headings:
         cls = ' class="toc-h3"' if tag == 'h3' else ''
@@ -193,16 +193,19 @@ def fix_file(filepath):
             html = html[:rs_start] + new_stats + '\n' + html[rs_end:]
             print(f"  Stats: Updated")
 
-    # 6. Disable dynamic buildTOC
+    # 6. Ensure buildTOC_legacy() works (fix old naming / add auto-ID)
     html = html.replace(
         'function buildTOC() {',
-        'function buildTOC_legacy() { // 静态TOC已替代动态构建\n      return;'
+        'function buildTOC_legacy() { // 动态重建TOC（已修复：移除return，自动生成id）'
     )
-    html = re.sub(
-        r"if\s*\(document\.readyState\s*===\s*'loading'\)\s*\{\s*\n\s*document\.addEventListener\('DOMContentLoaded',\s*buildTOC\);\s*\n\s*\}\s*else\s*\{\s*\n\s*buildTOC\(\);\s*\n\s*\}",
-        '// TOC已改为静态HTML',
-        html
-    )
+    # 确保 DOMContentLoaded 中调用了 buildTOC_legacy()
+    if 'buildTOC_legacy()' not in html:
+        # 如果没有调用，在脚本末尾添加
+        html = re.sub(
+            r'(</script>\s*</body>)',
+            r"<script>document.addEventListener('DOMContentLoaded', function() { if (typeof buildTOC_legacy === 'function') buildTOC_legacy(); });</script>\n\1",
+            html
+        )
 
     # 7. Clean up stray HTML
     html = re.sub(r'\n\s*<div\s*\n(\s*)<!-- 留言区 -->', r'\n\1<!-- 留言区 -->', html)

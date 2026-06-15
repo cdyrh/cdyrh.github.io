@@ -527,7 +527,7 @@ body {
     <!-- TOC 文章目录 -->
     <div class="toc-box" id="toc-box">
       <div class="toc-title">📋 文章目录</div>
-      <ul class="toc-list">
+      <ul class="toc-list" id="toc-list">
         <li><a href="#1-衣架全换统一的颜值瞬间翻倍">1. 衣架全换统一的，颜值瞬间翻倍</a></li>
         <li><a href="#2-学会立式叠衣法找衣服不用翻箱倒柜">2. 学会"立式叠衣法"，找衣服不用翻箱倒柜</a></li>
         <li><a href="#3-按使用频率分区别按季节">3. 按"使用频率"分区，别按"季节"</a></li>
@@ -709,7 +709,13 @@ document.getElementById("post-tags").innerHTML = ["食物", "冷知识"].map(fun
         var li = document.createElement('li');
         if (level) li.className = level;
         var a = document.createElement('a');
-        a.href = '#' + h.id;
+        // 自动生成 ID：如果标题没有 id，从文本内容生成
+        var headingId = h.id;
+        if (!headingId) {
+          headingId = h.textContent.replace(/[^\w\u4e00-\u9fff]/g, '').substring(0, 50);
+          h.id = headingId;
+        }
+        a.href = '#' + headingId;
         a.textContent = h.textContent;
         a.onclick = function(e) {
           e.preventDefault();

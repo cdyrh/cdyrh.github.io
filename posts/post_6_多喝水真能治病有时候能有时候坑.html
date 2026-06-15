@@ -187,7 +187,7 @@ body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC",sa
     <!-- TOC 文章目录 -->
     <div class="toc-box" id="toc-box">
       <div class="toc-title">📋 文章目录</div>
-      <ul class="toc-list">
+      <ul class="toc-list" id="toc-list">
         <li><a href="#确实有用的情况">确实有用的情况</a></li>
         <li><a href="#其实没用甚至有害的情况">其实没用甚至有害的情况</a></li>
       </ul>
@@ -288,7 +288,13 @@ function copyLink() {
         var li = document.createElement('li');
         if (level) li.className = level;
         var a = document.createElement('a');
-        a.href = '#' + h.id;
+        // 自动生成 ID：如果标题没有 id，从文本内容生成
+        var headingId = h.id;
+        if (!headingId) {
+          headingId = h.textContent.replace(/[^\w\u4e00-\u9fff]/g, '').substring(0, 50);
+          h.id = headingId;
+        }
+        a.href = '#' + headingId;
         a.textContent = h.textContent;
         a.onclick = function(e) {
           e.preventDefault();
