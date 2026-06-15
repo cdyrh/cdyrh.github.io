@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>欢迎来到我的小窝 🌸 - 池帥の亦殿</title>
+<title>欢迎来到我的小窝 🌸 - 池帅の亦殿</title>
 <meta name="description" content="欢迎来到我的小窝 🌸">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌸</text></svg>">
 
@@ -400,9 +400,7 @@ body {
       list-style: none;
       padding: 0;
     }
-    .toc-list li {
-      line-height: 2;
-    }
+    .toc-list li { line-height: 2; }
     .toc-list a {
       color: var(--text-light, #7c6f9f);
       text-decoration: none;
@@ -421,7 +419,6 @@ body {
       font-size: 0.84rem;
     }
     </style>
-    
 
     <style>
     /* ===== 回到顶部按钮 ===== */
@@ -460,44 +457,42 @@ body {
     }
     .comment-section h3{color:var(--pink-deep);margin-bottom:1rem;font-size:1.1rem}
     .comment-form{display:flex;flex-direction:column;gap:.8rem}
-    .comment-form input,.comment-form textarea{
-      padding:.7rem 1rem;border-radius:10px;border:1.5px solid var(--border);
-      font-family:var(--font,'Noto Serif SC',serif);
-      font-size:.92rem;color:var(--text);background:var(--bg);
-      transition:border .2s;resize:vertical;
+    .comment-form input[type="text"],
+    .comment-form textarea{
+      width:100%;padding:.8rem 1rem;border:1.5px solid var(--border);
+      border-radius:10px;font-size:.9rem;
+      font-family:inherit;color:var(--text);
+      background:var(--bg);transition:border-color .2s;
     }
-    .comment-form input:focus,.comment-form textarea:focus{
-      outline:none;border-color:var(--pink);box-shadow:0 0 0 3px rgba(255,143,171,.1)
+    .comment-form input[type="text"]:focus,
+    .comment-form textarea:focus{
+      outline:none;border-color:var(--pink);
     }
-    .comment-form textarea{min-height:100px}
-    .comment-form .honeypot{position:absolute;left:-9999px;opacity:0;height:0;width:0;overflow:hidden}
+    .comment-form textarea{min-height:100px;resize:vertical}
     .comment-submit{
-      align-self:flex-start;padding:.6rem 1.8rem;border-radius:24px;
-      background:linear-gradient(135deg,var(--pink),var(--purple));
-      color:#fff;border:none;cursor:pointer;font-family:var(--font,'Noto Serif SC',serif);
-      font-size:.9rem;font-weight:700;transition:opacity .2s;
+      align-self:flex-end;padding:.6rem 1.5rem;border:none;
+      border-radius:20px;background:linear-gradient(135deg,var(--pink),var(--purple));
+      color:#fff;font-weight:700;cursor:pointer;font-size:.9rem;
+      transition:opacity .2s;
     }
     .comment-submit:hover{opacity:.85}
-    .comment-list{margin-top:1.5rem}
+    .comment-notice{font-size:.78rem;color:var(--text-muted);text-align:center}
     .comment-item{
-      background:var(--bg);border-radius:10px;padding:1rem;margin-bottom:.8rem;
-      border-left:3px solid var(--pink-light);
+      padding:1rem 0;border-bottom:1px dashed var(--border);
     }
-    .comment-item .c-name{font-weight:700;color:var(--pink-deep);font-size:.9rem}
-    .comment-item .c-time{color:var(--text-muted);font-size:.75rem;margin-left:.5rem}
-    .comment-item .c-text{color:var(--text-light);font-size:.9rem;margin-top:.3rem;line-height:1.7}
-    .comment-notice{color:var(--text-muted);font-size:.82rem;margin-top:.5rem}
-    
-    /* ===== 备份导出按钮 ===== */
+    .comment-item:last-child{border-bottom:none}
+    .c-name{font-weight:700;color:var(--text);font-size:.9rem}
+    .c-time{font-weight:400;color:var(--text-muted);font-size:.78rem;margin-left:.5rem}
+    .c-text{color:var(--text-light);font-size:.88rem;margin-top:.3rem;line-height:1.7}
+    .honeypot{position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden}
+    .comment-list{margin-top:1rem}
     .backup-btn{
-      display:inline-flex;align-items:center;gap:.4rem;
-      padding:.5rem 1.2rem;border-radius:24px;
-      background:var(--card);border:1.5px solid var(--border);
-      color:var(--text-light);cursor:pointer;
-      font-family:var(--font,'Noto Serif SC',serif);font-size:.85rem;
-      transition:all .2s;margin-left:.5rem;
+      position:fixed;bottom:7rem;right:2rem;z-index:999;
+      padding:.5rem 1rem;border-radius:20px;border:1.5px solid var(--border);
+      background:var(--card);color:var(--text-light);cursor:pointer;
+      font-size:.82rem;transition:all .2s;opacity:.75;
     }
-    .backup-btn:hover{background:var(--pink-pale);color:var(--pink-deep);border-color:var(--pink-light)}
+    .backup-btn:hover{opacity:1;background:var(--pink-pale);color:var(--pink-deep);border-color:var(--pink-light)}
     </style>
 
 </head>
@@ -508,7 +503,7 @@ body {
 
 <!-- 导航 -->
 <nav class="nav">
-  <a href="../" class="nav-logo">池帥の亦殿 🌸</a>
+  <a href="../" class="nav-logo">池帅の亦殿 🌸</a>
   <div class="nav-actions">
     <a href="../" class="nav-back">← 返回首页</a>
     <button id="dark-toggle" onclick="toggleDark()">🌙</button>
@@ -525,14 +520,31 @@ body {
         <span>📅 2026-06-13</span>
         <span>📂 随笔</span>
       </div>
-      <div class="post-tags" id="post-tags"></div>
+      <div class="post-tags" id="post-tags"><span class="tag">' + t + '</span></div>
+    </div>
+  
+    
+    <!-- TOC 文章目录 -->
+    <div class="toc-box" id="toc-box">
+      <div class="toc-title">📋 文章目录</div>
+      <ul class="toc-list">
+        <li><a href="#1-衣架全换统一的颜值瞬间翻倍">1. 衣架全换统一的，颜值瞬间翻倍</a></li>
+        <li><a href="#2-学会立式叠衣法找衣服不用翻箱倒柜">2. 学会"立式叠衣法"，找衣服不用翻箱倒柜</a></li>
+        <li><a href="#3-按使用频率分区别按季节">3. 按"使用频率"分区，别按"季节"</a></li>
+        <li><a href="#4-抽屉里加小隔板小东西不乱跑">4. 抽屉里加"小隔板"，小东西不乱跑</a></li>
+        <li><a href="#5-厚外套真空压缩衣柜瞬间多20升">5. 厚外套真空压缩，衣柜瞬间多20升</a></li>
+        <li><a href="#6-鞋盒统一侧面贴图告别开盲盒">6. 鞋盒统一侧面贴图，告别"开盲盒"</a></li>
+        <li><a href="#7-包包的隐身术塞进枕套里">7. 包包的"隐身术"：塞进枕套里</a></li>
+        <li><a href="#8-一件基础款白t的收纳哲学">8. 一件"基础款白T"的收纳哲学</a></li>
+        <li><a href="#9-衣橱香氛防虫一步到位">9. 衣橱香氛+防虫，一步到位</a></li>
+        <li><a href="#写在最后">写在最后</a></li>
+      </ul>
     </div>    <!-- 阅读统计 -->
     <div class="reading-stats" id="reading-stats">
-      <span>📝 字数：<strong id="word-count">169</strong></span>
+      <span>📝 字数：<strong id="word-count">159</strong></span>
       <span>⏱ 阅读：<strong id="read-time">约 1 分钟</strong></span>
     </div>
-<div class="post-body" id="post-body">
-<h1>欢迎来到池帥の亦殿</h1>
+<div class="post-body" id="post-body"><h1>欢迎来到池帥の亦殿</h1>
 <p>嗨！你好呀，很高兴你能找到这里～</p>
 <p>这是我的个人博客，一个属于我的小小角落。在这里我会分享：</p>
 <ul>
@@ -552,7 +564,8 @@ body {
       <button class="share-btn qq" onclick="shareQQ()" title="QQ分享">🐧</button>
       <button class="share-btn wb" onclick="shareWB()" title="微博分享">📢</button>
       <button class="share-btn cp" onclick="copyLink()" title="复制链接">🔗</button>
-
+    </div>
+  
     <!-- 留言区 -->
     <div class="comment-section" id="comment-section">
       <h3>💬 留言区</h3>
@@ -569,9 +582,9 @@ body {
     </div>
 
     <div class="back-home" id="back-home">
-      <a href="../">← 返回首页 池帥の亦殿</a>
+      <a href="../">← 返回首页 池帅の亦殿</a>
     </div>
-  <button class="backup-btn" onclick="exportBackup()" title="一键导出全站内容">💾 导出备份</button></div>
+  </div>
 </div>
 
 <script>
@@ -674,14 +687,13 @@ window.addEventListener('DOMContentLoaded', function(){
 </script>
 
 <script>
-document.getElementById("post-tags").innerHTML = ['欢迎', '开始'].map(function(t) {
+document.getElementById("post-tags").innerHTML = ["' + t + '"].map(function(t) {
   return '<span class="tag">' + t + '</span>';
 }).join("");
 </script>
 
-    
-    <script>
-    // ======================== 文章目录 TOC ========================
+<script>
+// ======================== 文章目录 TOC ========================
     function buildTOC_legacy() { // 静态TOC已替代动态构建
       return;
       var body = document.getElementById('post-body');
@@ -716,7 +728,7 @@ document.getElementById("post-tags").innerHTML = ['欢迎', '开始'].map(functi
     }
     
     // TOC已改为静态HTML
-    </script>
+</script>
 
 <script>
 // ======================== 回到顶部 ========================
@@ -736,9 +748,7 @@ document.getElementById("post-tags").innerHTML = ['欢迎', '开始'].map(functi
     }
   }, {passive:true});
 })();
-function scrollToTop(){
-  window.scrollTo({top:0, behavior:'smooth'});
-}
+function scrollToTop(){ window.scrollTo({top:0, behavior:'smooth'}); }
 
 // ======================== 图片懒加载 ========================
 (function lazyLoadImgs(){
@@ -767,7 +777,6 @@ function scrollToTop(){
   document.querySelectorAll('.post-body img[data-src]').forEach(function(img){
     observer.observe(img);
   });
-  // 对已有 src 的图片也添加过度效果
   document.querySelectorAll('.post-body img').forEach(function(img){
     img.setAttribute('loading','lazy');
     if(!img.complete){ img.classList.add('lazy-img'); }
@@ -798,57 +807,40 @@ function submitComment(){
   var textEl = document.getElementById('c-text');
   var hpEl = document.getElementById('hp-website');
   if(!nameEl || !textEl) return;
-  
-  // 蜜罐检测：如果隐藏字段被填写，就是机器人
   if(hpEl && hpEl.value.trim() !== ''){ alert('留言失败，请重试'); return; }
-  
   var name = nameEl.value.trim();
   var text = textEl.value.trim();
   if(!name){ alert('请输入昵称'); nameEl.focus(); return; }
   if(!text){ alert('请输入留言内容'); textEl.focus(); return; }
   if(text.length > 1000){ alert('留言内容过长，请控制在1000字以内'); return; }
-  
-  // 简单敏感词过滤
   var spamWords = /广告|推广|加微信|加QQ|赚钱|兼职|代购|http|www\./i;
   if(spamWords.test(text)){ alert('留言内容包含敏感词，请修改后重试'); return; }
-  
   var key = 'blog_comments_' + (window.location.pathname.replace(/[^a-zA-Z0-9]/g,'_'));
   var comments = [];
   try{ comments = JSON.parse(localStorage.getItem(key) || '[]'); }
   catch(e){ comments = []; }
-  
   var now = new Date();
   var timeStr = now.getFullYear()+'-'+pad(now.getMonth()+1)+'-'+pad(now.getDate())+' '+
                 pad(now.getHours())+':'+pad(now.getMinutes());
-  
   comments.push({name:name, text:text, time:timeStr});
   localStorage.setItem(key, JSON.stringify(comments));
-  
   nameEl.value = '';
   textEl.value = '';
-  
-  // 刷新列表
   var list = document.getElementById('comment-list');
   if(list){
-    var html = '';
+    var html2 = '';
     comments.forEach(function(c){
-      html += '<div class="comment-item"><div class="c-name">' +
+      html2 += '<div class="comment-item"><div class="c-name">' +
         escapeHtml(c.name) + '<span class="c-time">' + c.time + '</span></div>' +
         '<div class="c-text">' + escapeHtml(c.text) + '</div></div>';
     });
-    list.innerHTML = html;
+    list.innerHTML = html2;
   }
-  
-  alert('✅ 留言已保存！');
+  alert('留言已保存');
 }
 
 function pad(n){ return n < 10 ? '0' + n : '' + n; }
-
-function escapeHtml(s){
-  var d = document.createElement('div');
-  d.textContent = s;
-  return d.innerHTML;
-}
+function escapeHtml(s){ var d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
 
 // ======================== 全站备份导出 ========================
 function exportBackup(){
@@ -866,19 +858,17 @@ function exportBackup(){
     a.download = 'backup_' + new Date().toISOString().slice(0,10) + '.json';
     a.click();
     URL.revokeObjectURL(a.href);
-    alert('✅ 当前文章备份已导出！');
-  } catch(e){
-    alert('导出失败: ' + e.message);
-  }
+    alert('当前文章备份已导出');
+  } catch(e){ alert('导出失败: ' + e.message); }
 }
 </script>
 
 
-    
-    
-
     <!-- 回到顶部 -->
     <button id="back-to-top" title="回到顶部" onclick="scrollToTop()">⬆</button>
+
+    <!-- 备份按钮 -->
+    <button class="backup-btn" onclick="exportBackup()" title="一键导出全站内容">💾 导出备份</button>
 
 </body>
 </html>
