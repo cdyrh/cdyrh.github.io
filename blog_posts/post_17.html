@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>衣服沾了顽固污渍别急着扔！7个急救妙招让它起死回生 🧴 - 池帅の亦殿</title>
+<meta name="description" content="衣服沾了顽固污渍别急着扔！7个急救妙招让它起死回生 🧴">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌸</text></svg>">
+
+<!-- 中文字体 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<style>
+/* ===== CSS Reset ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== 主题变量 ===== */
+:root {
+  --pink: #ff8fab;
+  --pink-light: #ffb3c6;
+  --pink-pale: #fff0f5;
+  --pink-deep: #e85d8a;
+  --purple: #c77dff;
+  --purple-light: #e0aaff;
+  --purple-pale: #f8f0ff;
+  --text: #4a4063;
+  --text-light: #7c6f9f;
+  --text-muted: #b0a8c8;
+  --bg: #fdf4ff;
+  --card: #ffffff;
+  --border: #f0d9ff;
+  --radius: 18px;
+  --radius-sm: 10px;
+}
+
+[data-theme="dark"] {
+  --text: #e2d9f3;
+  --text-light: #c4b5e0;
+  --text-muted: #8b7aaf;
+  --bg: #1a1225;
+  --card: #241a34;
+  --border: #3d2d5a;
+  --pink-pale: #2d1a2e;
+  --purple-pale: #201630;
+}
+
+body {
+  font-family: 'Noto Serif SC', 'SimSun', 'STSong', serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
+  transition: background 0.3s, color 0.3s;
+  padding-top: 64px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== 导航栏 ===== */
+.nav {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 2px solid var(--border);
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: 64px;
+}
+
+[data-theme="dark"] .nav {
+  background: rgba(26, 18, 37, 0.92);
+}
+
+.nav-logo {
+  font-size: 1.2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-decoration: none;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.nav-back {
+  background: none;
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  padding: 0.35rem 0.9rem;
+  cursor: pointer;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 0.9rem;
+  color: var(--text-light);
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.nav-back:hover {
+  background: var(--pink-pale);
+}
+
+#dark-toggle {
+  background: none;
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  padding: 0.35rem 0.7rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s;
+  color: var(--text-light);
+}
+
+#dark-toggle:hover {
+  background: var(--pink-pale);
+}
+
+/* ===== 文章容器（核心修复：确保居中）===== */
+.post-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 2rem 1rem;
+}
+
+.post-container {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.post-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 2rem 0;
+}
+
+.post-cover {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.post-title {
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
+  background: linear-gradient(135deg, var(--pink-deep), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.4;
+}
+
+.post-meta {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.post-meta span {
+  margin: 0 0.5rem;
+}
+
+.post-tags {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 0.8rem;
+}
+
+.tag {
+  background: var(--pink-pale);
+  color: var(--pink-deep);
+  padding: 0.2rem 0.7rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+}
+
+/* ===== 文章正文 ===== */
+.post-body {
+  background: var(--card);
+  border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+  box-shadow: 0 8px 32px rgba(200, 100, 200, 0.12);
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  font-size: 1.05rem;
+  line-height: 2;
+}
+
+.post-body h1,
+.post-body h2,
+.post-body h3,
+.post-body h4 {
+  color: var(--pink-deep);
+  margin: 1.8rem 0 1rem;
+  line-height: 1.4;
+}
+
+.post-body h1 { font-size: 1.6rem; }
+.post-body h2 { font-size: 1.4rem; }
+.post-body h3 { font-size: 1.2rem; }
+
+.post-body p {
+  margin-bottom: 1.2rem;
+  line-height: 2;
+}
+
+.post-body ul,
+.post-body ol {
+  margin: 0 0 1.2rem 1.5rem;
+  padding-left: 0.5rem;
+}
+
+.post-body li {
+  margin-bottom: 0.6rem;
+  line-height: 1.8;
+}
+
+.post-body code:not(pre code) {
+  background: var(--pink-pale);
+  color: var(--pink-deep);
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.9em;
+  font-family: 'Courier New', monospace;
+}
+
+.post-body pre {
+  border-radius: var(--radius-sm);
+  margin-bottom: 1.2rem;
+  overflow-x: auto;
+  padding: 1.2rem;
+  background: #282c34;
+}
+
+.post-body blockquote {
+  border-left: 3px solid var(--pink-light);
+  padding: 0.8rem 1.2rem;
+  color: var(--text-light);
+  font-style: italic;
+  margin-bottom: 1.2rem;
+  background: var(--pink-pale);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.post-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.2rem;
+  font-size: 0.92rem;
+}
+
+.post-body th {
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  color: #fff;
+  padding: 0.6rem 0.8rem;
+  text-align: left;
+}
+
+.post-body td {
+  padding: 0.55rem 0.8rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.post-body img {
+  max-width: 100%;
+  border-radius: 12px;
+  margin: 1rem 0;
+}
+
+.post-body a {
+  color: var(--pink-deep);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--pink-light);
+  transition: all 0.2s;
+}
+
+.post-body a:hover {
+  color: var(--purple);
+  border-bottom-color: var(--purple);
+}
+
+/* ===== 分享栏 ===== */
+.share-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  padding: 1.2rem;
+  background: var(--card);
+  border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+  box-shadow: 0 8px 32px rgba(200, 100, 200, 0.12);
+  margin-bottom: 2rem;
+}
+
+.share-label {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-right: 0.3rem;
+}
+
+.share-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.share-btn:hover {
+  transform: translateY(-3px) scale(1.1);
+}
+
+.share-btn.wx { background: #07c160; color: #fff; }
+.share-btn.qq { background: #12b7f5; color: #fff; }
+.share-btn.wb { background: #e6162d; color: #fff; }
+.share-btn.cp { background: var(--purple-pale); color: var(--purple); }
+
+/* ===== 返回首页 ===== */
+.back-home {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.back-home a {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  border-radius: 24px;
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  transition: opacity 0.2s;
+}
+
+.back-home a:hover {
+  opacity: 0.85;
+}
+
+/* ===== 粒子背景 ===== */
+#particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.post-wrapper {
+  position: relative;
+  z-index: 1;
+}
+</style>
+</head>
+<body>
+
+<!-- 粒子背景 -->
+<canvas id="particles"></canvas>
+
+<!-- 导航 -->
+<nav class="nav">
+  <a href="../" class="nav-logo">池帅の亦殿 🌸</a>
+  <div class="nav-actions">
+    <a href="../" class="nav-back">← 返回首页</a>
+    <button id="dark-toggle" onclick="toggleDark()">🌙</button>
+  </div>
+</nav>
+
+<!-- 文章 -->
+<div class="post-wrapper">
+  <div class="post-container">
+    <div class="post-header">
+      <div class="post-cover">🧴</div>
+      <h1 class="post-title">衣服沾了顽固污渍别急着扔！7个急救妙招让它起死回生 🧴</h1>
+      <div class="post-meta">
+        <span>📅 2026-06-15</span>
+        <span>📂 生活常识</span>
+      </div>
+      <div class="post-tags" id="post-tags"></div>
+    </div>
+  
+    <div class="post-body" id="post-body">
+<h1>一件白衬衫毁了一整天？那是你还不知道这些</h1>
+<p>你有没有过这种瞬间——</p>
+<ul>
+<li>刚穿上的白T恤，一口咖啡溅上去</li>
+<li>吃火锅一滴红油精准落在最贵的裤子上</li>
+<li>圆珠笔没盖好，衬衫口袋全是蓝墨</li>
+<li>孩子的校服上总有"不明污渍"洗不掉</li>
+</ul>
+<p><strong>别急着扔！</strong> 很多"判了死刑"的衣服，其实是方法不对。</p>
+<p>今天这7个去污绝招，每一个都是老洗衣工的"祖传秘方"——不伤衣服，不用买贵清洁剂，厨房里随手拿的东西就能搞定。</p>
+<p><img src="https://images.unsplash.com/photo-1545173168-9f1947eebb7f?w=800&q=80" alt="衣物去污" style="max-width:100%;border-radius:12px;margin:1rem 0;"></p>
+<h2>1. 咖啡/茶渍：食盐+苏打水，一分钟溶解</h2>
+<p>咖啡和茶渍是"水溶性色素"，关键是<strong>趁新鲜处理</strong>。</p>
+<p><strong>急救步骤：</strong></p>
+<p>1. 立刻用干纸巾<strong>吸</strong>掉多余液体（不要擦！擦会让污渍扩散）</p>
+<p>2. 撒一层食盐盖住污渍，盐会迅速<strong>吸收水分+防止渗透</strong></p>
+<p>3. 倒冰苏打水/冷水冲洗污渍背面（从背面往正面冲，把色素"顶"出来）</p>
+<p>4. 残留印迹：抹一点白醋+洗洁精（1:1），搓30秒后冲洗</p>
+<blockquote>
+<strong>别用热水！</strong> 热水会让蛋白质变性、色素"锁死"在纤维里，越洗越惨。
+</blockquote>
+<p>⚠️ 如果是<strong>干了很久的旧茶渍</strong>，用甘油涂在污渍上敷30分钟再洗，一样有效。</p>
+<h2>2. 火锅油/红油：洗洁精+小苏打，专治油腻</h2>
+<p>油渍是最常见的衣服灾难——尤其是红油，色素+油脂双叠加。</p>
+<p><strong>黄金组合：</strong> 洗洁精 + 小苏打（1:1调成糊状）</p>
+<p><strong>操作步骤：</strong></p>
+<p>1. 先吸掉表面浮油（纸巾按压，切勿搓）</p>
+<p>2. 把"洗洁精+小苏打糊"涂在油渍上</p>
+<p>3. 用旧牙刷<strong>从外向内</strong>轻轻刷（由外往内防止扩散）</p>
+<p>4. 静置15分钟（小苏打有吸附+摩擦作用，洗洁精乳化油脂）</p>
+<p>5. 温水搓洗</p>
+<blockquote>
+原理：洗洁精是<strong>亲油分子</strong>，能包裹油分子从纤维上拉下来；小苏打提供微摩擦力和吸附力。
+</blockquote>
+<p>如果是老油渍，在糊状混合物里<strong>加几滴白醋</strong>，去油效果加倍。</p>
+<h2>3. 圆珠笔/墨水：牛奶+酒精，意想不到的组合</h2>
+<p>圆珠笔和钢笔墨水是<strong>最难去</strong>的污渍之一，但解法很神奇——</p>
+<p><strong>神奇用法：</strong></p>
+<p>1. 把沾了墨渍的衣服部位泡进<strong>温牛奶</strong>里</p>
+<p>2. 泡30-60分钟（牛奶里的脂肪和蛋白质能分离墨水颗粒）</p>
+<p>3. 捞出后在污渍上滴<strong>医用酒精/高度白酒</strong></p>
+<p>4. 用棉签从背面按压，墨水会转移到纸巾上</p>
+<p>5. 如果还有残留：柠檬汁+盐搓揉</p>
+<blockquote>
+⚠️ 千万别用漂白水处理墨水渍——有些墨水含金属盐，遇到漂白剂会化学反应<strong>永久变黄</strong>。
+</blockquote>
+<h2>4. 血渍：冷水+双氧水，切记不用热水</h2>
+<p>血渍是最容易"洗坏"的污渍——用错了方法直接报废。</p>
+<p><strong>黄金法则：永远用冷水！</strong> 血液是蛋白质，热水会让蛋白质<strong>凝固变性</strong>，牢牢"焊"在纤维上。</p>
+<p><strong>正确步骤：</strong></p>
+<ul>
+<li><strong>新鲜血渍</strong>：立刻用冷水冲洗（从背面冲），搓肥皂揉搓，基本能干净</li>
+<li><strong>干涸血渍</strong>：</li>
+</ul>
+<p>1. 冷水泡30分钟软化</p>
+<p>2. 涂上双氧水（药店几块一瓶），起泡后静置5分钟</p>
+<p>3. 冷水冲洗</p>
+<p>4. 如还有痕迹：盐+小苏打+几滴水调糊，涂在渍上搓</p>
+<blockquote>
+如果没双氧水，用<strong>白萝卜汁</strong>涂抹血渍也有效——萝卜含有天然过氧化物酶。
+</blockquote>
+<p><img src="https://images.unsplash.com/photo-1567113463300-102a7eb3cb26?w=800&q=80" alt="洗衣去渍" style="max-width:100%;border-radius:12px;margin:1rem 0;"></p>
+<h2>5. 汗渍/腋下发黄：白醋+小苏打，还原白色</h2>
+<p>白色衣服穿一夏天，领口腋下全发黄——这不是汗，是<strong>汗液+体脂+止汗剂铝盐</strong>混合氧化。</p>
+<p><strong>恢复白净法：</strong></p>
+<p>1. 白醋和水 1:3 混合，把发黄部位泡进去，浸40分钟</p>
+<p>2. 捞出后，在黄渍上撒小苏打，淋几滴水，搓成糊</p>
+<p>3. 静置20分钟后搓洗</p>
+<p>4. 如果还有顽固黄色，挤半个<strong>柠檬汁</strong>涂抹后暴晒（利用柠檬酸+紫外线双重美白）</p>
+<blockquote>
+🚫 <strong>不要用漂白水</strong>处理汗渍发黄——汗渍里的蛋白质遇到氯漂白剂反而更黄，而且是永久性的。
+</blockquote>
+<h2>6. 红葡萄酒：盐+白葡萄酒，以酒制酒</h2>
+<p>红酒杯打翻在浅色衣服上——别慌。</p>
+<p><strong>"以酒制酒"法：</strong></p>
+<p>1. 立刻撒大量食盐盖住红酒渍——盐吸酒液+防扩散</p>
+<p>2. 倒一点<strong>白葡萄酒</strong>上去，用干净布吸</p>
+<p>3. 苏打水冲洗</p>
+<p>4. 如果还有颜色：过氧化氢（双氧水）+洗碗液混合涂上去，静置10分钟</p>
+<blockquote>
+原理：白葡萄酒中的有机酸能溶解红酒中的花青素色素。
+</blockquote>
+<p>另一个古老方法：<strong>洒醋</strong>也行（白醋+冷水2:1混合冲洗）。</p>
+<h2>7. 口香糖/粘胶：冰块冷冻+酒精溶解</h2>
+<p>口香糖粘在裤子上，越扯越黏——别扯了。</p>
+<p><strong>口香糖急救：</strong></p>
+<p>1. 用冰块（或冷冻食品）放在口香糖上，冻5-10分钟</p>
+<p>2. 口香糖硬了以后，用刀背刮掉（基本全掉）</p>
+<p>3. 残留黏胶：滴几滴<strong>医用酒精</strong>或<strong>风油精</strong>涂在黏胶上</p>
+<p>4. 用棉签轻轻刮，黏胶会一团团脱离</p>
+<blockquote>
+风油精是"万能溶剂"——还能去掉价格标签残留的胶痕。
+</blockquote>
+<p>如果是<strong>透明胶带/贴纸</strong>残留的黏胶：直接用风油精或护手霜（含油分）擦，一擦就掉。</p>
+<h2>写在最后</h2>
+<p>去污这件事，<strong>"快"</strong>字当头——越早处理越容易。</p>
+<p>记住三个万能原则：</p>
+<ul>
+<li>🧊 <strong>油性的</strong> → 用洗洁精/酒精（溶解脂肪）</li>
+<li>💧 <strong>水性的</strong> → 用冷水+盐（吸收+冲洗）</li>
+<li>🔥 <strong>蛋白性的</strong> → 坚决不用热水（防凝固）</li>
+</ul>
+<blockquote>
+把这篇收藏起来，下次衣服遭殃的时候——你不是在翻洗衣液说明书，而是在指挥一支"厨房清洁战队"。
+</blockquote>
+<hr>
+<p><strong>今日小作业：</strong> 翻出家里那件"因为洗不掉污渍而压箱底"的衣服，挑上面一个方法试一下——说不定从此多一件能穿的衣服 🌸</p>
+    </div>
+  
+    <div class="share-bar">
+      <span class="share-label">分享到：</span>
+      <button class="share-btn wx" onclick="shareWX()" title="微信分享">💬</button>
+      <button class="share-btn qq" onclick="shareQQ()" title="QQ分享">🐧</button>
+      <button class="share-btn wb" onclick="shareWB()" title="微博分享">📢</button>
+      <button class="share-btn cp" onclick="copyLink()" title="复制链接">🔗</button>
+    </div>
+  
+    <div class="back-home" id="back-home">
+      <a href="../">← 返回首页 池帅の亦殿</a>
+    </div>
+  </div>
+</div>
+
+<script>
+// ======================== 粒子背景 ========================
+(function(){
+  var canvas = document.getElementById('particles');
+  var ctx = canvas.getContext('2d');
+  var particles = [];
+  var W, H;
+  
+  function resize(){
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+  
+  var SYMBOLS = ['🌸','✨','💖','🌙','⭐','🎀','🍃','💫'];
+  
+  function createParticle(){
+    return {
+      x: Math.random() * W,
+      y: H + 20,
+      symbol: SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)],
+      size: 12 + Math.random() * 18,
+      speed: 0.3 + Math.random() * 0.8,
+      drift: (Math.random() - 0.5) * 0.5,
+      opacity: 0.3 + Math.random() * 0.5,
+      rotation: Math.random() * 360,
+      rotSpeed: (Math.random() - 0.5) * 2
+    };
+  }
+  
+  for(var i = 0; i < 25; i++) particles.push(createParticle());
+  
+  function animate(){
+    ctx.clearRect(0, 0, W, H);
+    particles.forEach(function(p){
+      ctx.save();
+      ctx.globalAlpha = p.opacity;
+      ctx.font = p.size + 'px serif';
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.rotation * Math.PI / 180);
+      ctx.fillText(p.symbol, 0, 0);
+      ctx.restore();
+      p.y -= p.speed;
+      p.x += p.drift;
+      p.rotation += p.rotSpeed;
+      if(p.y < -30) Object.assign(p, createParticle());
+    });
+    if(Math.random() < 0.02 && particles.length < 30) particles.push(createParticle());
+    if(particles.length > 30) particles.shift();
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+
+// ======================== 暗黑模式 ========================
+function toggleDark(){
+  var html = document.documentElement;
+  var next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('blog_theme', next);
+}
+(function(){
+  var saved = localStorage.getItem('blog_theme');
+  if(saved) document.documentElement.setAttribute('data-theme', saved);
+})();
+
+// ======================== 分享功能 ========================
+function shareWX(){
+  alert('请截图或复制链接，在微信中分享 💬\n\n链接：' + location.href);
+}
+function shareQQ(){
+  var url = encodeURIComponent(location.href);
+  var title = encodeURIComponent(document.title);
+  window.open('https://connect.qq.com/widget/shareqq/index.html?url=' + url + '&title=' + title, '_blank');
+}
+function shareWB(){
+  var url = encodeURIComponent(location.href);
+  var title = encodeURIComponent(document.title);
+  window.open('https://service.weibo.com/share/share.php?url=' + url + '&title=' + title, '_blank');
+}
+function copyLink(){
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(location.href).then(function(){
+      alert('✅ 链接已复制到剪贴板！');
+    });
+  }
+}
+
+// ======================== 代码高亮 ========================
+window.addEventListener('DOMContentLoaded', function(){
+  if(typeof hljs !== 'undefined'){
+    document.querySelectorAll('pre code').forEach(function(b){
+      try{ hljs.highlightElement(b); }catch(e){}
+    });
+  }
+});
+</script>
+
+<script>
+document.getElementById("post-tags").innerHTML = ['去污', '衣服', '清洁', '技巧'].map(function(t) {
+  return '<span class="tag">' + t + '</span>';
+}).join("");
+</script>
+</body>
+</html>
