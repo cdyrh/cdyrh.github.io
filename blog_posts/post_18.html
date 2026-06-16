@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>家里这8个地方比你想象的脏10倍！清洁盲区大盘点 🧼 - 池帅の亦殿</title>
+<meta name="description" content="家里这8个地方比你想象的脏10倍！清洁盲区大盘点 🧼">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌸</text></svg>">
+
+<!-- 中文字体 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<style>
+/* ===== CSS Reset ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== 主题变量 ===== */
+:root {
+  --pink: #ff8fab;
+  --pink-light: #ffb3c6;
+  --pink-pale: #fff0f5;
+  --pink-deep: #e85d8a;
+  --purple: #c77dff;
+  --purple-light: #e0aaff;
+  --purple-pale: #f8f0ff;
+  --text: #4a4063;
+  --text-light: #7c6f9f;
+  --text-muted: #b0a8c8;
+  --bg: #fdf4ff;
+  --card: #ffffff;
+  --border: #f0d9ff;
+  --radius: 18px;
+  --radius-sm: 10px;
+}
+
+[data-theme="dark"] {
+  --text: #e2d9f3;
+  --text-light: #c4b5e0;
+  --text-muted: #8b7aaf;
+  --bg: #1a1225;
+  --card: #241a34;
+  --border: #3d2d5a;
+  --pink-pale: #2d1a2e;
+  --purple-pale: #201630;
+}
+
+body {
+  font-family: 'Noto Serif SC', 'SimSun', 'STSong', serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
+  transition: background 0.3s, color 0.3s;
+  padding-top: 64px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== 导航栏 ===== */
+.nav {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 2px solid var(--border);
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: 64px;
+}
+
+[data-theme="dark"] .nav {
+  background: rgba(26, 18, 37, 0.92);
+}
+
+.nav-logo {
+  font-size: 1.2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-decoration: none;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.nav-back {
+  background: none;
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  padding: 0.35rem 0.9rem;
+  cursor: pointer;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 0.9rem;
+  color: var(--text-light);
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.nav-back:hover {
+  background: var(--pink-pale);
+}
+
+#dark-toggle {
+  background: none;
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  padding: 0.35rem 0.7rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s;
+  color: var(--text-light);
+}
+
+#dark-toggle:hover {
+  background: var(--pink-pale);
+}
+
+/* ===== 文章容器（核心修复：确保居中）===== */
+.post-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 2rem 1rem;
+}
+
+.post-container {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.post-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 2rem 0;
+}
+
+.post-cover {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.post-title {
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
+  background: linear-gradient(135deg, var(--pink-deep), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.4;
+}
+
+.post-meta {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.post-meta span {
+  margin: 0 0.5rem;
+}
+
+.post-tags {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 0.8rem;
+}
+
+.tag {
+  background: var(--pink-pale);
+  color: var(--pink-deep);
+  padding: 0.2rem 0.7rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+}
+
+/* ===== 文章正文 ===== */
+.post-body {
+  background: var(--card);
+  border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+  box-shadow: 0 8px 32px rgba(200, 100, 200, 0.12);
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  font-size: 1.05rem;
+  line-height: 2;
+}
+
+.post-body h1,
+.post-body h2,
+.post-body h3,
+.post-body h4 {
+  color: var(--pink-deep);
+  margin: 1.8rem 0 1rem;
+  line-height: 1.4;
+}
+
+.post-body h1 { font-size: 1.6rem; }
+.post-body h2 { font-size: 1.4rem; }
+.post-body h3 { font-size: 1.2rem; }
+
+.post-body p {
+  margin-bottom: 1.2rem;
+  line-height: 2;
+}
+
+.post-body ul,
+.post-body ol {
+  margin: 0 0 1.2rem 1.5rem;
+  padding-left: 0.5rem;
+}
+
+.post-body li {
+  margin-bottom: 0.6rem;
+  line-height: 1.8;
+}
+
+.post-body code:not(pre code) {
+  background: var(--pink-pale);
+  color: var(--pink-deep);
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.9em;
+  font-family: 'Courier New', monospace;
+}
+
+.post-body pre {
+  border-radius: var(--radius-sm);
+  margin-bottom: 1.2rem;
+  overflow-x: auto;
+  padding: 1.2rem;
+  background: #282c34;
+}
+
+.post-body blockquote {
+  border-left: 3px solid var(--pink-light);
+  padding: 0.8rem 1.2rem;
+  color: var(--text-light);
+  font-style: italic;
+  margin-bottom: 1.2rem;
+  background: var(--pink-pale);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.post-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.2rem;
+  font-size: 0.92rem;
+}
+
+.post-body th {
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  color: #fff;
+  padding: 0.6rem 0.8rem;
+  text-align: left;
+}
+
+.post-body td {
+  padding: 0.55rem 0.8rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.post-body img {
+  max-width: 100%;
+  border-radius: 12px;
+  margin: 1rem 0;
+}
+
+.post-body a {
+  color: var(--pink-deep);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--pink-light);
+  transition: all 0.2s;
+}
+
+.post-body a:hover {
+  color: var(--purple);
+  border-bottom-color: var(--purple);
+}
+
+/* ===== 分享栏 ===== */
+.share-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  padding: 1.2rem;
+  background: var(--card);
+  border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+  box-shadow: 0 8px 32px rgba(200, 100, 200, 0.12);
+  margin-bottom: 2rem;
+}
+
+.share-label {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-right: 0.3rem;
+}
+
+.share-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.share-btn:hover {
+  transform: translateY(-3px) scale(1.1);
+}
+
+.share-btn.wx { background: #07c160; color: #fff; }
+.share-btn.qq { background: #12b7f5; color: #fff; }
+.share-btn.wb { background: #e6162d; color: #fff; }
+.share-btn.cp { background: var(--purple-pale); color: var(--purple); }
+
+/* ===== 返回首页 ===== */
+.back-home {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.back-home a {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  border-radius: 24px;
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  transition: opacity 0.2s;
+}
+
+.back-home a:hover {
+  opacity: 0.85;
+}
+
+/* ===== 粒子背景 ===== */
+#particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.post-wrapper {
+  position: relative;
+  z-index: 1;
+}
+</style>
+
+    <style>
+    /* ===== TOC (文章目录) ===== */
+    .toc-box {
+      background: var(--pink-pale, #fff0f5);
+      border-radius: 10px;
+      border: 1.5px solid var(--border, #f0d9ff);
+      padding: 1rem 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+    .toc-title {
+      font-weight: 700;
+      color: var(--pink-deep, #e85d8a);
+      margin-bottom: 0.6rem;
+      font-size: 0.92rem;
+    }
+    .toc-list {
+      list-style: none;
+      padding: 0;
+    }
+    .toc-list li { line-height: 2; }
+    .toc-list a {
+      color: var(--text-light, #7c6f9f);
+      text-decoration: none;
+      font-size: 0.88rem;
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+      display: block;
+      transition: all 0.15s;
+    }
+    .toc-list a:hover {
+      color: var(--pink-deep, #e85d8a);
+      background: rgba(255, 143, 171, 0.1);
+    }
+    .toc-list .toc-h3 {
+      padding-left: 1.2rem;
+      font-size: 0.84rem;
+    }
+    </style>
+
+    <style>
+    /* ===== 回到顶部按钮 ===== */
+    #back-to-top {
+      position:fixed;bottom:2rem;right:2rem;z-index:999;
+      width:48px;height:48px;border-radius:50%;
+      background:linear-gradient(135deg,var(--pink),var(--purple));
+      color:#fff;border:none;cursor:pointer;font-size:1.3rem;
+      box-shadow:0 4px 16px rgba(200,100,200,.35);
+      opacity:0;transform:translateY(20px);
+      transition:all .3s ease;
+      pointer-events:none;
+      display:flex;align-items:center;justify-content:center;
+    }
+    #back-to-top.show{opacity:1;transform:translateY(0);pointer-events:auto}
+    #back-to-top:hover{transform:translateY(-4px) scale(1.05);box-shadow:0 8px 24px rgba(200,100,200,.5)}
+    
+    /* ===== 阅读统计 ===== */
+    .reading-stats {
+      display:flex;gap:1.2rem;align-items:center;flex-wrap:wrap;
+      font-size:.85rem;color:var(--text-muted);margin-bottom:1.2rem;
+      padding:0.6rem 0;border-bottom:1px dashed var(--border);
+    }
+    .reading-stats span{display:flex;align-items:center;gap:.3rem}
+    
+    /* ===== 图片懒加载 ===== */
+    .post-body img.lazy-img{opacity:0;transition:opacity .4s ease;min-height:80px;background:linear-gradient(135deg,var(--pink-pale),var(--purple-pale));border-radius:12px}
+    .post-body img.lazy-loaded{opacity:1;background:none;min-height:auto}
+    
+    /* ===== 评论/留言区 ===== */
+    .comment-section {
+      background:var(--card);border-radius:var(--radius);
+      border:1.5px solid var(--border);
+      box-shadow:0 8px 32px rgba(200,100,200,.12);
+      padding:1.8rem;margin-bottom:2rem;
+    }
+    .comment-section h3{color:var(--pink-deep);margin-bottom:1rem;font-size:1.1rem}
+    .comment-form{display:flex;flex-direction:column;gap:.8rem}
+    .comment-form input[type="text"],
+    .comment-form textarea{
+      width:100%;padding:.8rem 1rem;border:1.5px solid var(--border);
+      border-radius:10px;font-size:.9rem;
+      font-family:inherit;color:var(--text);
+      background:var(--bg);transition:border-color .2s;
+    }
+    .comment-form input[type="text"]:focus,
+    .comment-form textarea:focus{
+      outline:none;border-color:var(--pink);
+    }
+    .comment-form textarea{min-height:100px;resize:vertical}
+    .comment-submit{
+      align-self:flex-end;padding:.6rem 1.5rem;border:none;
+      border-radius:20px;background:linear-gradient(135deg,var(--pink),var(--purple));
+      color:#fff;font-weight:700;cursor:pointer;font-size:.9rem;
+      transition:opacity .2s;
+    }
+    .comment-submit:hover{opacity:.85}
+    .comment-notice{font-size:.78rem;color:var(--text-muted);text-align:center}
+    .comment-item{
+      padding:1rem 0;border-bottom:1px dashed var(--border);
+    }
+    .comment-item:last-child{border-bottom:none}
+    .c-name{font-weight:700;color:var(--text);font-size:.9rem}
+    .c-time{font-weight:400;color:var(--text-muted);font-size:.78rem;margin-left:.5rem}
+    .c-text{color:var(--text-light);font-size:.88rem;margin-top:.3rem;line-height:1.7}
+    .honeypot{position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden}
+    .comment-list{margin-top:1rem}
+    .backup-btn{
+      position:fixed;bottom:7rem;right:2rem;z-index:999;
+      padding:.5rem 1rem;border-radius:20px;border:1.5px solid var(--border);
+      background:var(--card);color:var(--text-light);cursor:pointer;
+      font-size:.82rem;transition:all .2s;opacity:.75;
+    }
+    .backup-btn:hover{opacity:1;background:var(--pink-pale);color:var(--pink-deep);border-color:var(--pink-light)}
+    </style>
+
+</head>
+<body>
+
+<!-- 粒子背景 -->
+<canvas id="particles"></canvas>
+
+<!-- 导航 -->
+<nav class="nav">
+  <a href="../" class="nav-logo">池帅の亦殿 🌸</a>
+  <div class="nav-actions">
+    <a href="../" class="nav-back">← 返回首页</a>
+    <button id="dark-toggle" onclick="toggleDark()">🌙</button>
+  </div>
+</nav>
+
+<!-- 文章 -->
+<div class="post-wrapper">
+  <div class="post-container">
+    <div class="post-header">
+      <div class="post-cover">🧼</div>
+      <h1 class="post-title">家里这8个地方比你想象的脏10倍！清洁盲区大盘点 🧼</h1>
+      <div class="post-meta">
+        <span>📅 2026-06-16</span>
+        <span>📂 生活常识</span>
+      </div>
+      <div class="post-tags" id="post-tags"></div>
+    </div>
+  
+    
+    <!-- TOC 文章目录 -->
+    <div class="toc-box" id="toc-box">
+      <div class="toc-title">📋 文章目录</div>
+      <ul class="toc-list" id="toc-list">
+        <li><a href="#1-厨房海绵比马桶刷还脏">1. 厨房海绵：比马桶刷还脏</a></li>
+        <li><a href="#2-手机屏幕比马桶座圈细菌多10倍">2. 手机屏幕：比马桶座圈细菌多10倍</a></li>
+        <li><a href="#3-遥控器和门把手全家细菌交换站">3. 遥控器和门把手：全家细菌交换站</a></li>
+        <li><a href="#4-洗衣机内筒越洗越脏的元凶">4. 洗衣机内筒：越洗越脏的元凶</a></li>
+        <li><a href="#5-牙刷杯底和洗手台发黑霉斑">5. 牙刷杯底和洗手台：发黑霉斑</a></li>
+        <li><a href="#6-冰箱密封条食物残渣的温床">6. 冰箱密封条：食物残渣的温床</a></li>
+        <li><a href="#7-床垫三年不晒藏百万螨虫">7. 床垫：三年不晒藏百万螨虫</a></li>
+        <li><a href="#8-空调滤网吹出来的全是灰">8. 空调滤网：吹出来的全是灰</a></li>
+        <li><a href="#写在最后">写在最后</a></li>
+      </ul>
+    </div>    <!-- 阅读统计 -->
+    <div class="reading-stats" id="reading-stats">
+      <span>📝 字数：<strong id="word-count">2,156</strong></span>
+      <span>⏱ 阅读：<strong id="read-time">约 5 分钟</strong></span>
+    </div>
+<div class="post-body" id="post-body">
+<h1 id="家里看起来干净不一定真干净">家里看起来干净，不一定真干净</h1>
+<p>你觉得自己家很干净吗？</p>
+<p>客厅天天拖、地板擦了又擦、马桶天天刷……但一项家庭卫生检测显示，<strong>80%的家庭存在"隐形脏区"</strong>，这些地方每天默默滋生着细菌，污染你呼吸的空气、你摸的每一个东西。</p>
+<p>今天就来"曝光"这8个被忽视的清洁盲区——看完你会想立刻爬起来大扫除。</p>
+<p><img src="https://images.unsplash.com/photo-1583947215259-38e31be8751f?w=800&q=80" alt="家庭清洁" style="max-width:100%;border-radius:12px;margin:1rem 0;"></p>
+<h2 id="1-厨房海绵比马桶刷还脏">1. 厨房海绵：比马桶刷还脏</h2>
+<p>这是最大的"重灾区"，没有之一。</p>
+<p><strong>实验室数据：</strong> 一块用了两周的厨房海绵，含菌量高达<strong>450亿/平方厘米</strong>——比马桶座圈脏<strong>20万倍</strong>。</p>
+<p>为什么？因为海绵的孔隙结构 + 食物残渣 + 潮湿环境，是细菌的"五星级酒店"。大肠杆菌、沙门氏菌、金黄色葡萄球菌……每擦一次碗都可能是在"播种"。</p>
+<p><strong>清洁方案：</strong></p>
+<ul>
+<li>🧽 每周一次<strong>微波炉加热</strong>（湿海绵高火2分钟，能杀死99%的细菌）</li>
+<li>🧴 或者泡<strong>白醋/小苏打水</strong>30分钟</li>
+<li>♻️ <strong>2-4周必须更换</strong>，别心疼</li>
+</ul>
+<blockquote>
+进阶：扔掉普通海绵，换成<strong>木浆棉/丝瓜络</strong>，不容易藏菌且更耐用。
+</blockquote>
+<h2 id="2-手机屏幕比马桶座圈细菌多10倍">2. 手机屏幕：比马桶座圈细菌多10倍</h2>
+<p>你每天"亲密接触"最多的东西——不是家人，是手机。</p>
+<p>研究显示，<strong>手机屏幕上的细菌数量是马桶座圈的10倍</strong>。我们带着手机去卫生间、吃饭时刷剧、睡觉前刷新闻——细菌就这样日复一日地积累。</p>
+<p><strong>清洁方案：</strong></p>
+<ol>
+<li>关机后用<strong>70%酒精棉片</strong>擦拭屏幕和边框</li>
+<li>每周至少1次，<strong>疫情期间建议每天</strong></li>
+<li>不要带手机上厕所（重要！）</li>
+<li>睡觉时把手机放在卧室外，避免脸部接触</li>
+</ol>
+<blockquote>
+注意：不要直接喷酒精在屏幕上，会损伤疏油层。一定要用棉片<strong>拧到半干</strong>再擦。
+</blockquote>
+<h2 id="3-遥控器和门把手全家细菌交换站">3. 遥控器和门把手：全家细菌交换站</h2>
+<p>全家摸得最多、清洁最少的地方——<strong>遥控器</strong>和<strong>门把手</strong>。</p>
+<p>感冒了、发烧了，第一反应是吃药。但其实，<strong>感冒病毒在门把手上能存活48小时</strong>，你摸了把手又揉眼睛——完美中招。</p>
+<p><strong>清洁方案：</strong></p>
+<ul>
+<li>🚪 <strong>门把手</strong>：每天用酒精湿巾擦1次（家里有病人时每4小时一次）</li>
+<li>📺 <strong>遥控器</strong>：每周酒精棉签擦缝隙（重点擦按键之间）</li>
+<li>💡 <strong>电灯开关</strong>：和门把手一样重要，别忘了</li>
+</ul>
+<p>把这些"高频接触点"列一张清单，每天擦一次，感冒季全家少一半中招率。</p>
+<h2 id="4-洗衣机内筒越洗越脏的元凶">4. 洗衣机内筒：越洗越脏的元凶</h2>
+<p>洗衣服的机器，自己却从来不洗——这画面太美不敢想。</p>
+<p>洗衣机内筒长期处于<strong>潮湿+洗衣液残留+纤维碎屑</strong>的环境，是<strong>霉菌、念珠菌、皮屑</strong>的温床。研究显示，<strong>使用3个月以上的洗衣机，内筒霉菌检出率超过60%</strong>。</p>
+<p>衣服越洗越脏、身上莫名起红疹、洗完的衣服有霉味——八成是洗衣机该清洗了。</p>
+<p><strong>清洁方案：</strong></p>
+<ol>
+<li>专用<strong>洗衣机槽清洁剂</strong>（某宝十几块一盒），按说明运行"筒清洁"模式</li>
+<li>没有清洁剂：<strong>白醋500ml+小苏打2勺</strong>，倒入筒内加热水空洗一遍</li>
+<li>洗完后<strong>敞开盖子通风</strong>2-3小时，不要立刻盖上</li>
+<li>建议<strong>每月清洁一次</strong></li>
+</ol>
+<blockquote>
+进阶：定期检查洗衣机密封圈（胶圈），如果有黑色霉斑，用<strong>84消毒液稀释后</strong>擦拭。
+</blockquote>
+<h2 id="5-牙刷杯底和洗手台发黑霉斑">5. 牙刷杯底和洗手台：发黑霉斑</h2>
+<p>早上刷牙时低头看一眼——牙刷杯底那一圈<strong>黑乎乎的霉斑</strong>，不是污垢，是<strong>真菌菌落</strong>。</p>
+<p>这个"日用而不觉"的区域，因为长期积水，是浴室里最脏的角落之一。洗手台的下水口、肥皂盒底部、浴帘底部发霉同理。</p>
+<p><strong>清洁方案：</strong></p>
+<ul>
+<li>🪥 <strong>牙刷杯</strong>：每周用沸水烫一次或扔进洗碗机</li>
+<li>🚰 <strong>洗手台</strong>：每周84消毒液稀释后擦一遍</li>
+<li>🚿 <strong>下水道口</strong>：倒小苏打+白醋，等10分钟后冲热水</li>
+<li>🛁 <strong>浴帘</strong>：每月用漂白水泡洗一次，或直接换新的（不贵）</li>
+</ul>
+<blockquote>
+省钱替代：过期牙膏别扔，挤在发霉处刷一刷，研磨颗粒能去黑斑。
+</blockquote>
+<h2 id="6-冰箱密封条食物残渣的温床">6. 冰箱密封条：食物残渣的温床</h2>
+<p>打开冰箱门——那一圈<strong>黑色胶条</strong>里，可能藏着比你想象的更多东西。</p>
+<p>冰箱密封条每天开合几十次，<strong>食物残渣、果汁、油渍</strong>会渗进胶条缝隙，时间一长就发霉发黑。实验室检测发现，<strong>冰箱密封条的霉菌检出率仅次于马桶座圈</strong>。</p>
+<p><strong>清洁方案：</strong></p>
+<ol>
+<li>用<strong>棉签蘸白醋</strong>，伸进胶条缝隙擦拭</li>
+<li>顽固黑斑用<strong>稀释的84消毒液</strong>（1:50）擦洗</li>
+<li>擦完用干布吸干水分，避免再次发霉</li>
+<li>每<strong>1-2个月</strong>做一次</li>
+</ol>
+<blockquote>
+顺便检查：密封条是否变硬、有裂纹？老化的密封条会让冰箱<strong>多耗电10%-15%</strong>，及时换新。
+</blockquote>
+<h2 id="7-床垫三年不晒藏百万螨虫">7. 床垫：三年不晒藏百万螨虫</h2>
+<p>我们一生有<strong>1/3的时间</strong>在床上度过，但床垫可能从来没"洗"过。</p>
+<p>研究显示，<strong>使用3年的床垫里，平均藏有200万只尘螨</strong>、数公斤死皮、几百万真菌孢子。这些是过敏、哮喘、鼻炎的元凶。</p>
+<p><strong>清洁方案：</strong></p>
+<ol>
+<li>每月用<strong>吸尘器+除螨吸头</strong>吸一遍床垫表面</li>
+<li>每<strong>3-6个月</strong>：
+<ul>
+<li>小苏打均匀撒在床垫上，静置15分钟</li>
+<li>用吸尘器彻底吸走（小苏打能吸附湿气和异味）</li>
+</ul>
+</li>
+<li>每年晒一次太阳（<strong>暴晒2小时</strong>可杀死大部分螨虫）</li>
+<li><strong>床单被套</strong>1-2周洗一次（别偷懒）</li>
+</ol>
+<blockquote>
+床垫套建议买<strong>防螨床笠</strong>（物理阻隔），某宝几十块一只，螨虫过敏人群必备。
+</blockquote>
+<h2 id="8-空调滤网吹出来的全是灰">8. 空调滤网：吹出来的全是灰</h2>
+<p>夏天开空调时，你以为享受的是冷风，其实是<strong>灰尘+霉菌+细菌</strong>的混合物。</p>
+<p>半年没洗的空调滤网，<strong>每吹出一阵风，都带着上百万个霉菌孢子</strong>。很多人"空调病"（咳嗽、鼻塞、皮肤痒）其实就是吹脏空调闹的。</p>
+<p><strong>清洁方案：</strong></p>
+<ol>
+<li>打开空调面板，取下滤网（一般左右各一片）</li>
+<li>用<strong>软毛刷</strong>先刷掉表面灰尘</li>
+<li>泡<strong>温肥皂水</strong>15分钟，漂洗干净晾干</li>
+<li>每月清洁一次滤网；<strong>使用季每月一次</strong>，换季前再做一次深度清洁</li>
+</ol>
+<p>如果空调有"霉味"，说明蒸发器也脏了，需要专业清洗（请师傅上门，约100-200元）。</p>
+<p><img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80" alt="空调清洁" style="max-width:100%;border-radius:12px;margin:1rem 0;"></p>
+<h2 id="写在最后">写在最后</h2>
+<p>真正的"干净"，不是表面光鲜，而是<strong>细菌和霉菌都被控制</strong>。</p>
+<p>这8个地方，平时被忽略，但每一个都在默默影响你和你家人的健康。</p>
+<blockquote>
+不必恐慌——细菌无处不在，<strong>关键是控制数量</strong>。定期清洁+通风+干燥，三招就能让家里卫生提升一个档次。
+</blockquote>
+<p>建议今天就从最容易的开始：<strong>擦一下手机屏幕和门把手</strong>。这2个动作不到5分钟，立刻让"细菌负荷"降低50%。</p>
+<p>打扫干净的家，<strong>连空气都是甜的</strong>。😌</p>
+<hr>
+<p><strong>今日小作业：</strong> 拿出手机，设定每周日上午为"深度清洁日"——专门清理上面8个地方。一个月后回看，连自己都会惊讶 🌸</p>
+    </div>
+  
+    <div class="share-bar">
+      <span class="share-label">分享到：</span>
+      <button class="share-btn wx" onclick="shareWX()" title="微信分享">💬</button>
+      <button class="share-btn qq" onclick="shareQQ()" title="QQ分享">🐧</button>
+      <button class="share-btn wb" onclick="shareWB()" title="微博分享">📢</button>
+      <button class="share-btn cp" onclick="copyLink()" title="复制链接">🔗</button>
+    </div>
+  
+    <!-- 留言区 -->
+    <div class="comment-section" id="comment-section">
+      <h3>💬 留言区</h3>
+      <div class="comment-form" id="comment-form">
+        <div class="honeypot" aria-hidden="true">
+          <label>网站</label><input type="text" name="website" id="hp-website" tabindex="-1" autocomplete="off">
+        </div>
+        <input type="text" id="c-name" placeholder="你的昵称（必填）" maxlength="30" required>
+        <textarea id="c-text" placeholder="写点什么吧..." maxlength="1000" required></textarea>
+        <button class="comment-submit" onclick="submitComment()">✨ 发布留言</button>
+        <div class="comment-notice">📌 留言会保存在本地浏览器中，仅你可见</div>
+      </div>
+      <div class="comment-list" id="comment-list"></div>
+    </div>
+
+    <div class="back-home" id="back-home">
+      <a href="../">← 返回首页 池帅の亦殿</a>
+    </div>
+  </div>
+</div>
+
+<script>
+// ======================== 粒子背景 ========================
+(function(){
+  var canvas = document.getElementById('particles');
+  var ctx = canvas.getContext('2d');
+  var particles = [];
+  var W, H;
+  
+  function resize(){
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+  
+  var SYMBOLS = ['🌸','✨','💖','🌙','⭐','🎀','🍃','💫'];
+  
+  function createParticle(){
+    return {
+      x: Math.random() * W,
+      y: H + 20,
+      symbol: SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)],
+      size: 12 + Math.random() * 18,
+      speed: 0.3 + Math.random() * 0.8,
+      drift: (Math.random() - 0.5) * 0.5,
+      opacity: 0.3 + Math.random() * 0.5,
+      rotation: Math.random() * 360,
+      rotSpeed: (Math.random() - 0.5) * 2
+    };
+  }
+  
+  for(var i = 0; i < 25; i++) particles.push(createParticle());
+  
+  function animate(){
+    ctx.clearRect(0, 0, W, H);
+    particles.forEach(function(p){
+      ctx.save();
+      ctx.globalAlpha = p.opacity;
+      ctx.font = p.size + 'px serif';
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.rotation * Math.PI / 180);
+      ctx.fillText(p.symbol, 0, 0);
+      ctx.restore();
+      p.y -= p.speed;
+      p.x += p.drift;
+      p.rotation += p.rotSpeed;
+      if(p.y < -30) Object.assign(p, createParticle());
+    });
+    if(Math.random() < 0.02 && particles.length < 30) particles.push(createParticle());
+    if(particles.length > 30) particles.shift();
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+
+// ======================== 暗黑模式 ========================
+function toggleDark(){
+  var html = document.documentElement;
+  var next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('blog_theme', next);
+}
+(function(){
+  var saved = localStorage.getItem('blog_theme');
+  if(saved) document.documentElement.setAttribute('data-theme', saved);
+})();
+
+// ======================== 分享功能 ========================
+function shareWX(){
+  alert('请截图或复制链接，在微信中分享 💬\n\n链接：' + location.href);
+}
+function shareQQ(){
+  var url = encodeURIComponent(location.href);
+  var title = encodeURIComponent(document.title);
+  window.open('https://connect.qq.com/widget/shareqq/index.html?url=' + url + '&title=' + title, '_blank');
+}
+function shareWB(){
+  var url = encodeURIComponent(location.href);
+  var title = encodeURIComponent(document.title);
+  window.open('https://service.weibo.com/share/share.php?url=' + url + '&title=' + title, '_blank');
+}
+function copyLink(){
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(location.href).then(function(){
+      alert('✅ 链接已复制到剪贴板！');
+    });
+  }
+}
+
+// ======================== 代码高亮 ========================
+window.addEventListener('DOMContentLoaded', function(){
+  if(typeof hljs !== 'undefined'){
+    document.querySelectorAll('pre code').forEach(function(b){
+      try{ hljs.highlightElement(b); }catch(e){}
+    });
+  }
+  buildTOC_legacy();
+});
+</script>
+
+<script>
+document.getElementById("post-tags").innerHTML = ['清洁', '卫生', '细菌', '家务', '技巧'].map(function(t) {
+  return '<span class="tag">' + t + '</span>';
+}).join("");
+</script>
+
+<script>
+// ======================== 文章目录 TOC ========================
+    function buildTOC_legacy() { // 动态重建 TOC - 已修复
+      var body = document.getElementById('post-body');
+      if (!body) return;
+      var headings = body.querySelectorAll('h2, h3');
+      var tocBox = document.getElementById('toc-box');
+      var tocList = document.getElementById('toc-list');
+      if (headings.length < 2) {
+        if (tocBox) tocBox.style.display = 'none';
+        return;
+      }
+      if (tocBox) tocBox.style.display = 'block';
+      tocList.innerHTML = '';
+      for (var i = 0; i < headings.length; i++) {
+        var h = headings[i];
+        var level = h.tagName === 'H3' ? 'toc-h3' : '';
+        var li = document.createElement('li');
+        if (level) li.className = level;
+        var a = document.createElement('a');
+        // 自动生成 ID：如果标题没有 id，从文本内容生成
+        var headingId = h.id;
+        if (!headingId) {
+          headingId = h.textContent.replace(/[^\w\u4e00-\u9fff]/g, '').substring(0, 50);
+          h.id = headingId;
+        }
+        a.href = '#' + headingId;
+        a.textContent = h.textContent;
+        a.onclick = function(e) {
+          e.preventDefault();
+          var targetId = this.getAttribute('href').slice(1);
+          var el = document.getElementById(targetId);
+          if (el) el.scrollIntoView({behavior: 'smooth'});
+          return false;
+        };
+        li.appendChild(a);
+        tocList.appendChild(li);
+      }
+    }
+    
+    // TOC已改为静态HTML
+</script>
+
+<script>
+// ======================== 回到顶部 ========================
+(function backToTop(){
+  var btn = document.getElementById('back-to-top');
+  if(!btn) return;
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if(!ticking){
+      requestAnimationFrame(function(){
+        var y = window.pageYOffset || document.documentElement.scrollTop;
+        if(y > 400){ btn.classList.add('show'); }
+        else { btn.classList.remove('show'); }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, {passive:true});
+})();
+function scrollToTop(){ window.scrollTo({top:0, behavior:'smooth'}); }
+
+// ======================== 图片懒加载 ========================
+(function lazyLoadImgs(){
+  if(!('IntersectionObserver' in window)) return;
+  var imgs = document.querySelectorAll('.post-body img:not(.lazy-img):not(.lazy-loaded)');
+  imgs.forEach(function(img){
+    if(img.src && !img.loading){
+      img.classList.add('lazy-img');
+      img.setAttribute('loading','lazy');
+    }
+  });
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        var img = entry.target;
+        if(img.dataset.src){
+          img.src = img.dataset.src;
+          img.removeAttribute('data-src');
+        }
+        img.classList.add('lazy-loaded');
+        img.classList.remove('lazy-img');
+        observer.unobserve(img);
+      }
+    });
+  },{rootMargin:'200px'});
+  document.querySelectorAll('.post-body img[data-src]').forEach(function(img){
+    observer.observe(img);
+  });
+  document.querySelectorAll('.post-body img').forEach(function(img){
+    img.setAttribute('loading','lazy');
+    if(!img.complete){ img.classList.add('lazy-img'); }
+    img.addEventListener('load',function(){ img.classList.add('lazy-loaded'); });
+    if(img.complete){ img.classList.add('lazy-loaded'); }
+  });
+})();
+
+// ======================== 评论/留言系统 ========================
+(function loadComments(){
+  var key = 'blog_comments_' + (window.location.pathname.replace(/[^a-zA-Z0-9]/g,'_'));
+  var list = document.getElementById('comment-list');
+  if(!list) return;
+  var comments = [];
+  try{ comments = JSON.parse(localStorage.getItem(key) || '[]'); }
+  catch(e){ comments = []; }
+  var html = '';
+  comments.forEach(function(c){
+    html += '<div class="comment-item"><div class="c-name">' +
+      escapeHtml(c.name) + '<span class="c-time">' + c.time + '</span></div>' +
+      '<div class="c-text">' + escapeHtml(c.text) + '</div></div>';
+  });
+  list.innerHTML = html;
+})();
+
+function submitComment(){
+  var nameEl = document.getElementById('c-name');
+  var textEl = document.getElementById('c-text');
+  var hpEl = document.getElementById('hp-website');
+  if(!nameEl || !textEl) return;
+  if(hpEl && hpEl.value.trim() !== ''){ alert('留言失败，请重试'); return; }
+  var name = nameEl.value.trim();
+  var text = textEl.value.trim();
+  if(!name){ alert('请输入昵称'); nameEl.focus(); return; }
+  if(!text){ alert('请输入留言内容'); textEl.focus(); return; }
+  if(text.length > 1000){ alert('留言内容过长，请控制在1000字以内'); return; }
+  var spamWords = /广告|推广|加微信|加QQ|赚钱|兼职|代购|http|www\./i;
+  if(spamWords.test(text)){ alert('留言内容包含敏感词，请修改后重试'); return; }
+  var key = 'blog_comments_' + (window.location.pathname.replace(/[^a-zA-Z0-9]/g,'_'));
+  var comments = [];
+  try{ comments = JSON.parse(localStorage.getItem(key) || '[]'); }
+  catch(e){ comments = []; }
+  var now = new Date();
+  var timeStr = now.getFullYear()+'-'+pad(now.getMonth()+1)+'-'+pad(now.getDate())+' '+
+                pad(now.getHours())+':'+pad(now.getMinutes());
+  comments.push({name:name, text:text, time:timeStr});
+  localStorage.setItem(key, JSON.stringify(comments));
+  nameEl.value = '';
+  textEl.value = '';
+  var list = document.getElementById('comment-list');
+  if(list){
+    var html2 = '';
+    comments.forEach(function(c){
+      html2 += '<div class="comment-item"><div class="c-name">' +
+        escapeHtml(c.name) + '<span class="c-time">' + c.time + '</span></div>' +
+        '<div class="c-text">' + escapeHtml(c.text) + '</div></div>';
+    });
+    list.innerHTML = html2;
+  }
+  alert('留言已保存');
+}
+
+function pad(n){ return n < 10 ? '0' + n : '' + n; }
+function escapeHtml(s){ var d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+
+// ======================== 全站备份导出 ========================
+function exportBackup(){
+  try{
+    var data = {
+      title: document.title,
+      url: window.location.href,
+      content: document.getElementById('post-body') ? document.getElementById('post-body').innerHTML : '',
+      timestamp: new Date().toISOString(),
+      comments: JSON.parse(localStorage.getItem('blog_comments_' + (window.location.pathname.replace(/[^a-zA-Z0-9]/g,'_'))) || '[]')
+    };
+    var blob = new Blob([JSON.stringify(data, null, 2)], {type:'application/json'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'backup_' + new Date().toISOString().slice(0,10) + '.json';
+    a.click();
+    URL.revokeObjectURL(a.href);
+    alert('当前文章备份已导出');
+  } catch(e){ alert('导出失败: ' + e.message); }
+}
+</script>
+
+
+    <!-- 回到顶部 -->
+    <button id="back-to-top" title="回到顶部" onclick="scrollToTop()">⬆</button>
+
+    <!-- 备份按钮 -->
+    <button class="backup-btn" onclick="exportBackup()" title="一键导出全站内容">💾 导出备份</button>
+
+</body>
+</html>
