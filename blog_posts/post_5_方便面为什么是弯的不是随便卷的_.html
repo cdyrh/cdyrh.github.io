@@ -3,6 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- 防缓存：确保访客始终看到最新文章 -->
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta name="build-version" content="2026-06-18T08:55">
 <title>方便面为什么是弯的？不是随便卷的 🍜 — 池帥の亦殿</title>
 <meta name="description" content="方便面为什么是弯的？不是随便卷的 🍜">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌸</text></svg>">
@@ -549,5 +554,21 @@ function exportBackup(){
     <!-- 回到顶部 -->
     <button id="back-to-top" title="回到顶部" onclick="scrollToTop()">⬆</button>
 
+
+<!-- 版本检测：自动刷新确保访客看到最新文章 -->
+<script>
+(function(){
+  var bv = document.querySelector('meta[name="build-version"]');
+  var cur = bv ? bv.content : '';
+  fetch('/version.json', {cache:'no-store'})
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      if(d.version && d.version !== cur){
+        location.replace(location.href.split('?')[0] + '?v=' + d.version);
+      }
+    })
+    .catch(function(){});
+})();
+</script>
 </body>
 </html>
