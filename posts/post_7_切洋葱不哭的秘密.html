@@ -3,6 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- 防缓存：确保访客始终看到最新文章 -->
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta name="build-version" content="2026-06-18T08:55">
 <title>切洋葱不哭的秘密 😭 — 池帥の亦殿</title>
 <meta name="description" content="# 我和洋葱的和解之路  每次切洋葱都哭得像个失恋的人？你不是一个人。  ## 为什么洋葱让人哭  洋葱被切开时，细胞破裂释放出一种叫**蒜氨酸酶**的东西，和">
 <style>
@@ -467,5 +472,21 @@ function exportBackup(){
     <!-- 回到顶部 -->
     <button id="back-to-top" title="回到顶部" onclick="scrollToTop()">⬆</button>
 
+
+<!-- 版本检测：自动刷新确保访客看到最新文章 -->
+<script>
+(function(){
+  var bv = document.querySelector('meta[name="build-version"]');
+  var cur = bv ? bv.content : '';
+  fetch('/version.json', {cache:'no-store'})
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      if(d.version && d.version !== cur){
+        location.replace(location.href.split('?')[0] + '?v=' + d.version);
+      }
+    })
+    .catch(function(){});
+})();
+</script>
 </body>
 </html>
