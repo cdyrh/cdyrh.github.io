@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<!-- 防缓存：确保访客始终看到最新文章 -->
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta name="build-version" content="2026-06-19T08:00">
+<title>洗了这么多年澡，你可能一直没洗对！6个细节让你洗完像做了个 SPA 🚿 - 池帅の亦殿</title>
+<meta name="description" content="洗了这么多年澡，你可能一直没洗对！6个细节让你洗完像做了个 SPA 🚿">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌸</text></svg>">
+
+<!-- 中文字体 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<style>
+/* ===== CSS Reset ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== 主题变量 ===== */
+:root {
+  --pink: #ff8fab;
+  --pink-light: #ffb3c6;
+  --pink-pale: #fff0f5;
+  --pink-deep: #e85d8a;
+  --purple: #c77dff;
+  --purple-light: #e0aaff;
+  --purple-pale: #f8f0ff;
+  --text: #4a4063;
+  --text-light: #7c6f9f;
+  --text-muted: #b0a8c8;
+  --bg: #fdf4ff;
+  --card: #ffffff;
+  --border: #f0d9ff;
+  --radius: 18px;
+  --radius-sm: 10px;
+}
+
+[data-theme="dark"] {
+  --text: #e2d9f3;
+  --text-light: #c4b5e0;
+  --text-muted: #8b7aaf;
+  --bg: #1a1225;
+  --card: #241a34;
+  --border: #3d2d5a;
+  --pink-pale: #2d1a2e;
+  --purple-pale: #201630;
+}
+
+body {
+  font-family: 'Noto Serif SC', 'SimSun', 'STSong', serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
+  transition: background 0.3s, color 0.3s;
+  padding-top: 64px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== 导航栏 ===== */
+.nav {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 2px solid var(--border);
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: 64px;
+}
+
+[data-theme="dark"] .nav {
+  background: rgba(26, 18, 37, 0.92);
+}
+
+.nav-logo {
+  font-size: 1.2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-decoration: none;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.nav-back {
+  background: none;
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  padding: 0.35rem 0.9rem;
+  cursor: pointer;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 0.9rem;
+  color: var(--text-light);
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.nav-back:hover {
+  background: var(--pink-pale);
+}
+
+#dark-toggle {
+  background: none;
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  padding: 0.35rem 0.7rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s;
+  color: var(--text-light);
+}
+
+#dark-toggle:hover {
+  background: var(--pink-pale);
+}
+
+/* ===== 文章容器（核心修复：确保居中）===== */
+.post-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 2rem 1rem;
+}
+
+.post-container {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.post-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 2rem 0;
+}
+
+.post-cover {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.post-title {
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
+  background: linear-gradient(135deg, var(--pink-deep), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.4;
+}
+
+.post-meta {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.post-meta span {
+  margin: 0 0.5rem;
+}
+
+.post-tags {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 0.8rem;
+}
+
+.tag {
+  background: var(--pink-pale);
+  color: var(--pink-deep);
+  padding: 0.2rem 0.7rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+}
+
+/* ===== 文章正文 ===== */
+.post-body {
+  background: var(--card);
+  border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+  box-shadow: 0 8px 32px rgba(200, 100, 200, 0.12);
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  font-size: 1.05rem;
+  line-height: 2;
+}
+
+.post-body h1,
+.post-body h2,
+.post-body h3,
+.post-body h4 {
+  color: var(--pink-deep);
+  margin: 1.8rem 0 1rem;
+  line-height: 1.4;
+}
+
+.post-body h1 { font-size: 1.6rem; }
+.post-body h2 { font-size: 1.4rem; }
+.post-body h3 { font-size: 1.2rem; }
+
+.post-body p {
+  margin-bottom: 1.2rem;
+  line-height: 2;
+}
+
+.post-body ul,
+.post-body ol {
+  margin: 0 0 1.2rem 1.5rem;
+  padding-left: 0.5rem;
+}
+
+.post-body li {
+  margin-bottom: 0.6rem;
+  line-height: 1.8;
+}
+
+.post-body code:not(pre code) {
+  background: var(--pink-pale);
+  color: var(--pink-deep);
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.9em;
+  font-family: 'Courier New', monospace;
+}
+
+.post-body pre {
+  border-radius: var(--radius-sm);
+  margin-bottom: 1.2rem;
+  overflow-x: auto;
+  padding: 1.2rem;
+  background: #282c34;
+}
+
+.post-body blockquote {
+  border-left: 3px solid var(--pink-light);
+  padding: 0.8rem 1.2rem;
+  color: var(--text-light);
+  font-style: italic;
+  margin-bottom: 1.2rem;
+  background: var(--pink-pale);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.post-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.2rem;
+  font-size: 0.92rem;
+}
+
+.post-body th {
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  color: #fff;
+  padding: 0.6rem 0.8rem;
+  text-align: left;
+}
+
+.post-body td {
+  padding: 0.55rem 0.8rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.post-body img {
+  max-width: 100%;
+  border-radius: 12px;
+  margin: 1rem 0;
+}
+
+.post-body a {
+  color: var(--pink-deep);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--pink-light);
+  transition: all 0.2s;
+}
+
+.post-body a:hover {
+  color: var(--purple);
+  border-bottom-color: var(--purple);
+}
+
+/* ===== 分享栏 ===== */
+.share-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  padding: 1.2rem;
+  background: var(--card);
+  border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+  box-shadow: 0 8px 32px rgba(200, 100, 200, 0.12);
+  margin-bottom: 2rem;
+}
+
+.share-label {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-right: 0.3rem;
+}
+
+.share-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.share-btn:hover {
+  transform: translateY(-3px) scale(1.1);
+}
+
+.share-btn.wx { background: #07c160; color: #fff; }
+.share-btn.qq { background: #12b7f5; color: #fff; }
+.share-btn.wb { background: #e6162d; color: #fff; }
+.share-btn.cp { background: var(--purple-pale); color: var(--purple); }
+
+/* ===== 返回首页 ===== */
+.back-home {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.back-home a {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  border-radius: 24px;
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  transition: opacity 0.2s;
+}
+
+.back-home a:hover {
+  opacity: 0.85;
+}
+
+/* ===== 粒子背景 ===== */
+#particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.post-wrapper {
+  position: relative;
+  z-index: 1;
+}
+</style>
+
+    <style>
+    /* ===== TOC (文章目录) ===== */
+    .toc-box {
+      background: var(--pink-pale, #fff0f5);
+      border-radius: 10px;
+      border: 1.5px solid var(--border, #f0d9ff);
+      padding: 1rem 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+    .toc-title {
+      font-weight: 700;
+      color: var(--pink-deep, #e85d8a);
+      margin-bottom: 0.6rem;
+      font-size: 0.92rem;
+    }
+    .toc-list {
+      list-style: none;
+      padding: 0;
+    }
+    .toc-list li { line-height: 2; }
+    .toc-list a {
+      color: var(--text-light, #7c6f9f);
+      text-decoration: none;
+      font-size: 0.88rem;
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+      display: block;
+      transition: all 0.15s;
+    }
+    .toc-list a:hover {
+      color: var(--pink-deep, #e85d8a);
+      background: rgba(255, 143, 171, 0.1);
+    }
+    .toc-list .toc-h3 {
+      padding-left: 1.2rem;
+      font-size: 0.84rem;
+    }
+    </style>
+
+    <style>
+    /* ===== 回到顶部按钮 ===== */
+    #back-to-top {
+      position:fixed;bottom:2rem;right:2rem;z-index:999;
+      width:48px;height:48px;border-radius:50%;
+      background:linear-gradient(135deg,var(--pink),var(--purple));
+      color:#fff;border:none;cursor:pointer;font-size:1.3rem;
+      box-shadow:0 4px 16px rgba(200,100,200,.35);
+      opacity:0;transform:translateY(20px);
+      transition:all .3s ease;
+      pointer-events:none;
+      display:flex;align-items:center;justify-content:center;
+    }
+    #back-to-top.show{opacity:1;transform:translateY(0);pointer-events:auto}
+    #back-to-top:hover{transform:translateY(-4px) scale(1.05);box-shadow:0 8px 24px rgba(200,100,200,.5)}
+    
+    /* ===== 阅读统计 ===== */
+    .reading-stats {
+      display:flex;gap:1.2rem;align-items:center;flex-wrap:wrap;
+      font-size:.85rem;color:var(--text-muted);margin-bottom:1.2rem;
+      padding:0.6rem 0;border-bottom:1px dashed var(--border);
+    }
+    .reading-stats span{display:flex;align-items:center;gap:.3rem}
+    
+    /* ===== 图片懒加载 ===== */
+    .post-body img.lazy-img{opacity:0;transition:opacity .4s ease;min-height:80px;background:linear-gradient(135deg,var(--pink-pale),var(--purple-pale));border-radius:12px}
+    .post-body img.lazy-loaded{opacity:1;background:none;min-height:auto}
+    
+    /* ===== 评论/留言区 ===== */
+    .comment-section {
+      background:var(--card);border-radius:var(--radius);
+      border:1.5px solid var(--border);
+      box-shadow:0 8px 32px rgba(200,100,200,.12);
+      padding:1.8rem;margin-bottom:2rem;
+    }
+    .comment-section h3{color:var(--pink-deep);margin-bottom:1rem;font-size:1.1rem}
+    .comment-form{display:flex;flex-direction:column;gap:.8rem}
+    .comment-form input[type="text"],
+    .comment-form textarea{
+      width:100%;padding:.8rem 1rem;border:1.5px solid var(--border);
+      border-radius:10px;font-size:.9rem;
+      font-family:inherit;color:var(--text);
+      background:var(--bg);transition:border-color .2s;
+    }
+    .comment-form input[type="text"]:focus,
+    .comment-form textarea:focus{
+      outline:none;border-color:var(--pink);
+    }
+    .comment-form textarea{min-height:100px;resize:vertical}
+    .comment-submit{
+      align-self:flex-end;padding:.6rem 1.5rem;border:none;
+      border-radius:20px;background:linear-gradient(135deg,var(--pink),var(--purple));
+      color:#fff;font-weight:700;cursor:pointer;font-size:.9rem;
+      transition:opacity .2s;
+    }
+    .comment-submit:hover{opacity:.85}
+    .comment-notice{font-size:.78rem;color:var(--text-muted);text-align:center}
+    .comment-item{
+      padding:1rem 0;border-bottom:1px dashed var(--border);
+    }
+    .comment-item:last-child{border-bottom:none}
+    .c-name{font-weight:700;color:var(--text);font-size:.9rem}
+    .c-time{font-weight:400;color:var(--text-muted);font-size:.78rem;margin-left:.5rem}
+    .c-text{color:var(--text-light);font-size:.88rem;margin-top:.3rem;line-height:1.7}
+    .honeypot{position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden}
+    .comment-list{margin-top:1rem}
+    .backup-btn{
+      position:fixed;bottom:7rem;right:2rem;z-index:999;
+      padding:.5rem 1rem;border-radius:20px;border:1.5px solid var(--border);
+      background:var(--card);color:var(--text-light);cursor:pointer;
+      font-size:.82rem;transition:all .2s;opacity:.75;
+    }
+    .backup-btn:hover{opacity:1;background:var(--pink-pale);color:var(--pink-deep);border-color:var(--pink-light)}
+    </style>
+
+</head>
+<body>
+
+<!-- 粒子背景 -->
+<canvas id="particles"></canvas>
+
+<!-- 导航 -->
+<nav class="nav">
+  <a href="../" class="nav-logo">池帅の亦殿 🌸</a>
+  <div class="nav-actions">
+    <a href="../" class="nav-back">← 返回首页</a>
+    <button id="dark-toggle" onclick="toggleDark()">🌙</button>
+  </div>
+</nav>
+
+<!-- 文章 -->
+<div class="post-wrapper">
+  <div class="post-container">
+    <div class="post-header">
+      <div class="post-cover">🚿</div>
+      <h1 class="post-title">洗了这么多年澡，你可能一直没洗对！6个细节让你洗完像做了个 SPA 🚿</h1>
+      <div class="post-meta">
+        <span>📅 2026-06-19</span>
+        <span>📂 生活常识</span>
+      </div>
+      <div class="post-tags" id="post-tags"></div>
+    </div>
+  
+    
+    <!-- TOC 文章目录 -->
+    <div class="toc-box" id="toc-box">
+      <div class="toc-title">📋 文章目录</div>
+      <ul class="toc-list" id="toc-list">
+        <li><a href="#洗了这么多年澡你可能一直没洗对">洗了这么多年澡，你可能一直没洗对</a></li>
+        <li><a href="#1-顺序搞错了先洗头还是先洗身体">1. 顺序搞错了：先洗头还是先洗身体？</a></li>
+        <li><a href="#2-水温不是越热越好38-40c-才是黄金温度">2. 水温不是越热越好：38-40°C 才是黄金温度</a></li>
+        <li><a href="#3-时间不是越长越好10-15-分钟是上限">3. 时间不是越长越好：10-15 分钟是上限</a></li>
+        <li><a href="#4-沐浴露不是越多越好一元硬币大小就够">4. 沐浴露不是越多越好：一元硬币大小就够</a></li>
+        <li><a href="#5-洗完澡-3-分钟内是保湿黄金期">5. 洗完澡 3 分钟内是"保湿黄金期"</a></li>
+        <li><a href="#6-头发不能每次都用洗发水过度清洁越洗越油">6. 头发不能每次都用洗发水：过度清洁越洗越油</a></li>
+        <li><a href="#写在最后">写在最后</a></li>
+      </ul>
+    </div>    <!-- 阅读统计 -->
+    <div class="reading-stats" id="reading-stats">
+      <span>📝 字数：<strong id="word-count">2,150</strong></span>
+      <span>⏱ 阅读：<strong id="read-time">约 6 分钟</strong></span>
+    </div>
+<div class="post-body" id="post-body">
+<h1 id="洗了这么多年澡你可能一直没洗对">洗了这么多年澡，你可能一直没洗对</h1>
+<p>洗澡这件事，看上去人人都会——脱衣服、淋湿、打沐浴露、冲掉、擦干、穿衣服。</p>
+<p>可中国皮肤科医生却经常遇到这样的患者：洗完澡皮肤发痒、干燥起皮、后背长痘、头发越洗越油……问下来，十有八九是<strong>洗澡方式有问题</strong>。</p>
+<p>洗澡的顺序、时间、水温、力度、用什么擦干——每一个细节都在悄悄影响你的皮肤和头发。</p>
+<p>今天整理了 <strong>6 个洗澡的"冷知识"</strong>，看完你会发现：原来自己以前一直在"假洗澡"。</p>
+<p><img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&q=80" alt="浴室水汽" style="max-width:100%;border-radius:12px;margin:1rem 0;"></p>
+<h2 id="1-顺序搞错了先洗头还是先洗身体">1. 顺序搞错了：先洗头还是先洗身体？</h2>
+<p>大部分人的习惯是：<strong>先洗头，再洗身体，最后洗脸</strong>。但这个顺序其实不太对。</p>
+<p><strong>皮肤科医生推荐的顺序：</strong></p>
+<ol>
+<li><strong>先洗脸</strong>（热水让毛孔张开，先把脸洗干净，避免沐浴露的泡沫残留）</li>
+<li><strong>再洗身体</strong>（从远离心脏的四肢末端开始，向心脏方向）</li>
+<li><strong>最后洗头</strong>（此时浴室水蒸气充足，头发被湿润，毛鳞片打开，洗发水清洁力最强）</li>
+</ol>
+<p><strong>为什么最后洗头？</strong></p>
+<ul>
+<li>头部是全身最高的部位，最后洗可以避免冷热交替太快导致头晕</li>
+<li>水蒸气充分湿润头发后，洗发水泡沫更丰富</li>
+<li>洗完头顺便冲掉身体的残留，一举两得</li>
+</ul>
+<blockquote>
+简单记忆：<strong>脸 → 身 → 头</strong>，从"上到下"再到"头"，符合身体的清洁节奏。
+</blockquote>
+<h2 id="2-水温不是越热越好38-40c-才是黄金温度">2. 水温不是越热越好：38-40°C 才是黄金温度</h2>
+<p>很多人喜欢洗特别烫的热水澡，尤其是冬天——觉得越热越解乏。</p>
+<p><strong>真相是：水温过高反而伤害皮肤。</strong></p>
+<p>人体皮肤表面的皮脂膜（天然保湿层）在 <strong>40°C 以上</strong> 就会被过度溶解。日本花王研究所的实验显示：长期用 45°C 以上热水洗澡的人群，皮肤屏障受损率比 38°C 的人群<strong>高出 70%</strong>。</p>
+<p><strong>洗澡水温指南：</strong></p>
+<ul>
+<li>🛁 <strong>最佳水温：38-40°C</strong>（比体温略高，体感舒适）</li>
+<li>🚿 <strong>冬季最高不超过 42°C</strong>（且时间不超过 10 分钟）</li>
+<li>❌ <strong>不要超过 45°C</strong>（烫伤风险+皮肤屏障破坏）</li>
+<li>👶 <strong>婴幼儿和老人：37-38°C</strong>（皮肤更薄更敏感）</li>
+</ul>
+<p><strong>自测方法：</strong> 手腕内侧试温，比手掌更敏感。手腕觉得"温温的"就对了，"烫"的就要调低。</p>
+<blockquote>
+一个小细节：洗完澡后皮肤发红、起皮、发痒——水温多半是元凶。
+</blockquote>
+<p><img src="https://images.unsplash.com/photo-1606166325683-e6deb697d301?w=800&q=80" alt="温热水流" style="max-width:100%;border-radius:12px;margin:1rem 0;"></p>
+<h2 id="3-时间不是越长越好10-15-分钟是上限">3. 时间不是越长越好：10-15 分钟是上限</h2>
+<p>泡在浴缸里看手机、追剧，一泡就是半小时？或者夏天一天洗两次、每次 20 分钟？</p>
+<p><strong>过度清洁比不洗还伤皮肤。</strong></p>
+<p>皮肤最外层的角质层是"砖墙结构"——角质细胞是砖，脂质是灰浆。长时间浸泡会把这层"灰浆"泡软、冲走，皮肤屏障就漏了。</p>
+<p><strong>洗澡时长建议：</strong></p>
+<ul>
+<li>⏱ <strong>淋浴：5-10 分钟</strong>（够洗干净就行）</li>
+<li>🛁 <strong>泡澡：不超过 20 分钟</strong>（且水温不能太高）</li>
+<li>🌙 <strong>晚上洗澡：睡前 1-2 小时完成</strong>（让体温自然降下来，有助于睡眠）</li>
+<li>☀️ <strong>早上洗澡：3-5 分钟即可</strong>（快速冲掉睡眠时分泌的油脂和汗液）</li>
+</ul>
+<p><strong>警惕"长时间洗澡"带来的问题：</strong></p>
+<ul>
+<li>🚿 皮肤发干、瘙痒</li>
+<li>🫁 浴室水汽多，氧气稀薄，时间久了头晕</li>
+<li>💔 心血管负担加重（特别是老人和心脏不好的人）</li>
+<li>🍄 私处过度清洁反而破坏菌群平衡</li>
+</ul>
+<h2 id="4-沐浴露不是越多越好一元硬币大小就够">4. 沐浴露不是越多越好：一元硬币大小就够</h2>
+<p>挤一大坨沐浴露在身上搓，是很多人"洗得干净"的执念。</p>
+<p><strong>真相：清洁能力并不和用量成正比。</strong></p>
+<p>人体皮肤表面其实<strong>没有那么多脏东西</strong>——主要是汗液、皮脂、灰尘、脱落的角质。适量的沐浴露配合清水就足够。</p>
+<p><strong>沐浴露用量指南：</strong></p>
+<ul>
+<li>🧴 <strong>身体：一元硬币大小</strong>（约 3-5ml）足够洗全身</li>
+<li>🧴 <strong>重点部位（腋下、私处、足部）：</strong> 再加 1-2ml</li>
+<li>🧼 <strong>泡沫型沐浴露：</strong> 1-2 泵即可（泡沫本身清洁力比膏体强）</li>
+<li>👶 <strong>婴幼儿：</strong> 专用婴幼儿沐浴露，0.5-1ml 就够</li>
+</ul>
+<p><strong>关于搓澡：</strong></p>
+<p>北方人喜欢用搓澡巾"狠搓"，觉得搓出"泥"才干净。但这些"泥"大部分是<strong>皮肤正常的角质层</strong>，搓得越狠，皮肤屏障破坏越严重。</p>
+<blockquote>
+<strong>正确做法：</strong> 用手掌或柔软的沐浴球，<strong>轻轻打圈</strong>清洁，不要用力搓。
+</blockquote>
+<h2 id="5-洗完澡-3-分钟内是保湿黄金期">5. 洗完澡 3 分钟内是"保湿黄金期"</h2>
+<p>很多人洗完澡擦干就忙着穿衣服、吹头发，<strong>错过了皮肤最需要保湿的时刻</strong>。</p>
+<p><strong>为什么洗完澡 3 分钟内要涂身体乳？</strong></p>
+<ul>
+<li>洗完澡时皮肤还<strong>带着 70% 的水分</strong></li>
+<li>毛孔张开，保湿成分吸收率是平时的 3-5 倍</li>
+<li>此时涂身体乳可以"锁住"水分，防止蒸发</li>
+<li>超过 5 分钟，水分开始蒸发，皮肤变干，涂什么效果都打折</li>
+</ul>
+<p><strong>黄金 3 分钟操作流程：</strong></p>
+<ol>
+<li>🛁 洗完澡<strong>用毛巾轻轻按压</strong>（不是擦！）吸干水分</li>
+<li>🧴 身体<strong>还微微湿润时</strong>涂身体乳/身体油</li>
+<li>👕 等 1-2 分钟吸收后再穿衣服</li>
+</ol>
+<p><strong>按部位选择产品：</strong></p>
+<ul>
+<li>胳膊、腿：轻薄型身体乳</li>
+<li>手肘、膝盖、脚后跟：厚重型身体霜（含尿素成分）</li>
+<li>脖子、胸前：抗衰老型（含神经酰胺）</li>
+</ul>
+<blockquote>
+一句话：<strong>洗完澡不要让皮肤"自然风干"</strong>，那是最伤皮肤的。
+</blockquote>
+<h2 id="6-头发不能每次都用洗发水过度清洁越洗越油">6. 头发不能每次都用洗发水：过度清洁越洗越油</h2>
+<p>很多人有个执念：每天洗头，必须用洗发水。</p>
+<p><strong>真相是：天天洗+每次都用洗发水 = 头皮越洗越油。</strong></p>
+<p>头皮和脸部皮肤一样，会根据清洁频率自动调节出油量。<strong>频繁清洁会刺激皮脂腺"加班"代偿</strong>，导致越洗越油。</p>
+<p><strong>洗头频率建议：</strong></p>
+<ul>
+<li>🧴 <strong>油性头皮：每 1-2 天洗一次</strong>（用洗发水）</li>
+<li>🧴 <strong>中性头皮：每 2-3 天洗一次</strong></li>
+<li>🧴 <strong>干性头皮：每 3-4 天洗一次</strong></li>
+<li>🌙 <strong>不需要每次都用洗发水</strong>：不出门的日子可以<strong>只用清水冲洗</strong></li>
+</ul>
+<p><strong>洗发水的正确用量：</strong></p>
+<ul>
+<li><strong>短发：</strong> 1 泵（约 1ml）</li>
+<li><strong>中长发：</strong> 1.5-2 泵</li>
+<li><strong>长发：</strong> 2-3 泵</li>
+<li>重点是<strong>按摩头皮</strong>，不要在头发上"搓洗"</li>
+</ul>
+<p><strong>关于护发素：</strong></p>
+<ul>
+<li>❌ 不要涂到头皮上（堵塞毛孔）</li>
+<li>✅ 只涂在发梢到中段</li>
+<li>⏱ 停留 2-3 分钟就冲掉（不是越久越好）</li>
+</ul>
+<p><img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=800&q=80" alt="沐浴露瓶" style="max-width:100%;border-radius:12px;margin:1rem 0;"></p>
+<h2 id="写在最后">写在最后</h2>
+<p>洗澡这件事，听起来简单，做对却需要"讲究"。</p>
+<p><strong>给你总结一个"黄金公式"：</strong></p>
+<blockquote>
+<strong>38-40°C 水温 + 10 分钟以内 + 一元硬币沐浴露 + 洗完 3 分钟内涂身体乳 + 洗发水 2-3 天用一次</strong>
+</blockquote>
+<p>做到了这几点，你的皮肤会比同龄人<strong>年轻 3-5 岁</strong>，头发也不会越洗越油。</p>
+<p>从今天开始，重新审视一下你的洗澡方式吧 🚿</p>
+<hr>
+<p><strong>今日小练习：</strong> 下次洗澡时，按 <strong>脸 → 身 → 头</strong> 的顺序洗一次，洗完 3 分钟内涂身体乳。一周后你会感受到皮肤的变化 🌸</p>
+  
+    </div>
+  
+    <div class="share-bar">
+      <span class="share-label">分享到：</span>
+      <button class="share-btn wx" onclick="shareWX()" title="微信分享">💬</button>
+      <button class="share-btn qq" onclick="shareQQ()" title="QQ分享">🐧</button>
+      <button class="share-btn wb" onclick="shareWB()" title="微博分享">📢</button>
+      <button class="share-btn cp" onclick="copyLink()" title="复制链接">🔗</button>
+    </div>
+  
+    <!-- 留言区 -->
+    <div class="comment-section" id="comment-section">
+      <h3>💬 留言区</h3>
+      <div class="comment-form" id="comment-form">
+        <div class="honeypot" aria-hidden="true">
+          <label>网站</label><input type="text" name="website" id="hp-website" tabindex="-1" autocomplete="off">
+        </div>
+        <input type="text" id="c-name" placeholder="你的昵称（必填）" maxlength="30" required>
+        <textarea id="c-text" placeholder="写点什么吧..." maxlength="1000" required></textarea>
+        <button class="comment-submit" onclick="submitComment()">✨ 发布留言</button>
+        <div class="comment-notice">📌 留言会保存在本地浏览器中，仅你可见</div>
+      </div>
+      <div class="comment-list" id="comment-list"></div>
+    </div>
+
+    <div class="back-home" id="back-home">
+      <a href="../">← 返回首页 池帅の亦殿</a>
+    </div>
+  </div>
+</div>
+
+<script>
+// ======================== 粒子背景 ========================
+(function(){
+  var canvas = document.getElementById('particles');
+  var ctx = canvas.getContext('2d');
+  var particles = [];
+  var W, H;
+  
+  function resize(){
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+  
+  var SYMBOLS = ['🌸','✨','💖','🌙','⭐','🎀','🍃','💫'];
+  
+  function createParticle(){
+    return {
+      x: Math.random() * W,
+      y: H + 20,
+      symbol: SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)],
+      size: 12 + Math.random() * 18,
+      speed: 0.3 + Math.random() * 0.8,
+      drift: (Math.random() - 0.5) * 0.5,
+      opacity: 0.3 + Math.random() * 0.5,
+      rotation: Math.random() * 360,
+      rotSpeed: (Math.random() - 0.5) * 2
+    };
+  }
+  
+  for(var i = 0; i < 25; i++) particles.push(createParticle());
+  
+  function animate(){
+    ctx.clearRect(0, 0, W, H);
+    particles.forEach(function(p){
+      ctx.save();
+      ctx.globalAlpha = p.opacity;
+      ctx.font = p.size + 'px serif';
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.rotation * Math.PI / 180);
+      ctx.fillText(p.symbol, 0, 0);
+      ctx.restore();
+      p.y -= p.speed;
+      p.x += p.drift;
+      p.rotation += p.rotSpeed;
+      if(p.y < -30) Object.assign(p, createParticle());
+    });
+    if(Math.random() < 0.02 && particles.length < 30) particles.push(createParticle());
+    if(particles.length > 30) particles.shift();
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+
+// ======================== 暗黑模式 ========================
+function toggleDark(){
+  var html = document.documentElement;
+  var next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('blog_theme', next);
+}
+(function(){
+  var saved = localStorage.getItem('blog_theme');
+  if(saved) document.documentElement.setAttribute('data-theme', saved);
+})();
+
+// ======================== 分享功能 ========================
+function shareWX(){
+  alert('请截图或复制链接，在微信中分享 💬\n\n链接：' + location.href);
+}
+function shareQQ(){
+  var url = encodeURIComponent(location.href);
+  var title = encodeURIComponent(document.title);
+  window.open('https://connect.qq.com/widget/shareqq/index.html?url=' + url + '&title=' + title, '_blank');
+}
+function shareWB(){
+  var url = encodeURIComponent(location.href);
+  var title = encodeURIComponent(document.title);
+  window.open('https://service.weibo.com/share/share.php?url=' + url + '&title=' + title, '_blank');
+}
+function copyLink(){
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(location.href).then(function(){
+      alert('✅ 链接已复制到剪贴板！');
+    });
+  }
+}
+
+// ======================== 代码高亮 ========================
+window.addEventListener('DOMContentLoaded', function(){
+  if(typeof hljs !== 'undefined'){
+    document.querySelectorAll('pre code').forEach(function(b){
+      try{ hljs.highlightElement(b); }catch(e){}
+    });
+  }
+  buildTOC_legacy();
+});
+</script>
+
+<script>
+document.getElementById("post-tags").innerHTML = ['洗澡', '护肤', '浴室', '生活', '健康'].map(function(t) {
+  return '<span class="tag">' + t + '</span>';
+}).join("");
+</script>
+
+<script>
+// ======================== 文章目录 TOC ========================
+    function buildTOC_legacy() { // 动态重建 TOC - 已修复
+      var body = document.getElementById('post-body');
+      if (!body) return;
+      var headings = body.querySelectorAll('h2, h3');
+      var tocBox = document.getElementById('toc-box');
+      var tocList = document.getElementById('toc-list');
+      if (headings.length < 2) {
+        if (tocBox) tocBox.style.display = 'none';
+        return;
+      }
+      if (tocBox) tocBox.style.display = 'block';
+      tocList.innerHTML = '';
+      for (var i = 0; i < headings.length; i++) {
+        var h = headings[i];
+        var level = h.tagName === 'H3' ? 'toc-h3' : '';
+        var li = document.createElement('li');
+        if (level) li.className = level;
+        var a = document.createElement('a');
+        // 自动生成 ID：如果标题没有 id，从文本内容生成
+        var headingId = h.id;
+        if (!headingId) {
+          headingId = h.textContent.replace(/[^\w\u4e00-\u9fff]/g, '').substring(0, 50);
+          h.id = headingId;
+        }
+        a.href = '#' + headingId;
+        a.textContent = h.textContent;
+        a.onclick = function(e) {
+          e.preventDefault();
+          var targetId = this.getAttribute('href').slice(1);
+          var el = document.getElementById(targetId);
+          if (el) el.scrollIntoView({behavior: 'smooth'});
+          return false;
+        };
+        li.appendChild(a);
+        tocList.appendChild(li);
+      }
+    }
+    
+    // TOC已改为静态HTML
+</script>
+
+<script>
+// ======================== 回到顶部 ========================
+(function backToTop(){
+  var btn = document.getElementById('back-to-top');
+  if(!btn) return;
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if(!ticking){
+      requestAnimationFrame(function(){
+        var y = window.pageYOffset || document.documentElement.scrollTop;
+        if(y > 400){ btn.classList.add('show'); }
+        else { btn.classList.remove('show'); }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, {passive:true});
+})();
+function scrollToTop(){ window.scrollTo({top:0, behavior:'smooth'}); }
+
+// ======================== 图片懒加载 ========================
+(function lazyLoadImgs(){
+  if(!('IntersectionObserver' in window)) return;
+  var imgs = document.querySelectorAll('.post-body img:not(.lazy-img):not(.lazy-loaded)');
+  imgs.forEach(function(img){
+    if(img.src && !img.loading){
+      img.classList.add('lazy-img');
+      img.setAttribute('loading','lazy');
+    }
+  });
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        var img = entry.target;
+        if(img.dataset.src){
+          img.src = img.dataset.src;
+          img.removeAttribute('data-src');
+        }
+        img.classList.add('lazy-loaded');
+        img.classList.remove('lazy-img');
+        observer.unobserve(img);
+      }
+    });
+  },{rootMargin:'200px'});
+  document.querySelectorAll('.post-body img[data-src]').forEach(function(img){
+    observer.observe(img);
+  });
+  document.querySelectorAll('.post-body img').forEach(function(img){
+    img.setAttribute('loading','lazy');
+    if(!img.complete){ img.classList.add('lazy-img'); }
+    img.addEventListener('load',function(){ img.classList.add('lazy-loaded'); });
+    if(img.complete){ img.classList.add('lazy-loaded'); }
+  });
+})();
+
+// ======================== 评论/留言系统 ========================
+(function loadComments(){
+  var key = 'blog_comments_' + (window.location.pathname.replace(/[^a-zA-Z0-9]/g,'_'));
+  var list = document.getElementById('comment-list');
+  if(!list) return;
+  var comments = [];
+  try{ comments = JSON.parse(localStorage.getItem(key) || '[]'); }
+  catch(e){ comments = []; }
+  var html = '';
+  comments.forEach(function(c){
+    html += '<div class="comment-item"><div class="c-name">' +
+      escapeHtml(c.name) + '<span class="c-time">' + c.time + '</span></div>' +
+      '<div class="c-text">' + escapeHtml(c.text) + '</div></div>';
+  });
+  list.innerHTML = html;
+})();
+
+function submitComment(){
+  var nameEl = document.getElementById('c-name');
+  var textEl = document.getElementById('c-text');
+  var hpEl = document.getElementById('hp-website');
+  if(!nameEl || !textEl) return;
+  if(hpEl && hpEl.value.trim() !== ''){ alert('留言失败，请重试'); return; }
+  var name = nameEl.value.trim();
+  var text = textEl.value.trim();
+  if(!name){ alert('请输入昵称'); nameEl.focus(); return; }
+  if(!text){ alert('请输入留言内容'); textEl.focus(); return; }
+  if(text.length > 1000){ alert('留言内容过长，请控制在1000字以内'); return; }
+  var spamWords = /广告|推广|加微信|加QQ|赚钱|兼职|代购|http|www\./i;
+  if(spamWords.test(text)){ alert('留言内容包含敏感词，请修改后重试'); return; }
+  var key = 'blog_comments_' + (window.location.pathname.replace(/[^a-zA-Z0-9]/g,'_'));
+  var comments = [];
+  try{ comments = JSON.parse(localStorage.getItem(key) || '[]'); }
+  catch(e){ comments = []; }
+  var now = new Date();
+  var timeStr = now.getFullYear()+'-'+pad(now.getMonth()+1)+'-'+pad(now.getDate())+' '+
+                pad(now.getHours())+':'+pad(now.getMinutes());
+  comments.push({name:name, text:text, time:timeStr});
+  localStorage.setItem(key, JSON.stringify(comments));
+  nameEl.value = '';
+  textEl.value = '';
+  var list = document.getElementById('comment-list');
+  if(list){
+    var html2 = '';
+    comments.forEach(function(c){
+      html2 += '<div class="comment-item"><div class="c-name">' +
+        escapeHtml(c.name) + '<span class="c-time">' + c.time + '</span></div>' +
+        '<div class="c-text">' + escapeHtml(c.text) + '</div></div>';
+    });
+    list.innerHTML = html2;
+  }
+  alert('留言已保存');
+}
+
+function pad(n){ return n < 10 ? '0' + n : '' + n; }
+function escapeHtml(s){ var d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+
+// ======================== 全站备份导出 ========================
+function exportBackup(){
+  try{
+    var data = {
+      title: document.title,
+      url: window.location.href,
+      content: document.getElementById('post-body') ? document.getElementById('post-body').innerHTML : '',
+      timestamp: new Date().toISOString(),
+      comments: JSON.parse(localStorage.getItem('blog_comments_' + (window.location.pathname.replace(/[^a-zA-Z0-9]/g,'_'))) || '[]')
+    };
+    var blob = new Blob([JSON.stringify(data, null, 2)], {type:'application/json'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'backup_' + new Date().toISOString().slice(0,10) + '.json';
+    a.click();
+    URL.revokeObjectURL(a.href);
+    alert('当前文章备份已导出');
+  } catch(e){ alert('导出失败: ' + e.message); }
+}
+</script>
+
+
+    <!-- 回到顶部 -->
+    <button id="back-to-top" title="回到顶部" onclick="scrollToTop()">⬆</button>
+
+    <!-- 备份按钮 -->
+    <button class="backup-btn" onclick="exportBackup()" title="一键导出全站内容">💾 导出备份</button>
+
+<!-- 版本检测：自动刷新确保访客看到最新文章 -->
+<script>
+(function(){
+  var bv = document.querySelector('meta[name="build-version"]');
+  var cur = bv ? bv.content : '';
+  fetch('/version.json', {cache:'no-store'})
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      if(d.version && d.version !== cur){
+        location.replace(location.href.split('?')[0] + '?v=' + d.version);
+      }
+    })
+    .catch(function(){});
+})();
+</script>
+</body>
+</html>
