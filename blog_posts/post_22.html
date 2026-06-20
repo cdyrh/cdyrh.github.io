@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<!-- 防缓存：确保访客始终看到最新文章 -->
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta name="build-version" content="2026-06-20T08:00">
+<title>电费悄悄翻倍？这7个家电使用习惯不改，钱包一直在漏水 💡 - 池帅の亦殿</title>
+<meta name="description" content="衣橱再大也乱？9个收纳妙招让衣服"听话" 👕">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌸</text></svg>">
+
+<!-- 中文字体 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<style>
+/* ===== CSS Reset ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== 主题变量 ===== */
+:root {
+  --pink: #ff8fab;
+  --pink-light: #ffb3c6;
+  --pink-pale: #fff0f5;
+  --pink-deep: #e85d8a;
+  --purple: #c77dff;
+  --purple-light: #e0aaff;
+  --purple-pale: #f8f0ff;
+  --text: #4a4063;
+  --text-light: #7c6f9f;
+  --text-muted: #b0a8c8;
+  --bg: #fdf4ff;
+  --card: #ffffff;
+  --border: #f0d9ff;
+  --radius: 18px;
+  --radius-sm: 10px;
+}
+
+[data-theme="dark"] {
+  --text: #e2d9f3;
+  --text-light: #c4b5e0;
+  --text-muted: #8b7aaf;
+  --bg: #1a1225;
+  --card: #241a34;
+  --border: #3d2d5a;
+  --pink-pale: #2d1a2e;
+  --purple-pale: #201630;
+}
+
+body {
+  font-family: 'Noto Serif SC', 'SimSun', 'STSong', serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
+  transition: background 0.3s, color 0.3s;
+  padding-top: 64px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== 导航栏 ===== */
+.nav {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 2px solid var(--border);
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: 64px;
+}
+
+[data-theme="dark"] .nav {
+  background: rgba(26, 18, 37, 0.92);
+}
+
+.nav-logo {
+  font-size: 1.2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-decoration: none;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.nav-back {
+  background: none;
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  padding: 0.35rem 0.9rem;
+  cursor: pointer;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 0.9rem;
+  color: var(--text-light);
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.nav-back:hover {
+  background: var(--pink-pale);
+}
+
+#dark-toggle {
+  background: none;
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  padding: 0.35rem 0.7rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s;
+  color: var(--text-light);
+}
+
+#dark-toggle:hover {
+  background: var(--pink-pale);
+}
+
+/* ===== 文章容器（核心修复：确保居中）===== */
+.post-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 2rem 1rem;
+}
+
+.post-container {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.post-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 2rem 0;
+}
+
+.post-cover {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.post-title {
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
+  background: linear-gradient(135deg, var(--pink-deep), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.4;
+}
+
+.post-meta {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.post-meta span {
+  margin: 0 0.5rem;
+}
+
+.post-tags {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 0.8rem;
+}
+
+.tag {
+  background: var(--pink-pale);
+  color: var(--pink-deep);
+  padding: 0.2rem 0.7rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+}
+
+/* ===== 文章正文 ===== */
+.post-body {
+  background: var(--card);
+  border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+  box-shadow: 0 8px 32px rgba(200, 100, 200, 0.12);
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  font-size: 1.05rem;
+  line-height: 2;
+}
+
+.post-body h1,
+.post-body h2,
+.post-body h3,
+.post-body h4 {
+  color: var(--pink-deep);
+  margin: 1.8rem 0 1rem;
+  line-height: 1.4;
+}
+
+.post-body h1 { font-size: 1.6rem; }
+.post-body h2 { font-size: 1.4rem; }
+.post-body h3 { font-size: 1.2rem; }
+
+.post-body p {
+  margin-bottom: 1.2rem;
+  line-height: 2;
+}
+
+.post-body ul,
+.post-body ol {
+  margin: 0 0 1.2rem 1.5rem;
+  padding-left: 0.5rem;
+}
+
+.post-body li {
+  margin-bottom: 0.6rem;
+  line-height: 1.8;
+}
+
+.post-body code:not(pre code) {
+  background: var(--pink-pale);
+  color: var(--pink-deep);
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.9em;
+  font-family: 'Courier New', monospace;
+}
+
+.post-body pre {
+  border-radius: var(--radius-sm);
+  margin-bottom: 1.2rem;
+  overflow-x: auto;
+  padding: 1.2rem;
+  background: #282c34;
+}
+
+.post-body blockquote {
+  border-left: 3px solid var(--pink-light);
+  padding: 0.8rem 1.2rem;
+  color: var(--text-light);
+  font-style: italic;
+  margin-bottom: 1.2rem;
+  background: var(--pink-pale);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.post-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.2rem;
+  font-size: 0.92rem;
+}
+
+.post-body th {
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  color: #fff;
+  padding: 0.6rem 0.8rem;
+  text-align: left;
+}
+
+.post-body td {
+  padding: 0.55rem 0.8rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.post-body img {
+  max-width: 100%;
+  border-radius: 12px;
+  margin: 1rem 0;
+}
+
+.post-body a {
+  color: var(--pink-deep);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--pink-light);
+  transition: all 0.2s;
+}
+
+.post-body a:hover {
+  color: var(--purple);
+  border-bottom-color: var(--purple);
+}
+
+/* ===== 分享栏 ===== */
+.share-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  padding: 1.2rem;
+  background: var(--card);
+  border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+  box-shadow: 0 8px 32px rgba(200, 100, 200, 0.12);
+  margin-bottom: 2rem;
+}
+
+.share-label {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-right: 0.3rem;
+}
+
+.share-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.share-btn:hover {
+  transform: translateY(-3px) scale(1.1);
+}
+
+.share-btn.wx { background: #07c160; color: #fff; }
+.share-btn.qq { background: #12b7f5; color: #fff; }
+.share-btn.wb { background: #e6162d; color: #fff; }
+.share-btn.cp { background: var(--purple-pale); color: var(--purple); }
+
+/* ===== 返回首页 ===== */
+.back-home {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.back-home a {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  border-radius: 24px;
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  transition: opacity 0.2s;
+}
+
+.back-home a:hover {
+  opacity: 0.85;
+}
+
+/* ===== 粒子背景 ===== */
+#particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.post-wrapper {
+  position: relative;
+  z-index: 1;
+}
+</style>
+
+    <style>
+    /* ===== TOC (文章目录) ===== */
+    .toc-box {
+      background: var(--pink-pale, #fff0f5);
+      border-radius: 10px;
+      border: 1.5px solid var(--border, #f0d9ff);
+      padding: 1rem 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+    .toc-title {
+      font-weight: 700;
+      color: var(--pink-deep, #e85d8a);
+      margin-bottom: 0.6rem;
+      font-size: 0.92rem;
+    }
+    .toc-list {
+      list-style: none;
+      padding: 0;
+    }
+    .toc-list li { line-height: 2; }
+    .toc-list a {
+      color: var(--text-light, #7c6f9f);
+      text-decoration: none;
+      font-size: 0.88rem;
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+      display: block;
+      transition: all 0.15s;
+    }
+    .toc-list a:hover {
+      color: var(--pink-deep, #e85d8a);
+      background: rgba(255, 143, 171, 0.1);
+    }
+    .toc-list .toc-h3 {
+      padding-left: 1.2rem;
+      font-size: 0.84rem;
+    }
+    </style>
+
+    <style>
+    /* ===== 回到顶部按钮 ===== */
+    #back-to-top {
+      position:fixed;bottom:2rem;right:2rem;z-index:999;
+      width:48px;height:48px;border-radius:50%;
+      background:linear-gradient(135deg,var(--pink),var(--purple));
+      color:#fff;border:none;cursor:pointer;font-size:1.3rem;
+      box-shadow:0 4px 16px rgba(200,100,200,.35);
+      opacity:0;transform:translateY(20px);
+      transition:all .3s ease;
+      pointer-events:none;
+      display:flex;align-items:center;justify-content:center;
+    }
+    #back-to-top.show{opacity:1;transform:translateY(0);pointer-events:auto}
+    #back-to-top:hover{transform:translateY(-4px) scale(1.05);box-shadow:0 8px 24px rgba(200,100,200,.5)}
+    
+    /* ===== 阅读统计 ===== */
+    .reading-stats {
+      display:flex;gap:1.2rem;align-items:center;flex-wrap:wrap;
+      font-size:.85rem;color:var(--text-muted);margin-bottom:1.2rem;
+      padding:0.6rem 0;border-bottom:1px dashed var(--border);
+    }
+    .reading-stats span{display:flex;align-items:center;gap:.3rem}
+    
+    /* ===== 图片懒加载 ===== */
+    .post-body img.lazy-img{opacity:0;transition:opacity .4s ease;min-height:80px;background:linear-gradient(135deg,var(--pink-pale),var(--purple-pale));border-radius:12px}
+    .post-body img.lazy-loaded{opacity:1;background:none;min-height:auto}
+    
+    /* ===== 评论/留言区 ===== */
+    .comment-section {
+      background:var(--card);border-radius:var(--radius);
+      border:1.5px solid var(--border);
+      box-shadow:0 8px 32px rgba(200,100,200,.12);
+      padding:1.8rem;margin-bottom:2rem;
+    }
+    .comment-section h3{color:var(--pink-deep);margin-bottom:1rem;font-size:1.1rem}
+    .comment-form{display:flex;flex-direction:column;gap:.8rem}
+    .comment-form input[type="text"],
+    .comment-form textarea{
+      width:100%;padding:.8rem 1rem;border:1.5px solid var(--border);
+      border-radius:10px;font-size:.9rem;
+      font-family:inherit;color:var(--text);
+      background:var(--bg);transition:border-color .2s;
+    }
+    .comment-form input[type="text"]:focus,
+    .comment-form textarea:focus{
+      outline:none;border-color:var(--pink);
+    }
+    .comment-form textarea{min-height:100px;resize:vertical}
+    .comment-submit{
+      align-self:flex-end;padding:.6rem 1.5rem;border:none;
+      border-radius:20px;background:linear-gradient(135deg,var(--pink),var(--purple));
+      color:#fff;font-weight:700;cursor:pointer;font-size:.9rem;
+      transition:opacity .2s;
+    }
+    .comment-submit:hover{opacity:.85}
+    .comment-notice{font-size:.78rem;color:var(--text-muted);text-align:center}
+    .comment-item{
+      padding:1rem 0;border-bottom:1px dashed var(--border);
+    }
+    .comment-item:last-child{border-bottom:none}
+    .c-name{font-weight:700;color:var(--text);font-size:.9rem}
+    .c-time{font-weight:400;color:var(--text-muted);font-size:.78rem;margin-left:.5rem}
+    .c-text{color:var(--text-light);font-size:.88rem;margin-top:.3rem;line-height:1.7}
+    .honeypot{position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden}
+    .comment-list{margin-top:1rem}
+    .backup-btn{
+      position:fixed;bottom:7rem;right:2rem;z-index:999;
+      padding:.5rem 1rem;border-radius:20px;border:1.5px solid var(--border);
+      background:var(--card);color:var(--text-light);cursor:pointer;
+      font-size:.82rem;transition:all .2s;opacity:.75;
+    }
+    .backup-btn:hover{opacity:1;background:var(--pink-pale);color:var(--pink-deep);border-color:var(--pink-light)}
+    </style>
+
+</head>
+<body>
+
+<!-- 粒子背景 -->
+<canvas id="particles"></canvas>
+
+<!-- 导航 -->
+<nav class="nav">
+  <a href="../" class="nav-logo">池帅の亦殿 🌸</a>
+  <div class="nav-actions">
+    <a href="../" class="nav-back">← 返回首页</a>
+    <button id="dark-toggle" onclick="toggleDark()">🌙</button>
+  </div>
+</nav>
+
+<!-- 文章 -->
+<div class="post-wrapper">
+  <div class="post-container">
+    <div class="post-header">
+      <div class="post-cover">💡</div>
+      <h1 class="post-title">电费悄悄翻倍？这7个家电使用习惯不改，钱包一直在漏水 💡</h1>
+      <div class="post-meta">
+        <span>📅 2026-06-20</span>
+        <span>📂 生活常识</span>
+      </div>
+      <div class="post-tags" id="post-tags"></div>
+    </div>
+  
+    
+    <!-- TOC 文章目录 -->
+    <div class="toc-box" id="toc-box">
+      <div class="toc-title">📋 文章目录</div>
+      <ul class="toc-list">
+<li><a href="#1空调温度调太低26C是黄金线">1. 空调温度调太低——26°C 是黄金线</a></li>
+<li><a href="#2冰箱塞太满冷气转不动了">2. 冰箱塞太满——冷气"转不动"了</a></li>
+<li><a href="#3热水器24小时不关全天待机也在烧钱">3. 热水器24小时不关——全天待机也在"烧钱"</a></li>
+<li><a href="#4洗衣机小件大洗满载和空转都费电">4. 洗衣机"小件大洗"——满载和空转都费电</a></li>
+<li><a href="#5电视电脑从不关机待机功耗被忽略">5. 电视/电脑从不关机——待机功耗被忽略</a></li>
+<li><a href="#6抽油烟机小马拉大车用错模式更费电">6. 抽油烟机"小马拉大车"——用错模式更费电</a></li>
+<li><a href="#7充电整夜不拔电池和电费都受伤">7. 充电整夜不拔——电池和电费都"受伤"</a></li>
+<li><a href="#写在最后">写在最后</a></li>
+</ul>
+    </div>    <!-- 阅读统计 -->
+    <div class="reading-stats" id="reading-stats">
+      <span>📝 字数：<strong id="word-count">1,357</strong></span>
+      <span>⏱ 阅读：<strong id="read-time">约 3 分钟</strong></span>
+    </div>
+<div class="post-body" id="post-body">
+<h1 id="电费悄悄翻倍这7个家电使用习惯不改钱包一直在漏水">电费悄悄翻倍？这7个家电使用习惯不改，钱包一直在漏水 💡</h1>
+<p>每到月底交电费的时候，你有没有这种感觉：明明没怎么开空调，电费却比上个月多了几十块？</p>
+<p><img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80" alt="家电使用" style="max-width:100%;border-radius:12px;margin:1rem 0;"></p>
+<p>不是你家电表坏了，而是<strong>家电的使用习惯</strong>悄悄"吃掉"了你的电费。</p>
+<p>今天整理了 <strong>7 个让电费翻倍的坏习惯</strong>，以及对应的省钱妙招。看完这篇，你下个月的电费可能直接少一截。</p>
+<h2 id="1空调温度调太低26C是黄金线">1. 空调温度调太低——26°C 是黄金线</h2>
+<p>很多人习惯把空调开到 <strong>22°C 甚至 20°C</strong>，觉得这样才够凉。</p>
+<p><strong>真相是：</strong></p>
+<ul>
+<li>空调每调低 1°C，<strong>耗电量增加 7%-10%</strong></li>
+<li>制冷模式下，26°C 是人体舒适度与能耗的最佳平衡点</li>
+<li>室内外温差不宜超过 8°C，否则出门容易中暑</li>
+</ul>
+<p><strong>省钱妙招</strong>：夏天开 26°C + 风扇，比 22°C 体感更舒服，电费能省 30%。</p>
+<blockquote>小贴士：空调开除湿模式，体感温度能再降 2-3°C，耗电却比制冷模式少一半。</blockquote>
+<h2 id="2冰箱塞太满冷气转不动了">2. 冰箱塞太满——冷气"转不动"了</h2>
+<p>冰箱塞得满满当当，看起来很会过日子，其实是个<strong>耗电大户</strong>。</p>
+<p><strong>为什么？</strong></p>
+<ul>
+<li>食物太多会<strong>堵塞冷气循环通道</strong>，压缩机要更卖力地工作</li>
+<li>冰箱每塞到 80% 以上，耗电量就<strong>直线上升</strong></li>
+<li>长期满载还会让冰箱寿命缩短 2-3 年</li>
+</ul>
+<p><strong>正确做法</strong>：</p>
+<ul>
+<li>冰箱保持 <strong>七分满</strong>，留出冷气流通空间</li>
+<li>食物分门别类：蔬果放下面，肉类放上面，剩菜用保鲜盒密封</li>
+<li>离墙 10cm 以上，顶部不要堆杂物（散热差）</li>
+</ul>
+<p><img src="https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?w=800&q=80" alt="冰箱整理" style="max-width:100%;border-radius:12px;margin:1rem 0;"></p>
+<h2 id="3热水器24小时不关全天待机也在烧钱">3. 热水器24小时不关——全天待机也在"烧钱"</h2>
+<p>电热水器是家里的"隐形电老虎"。很多人图方便，<strong>常年不关电源</strong>，觉得反正要用。</p>
+<p><strong>算笔账</strong>：</p>
+<ul>
+<li>一台 2000W 的电热水器，保温一天（24小时）耗电约 <strong>2-3 度</strong></li>
+<li>一个月就是 60-90 度电，<strong>30-50 块钱悄悄就没了</strong></li>
+<li>一年下来，<strong>400-600 元的"保温费"</strong></li>
+</ul>
+<p><strong>省钱方案</strong>：</p>
+<table><thead><tr><th>使用频率</th><th>建议</th></tr></thead><tbody><tr><td>每天洗澡</td><td>洗澡前 1 小时开，用完关</td></tr><tr><td>隔天洗澡</td><td>设定时开关</td></tr><tr><td>长期不用</td><td>直接拔插头</td></tr></tbody></table>
+<blockquote>进阶方案：换成<strong>燃气热水器</strong>或<strong>空气能热水器</strong>，一年能省 1000+ 元。</blockquote>
+<h2 id="4洗衣机小件大洗满载和空转都费电">4. 洗衣机"小件大洗"——满载和空转都费电</h2>
+<p><strong>两个极端都不对：</strong></p>
+<ul>
+<li><strong>超满载</strong>：衣服挤在一起洗不干净，电机负荷重、耗电大</li>
+<li><strong>少量洗</strong>：几件衣服就开一桶，水电都浪费</li>
+</ul>
+<p><strong>最佳实践</strong>：</p>
+<ul>
+<li>衣物量控制在<strong>内桶的 70%-80%</strong></li>
+<li>床单、被罩等大件单独洗</li>
+<li>贴身衣物、T恤等<strong>攒 2-3 天的量</strong>再洗</li>
+<li><strong>快洗模式</strong>足够日常，省时省水省电</li>
+</ul>
+<p><strong>额外建议</strong>：洗衣服尽量选<strong>早上 10 点前或晚上 8 点后</strong>，避开用电高峰，部分地区谷电便宜一半。</p>
+<h2 id="5电视电脑从不关机待机功耗被忽略">5. 电视/电脑从不关机——待机功耗被忽略</h2>
+<p>"用完电视遥控器一关，插头不拔"——这是 90% 家庭的常态。</p>
+<p><strong>但待机也在耗电！</strong></p>
+<ul>
+<li>电视待机功率约 <strong>0.5-3W</strong>，一年下来 4-25 度电</li>
+<li>电脑主机待机 5-10W，<strong>一年能"偷走" 50-80 度电</strong></li>
+<li>路由器、机顶盒、充电器插在插座上——<strong>也是耗电元凶</strong></li>
+</ul>
+<p><strong>实测数据</strong>：一个普通家庭<strong>所有待机设备</strong>加起来，一年能多耗 <strong>100-200 度电</strong>。</p>
+<p><strong>解决方案</strong>：</p>
+<p>1. 装<strong>带开关的排插</strong>，一键全断电</p>
+<p>2. 长时间不用的电器，<strong>直接拔插头</strong></p>
+<p>3. 电脑设置<strong>自动休眠</strong>（15 分钟无操作进入睡眠）</p>
+<h2 id="6抽油烟机小马拉大车用错模式更费电">6. 抽油烟机"小马拉大车"——用错模式更费电</h2>
+<p>做饭时开抽油烟机是常识，但<strong>怎么开</strong>很多人没注意。</p>
+<p><strong>常见误区</strong>：</p>
+<ul>
+<li>炒菜开最大档，煲汤也开最大档</li>
+<li>做饭一结束立马关油烟机</li>
+<li>油烟机开一整天通风</li>
+</ul>
+<p><strong>正确做法</strong>：</p>
+<table><thead><tr><th>烹饪方式</th><th>推荐档位</th></tr></thead><tbody><tr><td>煲汤/煮粥</td><td>小档</td></tr><tr><td>蒸菜</td><td>小档</td></tr><tr><td>煎/炒</td><td>中档</td></tr><tr><td>爆炒/油炸</td><td>大档</td></tr></tbody></table>
+<ul>
+<li>做完饭<strong>再开 3-5 分钟</strong>，把残留油烟彻底抽走</li>
+<li>油烟机<strong>不要当排风扇用</strong>，厨房通风开个窗就够了</li>
+</ul>
+<blockquote>油烟机内部油污太多也会增加耗电——<strong>半年深度清洗一次</strong>。</blockquote>
+<p><img src="https://images.unsplash.com/photo-1556909114-44e3e9699e2b?w=800&q=80" alt="厨房清洁" style="max-width:100%;border-radius:12px;margin:1rem 0;"></p>
+<h2 id="7充电整夜不拔电池和电费都受伤">7. 充电整夜不拔——电池和电费都"受伤"</h2>
+<p>睡前插上充电器，第二天早上拔——<strong>这是最常见的坏习惯</strong>。</p>
+<p><strong>为什么不好？</strong></p>
+<ul>
+<li>满电后继续充，虽然有保护电路不会爆炸，但<strong>微弱电流仍在循环</strong>——一个月多耗 2-3 度电</li>
+<li><strong>锂电池长期满电会加速老化</strong>，电池寿命缩短 30%-50%</li>
+<li>充电器<strong>长期插在插座上不拔</strong>，内部元件老化有安全隐患</li>
+</ul>
+<p><strong>科学充电法</strong>：</p>
+<p>1. <strong>随用随充</strong>——不要等电到 20% 以下再充</p>
+<p>2. <strong>充到 80% 拔掉</strong>——延长电池寿命（iPhone 有"优化充电"功能）</p>
+<p>3. <strong>不要边充电边玩手机</strong>——发热双重伤害电池</p>
+<p>4. <strong>充电结束立即拔插头</strong>——安全又省电</p>
+<h2 id="写在最后">写在最后</h2>
+<p>电费翻倍，<strong>从来不是单一原因</strong>——往往是多个坏习惯叠加的结果。</p>
+<p><strong>对照上面 7 条，看看自己中了几条</strong>？哪怕只改掉 3-4 条，下个月电费都能看到明显变化。</p>
+<blockquote>一年下来，<strong>省下来的不只是 500-1000 元电费</strong>，还有更耐用的家电和更安全的生活。</blockquote>
+<p><strong>今日行动清单</strong>：</p>
+<ul>
+<li>把空调温度调到 26°C</li>
+<li>冰箱腾出 20% 空间</li>
+<li>给插座装一个带开关的排插</li>
+<li>充电设备用完即拔</li>
+</ul>
+<p>省电就是省钱，从今天开始 💡</p>
+  </div>
+  
+    <div class="share-bar">
+      <span class="share-label">分享到：</span>
+      <button class="share-btn wx" onclick="shareWX()" title="微信分享">💬</button>
+      <button class="share-btn qq" onclick="shareQQ()" title="QQ分享">🐧</button>
+      <button class="share-btn wb" onclick="shareWB()" title="微博分享">📢</button>
+      <button class="share-btn cp" onclick="copyLink()" title="复制链接">🔗</button>
+    </div>
+  
+    <!-- 留言区 -->
+    <div class="comment-section" id="comment-section">
+      <h3>💬 留言区</h3>
+      <div class="comment-form" id="comment-form">
+        <div class="honeypot" aria-hidden="true">
+          <label>网站</label><input type="text" name="website" id="hp-website" tabindex="-1" autocomplete="off">
+        </div>
+        <input type="text" id="c-name" placeholder="你的昵称（必填）" maxlength="30" required>
+        <textarea id="c-text" placeholder="写点什么吧..." maxlength="1000" required></textarea>
+        <button class="comment-submit" onclick="submitComment()">✨ 发布留言</button>
+        <div class="comment-notice">📌 留言会保存在本地浏览器中，仅你可见</div>
+      </div>
+      <div class="comment-list" id="comment-list"></div>
+    </div>
+
+    <div class="back-home" id="back-home">
+      <a href="../">← 返回首页 池帅の亦殿</a>
+    </div>
+  </div>
+</div>
+
+<script>
+// ======================== 粒子背景 ========================
+(function(){
+  var canvas = document.getElementById('particles');
+  var ctx = canvas.getContext('2d');
+  var particles = [];
+  var W, H;
+  
+  function resize(){
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+  
+  var SYMBOLS = ['🌸','✨','💖','🌙','⭐','🎀','🍃','💫'];
+  
+  function createParticle(){
+    return {
+      x: Math.random() * W,
+      y: H + 20,
+      symbol: SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)],
+      size: 12 + Math.random() * 18,
+      speed: 0.3 + Math.random() * 0.8,
+      drift: (Math.random() - 0.5) * 0.5,
+      opacity: 0.3 + Math.random() * 0.5,
+      rotation: Math.random() * 360,
+      rotSpeed: (Math.random() - 0.5) * 2
+    };
+  }
+  
+  for(var i = 0; i < 25; i++) particles.push(createParticle());
+  
+  function animate(){
+    ctx.clearRect(0, 0, W, H);
+    particles.forEach(function(p){
+      ctx.save();
+      ctx.globalAlpha = p.opacity;
+      ctx.font = p.size + 'px serif';
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.rotation * Math.PI / 180);
+      ctx.fillText(p.symbol, 0, 0);
+      ctx.restore();
+      p.y -= p.speed;
+      p.x += p.drift;
+      p.rotation += p.rotSpeed;
+      if(p.y < -30) Object.assign(p, createParticle());
+    });
+    if(Math.random() < 0.02 && particles.length < 30) particles.push(createParticle());
+    if(particles.length > 30) particles.shift();
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+
+// ======================== 暗黑模式 ========================
+function toggleDark(){
+  var html = document.documentElement;
+  var next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('blog_theme', next);
+}
+(function(){
+  var saved = localStorage.getItem('blog_theme');
+  if(saved) document.documentElement.setAttribute('data-theme', saved);
+})();
+
+// ======================== 分享功能 ========================
+function shareWX(){
+  alert('请截图或复制链接，在微信中分享 💬\n\n链接：' + location.href);
+}
+function shareQQ(){
+  var url = encodeURIComponent(location.href);
+  var title = encodeURIComponent(document.title);
+  window.open('https://connect.qq.com/widget/shareqq/index.html?url=' + url + '&title=' + title, '_blank');
+}
+function shareWB(){
+  var url = encodeURIComponent(location.href);
+  var title = encodeURIComponent(document.title);
+  window.open('https://service.weibo.com/share/share.php?url=' + url + '&title=' + title, '_blank');
+}
+function copyLink(){
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(location.href).then(function(){
+      alert('✅ 链接已复制到剪贴板！');
+    });
+  }
+}
+
+// ======================== 代码高亮 ========================
+window.addEventListener('DOMContentLoaded', function(){
+  if(typeof hljs !== 'undefined'){
+    document.querySelectorAll('pre code').forEach(function(b){
+      try{ hljs.highlightElement(b); }catch(e){}
+    });
+  }
+  buildTOC_legacy();
+});
+</script>
+
+<script>
+document.getElementById("post-tags").innerHTML = ["省电", "家电", "节俭", "生活技巧", "钱包"].map(function(t) {
+  return '<span class="tag">' + t + '</span>';
+}).join("");
+</script>
+
+<script>
+// ======================== 文章目录 TOC ========================
+    function buildTOC_legacy() { // 动态重建 TOC - 已修复
+      var body = document.getElementById('post-body');
+      if (!body) return;
+      var headings = body.querySelectorAll('h2, h3');
+      var tocBox = document.getElementById('toc-box');
+      var tocList = document.getElementById('toc-list');
+      if (headings.length < 2) {
+        if (tocBox) tocBox.style.display = 'none';
+        return;
+      }
+      if (tocBox) tocBox.style.display = 'block';
+      tocList.innerHTML = '';
+      for (var i = 0; i < headings.length; i++) {
+        var h = headings[i];
+        var level = h.tagName === 'H3' ? 'toc-h3' : '';
+        var li = document.createElement('li');
+        if (level) li.className = level;
+        var a = document.createElement('a');
+        // 自动生成 ID：如果标题没有 id，从文本内容生成
+        var headingId = h.id;
+        if (!headingId) {
+          headingId = h.textContent.replace(/[^\w\u4e00-\u9fff]/g, '').substring(0, 50);
+          h.id = headingId;
+        }
+        a.href = '#' + headingId;
+        a.textContent = h.textContent;
+        a.onclick = function(e) {
+          e.preventDefault();
+          var targetId = this.getAttribute('href').slice(1);
+          var el = document.getElementById(targetId);
+          if (el) el.scrollIntoView({behavior: 'smooth'});
+          return false;
+        };
+        li.appendChild(a);
+        tocList.appendChild(li);
+      }
+    }
+    
+    // TOC已改为静态HTML
+</script>
+
+<script>
+// ======================== 回到顶部 ========================
+(function backToTop(){
+  var btn = document.getElementById('back-to-top');
+  if(!btn) return;
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if(!ticking){
+      requestAnimationFrame(function(){
+        var y = window.pageYOffset || document.documentElement.scrollTop;
+        if(y > 400){ btn.classList.add('show'); }
+        else { btn.classList.remove('show'); }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, {passive:true});
+})();
+function scrollToTop(){ window.scrollTo({top:0, behavior:'smooth'}); }
+
+// ======================== 图片懒加载 ========================
+(function lazyLoadImgs(){
+  if(!('IntersectionObserver' in window)) return;
+  var imgs = document.querySelectorAll('.post-body img:not(.lazy-img):not(.lazy-loaded)');
+  imgs.forEach(function(img){
+    if(img.src && !img.loading){
+      img.classList.add('lazy-img');
+      img.setAttribute('loading','lazy');
+    }
+  });
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        var img = entry.target;
+        if(img.dataset.src){
+          img.src = img.dataset.src;
+          img.removeAttribute('data-src');
+        }
+        img.classList.add('lazy-loaded');
+        img.classList.remove('lazy-img');
+        observer.unobserve(img);
+      }
+    });
+  },{rootMargin:'200px'});
+  document.querySelectorAll('.post-body img[data-src]').forEach(function(img){
+    observer.observe(img);
+  });
+  document.querySelectorAll('.post-body img').forEach(function(img){
+    img.setAttribute('loading','lazy');
+    if(!img.complete){ img.classList.add('lazy-img'); }
+    img.addEventListener('load',function(){ img.classList.add('lazy-loaded'); });
+    if(img.complete){ img.classList.add('lazy-loaded'); }
+  });
+})();
+
+// ======================== 评论/留言系统 ========================
+(function loadComments(){
+  var key = 'blog_comments_post_22';
+  var list = document.getElementById('comment-list');
+  if(!list) return;
+  var comments = [];
+  try{ comments = JSON.parse(localStorage.getItem(key) || '[]'); }
+  catch(e){ comments = []; }
+  var html = '';
+  comments.forEach(function(c){
+    html += '<div class="comment-item"><div class="c-name">' +
+      escapeHtml(c.name) + '<span class="c-time">' + c.time + '</span></div>' +
+      '<div class="c-text">' + escapeHtml(c.text) + '</div></div>';
+  });
+  list.innerHTML = html;
+})();
+
+function submitComment(){
+  var nameEl = document.getElementById('c-name');
+  var textEl = document.getElementById('c-text');
+  var hpEl = document.getElementById('hp-website');
+  if(!nameEl || !textEl) return;
+  if(hpEl && hpEl.value.trim() !== ''){ alert('留言失败，请重试'); return; }
+  var name = nameEl.value.trim();
+  var text = textEl.value.trim();
+  if(!name){ alert('请输入昵称'); nameEl.focus(); return; }
+  if(!text){ alert('请输入留言内容'); textEl.focus(); return; }
+  if(text.length > 1000){ alert('留言内容过长，请控制在1000字以内'); return; }
+  var spamWords = /广告|推广|加微信|加QQ|赚钱|兼职|代购|http|www\./i;
+  if(spamWords.test(text)){ alert('留言内容包含敏感词，请修改后重试'); return; }
+  var key = 'blog_comments_post_22';
+  var comments = [];
+  try{ comments = JSON.parse(localStorage.getItem(key) || '[]'); }
+  catch(e){ comments = []; }
+  var now = new Date();
+  var timeStr = now.getFullYear()+'-'+pad(now.getMonth()+1)+'-'+pad(now.getDate())+' '+
+                pad(now.getHours())+':'+pad(now.getMinutes());
+  comments.push({name:name, text:text, time:timeStr});
+  localStorage.setItem(key, JSON.stringify(comments));
+  nameEl.value = '';
+  textEl.value = '';
+  var list = document.getElementById('comment-list');
+  if(list){
+    var html2 = '';
+    comments.forEach(function(c){
+      html2 += '<div class="comment-item"><div class="c-name">' +
+        escapeHtml(c.name) + '<span class="c-time">' + c.time + '</span></div>' +
+        '<div class="c-text">' + escapeHtml(c.text) + '</div></div>';
+    });
+    list.innerHTML = html2;
+  }
+  alert('留言已保存');
+}
+
+function pad(n){ return n < 10 ? '0' + n : '' + n; }
+function escapeHtml(s){ var d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+
+// ======================== 全站备份导出 ========================
+function exportBackup(){
+  try{
+    var data = {
+      title: document.title,
+      url: window.location.href,
+      content: document.getElementById('post-body') ? document.getElementById('post-body').innerHTML : '',
+      timestamp: new Date().toISOString(),
+      comments: JSON.parse(localStorage.getItem('blog_comments_post_22') || '[]')
+    };
+    var blob = new Blob([JSON.stringify(data, null, 2)], {type:'application/json'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'backup_' + new Date().toISOString().slice(0,10) + '.json';
+    a.click();
+    URL.revokeObjectURL(a.href);
+    alert('当前文章备份已导出');
+  } catch(e){ alert('导出失败: ' + e.message); }
+}
+</script>
+
+
+    <!-- 回到顶部 -->
+    <button id="back-to-top" title="回到顶部" onclick="scrollToTop()">⬆</button>
+
+    <!-- 备份按钮 -->
+    <button class="backup-btn" onclick="exportBackup()" title="一键导出全站内容">💾 导出备份</button>
+
+<!-- 版本检测：自动刷新确保访客看到最新文章 -->
+<script>
+(function(){
+  var bv = document.querySelector('meta[name="build-version"]');
+  var cur = bv ? bv.content : '';
+  fetch('/version.json', {cache:'no-store'})
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      if(d.version && d.version !== cur){
+        location.replace(location.href.split('?')[0] + '?v=' + d.version);
+      }
+    })
+    .catch(function(){});
+})();
+</script>
+</body>
+</html>
