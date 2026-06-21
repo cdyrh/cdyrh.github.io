@@ -1016,6 +1016,9 @@ function exportBackup(){
 <!-- 版本检测：自动刷新确保访客看到最新文章 -->
 <script>
 (function(){
+  // Reload guard: if URL already has ?v= param, skip to prevent infinite loop
+  var urlParams = new URLSearchParams(window.location.search);
+  if(urlParams.get('v')) return;
   var bv = document.querySelector('meta[name="build-version"]');
   var cur = bv ? bv.content : '';
   fetch('/version.json', {cache:'no-store'})

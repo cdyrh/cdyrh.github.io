@@ -7,7 +7,7 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<meta name="build-version" content="2026-06-18T08:55">
+<meta name="build-version" content="2026-06-21T08:00">
 <title>打哈欠真的会传染吗？🥱 - 池帅の亦殿</title>
 <meta name="description" content="打哈欠真的会传染吗？🥱">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌸</text></svg>">
@@ -878,6 +878,9 @@ function exportBackup(){
 <!-- 版本检测：自动刷新确保访客看到最新文章 -->
 <script>
 (function(){
+  // Reload guard: if URL already has ?v= param, skip to prevent infinite loop
+  var urlParams = new URLSearchParams(window.location.search);
+  if(urlParams.get('v')) return;
   var bv = document.querySelector('meta[name="build-version"]');
   var cur = bv ? bv.content : '';
   fetch('/version.json', {cache:'no-store'})

@@ -7,7 +7,7 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<meta name="build-version" content="2026-06-18T08:55">
+<meta name="build-version" content="2026-06-21T08:00">
 <title>手机电量焦虑的真相 📱 — 池帥の亦殿</title>
 <meta name="description" content="# 为什么电量低于20%你就慌了  当代年轻人的三大焦虑：没钱、没对象、手机没电。  尤其是看到那个红色电池图标，心跳加速、手心出汗、开始疯狂找充电器——这就是">
 <style>
@@ -464,6 +464,9 @@ function exportBackup(){
 <!-- 版本检测：自动刷新确保访客看到最新文章 -->
 <script>
 (function(){
+  // Reload guard: if URL already has ?v= param, skip to prevent infinite loop
+  var urlParams = new URLSearchParams(window.location.search);
+  if(urlParams.get('v')) return;
   var bv = document.querySelector('meta[name="build-version"]');
   var cur = bv ? bv.content : '';
   fetch('/version.json', {cache:'no-store'})
