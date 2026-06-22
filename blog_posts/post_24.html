@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<!-- 防缓存：确保访客始终看到最新文章 -->
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta name="build-version" content="2026-06-22T08:00">
+<title>蚊子总盯着你咬？7个冷知识告诉你真相，以后再也不怕 🦟 - 池帅の亦殿</title>
+<meta name="description" content="蚊子总盯着你咬？7个冷知识告诉你真相，以后再也不怕 🦟">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌸</text></svg>">
+
+<!-- 中文字体 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<style>
+/* ===== CSS Reset ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== 主题变量 ===== */
+:root {
+  --pink: #ff8fab;
+  --pink-light: #ffb3c6;
+  --pink-pale: #fff0f5;
+  --pink-deep: #e85d8a;
+  --purple: #c77dff;
+  --purple-light: #e0aaff;
+  --purple-pale: #f8f0ff;
+  --text: #4a4063;
+  --text-light: #7c6f9f;
+  --text-muted: #b0a8c8;
+  --bg: #fdf4ff;
+  --card: #ffffff;
+  --border: #f0d9ff;
+  --radius: 18px;
+  --radius-sm: 10px;
+}
+
+[data-theme="dark"] {
+  --text: #e2d9f3;
+  --text-light: #c4b5e0;
+  --text-muted: #8b7aaf;
+  --bg: #1a1225;
+  --card: #241a34;
+  --border: #3d2d5a;
+  --pink-pale: #2d1a2e;
+  --purple-pale: #201630;
+}
+
+body {
+  font-family: 'Noto Serif SC', 'SimSun', 'STSong', serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
+  transition: background 0.3s, color 0.3s;
+  padding-top: 64px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== 导航栏 ===== */
+.nav {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 2px solid var(--border);
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: 64px;
+}
+
+[data-theme="dark"] .nav {
+  background: rgba(26, 18, 37, 0.92);
+}
+
+.nav-logo {
+  font-size: 1.2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-decoration: none;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.nav-back {
+  background: none;
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  padding: 0.35rem 0.9rem;
+  cursor: pointer;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 0.9rem;
+  color: var(--text-light);
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.nav-back:hover {
+  background: var(--pink-pale);
+}
+
+#dark-toggle {
+  background: none;
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  padding: 0.35rem 0.7rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s;
+  color: var(--text-light);
+}
+
+#dark-toggle:hover {
+  background: var(--pink-pale);
+}
+
+/* ===== 文章容器（核心修复：确保居中）===== */
+.post-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 2rem 1rem;
+}
+
+.post-container {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.post-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 2rem 0;
+}
+
+.post-cover {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.post-title {
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
+  background: linear-gradient(135deg, var(--pink-deep), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.4;
+}
+
+.post-meta {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.post-meta span {
+  margin: 0 0.5rem;
+}
+
+.post-tags {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 0.8rem;
+}
+
+.tag {
+  background: var(--pink-pale);
+  color: var(--pink-deep);
+  padding: 0.2rem 0.7rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+}
+
+/* ===== 文章正文 ===== */
+.post-body {
+  background: var(--card);
+  border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+  box-shadow: 0 8px 32px rgba(200, 100, 200, 0.12);
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  font-size: 1.05rem;
+  line-height: 2;
+}
+
+.post-body h1,
+.post-body h2,
+.post-body h3,
+.post-body h4 {
+  color: var(--pink-deep);
+  margin: 1.8rem 0 1rem;
+  line-height: 1.4;
+}
+
+.post-body h1 { font-size: 1.6rem; }
+.post-body h2 { font-size: 1.4rem; }
+.post-body h3 { font-size: 1.2rem; }
+
+.post-body p {
+  margin-bottom: 1.2rem;
+  line-height: 2;
+}
+
+.post-body ul,
+.post-body ol {
+  margin: 0 0 1.2rem 1.5rem;
+  padding-left: 0.5rem;
+}
+
+.post-body li {
+  margin-bottom: 0.6rem;
+  line-height: 1.8;
+}
+
+.post-body code:not(pre code) {
+  background: var(--pink-pale);
+  color: var(--pink-deep);
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.9em;
+  font-family: 'Courier New', monospace;
+}
+
+.post-body pre {
+  border-radius: var(--radius-sm);
+  margin-bottom: 1.2rem;
+  overflow-x: auto;
+  padding: 1.2rem;
+  background: #282c34;
+}
+
+.post-body blockquote {
+  border-left: 3px solid var(--pink-light);
+  padding: 0.8rem 1.2rem;
+  color: var(--text-light);
+  font-style: italic;
+  margin-bottom: 1.2rem;
+  background: var(--pink-pale);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.post-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.2rem;
+  font-size: 0.92rem;
+}
+
+.post-body th {
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  color: #fff;
+  padding: 0.6rem 0.8rem;
+  text-align: left;
+}
+
+.post-body td {
+  padding: 0.55rem 0.8rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.post-body img {
+  max-width: 100%;
+  border-radius: 12px;
+  margin: 1rem 0;
+}
+
+.post-body a {
+  color: var(--pink-deep);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--pink-light);
+  transition: all 0.2s;
+}
+
+.post-body a:hover {
+  color: var(--purple);
+  border-bottom-color: var(--purple);
+}
+
+/* ===== 分享栏 ===== */
+.share-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  padding: 1.2rem;
+  background: var(--card);
+  border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+  box-shadow: 0 8px 32px rgba(200, 100, 200, 0.12);
+  margin-bottom: 2rem;
+}
+
+.share-label {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-right: 0.3rem;
+}
+
+.share-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.share-btn:hover {
+  transform: translateY(-3px) scale(1.1);
+}
+
+.share-btn.wx { background: #07c160; color: #fff; }
+.share-btn.qq { background: #12b7f5; color: #fff; }
+.share-btn.wb { background: #e6162d; color: #fff; }
+.share-btn.cp { background: var(--purple-pale); color: var(--purple); }
+
+/* ===== 返回首页 ===== */
+.back-home {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.back-home a {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  border-radius: 24px;
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  transition: opacity 0.2s;
+}
+
+.back-home a:hover {
+  opacity: 0.85;
+}
+
+/* ===== 粒子背景 ===== */
+#particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.post-wrapper {
+  position: relative;
+  z-index: 1;
+}
+</style>
+
+    <style>
+    /* ===== TOC (文章目录) ===== */
+    .toc-box {
+      background: var(--pink-pale, #fff0f5);
+      border-radius: 10px;
+      border: 1.5px solid var(--border, #f0d9ff);
+      padding: 1rem 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+    .toc-title {
+      font-weight: 700;
+      color: var(--pink-deep, #e85d8a);
+      margin-bottom: 0.6rem;
+      font-size: 0.92rem;
+    }
+    .toc-list {
+      list-style: none;
+      padding: 0;
+    }
+    .toc-list li { line-height: 2; }
+    .toc-list a {
+      color: var(--text-light, #7c6f9f);
+      text-decoration: none;
+      font-size: 0.88rem;
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+      display: block;
+      transition: all 0.15s;
+    }
+    .toc-list a:hover {
+      color: var(--pink-deep, #e85d8a);
+      background: rgba(255, 143, 171, 0.1);
+    }
+    .toc-list .toc-h3 {
+      padding-left: 1.2rem;
+      font-size: 0.84rem;
+    }
+    </style>
+
+    <style>
+    /* ===== 回到顶部按钮 ===== */
+    #back-to-top {
+      position:fixed;bottom:2rem;right:2rem;z-index:999;
+      width:48px;height:48px;border-radius:50%;
+      background:linear-gradient(135deg,var(--pink),var(--purple));
+      color:#fff;border:none;cursor:pointer;font-size:1.3rem;
+      box-shadow:0 4px 16px rgba(200,100,200,.35);
+      opacity:0;transform:translateY(20px);
+      transition:all .3s ease;
+      pointer-events:none;
+      display:flex;align-items:center;justify-content:center;
+    }
+    #back-to-top.show{opacity:1;transform:translateY(0);pointer-events:auto}
+    #back-to-top:hover{transform:translateY(-4px) scale(1.05);box-shadow:0 8px 24px rgba(200,100,200,.5)}
+    
+    /* ===== 阅读统计 ===== */
+    .reading-stats {
+      display:flex;gap:1.2rem;align-items:center;flex-wrap:wrap;
+      font-size:.85rem;color:var(--text-muted);margin-bottom:1.2rem;
+      padding:0.6rem 0;border-bottom:1px dashed var(--border);
+    }
+    .reading-stats span{display:flex;align-items:center;gap:.3rem}
+    
+    /* ===== 图片懒加载 ===== */
+    .post-body img.lazy-img{opacity:0;transition:opacity .4s ease;min-height:80px;background:linear-gradient(135deg,var(--pink-pale),var(--purple-pale));border-radius:12px}
+    .post-body img.lazy-loaded{opacity:1;background:none;min-height:auto}
+    
+    /* ===== 评论/留言区 ===== */
+    .comment-section {
+      background:var(--card);border-radius:var(--radius);
+      border:1.5px solid var(--border);
+      box-shadow:0 8px 32px rgba(200,100,200,.12);
+      padding:1.8rem;margin-bottom:2rem;
+    }
+    .comment-section h3{color:var(--pink-deep);margin-bottom:1rem;font-size:1.1rem}
+    .comment-form{display:flex;flex-direction:column;gap:.8rem}
+    .comment-form input[type="text"],
+    .comment-form textarea{
+      width:100%;padding:.8rem 1rem;border:1.5px solid var(--border);
+      border-radius:10px;font-size:.9rem;
+      font-family:inherit;color:var(--text);
+      background:var(--bg);transition:border-color .2s;
+    }
+    .comment-form input[type="text"]:focus,
+    .comment-form textarea:focus{
+      outline:none;border-color:var(--pink);
+    }
+    .comment-form textarea{min-height:100px;resize:vertical}
+    .comment-submit{
+      align-self:flex-end;padding:.6rem 1.5rem;border:none;
+      border-radius:20px;background:linear-gradient(135deg,var(--pink),var(--purple));
+      color:#fff;font-weight:700;cursor:pointer;font-size:.9rem;
+      transition:opacity .2s;
+    }
+    .comment-submit:hover{opacity:.85}
+    .comment-notice{font-size:.78rem;color:var(--text-muted);text-align:center}
+    .comment-item{
+      padding:1rem 0;border-bottom:1px dashed var(--border);
+    }
+    .comment-item:last-child{border-bottom:none}
+    .c-name{font-weight:700;color:var(--text);font-size:.9rem}
+    .c-time{font-weight:400;color:var(--text-muted);font-size:.78rem;margin-left:.5rem}
+    .c-text{color:var(--text-light);font-size:.88rem;margin-top:.3rem;line-height:1.7}
+    .honeypot{position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden}
+    .comment-list{margin-top:1rem}
+    .backup-btn{
+      position:fixed;bottom:7rem;right:2rem;z-index:999;
+      padding:.5rem 1rem;border-radius:20px;border:1.5px solid var(--border);
+      background:var(--card);color:var(--text-light);cursor:pointer;
+      font-size:.82rem;transition:all .2s;opacity:.75;
+    }
+    .backup-btn:hover{opacity:1;background:var(--pink-pale);color:var(--pink-deep);border-color:var(--pink-light)}
+    </style>
+
+</head>
+<body>
+
+<!-- 粒子背景 -->
+<canvas id="particles"></canvas>
+
+<!-- 导航 -->
+<nav class="nav">
+  <a href="../" class="nav-logo">池帅の亦殿 🌸</a>
+  <div class="nav-actions">
+    <a href="../" class="nav-back">← 返回首页</a>
+    <button id="dark-toggle" onclick="toggleDark()">🌙</button>
+  </div>
+</nav>
+
+<!-- 文章 -->
+<div class="post-wrapper">
+  <div class="post-container">
+    <div class="post-header">
+      <div class="post-cover">🦟</div>
+      <h1 class="post-title">蚊子总盯着你咬？7个冷知识告诉你真相，以后再也不怕 🦟</h1>
+      <div class="post-meta">
+        <span>📅 2026-06-22</span>
+        <span>📂 生活常识</span>
+      </div>
+      <div class="post-tags" id="post-tags"></div>
+    </div>
+  
+    
+    <!-- TOC 文章目录 -->
+    <div class="toc-box" id="toc-box">
+      <div class="toc-title">📋 文章目录</div>
+      <ul class="toc-list" id="toc-list">
+<li><a href="#1-蚊子最爱o型血别怪命运怪基因">1. 蚊子最爱O型血——别怪命运，怪基因</a></li>
+<li><a href="#2-你呼吸重蚊子就找你co2是它的导航信号">2. 你呼吸重蚊子就找你——CO₂是它的导航信号</a></li>
+<li><a href="#3-穿黑衣服你就成了蚊子的聚光灯">3. 穿黑衣服你就成了蚊子的"聚光灯"</a></li>
+<li><a href="#4-汗味是蚊子的香水别以为你只是臭">4. 汗味是蚊子的"香水"——别以为你只是臭</a></li>
+<li><a href="#5-被咬后越挠越痒这不是错觉是化学反应">5. 被咬后越挠越痒——这不是错觉，是化学反应</a></li>
+<li><a href="#6-驱蚊产品怎么选别被广告忽悠了">6. 驱蚊产品怎么选——别被广告忽悠了</a></li>
+<li class="toc-h3"><a href="#认准这些有效成分">认准这些有效成分</a></li>
+<li class="toc-h3"><a href="#这些驱蚊方法其实是智商税">这些驱蚊方法其实是"智商税"</a></li>
+<li><a href="#7-室内防蚊的终极方案不是点蚊香">7. 室内防蚊的终极方案——不是点蚊香</a></li>
+<li><a href="#写在最后">写在最后</a></li>
+</ul>
+    </div>    <!-- 阅读统计 -->
+    <div class="reading-stats" id="reading-stats">
+      <span>📝 字数：<strong id="word-count">2,186</strong></span>
+      <span>⏱ 阅读：<strong id="read-time">约 6 分钟</strong></span>
+    </div>
+<div class="post-body" id="post-body">
+
+<h1 id="蚊子为什么只咬你不咬别人真不是因为你甜">蚊子为什么只咬你不咬别人？真不是因为你"甜"</h1>
+<p>夏天的夜晚，你和朋友坐在院子里乘凉。十分钟后——</p>
+<ul>
+<li>你：满腿红包，痒得想跳河</li>
+<li>朋友：一个包都没有，还嘲笑你"人甜蚊爱"</li>
+</ul>
+<p>你一定想过这个问题：<strong>蚊子是不是对我有什么特殊偏好？</strong></p>
+<p>答案是——<strong>是的，蚊子确实有偏好，但不是因为血甜。</strong></p>
+<p>蚊子选择猎物靠的是一套精密的"嗅觉雷达"和"视觉雷达"，而你的体温、呼吸、汗液、穿衣颜色，全都在告诉蚊子：<em>"来咬我，我在这里！"</em></p>
+<p>今天用7个冷知识揭开蚊子的秘密，让你从今晚开始，<strong>真正告别蚊虫困扰</strong>。</p>
+<p><img src="https://images.unsplash.com/photo-1596394723262-87ed4e9c8f00?w=800&q=80" alt="蚊虫叮咬" style="max-width:100%;border-radius:12px;margin:1rem 0;"></p>
+
+<h2 id="1-蚊子最爱o型血别怪命运怪基因">1. 蚊子最爱O型血——别怪命运，怪基因</h2>
+<p>这不是玄学，是有实验数据支持的。</p>
+<p>2004年一项发表在《Journal of Medical Entomology》的研究发现：<strong>O型血的人被蚊子叮咬的概率比A型血高出约83%</strong>。B型血排第二，AB型血最"安全"。</p>
+<p>原因是O型血的人皮肤表面会分泌一种叫<strong>"H抗原"</strong>的化学物质，蚊子对这个物质特别敏感——就像你闻到烧烤味就走不动路一样。</p>
+<blockquote>
+如果你是O型血……别哭。后面有解决方案。
+</blockquote>
+
+<h2 id="2-你呼吸重蚊子就找你co2是它的导航信号">2. 你呼吸重蚊子就找你——CO₂是它的导航信号</h2>
+<p>蚊子在50米外就能感知到二氧化碳浓度变化。</p>
+<p><strong>呼吸越重、呼出CO₂越多的人，对蚊子来说就是一座灯塔。</strong></p>
+<p>以下人群更容易被锁定：</p>
+<ul>
+<li>🏃 运动后的人（呼吸频率是安静时的3-5倍）</li>
+<li>🤰 孕妇（呼出CO₂比普通人多21%）</li>
+<li>🧒 儿童（新陈代谢快，呼吸频率高）</li>
+<li>🍺 喝了酒的人（代谢加速，CO₂排放增加）</li>
+</ul>
+<p>所以你刚跑步回来坐在院子里，蚊子就像收到了"VIP邀请函"。</p>
+
+<h2 id="3-穿黑衣服你就成了蚊子的聚光灯">3. 穿黑衣服你就成了蚊子的"聚光灯"</h2>
+<p>蚊子有视觉，而且偏好<strong>深色</strong>。</p>
+<p>华盛顿大学2018年的研究发现，蚊子在寻找猎物时，会优先飞向深色物体。原因：</p>
+<ul>
+<li>深色衣服在光线下形成<strong>高对比度的轮廓</strong>，蚊子更容易锁定</li>
+<li>黑色吸热，穿黑衣服的人体温略高，又叠加了体温信号</li>
+</ul>
+<p><strong>最容易被叮的穿衣颜色排名：</strong>黑色 > 红色 > 蓝色 > 黄色 > 白色。</p>
+<p>夏天的建议：<strong>穿浅色、宽松的衣服</strong>——既减少蚊子的视觉锁定，又降低体温，双重防御。</p>
+<p><img src="https://images.unsplash.com/photo-1559827260-dcfe5c11f5a9?w=800&q=80" alt="夏天户外" style="max-width:100%;border-radius:12px;margin:1rem 0;"></p>
+
+<h2 id="4-汗味是蚊子的香水别以为你只是臭">4. 汗味是蚊子的"香水"——别以为你只是臭</h2>
+<p>蚊子对人体汗液中的<strong>乳酸、尿酸、氨</strong>等物质极度敏感。</p>
+<p>刚运动完的你，汗液浓度飙升，简直是蚊子眼中的"五星级餐厅"。</p>
+<p>而且皮肤的<strong>细菌菌群</strong>也会影响——某些细菌代谢产物对蚊子有强吸引力。研究发现，皮肤上细菌种类越多的人，越容易被叮。</p>
+<blockquote>
+💡 夏天户外活动后，尽快洗澡换衣服——洗掉"蚊子导航信号"，是最简单有效的防蚊方式。
+</blockquote>
+
+<h2 id="5-被咬后越挠越痒这不是错觉是化学反应">5. 被咬后越挠越痒——这不是错觉，是化学反应</h2>
+<p>蚊子叮咬时注入的唾液含有<strong>抗凝血蛋白</strong>和<strong>组胺刺激物</strong>。你的免疫系统检测到这些外来物质后释放组胺——组胺导致血管扩张、神经末梢敏感，这就是痒感的来源。</p>
+<p><strong>越挠越痒的原因：</strong> 挠破皮肤 → 更多的蚊子唾液扩散到周围组织 → 更多组胺释放 → 更痒 → 更想挠……恶性循环。</p>
+<p>而且指甲挠破皮肤后容易感染，红包变成脓包，得不偿失。</p>
+<p><strong>正确止痒方法：</strong></p>
+<ul>
+<li>❄️ <strong>冰敷</strong>——低温收缩血管、减缓组胺扩散，5分钟见效</li>
+<li>🧴 <strong>炉甘石洗剂</strong>——药店10块钱一瓶，涂抹止痒安全有效</li>
+<li>🧊 <strong>肥皂水冲洗</strong>——碱性中和蚊子唾液中的酸性物质</li>
+<li>🌿 <strong>芦荟胶</strong>——天然消炎止痒，对敏感皮肤友好</li>
+</ul>
+<p><strong>千万别用指甲抠！</strong> 如果实在忍不住，用指甲盖轻按（不破皮），或者用冰块贴着咬处20秒。</p>
+
+<h2 id="6-驱蚊产品怎么选别被广告忽悠了">6. 驱蚊产品怎么选——别被广告忽悠了</h2>
+<p>市面上的驱蚊产品五花八门，但<strong>真正有科学验证的有效成分只有几种</strong>：</p>
+
+<h3 id="认准这些有效成分">认准这些有效成分</h3>
+
+<table>
+<thead><tr><th>成分</th><th>保护时长</th><th>适用人群</th><th>安全性</th></tr></thead>
+<tbody>
+<tr><td>避蚊胺（DEET）</td><td>6-12小时</td><td>成人</td><td>最成熟，但味道重</td></tr>
+<tr><td>派卡瑞丁（Picaridin）</td><td>4-8小时</td><td>成人+儿童</td><td>无味无刺激，推荐首选</td></tr>
+<tr><td>驱蚊酯（IR3535）</td><td>2-4小时</td><td>婴幼儿</td><td>温和安全，适合小宝宝</td></tr>
+</tbody>
+</table>
+
+<p><strong>避蚊胺（DEET）</strong>是老牌驱蚊成分，效果最强但味道刺鼻，还会腐蚀塑料和化纤衣物。<strong>派卡瑞丁</strong>是新一代驱蚊成分，无味不刺激，被WHO推荐为DEET的替代品。</p>
+
+<h3 id="这些驱蚊方法其实是智商税">这些驱蚊方法其实是"智商税"</h3>
+<ul>
+<li>❌ <strong>大蒜驱蚊</strong>——没有科学依据，吃大蒜不会改变皮肤化学信号</li>
+<li>❌ <strong>维生素B₁驱蚊</strong>——已被多次实验否证</li>
+<li>❌ <strong>手机驱蚊APP</strong>——超声波对蚊子无效，蚊子听不到手机发出的频率</li>
+<li>❌ <strong>香薰蜡烛驱蚊</strong>——驱蚊效果微弱，更多是心理安慰</li>
+</ul>
+<blockquote>
+选驱蚊产品的原则：看成分表，认准DEET/Picaridin/IR3535，别看广告词。
+</blockquote>
+
+<h2 id="7-室内防蚊的终极方案不是点蚊香">7. 室内防蚊的终极方案——不是点蚊香</h2>
+<p>蚊香的原理是<strong>燃烧释放除虫菊素</strong>，在封闭房间里使用，对呼吸道有刺激——老人、小孩、哮喘患者不适合。</p>
+<p><strong>更安全的室内防蚊方案：</strong></p>
+<ul>
+<li>🪟 <strong>纱窗纱门</strong>——物理防御最靠谱，确认纱窗没有破损缝隙</li>
+<li>🧹 <strong>清理积水</strong>——蚊子繁殖只需要一小碗水！花盆底碟、空调滴水盘、阳台积水都要清理</li>
+<li>⚡ <strong>电蚊拍</strong>——安全无化学残留，睡觉前巡视一圈拍掉几只</li>
+<li>🌿 <strong>驱蚊植物</strong>——薄荷、薰衣草、天竺葵放在窗台，有一定辅助效果</li>
+<li>💡 <strong>蚊虫诱捕灯</strong>——紫外灯+风扇组合，放在角落24小时工作</li>
+</ul>
+<p>蚊子的一生从卵到成虫只需要<strong>7-10天</strong>，而一只母蚊子一生可以产<strong>300-500个卵</strong>。所以——<strong>清除积水比灭蚊重要10倍</strong>。</p>
+<p><img src="https://images.unsplash.com/photo-1558997519-83ea9252edf8?w=800&q=80" alt="居家防蚊" style="max-width:100%;border-radius:12px;margin:1rem 0;"></p>
+
+<h2 id="写在最后">写在最后</h2>
+<p>蚊子不是不可战胜的敌人。<strong>理解它的选择逻辑，就能反向防御。</strong></p>
+<blockquote>
+总结一下：O型血的人别哭，穿浅色衣服能减50%被叮概率；运动后洗澡能洗掉"导航信号"；止痒用冰敷和炉甘石，别用指甲；驱蚊认准DEET/Picaridin/IR3535；室内防蚊靠纱窗+清积水。
+</blockquote>
+<p>今晚就试试——穿白色T恤出门、洗澡后再坐院子、喷点含派卡瑞丁的驱蚊喷雾。</p>
+<p>你会发现，蚊子真的不是那么"执着"了。</p>
+<hr>
+<p><strong>今日小作业：</strong> 去检查一下家里花盆底碟有没有积水——如果有，立刻倒掉。这一步，可能消灭了上百只还没出生的蚊子 🦟</p>
+
+    <div class="share-bar">
+      <span class="share-label">分享到：</span>
+      <button class="share-btn wx" onclick="shareWX()" title="微信分享">💬</button>
+      <button class="share-btn qq" onclick="shareQQ()" title="QQ分享">🐧</button>
+      <button class="share-btn wb" onclick="shareWB()" title="微博分享">📢</button>
+      <button class="share-btn cp" onclick="copyLink()" title="复制链接">🔗</button>
+    </div>
+  
+    <!-- 留言区 -->
+    <div class="comment-section" id="comment-section">
+      <h3>💬 留言区</h3>
+      <div class="comment-form" id="comment-form">
+        <div class="honeypot" aria-hidden="true">
+          <label>网站</label><input type="text" name="website" id="hp-website" tabindex="-1" autocomplete="off">
+        </div>
+        <input type="text" id="c-name" placeholder="你的昵称（必填）" maxlength="30" required>
+        <textarea id="c-text" placeholder="写点什么吧..." maxlength="1000" required></textarea>
+        <button class="comment-submit" onclick="submitComment()">✨ 发布留言</button>
+        <div class="comment-notice">📌 留言会保存在本地浏览器中，仅你可见</div>
+      </div>
+      <div class="comment-list" id="comment-list"></div>
+    </div>
+
+    <div class="back-home" id="back-home">
+      <a href="../">← 返回首页 池帅の亦殿</a>
+    </div>
+  </div>
+</div>
+
+<script>
+// ======================== 粒子背景 ========================
+(function(){
+  var canvas = document.getElementById('particles');
+  var ctx = canvas.getContext('2d');
+  var particles = [];
+  var W, H;
+  
+  function resize(){
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+  
+  var SYMBOLS = ['🌸','✨','💖','🌙','⭐','🎀','🍃','💫'];
+  
+  function createParticle(){
+    return {
+      x: Math.random() * W,
+      y: H + 20,
+      symbol: SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)],
+      size: 12 + Math.random() * 18,
+      speed: 0.3 + Math.random() * 0.8,
+      drift: (Math.random() - 0.5) * 0.5,
+      opacity: 0.3 + Math.random() * 0.5,
+      rotation: Math.random() * 360,
+      rotSpeed: (Math.random() - 0.5) * 2
+    };
+  }
+  
+  for(var i = 0; i < 25; i++) particles.push(createParticle());
+  
+  function animate(){
+    ctx.clearRect(0, 0, W, H);
+    particles.forEach(function(p){
+      ctx.save();
+      ctx.globalAlpha = p.opacity;
+      ctx.font = p.size + 'px serif';
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.rotation * Math.PI / 180);
+      ctx.fillText(p.symbol, 0, 0);
+      ctx.restore();
+      p.y -= p.speed;
+      p.x += p.drift;
+      p.rotation += p.rotSpeed;
+      if(p.y < -30) Object.assign(p, createParticle());
+    });
+    if(Math.random() < 0.02 && particles.length < 30) particles.push(createParticle());
+    if(particles.length > 30) particles.shift();
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+
+// ======================== 暗黑模式 ========================
+function toggleDark(){
+  var html = document.documentElement;
+  var next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('blog_theme', next);
+}
+(function(){
+  var saved = localStorage.getItem('blog_theme');
+  if(saved) document.documentElement.setAttribute('data-theme', saved);
+})();
+
+// ======================== 分享功能 ========================
+function shareWX(){
+  alert('请截图或复制链接，在微信中分享 💬\n\n链接：' + location.href);
+}
+function shareQQ(){
+  var url = encodeURIComponent(location.href);
+  var title = encodeURIComponent(document.title);
+  window.open('https://connect.qq.com/widget/shareqq/index.html?url=' + url + '&title=' + title, '_blank');
+}
+function shareWB(){
+  var url = encodeURIComponent(location.href);
+  var title = encodeURIComponent(document.title);
+  window.open('https://service.weibo.com/share/share.php?url=' + url + '&title=' + title, '_blank');
+}
+function copyLink(){
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(location.href).then(function(){
+      alert('✅ 链接已复制到剪贴板！');
+    });
+  }
+}
+
+// ======================== 代码高亮 ========================
+window.addEventListener('DOMContentLoaded', function(){
+  if(typeof hljs !== 'undefined'){
+    document.querySelectorAll('pre code').forEach(function(b){
+      try{ hljs.highlightElement(b); }catch(e){}
+    });
+  }
+  buildTOC_legacy();
+});
+</script>
+
+<script>
+document.getElementById("post-tags").innerHTML = ['驱蚊', '夏天', '蚊子', '生活技巧', '健康'].map(function(t) {
+  return '<span class="tag">' + t + '</span>';
+}).join("");
+</script>
+
+<script>
+// ======================== 文章目录 TOC ========================
+    function buildTOC_legacy() { // 动态重建 TOC - 已修复
+      var body = document.getElementById('post-body');
+      if (!body) return;
+      var headings = body.querySelectorAll('h2, h3');
+      var tocBox = document.getElementById('toc-box');
+      var tocList = document.getElementById('toc-list');
+      if (headings.length < 2) {
+        if (tocBox) tocBox.style.display = 'none';
+        return;
+      }
+      if (tocBox) tocBox.style.display = 'block';
+      tocList.innerHTML = '';
+      for (var i = 0; i < headings.length; i++) {
+        var h = headings[i];
+        var level = h.tagName === 'H3' ? 'toc-h3' : '';
+        var li = document.createElement('li');
+        if (level) li.className = level;
+        var a = document.createElement('a');
+        // 自动生成 ID：如果标题没有 id，从文本内容生成
+        var headingId = h.id;
+        if (!headingId) {
+          headingId = h.textContent.replace(/[^\w\u4e00-\u9fff]/g, '').substring(0, 50);
+          h.id = headingId;
+        }
+        a.href = '#' + headingId;
+        a.textContent = h.textContent;
+        a.onclick = function(e) {
+          e.preventDefault();
+          var targetId = this.getAttribute('href').slice(1);
+          var el = document.getElementById(targetId);
+          if (el) el.scrollIntoView({behavior: 'smooth'});
+          return false;
+        };
+        li.appendChild(a);
+        tocList.appendChild(li);
+      }
+    }
+    
+    // TOC已改为静态HTML
+</script>
+
+<script>
+// ======================== 回到顶部 ========================
+(function backToTop(){
+  var btn = document.getElementById('back-to-top');
+  if(!btn) return;
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if(!ticking){
+      requestAnimationFrame(function(){
+        var y = window.pageYOffset || document.documentElement.scrollTop;
+        if(y > 400){ btn.classList.add('show'); }
+        else { btn.classList.remove('show'); }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, {passive:true});
+})();
+function scrollToTop(){ window.scrollTo({top:0, behavior:'smooth'}); }
+
+// ======================== 图片懒加载 ========================
+(function lazyLoadImgs(){
+  if(!('IntersectionObserver' in window)) return;
+  var imgs = document.querySelectorAll('.post-body img:not(.lazy-img):not(.lazy-loaded)');
+  imgs.forEach(function(img){
+    if(img.src && !img.loading){
+      img.classList.add('lazy-img');
+      img.setAttribute('loading','lazy');
+    }
+  });
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        var img = entry.target;
+        if(img.dataset.src){
+          img.src = img.dataset.src;
+          img.removeAttribute('data-src');
+        }
+        img.classList.add('lazy-loaded');
+        img.classList.remove('lazy-img');
+        observer.unobserve(img);
+      }
+    });
+  },{rootMargin:'200px'});
+  document.querySelectorAll('.post-body img[data-src]').forEach(function(img){
+    observer.observe(img);
+  });
+  document.querySelectorAll('.post-body img').forEach(function(img){
+    img.setAttribute('loading','lazy');
+    if(!img.complete){ img.classList.add('lazy-img'); }
+    img.addEventListener('load',function(){ img.classList.add('lazy-loaded'); });
+    if(img.complete){ img.classList.add('lazy-loaded'); }
+  });
+})();
+
+// ======================== 评论/留言系统 ========================
+(function loadComments(){
+  var key = 'blog_comments_post_24';
+  var list = document.getElementById('comment-list');
+  if(!list) return;
+  var comments = [];
+  try{ comments = JSON.parse(localStorage.getItem(key) || '[]'); }
+  catch(e){ comments = []; }
+  var html = '';
+  comments.forEach(function(c){
+    html += '<div class="comment-item"><div class="c-name">' +
+      escapeHtml(c.name) + '<span class="c-time">' + c.time + '</span></div>' +
+      '<div class="c-text">' + escapeHtml(c.text) + '</div></div>';
+  });
+  list.innerHTML = html;
+})();
+
+function submitComment(){
+  var nameEl = document.getElementById('c-name');
+  var textEl = document.getElementById('c-text');
+  var hpEl = document.getElementById('hp-website');
+  if(!nameEl || !textEl) return;
+  if(hpEl && hpEl.value.trim() !== ''){ alert('留言失败，请重试'); return; }
+  var name = nameEl.value.trim();
+  var text = textEl.value.trim();
+  if(!name){ alert('请输入昵称'); nameEl.focus(); return; }
+  if(!text){ alert('请输入留言内容'); textEl.focus(); return; }
+  if(text.length > 1000){ alert('留言内容过长，请控制在1000字以内'); return; }
+  var spamWords = /广告|推广|加微信|加QQ|赚钱|兼职|代购|http|www\./i;
+  if(spamWords.test(text)){ alert('留言内容包含敏感词，请修改后重试'); return; }
+  var key = 'blog_comments_post_24';
+  var comments = [];
+  try{ comments = JSON.parse(localStorage.getItem(key) || '[]'); }
+  catch(e){ comments = []; }
+  var now = new Date();
+  var timeStr = now.getFullYear()+'-'+pad(now.getMonth()+1)+'-'+pad(now.getDate())+' '+
+                pad(now.getHours())+':'+pad(now.getMinutes());
+  comments.push({name:name, text:text, time:timeStr});
+  localStorage.setItem(key, JSON.stringify(comments));
+  nameEl.value = '';
+  textEl.value = '';
+  var list = document.getElementById('comment-list');
+  if(list){
+    var html2 = '';
+    comments.forEach(function(c){
+      html2 += '<div class="comment-item"><div class="c-name">' +
+        escapeHtml(c.name) + '<span class="c-time">' + c.time + '</span></div>' +
+        '<div class="c-text">' + escapeHtml(c.text) + '</div></div>';
+    });
+    list.innerHTML = html2;
+  }
+  alert('留言已保存');
+}
+
+function pad(n){ return n < 10 ? '0' + n : '' + n; }
+function escapeHtml(s){ var d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+
+// ======================== 全站备份导出 ========================
+function exportBackup(){
+  try{
+    var data = {
+      title: document.title,
+      url: window.location.href,
+      content: document.getElementById('post-body') ? document.getElementById('post-body').innerHTML : '',
+      timestamp: new Date().toISOString(),
+      comments: JSON.parse(localStorage.getItem('blog_comments_post_24') || '[]')
+    };
+    var blob = new Blob([JSON.stringify(data, null, 2)], {type:'application/json'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'backup_' + new Date().toISOString().slice(0,10) + '.json';
+    a.click();
+    URL.revokeObjectURL(a.href);
+    alert('当前文章备份已导出');
+  } catch(e){ alert('导出失败: ' + e.message); }
+}
+</script>
+
+
+    <!-- 回到顶部 -->
+    <button id="back-to-top" title="回到顶部" onclick="scrollToTop()">⬆</button>
+
+    <!-- 备份按钮 -->
+    <button class="backup-btn" onclick="exportBackup()" title="一键导出全站内容">💾 导出备份</button>
+
+<!-- 版本检测：自动刷新确保访客看到最新文章 -->
+<script>
+(function(){
+  // Reload guard: if URL already has ?v= param, skip to prevent infinite loop
+  var urlParams = new URLSearchParams(window.location.search);
+  if(urlParams.get('v')) return;
+  var bv = document.querySelector('meta[name="build-version"]');
+  var cur = bv ? bv.content : '';
+  fetch('/version.json', {cache:'no-store'})
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      if(d.version && d.version !== cur){
+        location.replace(location.href.split('?')[0] + '?v=' + d.version);
+      }
+    })
+    .catch(function(){});
+})();
+</script>
+</body>
+</html>
