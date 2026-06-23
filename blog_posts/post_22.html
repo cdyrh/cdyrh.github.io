@@ -787,7 +787,7 @@ function shareWB(){
   window.open('https://service.weibo.com/share/share.php?url=' + url + '&title=' + title + '&language=zh_cn', '_blank', 'width=700,height=550');
 }
 function copyLink(){
-  var url = location.href;
+  var url = location.origin + location.pathname;
   var btn = (event && event.currentTarget) || null;
   function showToast(){
     if(btn){ var orig=btn.innerHTML; btn.innerHTML='✅'; btn.style.background='#4caf50'; setTimeout(function(){ btn.innerHTML=orig; btn.style.background=''; },2000); }
