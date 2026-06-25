@@ -499,6 +499,14 @@ body {
     }
     .backup-btn:hover{opacity:1;background:var(--pink-pale);color:var(--pink-deep);border-color:var(--pink-light)}
     </style>
+    .to-start-btn{
+      position:fixed;bottom:12rem;right:2rem;z-index:999;
+      padding:.5rem 1rem;border-radius:20px;border:1.5px solid var(--border);
+      background:var(--card);color:var(--text-light);cursor:pointer;
+      font-size:.82rem;transition:all .2s;opacity:.75;
+    }
+    .to-start-btn:hover{opacity:1;background:var(--pink-pale);color:var(--pink-deep);border-color:var(--pink-light)}
+
 
 </head>
 <body>
@@ -1002,6 +1010,9 @@ function exportBackup(){
 
     <!-- 回到顶部 -->
     <button id="back-to-top" title="回到顶部" onclick="scrollToTop()">⬆</button>
+
+    <!-- 返回文首 -->
+    <button class="to-start-btn" onclick="scrollToTop()" title="返回文章开始">🔝 返回文首</button>
 
     <!-- 备份按钮 -->
     <button class="backup-btn" onclick="exportBackup()" title="一键导出全站内容">💾 导出备份</button>
