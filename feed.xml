@@ -6,13 +6,42 @@
     <atom:link href="https://cdyrh.github.io/feed.xml" rel="self" type="application/rss+xml"/>
     <description>池帅的个人博客，记录生活，分享美好</description>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 29 Jun 2026 08:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 30 Jun 2026 08:00:00 +0800</lastBuildDate>
     <generator>WorkBuddy RSS Generator</generator>
     <image>
       <url>https://cdyrh.github.io/favicon.ico</url>
       <title>池帅の亦殿</title>
       <link>https://cdyrh.github.io/</link>
     </image>
+    <item>
+      <title>喝水这件事你可能一直做错了！8个饮水误区让你越喝越不健康 💧</title>
+      <link>https://cdyrh.github.io/#post-32</link>
+      <guid isPermaLink="false">cdyrh-blog-32</guid>
+      <description>每天都在喝水，但你真的"喝对了"么？水是生命之源，这话谁都知道。但怎么喝水，大部分人其实一知半解。今天把最常见的8个饮水误区一次性说透：8杯水法则并非人人适用、渴了再喝说明身体已缺水、早起猛灌凉白开不如温开水小口喝、运动后大口冰水反而更热、饭后立刻大量喝水稀释胃液、纯净水缺失矿物质、饮料不能代替水、睡前少量喝水反而有益。</description>
+      <content:encoded xmlns:content="http://purl.org/rss/1.0/modules/content/"><![CDATA[# 喝水这件事，你可能一直做错了！
+
+水是生命之源，这话谁都知道。但**怎么喝水**，大部分人其实一知半解。
+
+今天把最常见的8个饮水误区一次性说透，读完你会发现：原来这些年，你一直在"喝水"这件事上吃亏。
+
+![喝水与健康](https://images.unsplash.com/photo-1548839140-29a749e1cf4d?w=800&q=80)
+
+## 1. 误区：每天必须喝8杯水 —— 真相：因人而异
+## 2. 误区：渴了再喝就行 —— 真相：身体已经缺水了
+## 3. 误区：早起猛灌一杯凉白开 —— 真相：温开水更护胃
+## 4. 误区：运动后大口猛灌冰水 —— 真相：先慢后快，温水优先
+## 5. 误区：饭后立刻大量喝水 —— 真相：半小时后再喝更消化
+## 6. 误区：只喝纯净水最健康 —— 真相：矿物质也需要
+## 7. 误区：饮料可以代替水 —— 真相：糖和咖啡因是隐形杀手
+## 8. 误区：睡前不能喝水 —— 真相：少量喝水反而有益]]></content:encoded>
+      <pubDate>Tue, 30 Jun 2026 08:00:00 +0800</pubDate>
+      <category>生活常识</category>
+      <category>饮水</category>
+      <category>健康</category>
+      <category>夏天</category>
+      <category>生活技巧</category>
+      <category>养生</category>
+    </item>
     <item>
       <title>家里这7个死角总是脏？每周10分钟，轻松搞定难打扫区域 🧹</title>
       <link>https://cdyrh.github.io/#post-31</link>
