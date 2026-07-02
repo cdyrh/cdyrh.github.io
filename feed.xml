@@ -6,13 +6,43 @@
     <atom:link href="https://cdyrh.github.io/feed.xml" rel="self" type="application/rss+xml"/>
     <description>池帅的个人博客，记录生活，分享美好</description>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 01 Jul 2026 08:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 02 Jul 2026 08:00:00 +0800</lastBuildDate>
     <generator>WorkBuddy RSS Generator</generator>
     <image>
       <url>https://cdyrh.github.io/favicon.ico</url>
       <title>池帅の亦殿</title>
       <link>https://cdyrh.github.io/</link>
     </image>
+    <item>
+      <title>厨房油烟比二手烟还毒？7个让你少吸油烟的厨房小习惯 🍳</title>
+      <link>https://cdyrh.github.io/#post-34</link>
+      <guid isPermaLink="false">cdyrh-blog-34</guid>
+      <description>很多人怕二手烟，却不怕厨房油烟。真相是：厨房油烟的危害比二手烟还大。研究发现，中式烹饪产生的油烟中含有大量PM2.5、苯并芘、丙烯醛等有害物质，浓度可达室外空气的几十倍。你每天做饭1小时，吸入的油烟有害物质约等于抽2包烟。今天分享7个简单实用的厨房小习惯：开火前先开油烟机、控制油温不等冒烟再下菜、换大风量油烟机排风量17m³/min以上、做饭时开窗通风、减少爆炒多用蒸煮焖炖、定期清洗油烟机、做完饭先出去透气5分钟。</description>
+      <content:encoded xmlns:content="http://purl.org/rss/1.0/modules/content/"><![CDATA[# 厨房油烟比二手烟还毒？你可能一直没在意
+
+很多人怕二手烟，却不怕厨房油烟。真相是：**厨房油烟的危害比二手烟还大**。
+
+研究发现，中式烹饪产生的油烟中含有大量PM2.5、苯并芘、丙烯醛等有害物质，浓度可达室外空气的几十倍。
+
+你每天做饭1小时，吸入的油烟有害物质 ≈ 抽2包烟。
+
+![厨房烹饪](https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80)
+
+## 1. 开火前先开抽油烟机，关火后别急着关
+## 2. 控制油温，别等油冒烟才下菜
+## 3. 换一台大风量油烟机，排风量≥17m³/min
+## 4. 做饭时开窗通风+开厨房门
+## 5. 减少爆炒油炸，多用蒸煮焖炖
+## 6. 定期清洗油烟机，别让油垢堵住排烟道
+## 7. 做完饭别立刻待在厨房，出去呼吸5分钟]]></content:encoded>
+      <pubDate>Thu, 02 Jul 2026 08:00:00 +0800</pubDate>
+      <category>生活常识</category>
+      <category>厨房</category>
+      <category>油烟</category>
+      <category>健康</category>
+      <category>生活技巧</category>
+      <category>烹饪</category>
+    </item>
     <item>
       <title>防晒霜涂了还是黑？8个你可能不知道的防晒误区 ☀️</title>
       <link>https://cdyrh.github.io/#post-33</link>
