@@ -3349,23 +3349,6 @@ function buildTOC(){
     return `<li class="${level}"><a href="#${h.id}" onclick="event.preventDefault();h=document.getElementById('${h.id}');h&&h.scrollIntoView({behavior:'smooth'})">${h.textContent}</a></li>`;
   }).join('');
 }
-
-// ======================== 登录/登出 ========================
-showPage('login');
-}
-
-else {
-    err.style.display='block';
-    setTimeout(()=>err.style.display='none',3000);
-  }
-}
-
-// ===== 草稿自动保存 =====
-let draftTimer = null;
-// ===== 预览 =====
-// ===== 插入表格 =====
-// ===== 插入B站视频 =====
-// ===== 加载设置 =====
 // ======================== 评论系统 ========================
 const EMOJIS = ['😊','😂','❤️','👍','🎉','😭','🤔','💪','✨','🌸','😍','🙏'];
 
