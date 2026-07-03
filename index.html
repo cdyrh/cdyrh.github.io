@@ -70,9 +70,8 @@ nav{background:rgba(255,255,255,.85);backdrop-filter:blur(12px);
   font-size:.9rem;color:var(--text-light);padding:.35rem .7rem;border-radius:20px;
   transition:all .25s;white-space:nowrap}
 .nav-btn:hover,.nav-btn.active{background:var(--pink-pale);color:var(--pink-deep)}
-.nav-btn.admin-btn{background:linear-gradient(135deg,var(--pink),var(--purple));
-  color:#fff;padding:.35rem .9rem}
-.nav-btn.admin-btn:hover{opacity:.9;transform:translateY(-1px)}
+.nav-btn
+
 /* 暗黑模式切换按钮 */
 #dark-toggle{background:none;border:1.5px solid var(--border);border-radius:20px;
   padding:.35rem .7rem;cursor:pointer;font-size:1rem;transition:all .2s;color:var(--text-light)}
@@ -137,10 +136,7 @@ nav{background:rgba(255,255,255,.85);backdrop-filter:blur(12px);
 [data-theme="dark"] .post-footer{background:rgba(255,143,171,.05)}
 .post-stat{color:var(--text-muted);font-size:.82rem;display:flex;align-items:center;gap:.3rem}
 /* 置顶 & 私密 标记 */
-.badge-top{background:linear-gradient(135deg,var(--orange),var(--yellow));color:#fff;
-  border-radius:20px;padding:.1rem .6rem;font-size:.72rem;font-weight:700}
-.badge-priv{background:var(--text-muted);color:#fff;
-  border-radius:20px;padding:.1rem .6rem;font-size:.72rem}
+
 /* 缩略图 */
 .thumb-url{display:flex;gap:1rem;align-items:stretch}
 .thumb-url .thumb-img{width:110px;height:80px;border-radius:var(--radius-sm);object-fit:cover;flex-shrink:0;background:var(--pink-pale)}
@@ -244,13 +240,7 @@ nav{background:rgba(255,255,255,.85);backdrop-filter:blur(12px);
 .toc-list .toc-h3{padding-left:1.2rem;font-size:.84rem}
 
 /* ===== 登录页 ===== */
-#page-login{display:flex;align-items:center;justify-content:center;
-  min-height:100vh;padding:2rem;
-  background:linear-gradient(135deg,var(--pink-pale),var(--purple-pale))}
-.login-card{background:var(--card);border-radius:24px;
-  border:2px solid var(--border);box-shadow:var(--shadow-hover);
-  padding:3rem 2.5rem;width:100%;max-width:400px;text-align:center}
-.login-icon{font-size:3.5rem;margin-bottom:1rem;animation:float 4s ease-in-out infinite}
+
 .login-card h2{font-size:1.5rem;
   background:linear-gradient(135deg,var(--pink-deep),var(--purple));
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:.3rem}
@@ -269,33 +259,9 @@ nav{background:rgba(255,255,255,.85);backdrop-filter:blur(12px);
 .btn-primary{background:linear-gradient(135deg,var(--pink),var(--purple));color:#fff}
 .btn-primary:hover{opacity:.9;transform:translateY(-2px);
   box-shadow:0 8px 24px rgba(255,143,171,.4)}
-.login-err{color:#e85d8a;font-size:.85rem;margin-top:.8rem;display:none}
 
-/* ===== 后台 ===== */
-#page-admin{min-height:100vh;background:var(--pink-pale)}
-[data-theme="dark"] #page-admin{background:var(--bg)}
-.admin-nav{background:linear-gradient(135deg,var(--pink-deep),var(--purple));
-  padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between}
-.admin-nav-title{color:#fff;font-size:1.2rem;font-weight:700;display:flex;align-items:center;gap:.5rem}
-.admin-nav-right{display:flex;gap:.8rem;align-items:center}
-.admin-btn-sm{background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);
-  color:#fff;border-radius:20px;padding:.35rem .9rem;cursor:pointer;
-  font-family:var(--font);font-size:.85rem;transition:background .2s}
-.admin-btn-sm:hover{background:rgba(255,255,255,.35)}
+[data-theme="dark"] 
 
-.admin-body{max-width:1100px;margin:2rem auto;padding:0 1.5rem}
-.admin-tabs{display:flex;gap:.5rem;margin-bottom:1.5rem;flex-wrap:wrap}
-.admin-tab{background:var(--card);border:1.5px solid var(--border);
-  border-radius:20px;padding:.4rem 1rem;cursor:pointer;
-  font-family:var(--font);font-size:.9rem;color:var(--text-light);
-  transition:all .2s}
-.admin-tab.active,.admin-tab:hover{background:linear-gradient(135deg,var(--pink),var(--purple));
-  color:#fff;border-color:transparent}
-
-.admin-panel{display:none}
-.admin-panel.active{display:block}
-
-/* 文章管理列表 */
 .post-list-item{background:var(--card);border-radius:var(--radius-sm);
   border:1.5px solid var(--border);padding:.9rem 1.2rem;margin-bottom:.8rem;
   display:flex;align-items:center;gap:1rem;transition:box-shadow .2s}
@@ -317,17 +283,13 @@ nav{background:rgba(255,255,255,.85);backdrop-filter:blur(12px);
 .action-btn.priv{color:var(--text-muted);border-color:var(--border)}
 .action-btn.priv:hover{background:var(--pink-pale)}
 /* 批量操作 */
-.batch-bar{background:var(--card);border:1.5px solid var(--border);border-radius:var(--radius-sm);
-  padding:.7rem 1rem;margin-bottom:1rem;display:flex;gap:.8rem;align-items:center;flex-wrap:wrap}
+
 .check-all{cursor:pointer;accent-color:var(--pink)}
-.batch-info{font-size:.88rem;color:var(--text-muted)}
-.batch-del{background:linear-gradient(135deg,#ff6b6b,#e85d8a);color:#fff;border:none;
-  border-radius:8px;padding:.35rem .9rem;cursor:pointer;font-family:var(--font);font-size:.85rem}
+
 .post-check{accent-color:var(--pink);cursor:pointer;width:16px;height:16px;flex-shrink:0}
 
 /* 文章编辑器 */
-.editor-card{background:var(--card);border-radius:var(--radius);
-  border:1.5px solid var(--border);box-shadow:var(--shadow);padding:1.8rem}
+
 .editor-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
 @media(max-width:600px){.editor-row{grid-template-columns:1fr}}
 .editor-card .form-group{margin-bottom:1rem}
@@ -417,8 +379,8 @@ textarea.form-control{resize:vertical;min-height:300px;line-height:1.7;font-fami
 .share-modal-box{background:var(--card);border-radius:var(--radius);border:1.5px solid var(--border);padding:2rem;max-width:340px;width:90%;text-align:center;box-shadow:var(--shadow-hover);animation:fadeInUp .3s ease}
 
 /* ===== 编辑器工具栏 ===== */
-.editor-toolbar{display:flex;gap:.3rem;flex-wrap:wrap;margin-bottom:.6rem;padding:.5rem;background:var(--pink-pale);border-radius:var(--radius-sm);border:1.5px solid var(--border);align-items:center}
-[data-theme="dark"] .editor-toolbar{background:rgba(255,143,171,.05)}
+
+[data-theme="dark"] 
 .editor-tool-btn{background:var(--card);border:1.5px solid var(--border);border-radius:8px;padding:.3rem .6rem;cursor:pointer;font-family:var(--font);font-size:.82rem;color:var(--text-light);transition:all .2s;line-height:1;white-space:nowrap}
 .editor-tool-btn:hover{background:linear-gradient(135deg,var(--pink),var(--purple));color:#fff;border-color:transparent}
 .toolbar-sep{width:1px;height:20px;background:var(--border);margin:0 .2rem;flex-shrink:0}
@@ -445,7 +407,6 @@ textarea.form-control{resize:vertical;min-height:300px;line-height:1.7;font-fami
   font-size:1.5rem;color:#fff;transition:all .3s;
   display:none;align-items:center;justify-content:center;z-index:50}
 .fab:hover{transform:scale(1.12) rotate(90deg)}
-body.is-admin .fab{display:flex}
 
 /* 图片懒加载动画 */
 .lazy-img{opacity:0;transition:opacity .4s ease}
@@ -491,7 +452,7 @@ body.is-admin .fab{display:flex}
   cursor:pointer;font-family:var(--font);font-size:.92rem;font-weight:600}
 .submit-comment:hover{opacity:.9}
 /* 评论列表 */
-.comment-item{padding:1rem 0;border-bottom:1px dashed var(--border)}
+
 .comment-item:last-child{border-bottom:none}
 .comment-header{display:flex;gap:.8rem;align-items:center;margin-bottom:.5rem}
 .comment-avatar{width:36px;height:36px;border-radius:50%;
@@ -499,7 +460,7 @@ body.is-admin .fab{display:flex}
   display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
 .comment-author{font-weight:700;font-size:.9rem;color:var(--text)}
 .comment-time{font-size:.78rem;color:var(--text-muted)}
-.comment-body{font-size:.9rem;line-height:1.7;color:var(--text-light);padding-left:44px}
+
 .comment-reply-btn{font-size:.78rem;color:var(--pink-deep);cursor:pointer;
   background:none;border:none;font-family:var(--font);padding:.1rem .4rem;
   border-radius:4px;transition:background .15s}
@@ -509,9 +470,6 @@ body.is-admin .fab{display:flex}
   padding:.7rem;margin-bottom:.4rem}
 [data-theme="dark"] .comment-reply{background:rgba(255,143,171,.05)}
 .reply-to{color:var(--pink-deep);font-size:.8rem;margin-bottom:.2rem}
-/* 管理员删除评论 */
-.comment-del{font-size:.75rem;color:var(--text-muted);cursor:pointer;
-  background:none;border:none;font-family:var(--font);padding:.1rem .3rem}
 .comment-del:hover{color:#e85d8a}
 
 /* ===== 归档页 ===== */
@@ -564,6 +522,22 @@ body.is-admin .fab{display:flex}
   font-size:.82rem;text-decoration:none;cursor:pointer}
 .rss-link:hover{color:var(--pink-deep)}
 </style>
+
+<!-- Open Graph / 社交分享 -->
+<meta property="og:title" content="池帥の亦殿">
+<meta property="og:description" content="池帥的个人博客，记录生活，分享美好">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://cdyrh.github.io/">
+<meta property="og:site_name" content="池帥の亦殿">
+<meta property="og:locale" content="zh_CN">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="池帥の亦殿">
+<meta name="twitter:description" content="池帥的个人博客，记录生活，分享美好">
+<!-- PWA -->
+<link rel="manifest" href="/manifest.json">
+<link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+<meta name="theme-color" content="#ff8fab">
 </head>
 <body>
 
@@ -579,8 +553,7 @@ body.is-admin .fab{display:flex}
     <button class="nav-btn" id="nav-archive" onclick="showPage('archive')">📅 归档</button>
     <button class="nav-btn" id="nav-about" onclick="showPage('about')">💌 关于</button>
     <button id="dark-toggle" title="切换暗黑模式" onclick="toggleDark()">🌙</button>
-    <button class="nav-btn admin-btn" id="nav-admin-btn" onclick="goAdmin()">⚙️ 管理</button>
-  </div>
+    </div>
 </nav>
 
 <!-- ======== 首页 ======== -->
@@ -744,233 +717,6 @@ body.is-admin .fab{display:flex}
   </div>
 </div>
 
-<!-- ======== 登录页 ======== -->
-<div class="page" id="page-login">
-  <div class="login-card">
-    <div class="login-icon">🔑</div>
-    <h2>后台管理</h2>
-    <p>请输入管理员密码</p>
-    <div class="form-group">
-      <label>用户名</label>
-      <input class="form-control" id="login-user" type="text" placeholder="admin" value="admin">
-    </div>
-    <div class="form-group">
-      <label>密码</label>
-      <input class="form-control" id="login-pwd" type="password" placeholder="请输入密码"
-        onkeydown="if(event.key==='Enter')doLogin()">
-    </div>
-    <button class="btn btn-primary" onclick="doLogin()">🌸 进入后台</button>
-    <div class="login-err" id="login-err">❌ 用户名或密码错误</div>
-  </div>
-</div>
-
-<!-- ======== 后台页 ======== -->
-<div class="page" id="page-admin">
-  <div class="admin-nav">
-    <div class="admin-nav-title">🌸 博客管理后台</div>
-    <div class="admin-nav-right">
-      <span style="color:rgba(255,255,255,.8);font-size:.88rem">👋 你好，池帥</span>
-      <button class="admin-btn-sm" onclick="showPage('home')">查看博客</button>
-      <button class="admin-btn-sm" onclick="doLogout()">退出</button>
-    </div>
-  </div>
-
-  <div class="admin-body">
-    <!-- 统计卡片 -->
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin-bottom:1.5rem">
-      <div class="widget" style="text-align:center">
-        <div style="font-size:2rem;margin-bottom:.3rem">📝</div>
-        <div style="font-size:1.8rem;font-weight:700;color:var(--pink-deep)" id="admin-stat-posts">0</div>
-        <div style="font-size:.82rem;color:var(--text-muted)">篇文章</div>
-      </div>
-      <div class="widget" style="text-align:center">
-        <div style="font-size:2rem;margin-bottom:.3rem">🏷️</div>
-        <div style="font-size:1.8rem;font-weight:700;color:var(--purple)" id="admin-stat-cats">0</div>
-        <div style="font-size:.82rem;color:var(--text-muted)">个分类</div>
-      </div>
-      <div class="widget" style="text-align:center">
-        <div style="font-size:2rem;margin-bottom:.3rem">💬</div>
-        <div style="font-size:1.8rem;font-weight:700;color:var(--mint)" id="admin-stat-comments">0</div>
-        <div style="font-size:.82rem;color:var(--text-muted)">条评论</div>
-      </div>
-      <div class="widget" style="text-align:center">
-        <div style="font-size:2rem;margin-bottom:.3rem">👁️</div>
-        <div style="font-size:1.8rem;font-weight:700;color:var(--orange)" id="admin-stat-views">0</div>
-        <div style="font-size:.82rem;color:var(--text-muted)">总阅读</div>
-      </div>
-    </div>
-
-    <!-- Tabs -->
-    <div class="admin-tabs">
-      <button class="admin-tab active" onclick="switchTab('posts',this)">📝 文章管理</button>
-      <button class="admin-tab" onclick="switchTab('new',this)">✏️ 写文章</button>
-      <button class="admin-tab" onclick="switchTab('comments',this)">💬 评论管理</button>
-      <button class="admin-tab" onclick="switchTab('settings',this)">⚙️ 网站设置</button>
-      <button class="admin-tab" onclick="switchTab('password',this)">🔒 修改密码</button>
-    </div>
-
-    <!-- 文章列表 -->
-    <div class="admin-panel active" id="panel-posts">
-      <div class="batch-bar">
-        <input type="checkbox" class="check-all" id="check-all" onclick="toggleCheckAll(this)">
-        <span class="batch-info" id="batch-info">全选</span>
-        <button class="batch-del" onclick="batchDelete()">批量删除</button>
-      </div>
-      <div id="admin-post-list"></div>
-    </div>
-
-    <!-- 写/编辑文章 -->
-    <div class="admin-panel" id="panel-new">
-      <div class="editor-card">
-        <h3 style="margin-bottom:1.2rem;color:var(--pink-deep)" id="editor-title-label">✏️ 写新文章</h3>
-        <input type="hidden" id="edit-id">
-        <div class="form-group">
-          <label>文章标题 *</label>
-          <input class="form-control" id="f-title" placeholder="给文章起个好听的名字…">
-        </div>
-        <div class="editor-row">
-          <div class="form-group">
-            <label>分类</label>
-            <input class="form-control" id="f-cat" placeholder="生活 / 技术 / 随笔…" list="cat-suggestions">
-            <datalist id="cat-suggestions"></datalist>
-          </div>
-          <div class="form-group">
-            <label>标签（逗号分隔）</label>
-            <input class="form-control" id="f-tags" placeholder="标签1, 标签2…">
-          </div>
-        </div>
-        <div class="editor-row">
-          <div class="form-group">
-            <label>封面 Emoji（可选）</label>
-            <input class="form-control" id="f-cover" placeholder="🌸 / 🌙 / 💻 / 🎵 …" maxlength="4">
-          </div>
-          <div class="form-group">
-            <label>缩略图 URL（可选）</label>
-            <input class="form-control" id="f-thumb" placeholder="https://… 用于列表预览">
-          </div>
-        </div>
-        <div class="editor-row">
-          <div class="form-group">
-            <label>发布日期</label>
-            <input class="form-control" id="f-date" type="date">
-          </div>
-          <div class="form-group">
-            <label>Meta 描述（SEO）</label>
-            <input class="form-control" id="f-desc" placeholder="一句话描述文章内容…">
-          </div>
-        </div>
-        <div style="display:flex;gap:1rem;margin-bottom:1rem">
-          <label style="display:flex;align-items:center;gap:.4rem;cursor:pointer;font-size:.9rem;color:var(--text-light)">
-            <input type="checkbox" id="f-top" style="accent-color:var(--pink)"> 📌 置顶文章
-          </label>
-          <label style="display:flex;align-items:center;gap:.4rem;cursor:pointer;font-size:.9rem;color:var(--text-light)">
-            <input type="checkbox" id="f-private" style="accent-color:var(--purple)"> 🔒 设为私密
-          </label>
-        </div>
-        <div class="form-group">
-          <label>文章正文（支持 Markdown）</label>
-          <div class="editor-toolbar">
-            <button type="button" class="editor-tool-btn" onclick="insertMd('**','**')" title="粗体"><b>B</b></button>
-            <button type="button" class="editor-tool-btn" onclick="insertMd('_','_')" title="斜体"><i>I</i></button>
-            <button type="button" class="editor-tool-btn" onclick="insertMd('~~','~~')" title="删除线">S̶</button>
-            <div class="toolbar-sep"></div>
-            <button type="button" class="editor-tool-btn" onclick="insertMd('## ','')" title="二级标题">H2</button>
-            <button type="button" class="editor-tool-btn" onclick="insertMd('### ','')" title="三级标题">H3</button>
-            <div class="toolbar-sep"></div>
-            <button type="button" class="editor-tool-btn" onclick="insertMd('> ','')" title="引用">❝</button>
-            <button type="button" class="editor-tool-btn" onclick="insertMd('`','`')" title="行内代码">&lt;&gt;</button>
-            <button type="button" class="editor-tool-btn" onclick="insertMd('```\n','\n```')" title="代码块">{ }</button>
-            <button type="button" class="editor-tool-btn" onclick="insertMd('---\n','')" title="分割线">—</button>
-            <div class="toolbar-sep"></div>
-            <button type="button" class="editor-tool-btn" onclick="insertMd('- ','')" title="无序列表">• 列表</button>
-            <button type="button" class="editor-tool-btn" onclick="insertMd('1. ','')" title="有序列表">1. 列表</button>
-            <button type="button" class="editor-tool-btn" onclick="insertTable()" title="插入表格">表格</button>
-            <div class="toolbar-sep"></div>
-            <button type="button" class="editor-tool-btn" onclick="uploadMedia('image')" title="插入图片">🖼️</button>
-            <button type="button" class="editor-tool-btn" onclick="uploadMedia('video')" title="插入视频">🎬</button>
-            <button type="button" class="editor-tool-btn" onclick="uploadMedia('audio')" title="插入音频">🎵</button>
-            <button type="button" class="editor-tool-btn" onclick="insertBilibili()" title="插入B站视频">📺 B站</button>
-            <button type="button" class="editor-tool-btn" onclick="uploadMedia('attachment')" title="插入附件">📎</button>
-          </div>
-          <textarea class="form-control" id="f-body" placeholder="开始写作吧… 支持 **粗体** _斜体_ ## 标题 `代码` > 引用 | 表格 | --- |" ondragover="event.preventDefault()" ondrop="handleDrop(event)"></textarea>
-          <input type="file" id="media-input" style="display:none" onchange="handleMediaUpload(this)">
-          <div class="drop-zone" id="drop-zone" onclick="uploadMedia('image')" ondragover="dragOver(event)" ondragleave="dragLeave(event)" ondrop="handleDrop(event)">
-            🖼️ 拖拽图片到此处上传，或点击选择图片
-          </div>
-        </div>
-        <div class="btn-row">
-          <button class="btn-inline btn-save" onclick="savePost(false)">💾 保存发布</button>
-          <button class="btn-inline btn-draft" onclick="savePost(true)">📋 存为草稿</button>
-          <button class="btn-inline btn-preview" onclick="previewPost()">👁️ 预览</button>
-          <button class="btn-inline btn-cancel" onclick="cancelEdit()">取消</button>
-          <span class="draft-hint" id="draft-hint"></span>
-        </div>
-      </div>
-    </div>
-
-    <!-- 评论管理 -->
-    <div class="admin-panel" id="panel-comments">
-      <div id="admin-comment-list"></div>
-    </div>
-
-    <!-- 设置 -->
-    <div class="admin-panel" id="panel-settings">
-      <div class="settings-card">
-        <h3 style="margin-bottom:1.5rem;color:var(--pink-deep)">⚙️ 网站设置</h3>
-        <div class="form-group">
-          <label>博客名称</label>
-          <input class="form-control" id="s-title" value="池帥の亦殿">
-        </div>
-        <div class="form-group">
-          <label>副标题 / 口号</label>
-          <input class="form-control" id="s-sub" value="记录生活，分享美好，写下每一个值得被记住的瞬间 ✨">
-        </div>
-        <div class="form-group">
-          <label>个人简介</label>
-          <input class="form-control" id="s-bio" value="喜欢文艺、捣鼓技术和华丽的普通人 🌙">
-        </div>
-        <div class="form-group">
-          <label>联系邮箱</label>
-          <input class="form-control" id="s-email" value="0d@live.com" type="email">
-        </div>
-        <div class="form-group">
-          <label>每页显示文章数</label>
-          <input class="form-control" id="s-ppp" type="number" min="3" max="20" value="5">
-        </div>
-        <button class="btn-inline btn-save" onclick="saveSettings()" style="margin-top:.5rem">💾 保存设置</button>
-        <hr style="margin:1.5rem 0;border:none;border-top:1px dashed var(--border)">
-        <h4 style="margin-bottom:.8rem;color:var(--text-light);font-size:.95rem">📦 数据管理</h4>
-        <div style="display:flex;gap:.6rem;flex-wrap:wrap">
-          <button class="btn-inline" onclick="exportAllData()" style="background:linear-gradient(135deg,#56ab2f,#a8e063);color:#fff">💾 导出全站数据</button>
-          <button class="btn-inline" onclick="document.getElementById('import-file').click()" style="background:var(--purple-pale);color:var(--purple)">📥 导入数据恢复</button>
-          <input type="file" id="import-file" accept=".json" style="display:none" onchange="importAllData(this)">
-        </div>
-        <p style="font-size:.78rem;color:var(--text-muted);margin-top:.5rem">导出包含所有文章、设置和评论的完整 JSON 备份。建议定期备份防止数据丢失。</p>
-      </div>
-    </div>
-
-    <!-- 修改密码 -->
-    <div class="admin-panel" id="panel-password">
-      <div class="settings-card">
-        <h3 style="margin-bottom:1.5rem;color:var(--pink-deep)">🔒 修改密码</h3>
-        <div class="form-group">
-          <label>旧密码</label>
-          <input class="form-control" id="p-old" type="password" placeholder="当前密码">
-        </div>
-        <div class="form-group">
-          <label>新密码</label>
-          <input class="form-control" id="p-new" type="password" placeholder="至少 6 位">
-        </div>
-        <div class="form-group">
-          <label>确认新密码</label>
-          <input class="form-control" id="p-confirm" type="password" placeholder="再输入一次">
-        </div>
-        <button class="btn-inline btn-save" onclick="changePassword()" style="margin-top:.5rem">🔑 确认修改</button>
-      </div>
-    </div>
-  </div>
-</div>
-
 </div><!-- end #app -->
 
 <!-- 分享弹窗 -->
@@ -1006,8 +752,7 @@ body.is-admin .fab{display:flex}
 <script>
 // ======================== 数据层 ========================
 const DB = {
-  KEY_POSTS:'blog_posts', KEY_CFG:'blog_cfg', KEY_AUTH:'blog_auth',
-  KEY_LOGIN:'blog_login', KEY_COMMENTS:'blog_comments', KEY_STATS:'blog_stats',
+  KEY_POSTS:'blog_posts', KEY_CFG:'blog_cfg', KEY_COMMENTS:'blog_comments', KEY_STATS:'blog_stats',
   KEY_SUBS:'blog_subs', KEY_DRAFT:'blog_draft', KEY_THEME:'blog_theme',
   get posts(){return JSON.parse(localStorage.getItem(this.KEY_POSTS)||'[]')},
   set posts(v){localStorage.setItem(this.KEY_POSTS,JSON.stringify(v))},
@@ -1018,11 +763,6 @@ const DB = {
     startDate: new Date().toISOString().slice(0,10)
   }, JSON.parse(localStorage.getItem(this.KEY_CFG)||'{}'))},
   set cfg(v){localStorage.setItem(this.KEY_CFG,JSON.stringify(v))},
-  get pwd(){return localStorage.getItem(this.KEY_AUTH)||'admin20230731'},
-  set pwd(v){localStorage.setItem(this.KEY_AUTH,v)},
-  get loggedIn(){return sessionStorage.getItem(this.KEY_LOGIN)==='1'},
-  login(){sessionStorage.setItem(this.KEY_LOGIN,'1')},
-  logout(){sessionStorage.removeItem(this.KEY_LOGIN)},
   get comments(){return JSON.parse(localStorage.getItem(this.KEY_COMMENTS)||'{}')},
   set comments(v){localStorage.setItem(this.KEY_COMMENTS,JSON.stringify(v))},
   get stats(){return JSON.parse(localStorage.getItem(this.KEY_STATS)||'{}')},
@@ -3355,7 +3095,7 @@ function showPage(name){
   if(name==='about') document.getElementById('nav-about')?.classList.add('active');
   window.scrollTo({top:0,behavior:'smooth'});
   if(name==='home') renderHome();
-  if(name==='admin'){renderAdminList();updateAdminStats();}
+  
   if(name==='archive') renderArchive();
 }
 
@@ -3417,7 +3157,6 @@ function renderHome(){
     return b.id - a.id;
   });
   // 过滤私密（非管理员不可见）
-  if(!DB.loggedIn) posts = posts.filter(p=>!p.private);
   if(currentCat) posts = posts.filter(p=>p.cat===currentCat);
   if(q) posts = posts.filter(p=>
     p.title.toLowerCase().includes(q)||
@@ -3440,7 +3179,7 @@ function renderHome(){
       const thumbHtml = p.thumb
         ? `<div class="post-card-cover"><img src="${p.thumb}" alt="缩略图" onerror="this.parentNode.innerHTML='${p.cover||'📝'}'"></div>`
         : `<div class="post-card-cover">${p.cover||'📝'}</div>`;
-      const badges = `${p.top?'<span class="badge-top">📌 置顶</span>':''}${p.private&&DB.loggedIn?'<span class="badge-priv">🔒 私密</span>':''}${p.draft?'<span class="badge-priv">📋 草稿</span>':''}`;
+      const badges = `${p.top?'<span class="badge-top">📌 置顶</span>':''}${p.draft?'<span class="badge-priv">📋 草稿</span>':''}`;
       return `
       <div class="post-card fade-in" onclick="openPost(${p.id})">
         ${thumbHtml}
@@ -3480,7 +3219,7 @@ function renderHome(){
 }
 
 function renderSidebar(){
-  const posts = DB.posts.filter(p=>!p.private||DB.loggedIn);
+  const posts = DB.posts.filter(p=>!p.draft);
   const cfg = DB.cfg;
 
   const cats = [...new Set(posts.map(p=>p.cat).filter(Boolean))];
@@ -3570,359 +3309,26 @@ function buildTOC(){
 }
 
 // ======================== 登录/登出 ========================
-function goAdmin(){
-  if(DB.loggedIn){ showPage('admin'); return; }
-  showPage('login');
+showPage('login');
 }
 
-function doLogin(){
-  const user = document.getElementById('login-user').value.trim();
-  const pwd = document.getElementById('login-pwd').value;
-  const err = document.getElementById('login-err');
-  if(user==='admin' && pwd===DB.pwd){
-    DB.login();
-    err.style.display='none';
-    document.getElementById('login-pwd').value='';
-    document.body.classList.add('is-admin');
-    showPage('admin');
-    toast('🌸 欢迎回来，池帥！');
-  } else {
+else {
     err.style.display='block';
     setTimeout(()=>err.style.display='none',3000);
   }
 }
 
-function doLogout(){
-  DB.logout();
-  document.body.classList.remove('is-admin');
-  showPage('home');
-  toast('已退出登录');
-}
-
-// ======================== 后台 ========================
-function switchTab(tab, el){
-  document.querySelectorAll('.admin-tab').forEach(t=>t.classList.remove('active'));
-  document.querySelectorAll('.admin-panel').forEach(p=>p.classList.remove('active'));
-  document.getElementById('panel-'+tab).classList.add('active');
-  el && el.classList.add('active');
-  if(tab==='posts') renderAdminList();
-  if(tab==='settings') loadSettings();
-  if(tab==='new' && !editingId) clearEditor();
-  if(tab==='comments') renderAdminComments();
-}
-
-function renderAdminList(){
-  const posts = [...DB.posts].sort((a,b)=>{
-    if(a.top&&!b.top) return -1; if(!a.top&&b.top) return 1;
-    return b.id-a.id;
-  });
-  const el = document.getElementById('admin-post-list');
-  if(!posts.length){
-    el.innerHTML='<div class="empty-state"><div class="icon">📝</div><p>还没有文章，快去写第一篇吧！</p></div>';
-    return;
-  }
-  el.innerHTML = posts.map(p=>`
-    <div class="post-list-item" id="pli-${p.id}">
-      <input type="checkbox" class="post-check" value="${p.id}" onchange="updateBatchInfo()">
-      <div style="font-size:1.4rem">${p.cover||'📝'}</div>
-      <div class="post-list-info">
-        <div class="post-list-title">${p.top?'📌 ':''}${p.private?'🔒 ':''}${p.draft?'📋 ':''}${p.title}</div>
-        <div class="post-list-meta">${p.cat||'无分类'} · ${formatDate(p.date)} · 👁️ ${p.views||0} · 💬 ${(DB.comments[p.id]||[]).length}</div>
-      </div>
-      <div class="post-list-actions">
-        <button class="action-btn edit" onclick="editPost(${p.id})">✏️ 编辑</button>
-        <button class="action-btn top" onclick="toggleTop(${p.id})">${p.top?'📌 取消置顶':'📌 置顶'}</button>
-        <button class="action-btn priv" onclick="togglePrivate(${p.id})">${p.private?'🔓 公开':'🔒 私密'}</button>
-        <button class="action-btn del" onclick="deletePost(${p.id})">🗑️</button>
-      </div>
-    </div>`).join('');
-  updateBatchInfo();
-}
-
-function toggleCheckAll(cb){
-  document.querySelectorAll('.post-check').forEach(c=>c.checked=cb.checked);
-  updateBatchInfo();
-}
-
-function updateBatchInfo(){
-  const checked = document.querySelectorAll('.post-check:checked').length;
-  const total = document.querySelectorAll('.post-check').length;
-  document.getElementById('batch-info').textContent = checked > 0 ? `已选 ${checked} / ${total} 篇` : '全选';
-  document.getElementById('check-all').checked = checked === total && total > 0;
-  document.getElementById('check-all').indeterminate = checked > 0 && checked < total;
-}
-
-function batchDelete(){
-  const ids = Array.from(document.querySelectorAll('.post-check:checked')).map(c=>parseInt(c.value));
-  if(!ids.length){ toast('请先勾选要删除的文章'); return; }
-  if(!confirm(`确定批量删除 ${ids.length} 篇文章？此操作不可撤销！`)) return;
-  DB.posts = DB.posts.filter(p=>!ids.includes(p.id));
-  renderAdminList(); updateAdminStats();
-  toast(`🗑️ 已删除 ${ids.length} 篇文章`);
-}
-
-function toggleTop(id){
-  const posts = DB.posts;
-  const idx = posts.findIndex(p=>p.id==id);
-  posts[idx].top = !posts[idx].top;
-  DB.posts = posts;
-  renderAdminList();
-  toast(posts[idx].top ? '📌 已置顶' : '已取消置顶');
-}
-
-function togglePrivate(id){
-  const posts = DB.posts;
-  const idx = posts.findIndex(p=>p.id==id);
-  posts[idx].private = !posts[idx].private;
-  DB.posts = posts;
-  renderAdminList();
-  toast(posts[idx].private ? '🔒 已设为私密' : '🔓 已设为公开');
-}
-
-function updateAdminStats(){
-  const posts = DB.posts;
-  const cats = [...new Set(posts.map(p=>p.cat).filter(Boolean))];
-  document.getElementById('admin-stat-posts').textContent = posts.length;
-  document.getElementById('admin-stat-cats').textContent = cats.length;
-  const totalViews = posts.reduce((s,p)=>s+(p.views||0),0);
-  document.getElementById('admin-stat-views').textContent = formatNum(totalViews);
-  const totalComments = Object.values(DB.comments).reduce((s,arr)=>s+arr.length,0);
-  document.getElementById('admin-stat-comments').textContent = totalComments;
-}
-
-function newPost(){
-  editingId = null;
-  clearEditor();
-  document.querySelectorAll('.admin-tab').forEach(t=>t.classList.remove('active'));
-  document.querySelectorAll('.admin-panel').forEach(p=>p.classList.remove('active'));
-  document.getElementById('panel-new').classList.add('active');
-  document.querySelectorAll('.admin-tab')[1].classList.add('active');
-  if(!DB.loggedIn){goAdmin();return;}
-  // 恢复草稿
-  loadDraft();
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-
-function clearEditor(){
-  ['f-title','f-cat','f-tags','f-cover','f-thumb','f-body','f-desc'].forEach(id=>{
-    document.getElementById(id).value='';
-  });
-  document.getElementById('f-date').value = new Date().toISOString().slice(0,10);
-  document.getElementById('f-top').checked = false;
-  document.getElementById('f-private').checked = false;
-  document.getElementById('edit-id').value='';
-  document.getElementById('editor-title-label').textContent='✏️ 写新文章';
-  document.getElementById('draft-hint').textContent='';
-  const cats = [...new Set(DB.posts.map(p=>p.cat).filter(Boolean))];
-  document.getElementById('cat-suggestions').innerHTML = cats.map(c=>`<option value="${c}">`).join('');
-}
-
-function editPost(id){
-  const p = DB.posts.find(x=>x.id==id);
-  if(!p) return;
-  editingId = id;
-  document.getElementById('edit-id').value = id;
-  document.getElementById('f-title').value = p.title;
-  document.getElementById('f-cat').value = p.cat||'';
-  document.getElementById('f-tags').value = (p.tags||[]).join(', ');
-  document.getElementById('f-cover').value = p.cover||'';
-  document.getElementById('f-thumb').value = p.thumb||'';
-  document.getElementById('f-body').value = p.body||'';
-  document.getElementById('f-date').value = p.date||new Date().toISOString().slice(0,10);
-  document.getElementById('f-desc').value = p.desc||'';
-  document.getElementById('f-top').checked = !!p.top;
-  document.getElementById('f-private').checked = !!p.private;
-  document.getElementById('editor-title-label').textContent = '✏️ 编辑文章';
-  document.querySelectorAll('.admin-tab').forEach(t=>t.classList.remove('active'));
-  document.querySelectorAll('.admin-panel').forEach(p=>p.classList.remove('active'));
-  document.getElementById('panel-new').classList.add('active');
-  document.querySelectorAll('.admin-tab')[1].classList.add('active');
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-
-function cancelEdit(){
-  editingId = null;
-  clearEditor();
-  switchTabDirect('posts');
-}
-
-function switchTabDirect(tab){
-  document.querySelectorAll('.admin-tab').forEach(t=>t.classList.remove('active'));
-  document.querySelectorAll('.admin-panel').forEach(p=>p.classList.remove('active'));
-  document.getElementById('panel-'+tab).classList.add('active');
-  const map = {posts:0,new:1,comments:2,settings:3,password:4};
-  document.querySelectorAll('.admin-tab')[map[tab]||0].classList.add('active');
-  if(tab==='posts') renderAdminList();
-}
-
-function savePost(asDraft){
-  const title = document.getElementById('f-title').value.trim();
-  const body = document.getElementById('f-body').value.trim();
-  if(!title){toast('❌ 请填写文章标题');return;}
-  if(!body){toast('❌ 请填写文章内容');return;}
-  const posts = DB.posts;
-  const tags = document.getElementById('f-tags').value.split(',').map(t=>t.trim()).filter(Boolean);
-  const data = {
-    title, body,
-    cat: document.getElementById('f-cat').value.trim()||'随笔',
-    cover: document.getElementById('f-cover').value.trim()||'📝',
-    thumb: document.getElementById('f-thumb').value.trim()||'',
-    tags,
-    date: document.getElementById('f-date').value || new Date().toISOString().slice(0,10),
-    desc: document.getElementById('f-desc').value.trim(),
-    top: document.getElementById('f-top').checked,
-    private: document.getElementById('f-private').checked,
-    draft: asDraft||false
-  };
-  if(editingId){
-    const idx = posts.findIndex(p=>p.id==editingId);
-    posts[idx] = {...posts[idx],...data};
-    DB.posts = posts;
-    toast(asDraft?'📋 草稿已保存':'✅ 文章已更新！');
-  } else {
-    const maxId = posts.reduce((m,p)=>Math.max(m,p.id),0);
-    DB.posts = [...posts, {...data, id:maxId+1, views:0}];
-    toast(asDraft?'📋 草稿已保存':'🌸 文章发布成功！');
-  }
-  DB.draft = null;
-  editingId = null;
-  updateAdminStats();
-  switchTabDirect('posts');
-}
-
-function deletePost(id){
-  if(!confirm('确定删除这篇文章吗？此操作不可撤销 🗑️')) return;
-  DB.posts = DB.posts.filter(p=>p.id!=id);
-  // 同时删评论
-  const comments = DB.comments;
-  delete comments[id];
-  DB.comments = comments;
-  renderAdminList(); updateAdminStats();
-  toast('🗑️ 文章已删除');
-}
-
 // ===== 草稿自动保存 =====
 let draftTimer = null;
-function autosaveDraft(){
-  clearTimeout(draftTimer);
-  draftTimer = setTimeout(()=>{
-    const title = document.getElementById('f-title').value.trim();
-    const body = document.getElementById('f-body').value.trim();
-    if(!title && !body) return;
-    const draft = {
-      title, body,
-      cat:document.getElementById('f-cat').value,
-      tags:document.getElementById('f-tags').value,
-      cover:document.getElementById('f-cover').value,
-      thumb:document.getElementById('f-thumb').value,
-      date:document.getElementById('f-date').value,
-      desc:document.getElementById('f-desc').value,
-      savedAt:new Date().toLocaleTimeString()
-    };
-    DB.draft = draft;
-    document.getElementById('draft-hint').textContent = `草稿已保存 ${draft.savedAt}`;
-  }, 2000);
-}
-
-function loadDraft(){
-  const d = DB.draft;
-  if(!d || editingId) return;
-  if(!confirm(`发现上次未保存的草稿（${d.savedAt||''}），是否恢复？`)) return;
-  document.getElementById('f-title').value = d.title||'';
-  document.getElementById('f-body').value = d.body||'';
-  document.getElementById('f-cat').value = d.cat||'';
-  document.getElementById('f-tags').value = d.tags||'';
-  document.getElementById('f-cover').value = d.cover||'';
-  document.getElementById('f-thumb').value = d.thumb||'';
-  document.getElementById('f-date').value = d.date||new Date().toISOString().slice(0,10);
-  document.getElementById('f-desc').value = d.desc||'';
-  document.getElementById('draft-hint').textContent = `已恢复草稿 (${d.savedAt||''})`;
-}
-
 // ===== 预览 =====
-function previewPost(){
-  const title = document.getElementById('f-title').value.trim()||'（无标题）';
-  const body = document.getElementById('f-body').value.trim();
-  document.getElementById('preview-title').textContent = title;
-  document.getElementById('preview-body').innerHTML = md2html(body);
-  document.querySelectorAll('#preview-body pre code').forEach(b=>{try{hljs.highlightElement(b);}catch(e){}});
-  document.getElementById('preview-modal').classList.add('show');
-}
-
-function closePreview(){
-  document.getElementById('preview-modal').classList.remove('show');
-}
-
 // ===== 插入表格 =====
-function insertTable(){
-  const tbl = `\n| 列1 | 列2 | 列3 |\n|-----|-----|-----|\n| 内容 | 内容 | 内容 |\n`;
-  insertMd(tbl, '');
-}
-
 // ===== 插入B站视频 =====
-function insertBilibili(){
-  const bvid = prompt('请输入B站视频 BV号（如：BV1xx411c7mD）');
-  if(!bvid) return;
-  const id = bvid.trim().replace(/^BV/i,'');
-  const iframe = `\n<iframe src="https://player.bilibili.com/player.html?bvid=BV${id}&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width:100%;height:480px;border-radius:var(--radius-sm);margin:1rem 0"></iframe>\n`;
-  insertMd(iframe, '');
-}
-
 // ===== 加载设置 =====
-function loadSettings(){
-  const c = DB.cfg;
-  document.getElementById('s-title').value = c.title;
-  document.getElementById('s-sub').value = c.sub;
-  document.getElementById('s-bio').value = c.bio;
-  document.getElementById('s-email').value = c.email;
-  document.getElementById('s-ppp').value = c.ppp;
-}
-
-function saveSettings(){
-  const cfg = DB.cfg;
-  cfg.title = document.getElementById('s-title').value.trim()||cfg.title;
-  cfg.sub = document.getElementById('s-sub').value.trim()||cfg.sub;
-  cfg.bio = document.getElementById('s-bio').value.trim()||cfg.bio;
-  cfg.email = document.getElementById('s-email').value.trim()||cfg.email;
-  cfg.ppp = parseInt(document.getElementById('s-ppp').value)||5;
-  DB.cfg = cfg;
-  applyConfig();
-  toast('✅ 设置已保存！');
-}
-
-function applyConfig(){
-  const cfg = DB.cfg;
-  document.title = cfg.title + ' 🌸';
-  const navLogo = document.querySelector('.nav-logo');
-  if(navLogo) navLogo.innerHTML = '🌸 ' + cfg.title;
-  const heroH1 = document.querySelector('.hero h1');
-  if(heroH1) heroH1.textContent = cfg.title;
-  const heroP = document.querySelector('.hero p');
-  if(heroP) heroP.textContent = cfg.sub;
-  const profileBio = document.querySelector('.profile-bio');
-  if(profileBio) profileBio.textContent = cfg.bio;
-  const profileEmail = document.querySelector('.profile-email');
-  if(profileEmail){ profileEmail.textContent = '📮 ' + cfg.email; profileEmail.href = 'mailto:' + cfg.email; }
-}
-
-function changePassword(){
-  const old = document.getElementById('p-old').value;
-  const nw = document.getElementById('p-new').value;
-  const cf = document.getElementById('p-confirm').value;
-  if(old!==DB.pwd){toast('❌ 旧密码错误');return;}
-  if(nw.length<6){toast('❌ 新密码至少 6 位');return;}
-  if(nw!==cf){toast('❌ 两次密码不一致');return;}
-  DB.pwd = nw;
-  ['p-old','p-new','p-confirm'].forEach(id=>document.getElementById(id).value='');
-  toast('🔑 密码修改成功！');
-}
-
 // ======================== 评论系统 ========================
 const EMOJIS = ['😊','😂','❤️','👍','🎉','😭','🤔','💪','✨','🌸','😍','🙏'];
 
 function renderComments(postId){
   const comments = DB.comments[postId] || [];
-  const isAdmin = DB.loggedIn;
   let html = `
     <div class="comments-title">💬 评论 (${comments.length})</div>
     <div class="comment-form" id="main-comment-form">
@@ -3956,7 +3362,7 @@ function renderComments(postId){
               <div class="comment-time">${c.time}</div>
             </div>
             <button class="comment-reply-btn" onclick="showReplyBox(${postId},${i})">↩ 回复</button>
-            ${isAdmin?`<button class="comment-del" onclick="deleteComment(${postId},${i})">🗑️</button>`:''}
+            
           </div>
           <div class="comment-body">${escapeHtml(c.content)}</div>`;
 
@@ -3968,7 +3374,7 @@ function renderComments(postId){
               <div class="reply-to">↩ 回复 @${c.name||'匿名用户'}</div>
               <div style="font-weight:700;font-size:.88rem">${r.name||'匿名用户'} <span style="font-weight:400;font-size:.76rem;color:var(--text-muted)">${r.time}</span></div>
               <div style="font-size:.9rem;color:var(--text-light);margin-top:.2rem">${escapeHtml(r.content)}</div>
-              ${isAdmin?`<button class="comment-del" onclick="deleteReply(${postId},${i},${ri})">🗑️</button>`:''}
+              
             </div>`;
         });
         html += '</div>';
@@ -4054,7 +3460,6 @@ function deleteComment(postId, i){
   comments[postId].splice(i, 1);
   DB.comments = comments;
   renderComments(postId);
-  updateAdminStats();
   toast('🗑️ 评论已删除');
 }
 
@@ -4067,36 +3472,9 @@ function deleteReply(postId, i, ri){
   toast('🗑️ 回复已删除');
 }
 
-function renderAdminComments(){
-  const comments = DB.comments;
-  const posts = DB.posts;
-  let html = '';
-  let total = 0;
-  Object.entries(comments).forEach(([postId, cmts]) => {
-    if(!cmts.length) return;
-    const post = posts.find(p=>p.id==postId);
-    html += `<div class="settings-card" style="margin-bottom:1rem">
-      <h4 style="color:var(--pink-deep);margin-bottom:.8rem">📝 ${post?post.title:'已删除文章'} (${cmts.length})</h4>`;
-    cmts.forEach((c,i)=>{
-      total++;
-      html += `<div class="comment-item">
-        <div class="comment-header">
-          <div class="comment-avatar">${c.name?c.name[0].toUpperCase():'?'}</div>
-          <div><div class="comment-author">${c.name||'匿名'}</div><div class="comment-time">${c.time}</div></div>
-          <button class="comment-del" style="margin-left:auto" onclick="deleteComment(${postId},${i});renderAdminComments()">🗑️ 删除</button>
-        </div>
-        <div class="comment-body">${escapeHtml(c.content)}</div>
-      </div>`;
-    });
-    html += '</div>';
-  });
-  if(!total) html = '<div class="empty-state"><div class="icon">💬</div><p>暂无评论</p></div>';
-  document.getElementById('admin-comment-list').innerHTML = html;
-}
-
 // ======================== 归档页 ========================
 function renderArchive(){
-  const posts = [...DB.posts].filter(p=>!p.draft&&(!p.private||DB.loggedIn)).sort((a,b)=>new Date(b.date)-new Date(a.date));
+  const posts = [...DB.posts].filter(p=>!p.draft).sort((a,b)=>new Date(b.date)-new Date(a.date));
   // 按年月分组
   const byYear = {};
   posts.forEach(p=>{
@@ -4221,89 +3599,6 @@ ${items}
   toast('📡 RSS 已下载');
 }
 
-// ======================== 编辑器工具栏 ========================
-function insertMd(before, after){
-  const ta = document.getElementById('f-body');
-  const s = ta.selectionStart, e = ta.selectionEnd;
-  const val = ta.value;
-  const sel = val.slice(s, e) || '文本';
-  ta.value = val.slice(0, s) + before + sel + after + val.slice(e);
-  ta.focus();
-  const ns = s + before.length + sel.length + after.length;
-  ta.setSelectionRange(ns, ns);
-  autosaveDraft();
-}
-
-let mediaType = 'image';
-function uploadMedia(type){
-  mediaType = type;
-  const input = document.getElementById('media-input');
-  input.accept = type==='image'?'image/*':type==='video'?'video/*':type==='audio'?'audio/*':'.zip,.rar,.7z,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt';
-  input.click();
-}
-
-function handleMediaUpload(input){
-  const file = input.files[0];
-  if(!file) return;
-  processFile(file, mediaType);
-  input.value = '';
-}
-
-// 拖拽上传
-function dragOver(e){
-  e.preventDefault();
-  document.getElementById('drop-zone').classList.add('drag-over');
-}
-function dragLeave(e){
-  document.getElementById('drop-zone').classList.remove('drag-over');
-}
-function handleDrop(e){
-  e.preventDefault();
-  document.getElementById('drop-zone').classList.remove('drag-over');
-  const files = e.dataTransfer ? e.dataTransfer.files : null;
-  if(!files || !files[0]) return;
-  const file = files[0];
-  const type = file.type.startsWith('image/') ? 'image' : file.type.startsWith('video/') ? 'video' : file.type.startsWith('audio/') ? 'audio' : 'attachment';
-  processFile(file, type);
-}
-
-function processFile(file, type){
-  const maxSize = {image:2*1024*1024, video:5*1024*1024, audio:5*1024*1024, attachment:10*1024*1024};
-  const typeLabel = {image:'图片',video:'视频',audio:'音频',attachment:'附件'};
-  if(file.size > (maxSize[type]||5*1024*1024)){
-    toast(`❌ 文件过大，${typeLabel[type]}请小于 ${maxSize[type]/(1024*1024)}MB`);
-    return;
-  }
-  const reader = new FileReader();
-  reader.onload = function(ev){
-    const dataUrl = ev.target.result;
-    const ta = document.getElementById('f-body');
-    let insertText = '';
-    if(type === 'image'){
-      insertText = `![${file.name}](${dataUrl})`;
-    } else if(type === 'video'){
-      insertText = `<video src="${dataUrl}" controls style="max-width:100%;border-radius:var(--radius-sm);margin:1rem 0"></video>`;
-    } else if(type === 'audio'){
-      insertText = `<audio src="${dataUrl}" controls style="width:100%;margin:1rem 0"></audio>`;
-    } else {
-      const ext = file.name.split('.').pop().toLowerCase();
-      const iconMap = {zip:'📦',rar:'📦','7z':'📦',pdf:'📄',doc:'📝',docx:'📝',xls:'📊',xlsx:'📊',ppt:'📽️',pptx:'📽️',txt:'📃'};
-      const icon = iconMap[ext]||'📎';
-      const sz = file.size<1024?file.size+' B':file.size<1024*1024?(file.size/1024).toFixed(1)+' KB':(file.size/(1024*1024)).toFixed(1)+' MB';
-      insertText = `<a class="attach-card" href="${dataUrl}" download="${file.name}" target="_blank"><span class="attach-icon">${icon}</span><span class="attach-info"><div class="attach-name">${file.name}</div><div class="attach-meta">${ext.toUpperCase()} · ${sz} · 点击下载</div></span><span class="attach-dl">⬇️</span></a>`;
-    }
-    const s = ta.selectionStart;
-    const before = ta.value.slice(0, s);
-    const after = ta.value.slice(s);
-    const needBr = before.length > 0 && !before.endsWith('\n') ? '\n\n' : '';
-    ta.value = before + needBr + insertText + '\n\n' + after;
-    ta.focus();
-    toast(`✅ ${typeLabel[type]}已插入`);
-    autosaveDraft();
-  };
-  reader.readAsDataURL(file);
-}
-
 // ======================== 粒子动画 ========================
 (function initParticles(){
   const canvas = document.getElementById('particles');
@@ -4345,83 +3640,36 @@ window.addEventListener('scroll', ()=>{
 // ======================== 键盘快捷键 ========================
 document.addEventListener('keydown', e=>{
   if(e.key==='Escape'){
-    closePreview();
     closeShareModal();
   }
 });
 
-// ======================== 编辑器自动保存监听 ========================
-document.addEventListener('DOMContentLoaded', ()=>{
-  const fbody = document.getElementById('f-body');
-  if(fbody) fbody.addEventListener('input', autosaveDraft);
-  const ftitle = document.getElementById('f-title');
-  if(ftitle) ftitle.addEventListener('input', autosaveDraft);
-});
-
-// ======================== 数据备份导出 / 导入 ========================
-function exportAllData(){
-  var data = {
-    version: '1.0',
-    exported: new Date().toISOString(),
-    blog_name: '池帥の亦殿',
-    posts: JSON.parse(localStorage.getItem('blog_posts') || '[]'),
-    settings: JSON.parse(localStorage.getItem('blog_settings') || '{}'),
-    comments: JSON.parse(localStorage.getItem('blog_comments') || '[]'),
-    config: JSON.parse(localStorage.getItem('blog_config') || '{}')
-  };
-  var blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
-  var a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = 'blog_backup_' + new Date().toISOString().slice(0,10) + '.json';
-  a.click();
-  URL.revokeObjectURL(a.href);
-  toast('全站数据已导出');
+// ======================== 应用配置 ========================
+function closePreview(){ /* empty - admin feature */ }
+function applyConfig(){
+  const cfg = DB.cfg;
+  document.title = cfg.title || '池帥の亦殿';
+  const descEl = document.getElementById('meta-desc');
+  const kwEl = document.getElementById('meta-kw');
+  if(descEl) descEl.content = cfg.sub || '池帥的个人博客';
+  if(kwEl) kwEl.content = '博客,生活,技术,随笔';
+  document.querySelector('.nav-logo').textContent = '🌸 ' + (cfg.title || '池帥の亦殿');
+  document.querySelector('.hero h1').textContent = cfg.title || '池帥の亦殿';
+  document.querySelector('.hero p').textContent = cfg.sub || '记录生活，分享美好';
 }
 
-function importAllData(input){
-  var file = input.files[0];
-  if(!file) return;
-  if(!confirm('导入将覆盖当前所有数据（文章、设置、评论），不可撤销。确认继续？')){ input.value=''; return; }
-  var reader = new FileReader();
-  reader.onload = function(e){
-    try{
-      var data = JSON.parse(e.target.result);
-      if(data.posts) localStorage.setItem('blog_posts', JSON.stringify(data.posts));
-      if(data.settings) localStorage.setItem('blog_settings', JSON.stringify(data.settings));
-      if(data.comments) localStorage.setItem('blog_comments', JSON.stringify(data.comments));
-      if(data.config) localStorage.setItem('blog_config', JSON.stringify(data.config));
-      toast('数据导入成功，3 秒后刷新页面...');
-      setTimeout(function(){ location.reload(); }, 3000);
-    }catch(err){
-      toast('文件格式错误，无法导入');
-    }
-  };
-  reader.readAsText(file);
-  input.value = '';
-}
-
-// ======================== Service Worker 清理（注销旧缓存） ========================
-// 注意：之前的SW会缓存页面导致更新不生效，现在改为主动注销所有SW
+// ======================== PWA Service Worker ========================
 if('serviceWorker' in navigator){
-  navigator.serviceWorker.getRegistrations().then(function(registrations){
-    for(var reg of registrations){
-      reg.unregister();
-      console.log('[Blog] Service Worker 已注销，页面将使用最新版本');
-    }
+  window.addEventListener('load', function(){
+    navigator.serviceWorker.register('/sw.js').catch(function(){});
   });
-  // 同时清除所有Cache Storage
-  if('caches' in window){
-    caches.keys().then(function(names){
-      for(var name of names){ caches.delete(name); }
-    });
-  }
 }
 
 // ======================== 初始化 ========================
 window.addEventListener('DOMContentLoaded',()=>{
   initTheme();
   initStats();
-  if(DB.loggedIn) document.body.classList.add('is-admin');
+  
   applyConfig();
   renderHome();
 });
