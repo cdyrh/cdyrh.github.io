@@ -341,12 +341,12 @@ const DB = {
   KEY_LOCKOUT:'blog_lockout',
   get posts(){return JSON.parse(localStorage.getItem(this.KEY_POSTS)||'[]')},
   set posts(v){localStorage.setItem(this.KEY_POSTS,JSON.stringify(v))},
-  get cfg(){return Object.assign({
+  get cfg(){try{return Object.assign({
     title:'池帥の亦殿',sub:'记录生活，分享美好，写下每一个值得被记住的瞬间 ✨',
     bio:'喜欢文艺、捣鼓技术和华丽的普通人 🌙',
     email:'0d@live.com',ppp:5,
     startDate: new Date().toISOString().slice(0,10)
-  }, JSON.parse(localStorage.getItem(this.KEY_CFG)||'{}'))},
+  }, JSON.parse(localStorage.getItem(this.KEY_CFG)||'{}'))}catch(e){console.error('cfg parse error:',e);return {ppp:5,title:'池帥の亦殿'}}},
   set cfg(v){localStorage.setItem(this.KEY_CFG,JSON.stringify(v))},
   get pwd(){return localStorage.getItem(this.KEY_AUTH)||''},
   set pwd(v){localStorage.setItem(this.KEY_AUTH,v)},
@@ -782,25 +782,43 @@ function deleteComment(postId, i){
 
 // ======================== 网站设置 ========================
 function loadSettings(){
-  const cfg = DB.cfg;
-  document.getElementById('s-title').value = cfg.title||'';
-  document.getElementById('s-sub').value = cfg.sub||'';
-  document.getElementById('s-bio').value = cfg.bio||'';
-  document.getElementById('s-email').value = cfg.email||'';
-  document.getElementById('s-ppp').value = cfg.ppp||5;
-  document.getElementById('s-startDate').value = cfg.startDate||'';
+  try{
+    const cfg = DB.cfg;
+    document.getElementById('s-title').value = cfg.title||'';
+    document.getElementById('s-sub').value = cfg.sub||'';
+    document.getElementById('s-bio').value = cfg.bio||'';
+    document.getElementById('s-email').value = cfg.email||'';
+    document.getElementById('s-ppp').value = cfg.ppp||5;
+    document.getElementById('s-startDate').value = cfg.startDate||'';
+    console.log('📖 loadSettings: ppp=' + cfg.ppp + ', raw localStorage ppp=' + (JSON.parse(localStorage.getItem(DB.KEY_CFG)||'{}').ppp||'?'));
+  } catch(e){
+    console.error('loadSettings error:', e);
+    toast('❌ 加载设置失败：' + e.message);
+  }
 }
 
 function saveSettings(){
-  DB.cfg = {
-    title: document.getElementById('s-title').value.trim(),
-    sub: document.getElementById('s-sub').value.trim(),
-    bio: document.getElementById('s-bio').value.trim(),
-    email: document.getElementById('s-email').value.trim(),
-    ppp: parseInt(document.getElementById('s-ppp').value)||5,
-    startDate: document.getElementById('s-startDate').value
-  };
-  toast('⚙️ 设置已保存，刷新博客首页即可生效');
+  try{
+    const newCfg = {
+      title: document.getElementById('s-title').value.trim(),
+      sub: document.getElementById('s-sub').value.trim(),
+      bio: document.getElementById('s-bio').value.trim(),
+      email: document.getElementById('s-email').value.trim(),
+      ppp: parseInt(document.getElementById('s-ppp').value)||5,
+      startDate: document.getElementById('s-startDate').value
+    };
+    DB.cfg = newCfg;
+    // 验证写入
+    const verify = JSON.parse(localStorage.getItem(DB.KEY_CFG)||'{}');
+    console.log('🔧 saveSettings: ppp=' + newCfg.ppp + ', saved=' + (verify.ppp||'?')); 
+    if(verify.ppp !== newCfg.ppp){
+      console.error('⚠️ localStorage 写入验证失败！请检查浏览器存储空间');
+    }
+    toast('⚙️ 设置已保存（ppp=' + newCfg.ppp + '），刷新博客首页即可生效');
+  } catch(e){
+    console.error('saveSettings error:', e);
+    toast('❌ 保存失败：' + e.message);
+  }
 }
 
 // ======================== 密码修改 ========================
