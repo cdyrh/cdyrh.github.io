@@ -798,12 +798,12 @@ const DB = {
   KEY_SUBS:'blog_subs', KEY_DRAFT:'blog_draft', KEY_THEME:'blog_theme',
   get posts(){return JSON.parse(localStorage.getItem(this.KEY_POSTS)||'[]')},
   set posts(v){localStorage.setItem(this.KEY_POSTS,JSON.stringify(v))},
-  get cfg(){return Object.assign({
+  get cfg(){try{return Object.assign({
     title:'池帥の亦殿',sub:'记录生活，分享美好，写下每一个值得被记住的瞬间 ✨',
     bio:'喜欢文艺、捣鼓技术和华丽的普通人 🌙',
     email:'0d@live.com',ppp:5,
     startDate: new Date().toISOString().slice(0,10)
-  }, JSON.parse(localStorage.getItem(this.KEY_CFG)||'{}'))},
+  }, JSON.parse(localStorage.getItem(this.KEY_CFG)||'{}'))}catch(e){console.error('cfg parse error:',e);return {ppp:5,title:'池帥の亦殿',sub:''}}},
   set cfg(v){localStorage.setItem(this.KEY_CFG,JSON.stringify(v))},
   get comments(){return JSON.parse(localStorage.getItem(this.KEY_COMMENTS)||'{}')},
   set comments(v){localStorage.setItem(this.KEY_COMMENTS,JSON.stringify(v))},
@@ -3164,14 +3164,22 @@ function initStats(){
 }
 
 function renderStats(){
-  const today = new Date().toISOString().slice(0,10);
-  const stats = DB.stats;
-  const posts = DB.posts;
-  document.getElementById('sv-total').textContent = formatNum(stats.total||0);
-  document.getElementById('sv-uv').textContent = formatNum((stats.uv||{})[today]||0);
-  document.getElementById('sv-pv').textContent = formatNum((stats.pv||{})[today]||0);
-  const totalReads = posts.reduce((s,p)=>s+(p.views||0), 0);
-  document.getElementById('sv-reads').textContent = formatNum(totalReads);
+  try{
+    const today = new Date().toISOString().slice(0,10);
+    const stats = DB.stats;
+    const posts = DB.posts;
+    const el_total = document.getElementById('sv-total');
+    const el_uv = document.getElementById('sv-uv');
+    const el_pv = document.getElementById('sv-pv');
+    const el_reads = document.getElementById('sv-reads');
+    if(el_total) el_total.textContent = formatNum(stats.total||0);
+    if(el_uv) el_uv.textContent = formatNum((stats.uv||{})[today]||0);
+    if(el_pv) el_pv.textContent = formatNum((stats.pv||{})[today]||0);
+    const totalReads = posts.reduce((s,p)=>s+(p.views||0), 0);
+    if(el_reads) el_reads.textContent = formatNum(totalReads);
+  } catch(e){
+    console.error('renderStats error:', e);
+  }
 }
 
 function formatNum(n){
@@ -3207,6 +3215,7 @@ function renderHome(){
   );
 
   const ppp = cfg.ppp||5;
+  console.log('📖 renderHome: cfg.ppp=' + cfg.ppp + ', using ppp=' + ppp + ', total posts=' + posts.length);
   const total = Math.ceil(posts.length/ppp)||1;
   if(currentPage>total) currentPage=1;
   const page = posts.slice((currentPage-1)*ppp, currentPage*ppp);
@@ -3691,15 +3700,23 @@ document.addEventListener('keydown', e=>{
 // ======================== 应用配置 ========================
 function closePreview(){ /* empty - admin feature */ }
 function applyConfig(){
-  const cfg = DB.cfg;
-  document.title = cfg.title || '池帥の亦殿';
-  const descEl = document.getElementById('meta-desc');
-  const kwEl = document.getElementById('meta-kw');
-  if(descEl) descEl.content = cfg.sub || '池帥的个人博客';
-  if(kwEl) kwEl.content = '博客,生活,技术,随笔';
-  document.querySelector('.nav-logo').textContent = '🌸 ' + (cfg.title || '池帥の亦殿');
-  document.querySelector('.hero h1').textContent = cfg.title || '池帥の亦殿';
-  document.querySelector('.hero p').textContent = cfg.sub || '记录生活，分享美好';
+  try{
+    const cfg = DB.cfg;
+    document.title = cfg.title || '池帥の亦殿';
+    const descEl = document.getElementById('meta-desc');
+    const kwEl = document.getElementById('meta-kw');
+    if(descEl) descEl.content = cfg.sub || '池帥的个人博客';
+    if(kwEl) kwEl.content = '博客,生活,技术,随笔';
+    const navLogo = document.querySelector('.nav-logo');
+    const heroH1 = document.querySelector('.hero h1');
+    const heroP = document.querySelector('.hero p');
+    if(navLogo) navLogo.textContent = '🌸 ' + (cfg.title || '池帥の亦殿');
+    if(heroH1) heroH1.textContent = cfg.title || '池帥の亦殿';
+    if(heroP) heroP.textContent = cfg.sub || '记录生活，分享美好';
+    console.log('📖 applyConfig: ppp=' + cfg.ppp + ', title=' + cfg.title);
+  } catch(e){
+    console.error('applyConfig error:', e);
+  }
 }
 
 // ======================== Giscus 评论系统 ========================
@@ -3828,12 +3845,15 @@ if('serviceWorker' in navigator){
 
 // ======================== 初始化 ========================
 window.addEventListener('DOMContentLoaded',()=>{
-  initTheme();
-  initStats();
-  
-  applyConfig();
-  renderHome();
-  renderStatsBar();
+  try{
+    initTheme();
+    initStats();
+    applyConfig();
+    renderHome();
+    renderStatsBar();
+  } catch(e){
+    console.error('🚨 DOMContentLoaded FATAL ERROR:', e.message, e.stack);
+  }
 });
 </script>
 </body>
