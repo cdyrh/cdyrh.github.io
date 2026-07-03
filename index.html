@@ -20,6 +20,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- RSS -->
 <link rel="alternate" type="application/rss+xml" title="池帥の亦殿 RSS" href="/feed.xml">
+<!-- Google Analytics (GA4) - 替换 G-XXXXXXXXXX 为你的测量 ID -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
 <!-- highlight.js -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" defer></script>
@@ -472,6 +480,27 @@ textarea.form-control{resize:vertical;min-height:300px;line-height:1.7;font-fami
 .reply-to{color:var(--pink-deep);font-size:.8rem;margin-bottom:.2rem}
 .comment-del:hover{color:#e85d8a}
 
+/* ===== Giscus 评论 ===== */
+.giscus-wrapper{margin-top:2rem}
+.giscus-wrapper .giscus{margin:0 auto}
+.comment-toggle-bar{display:flex;gap:.6rem;margin-top:2rem;justify-content:center;flex-wrap:wrap}
+.comment-toggle-btn{padding:.5rem 1.2rem;border:1.5px solid var(--border);border-radius:var(--radius-sm);
+  background:var(--card);color:var(--text-light);cursor:pointer;font-family:var(--font);
+  font-size:.88rem;transition:all .25s}
+.comment-toggle-btn:hover{background:var(--pink-pale);color:var(--pink-deep)}
+.comment-toggle-btn.active{background:linear-gradient(135deg,var(--pink),var(--purple));color:#fff;border-color:transparent}
+#local-comments{display:none}
+#local-comments.visible{display:block}
+
+/* ===== 站点统计面板 ===== */
+.stats-footer-bar{margin-top:2rem;padding:1.2rem 1.8rem;background:var(--card);border-radius:var(--radius);
+  border:1.5px solid var(--border);box-shadow:var(--shadow);display:flex;flex-wrap:wrap;
+  gap:1rem 2rem;justify-content:center;align-items:center;font-size:.85rem;color:var(--text-light)}
+.stats-footer-bar .stat-item{display:flex;align-items:center;gap:.4rem}
+.stats-footer-bar .stat-value{font-weight:700;color:var(--pink-deep);font-size:1rem}
+.stats-footer-bar .stat-dot{width:8px;height:8px;border-radius:50%;background:var(--mint);animation:pulse-dot 2s infinite}
+@keyframes pulse-dot{0%,100%{opacity:1}50%{opacity:.3}}
+
 /* ===== 归档页 ===== */
 #page-archive{padding:2rem 1.5rem;max-width:780px;margin:0 auto}
 .archive-title{font-size:1.8rem;font-weight:700;margin-bottom:1.5rem;
@@ -673,8 +702,21 @@ textarea.form-control{resize:vertical;min-height:300px;line-height:1.7;font-fami
     <div style="margin:2rem 0">
       <div class="share-bar" id="share-bar"></div>
     </div>
-    <!-- 评论区 -->
-    <div class="comments-section" id="comments-section"></div>
+    <!-- 评论切换栏 -->
+    <div class="comment-toggle-bar">
+      <button class="comment-toggle-btn active" id="giscus-toggle" onclick="switchCommentSystem('giscus')">💬 GitHub 评论</button>
+      <button class="comment-toggle-btn" id="local-toggle" onclick="switchCommentSystem('local')">📝 本地评论</button>
+    </div>
+    <!-- Giscus 评论区 -->
+    <div class="giscus-wrapper" id="giscus-comments">
+      <div id="giscus-container" style="min-height:200px">
+        <div style="text-align:center;padding:2rem;color:var(--text-muted)">💬 评论加载中...<br><small style="font-size:.75rem">需要 <a href="https://github.com/cdyrh/cdyrh.github.io" target="_blank" style="color:var(--pink-deep)">GitHub 账号</a> 登录才能评论</small></div>
+      </div>
+    </div>
+    <!-- 本地评论区 -->
+    <div class="comments-section" id="local-comments"></div>
+    <!-- 站点统计 -->
+    <div class="stats-footer-bar" id="stats-footer-bar"></div>
   </div>
 </div>
 
@@ -3328,6 +3370,25 @@ let draftTimer = null;
 const EMOJIS = ['😊','😂','❤️','👍','🎉','😭','🤔','💪','✨','🌸','😍','🙏'];
 
 function renderComments(postId){
+  // 获取文章 slug 用于 Giscus term
+  const post = DB.posts.find(p => p.id === postId);
+  const term = post ? `post-${postId}-${(post.title||'').replace(/[^a-zA-Z0-9\u4e00-\u9fff]/g,'-').substring(0,60)}` : `post-${postId}`;
+  
+  // 始终渲染本地评论
+  renderLocalComments(postId);
+  
+  // 根据当前选择加载 Giscus 或显示本地评论
+  if(currentCommentSystem === 'giscus'){
+    document.getElementById('giscus-comments').style.display = 'block';
+    document.getElementById('local-comments').classList.remove('visible');
+    loadGiscus(term);
+  } else {
+    document.getElementById('giscus-comments').style.display = 'none';
+    document.getElementById('local-comments').classList.add('visible');
+  }
+}
+
+function renderLocalComments(postId){
   const comments = DB.comments[postId] || [];
   let html = `
     <div class="comments-title">💬 评论 (${comments.length})</div>
@@ -3396,7 +3457,7 @@ function renderComments(postId){
     });
   }
   html += '</div>';
-  document.getElementById('comments-section').innerHTML = html;
+  document.getElementById('local-comments').innerHTML = html;
 }
 
 function escapeHtml(str){
@@ -3658,6 +3719,123 @@ function applyConfig(){
   document.querySelector('.hero p').textContent = cfg.sub || '记录生活，分享美好';
 }
 
+// ======================== Giscus 评论系统 ========================
+let giscusLoaded = false;
+let currentCommentSystem = 'giscus';
+const GISCUS_CONFIG = {
+  repo: 'cdyrh/cdyrh.github.io',
+  repoId: 'R_kgDOS08zIQ',
+  category: 'General',
+  categoryId: 'DIC_kwDOS08zIc4DAaFk',
+  mapping: 'specific',
+  strict: '0',
+  reactionsEnabled: '1',
+  emitMetadata: '0',
+  inputPosition: 'top',
+  theme: 'preferred_color_scheme',
+  lang: 'zh-CN'
+};
+
+function loadGiscus(term){
+  const container = document.getElementById('giscus-container');
+  if(!container) return;
+  
+  // 如果已经加载了相同 term，不重复加载
+  if(giscusLoaded && container.dataset.term === term) return;
+  
+  container.innerHTML = '<div style="text-align:center;padding:2rem;color:var(--text-muted)">💬 评论加载中...</div>';
+  container.dataset.term = term;
+  
+  const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+  
+  const script = document.createElement('script');
+  script.src = 'https://giscus.app/client.js';
+  script.setAttribute('data-repo', GISCUS_CONFIG.repo);
+  script.setAttribute('data-repo-id', GISCUS_CONFIG.repoId);
+  script.setAttribute('data-category', GISCUS_CONFIG.category);
+  script.setAttribute('data-category-id', GISCUS_CONFIG.categoryId);
+  script.setAttribute('data-mapping', GISCUS_CONFIG.mapping);
+  script.setAttribute('data-term', term);
+  script.setAttribute('data-strict', GISCUS_CONFIG.strict);
+  script.setAttribute('data-reactions-enabled', GISCUS_CONFIG.reactionsEnabled);
+  script.setAttribute('data-emit-metadata', GISCUS_CONFIG.emitMetadata);
+  script.setAttribute('data-input-position', GISCUS_CONFIG.inputPosition);
+  script.setAttribute('data-theme', theme);
+  script.setAttribute('data-lang', GISCUS_CONFIG.lang);
+  script.setAttribute('crossorigin', 'anonymous');
+  script.async = true;
+  
+  script.onload = function(){
+    giscusLoaded = true;
+  };
+  script.onerror = function(){
+    container.innerHTML = '<div style="text-align:center;padding:2rem;color:var(--text-muted)">⚠️ 评论系统暂不可用<br><small>请确认已安装 <a href="https://github.com/apps/giscus" target="_blank" style="color:var(--pink-deep)">Giscus GitHub App</a></small></div>';
+  };
+  
+  container.innerHTML = '';
+  container.appendChild(script);
+}
+
+function switchCommentSystem(system){
+  currentCommentSystem = system;
+  document.getElementById('giscus-toggle').classList.toggle('active', system === 'giscus');
+  document.getElementById('local-toggle').classList.toggle('active', system === 'local');
+  document.getElementById('giscus-comments').style.display = system === 'giscus' ? 'block' : 'none';
+  document.getElementById('local-comments').classList.toggle('visible', system === 'local');
+  
+  if(system === 'local'){
+    const currentPostId = parseInt(new URLSearchParams(window.location.search).get('p') || '0');
+    if(currentPostId) renderLocalComments(currentPostId);
+  }
+}
+
+// ======================== 站点统计 ========================
+function trackPageView(){
+  const key = '_blog_pv_tracker';
+  let tracker = JSON.parse(localStorage.getItem(key) || '{"total":0,"pages":{},"visitors":{},"firstVisit":"","lastVisit":""}');
+  
+  const now = new Date();
+  const dateStr = now.toISOString().split('T')[0];
+  
+  if(!tracker.firstVisit) tracker.firstVisit = dateStr;
+  tracker.lastVisit = dateStr;
+  tracker.total++;
+  
+  // Track per-day visitors
+  tracker.visitors[dateStr] = (tracker.visitors[dateStr] || 0) + 1;
+  
+  // Track per-page views
+  const page = window.location.pathname;
+  tracker.pages[page] = (tracker.pages[page] || 0) + 1;
+  
+  // Cap at 30 days of history
+  const days = Object.keys(tracker.visitors).sort();
+  if(days.length > 30){
+    days.slice(0, days.length - 30).forEach(d => delete tracker.visitors[d]);
+  }
+  
+  localStorage.setItem(key, JSON.stringify(tracker));
+  return tracker;
+}
+
+function renderStatsBar(){
+  const tracker = trackPageView();
+  const days = Object.keys(tracker.visitors).length;
+  const today = new Date().toISOString().split('T')[0];
+  const todayVisits = tracker.visitors[today] || 0;
+  
+  const statsContainer = document.getElementById('stats-footer-bar');
+  if(!statsContainer) return;
+  
+  statsContainer.innerHTML = `
+    <div class="stat-item"><div class="stat-dot"></div> 今日访问：<span class="stat-value">${todayVisits}</span></div>
+    <div class="stat-item">📊 累计浏览：<span class="stat-value">${tracker.total}</span></div>
+    <div class="stat-item">📅 活跃天数：<span class="stat-value">${days}</span></div>
+    <div class="stat-item">📝 文章数：<span class="stat-value">${DB.posts.filter(p=>!p.draft).length}</span></div>
+    <div class="stat-item" style="font-size:.75rem;color:var(--text-muted)">始于 ${tracker.firstVisit}</div>
+  `;
+}
+
 // ======================== PWA Service Worker ========================
 if('serviceWorker' in navigator){
   window.addEventListener('load', function(){
@@ -3672,6 +3850,7 @@ window.addEventListener('DOMContentLoaded',()=>{
   
   applyConfig();
   renderHome();
+  renderStatsBar();
 });
 </script>
 </body>
