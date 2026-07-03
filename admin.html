@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>后台管理 - 池帥の亦殿</title>
+<style>
+/* ===== 全局变量 ===== */
+:root{
+  --pink:#ff8fab;--pink-light:#ffb3c6;--pink-pale:#fff0f5;--pink-deep:#e85d8a;
+  --purple:#c77dff;--purple-light:#e0aaff;--purple-pale:#f8f0ff;
+  --mint:#64dfdf;--mint-light:#a0f0e8;
+  --yellow:#ffd166;--orange:#ff9f1c;
+  --text:#4a4063;--text-light:#7c6f9f;--text-muted:#b0a8c8;
+  --bg:#fdf4ff;--card:#fff;--border:#f0d9ff;
+  --shadow:0 8px 32px rgba(200,100,200,.12);
+  --shadow-hover:0 16px 48px rgba(200,100,200,.2);
+  --radius:16px;--radius-sm:8px;
+}
+[data-theme="dark"]{
+  --pink:#ff7b9e;--pink-light:#d44a7a;--pink-pale:#2a1a2a;--pink-deep:#ff6090;
+  --purple:#b77dff;--purple-light:#7a4abf;--purple-pale:#1a1030;
+  --mint:#40c9c9;--mint-light:#2a8a8a;
+  --text:#e0d4e8;--text-light:#b0a0c0;--text-muted:#6a5a80;
+  --bg:#1a0a20;--card:#2a1a30;--border:#3a2a40;
+  --shadow:0 8px 32px rgba(0,0,0,.3);
+  --shadow-hover:0 16px 48px rgba(0,0,0,.5);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh}
+
+/* ===== 登录页 ===== */
+.login-page{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:2rem}
+.login-card{background:var(--card);border-radius:var(--radius);padding:3rem 2.5rem;box-shadow:var(--shadow);max-width:420px;width:100%;text-align:center;border:1px solid var(--border)}
+.login-icon{font-size:4rem;margin-bottom:1rem}
+.login-card h2{font-size:1.6rem;color:var(--pink-deep);margin-bottom:.5rem}
+.login-card p{color:var(--text-muted);font-size:.9rem;margin-bottom:1.5rem}
+.form-group{margin-bottom:1.2rem;text-align:left}
+.form-group label{display:block;font-size:.88rem;color:var(--text-light);margin-bottom:.4rem}
+.form-control{width:100%;padding:.75rem 1rem;border:2px solid var(--border);border-radius:var(--radius-sm);font-size:1rem;color:var(--text);background:var(--bg);transition:border-color .2s;outline:none}
+.form-control:focus{border-color:var(--pink-deep)}
+.btn{display:inline-block;padding:.75rem 2rem;border:none;border-radius:var(--radius-sm);font-size:1rem;cursor:pointer;transition:all .2s;font-weight:600}
+.btn-primary{background:linear-gradient(135deg,var(--pink),var(--purple));color:#fff;width:100%}
+.btn-primary:hover{opacity:.9;transform:translateY(-1px);box-shadow:0 4px 16px rgba(200,100,150,.3)}
+.btn-primary:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.login-err{color:#ff4757;font-size:.88rem;margin-top:.8rem;display:none}
+.login-locked{color:var(--orange);font-size:.88rem;margin-top:.8rem;display:none}
+
+/* ===== 后台导航 ===== */
+.admin-nav{background:linear-gradient(135deg,var(--pink-deep),var(--purple));color:#fff;padding:.8rem 1.5rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 16px rgba(0,0,0,.15)}
+.admin-nav-title{font-size:1.1rem;font-weight:700}
+.admin-nav-right{display:flex;align-items:center;gap:.8rem}
+.admin-btn-sm{padding:.4rem 1rem;border:1px solid rgba(255,255,255,.4);border-radius:var(--radius-sm);background:rgba(255,255,255,.15);color:#fff;font-size:.82rem;cursor:pointer;transition:background .2s}
+.admin-btn-sm:hover{background:rgba(255,255,255,.25)}
+.admin-btn-sm.danger{background:rgba(255,71,87,.3);border-color:rgba(255,71,87,.5)}
+.admin-btn-sm.danger:hover{background:rgba(255,71,87,.5)}
+
+/* ===== 后台主体 ===== */
+.admin-body{max-width:1200px;margin:0 auto;padding:1.5rem}
+.widget{background:var(--card);border-radius:var(--radius);padding:1.5rem;box-shadow:var(--shadow);border:1px solid var(--border);margin-bottom:1.5rem}
+
+/* ===== 标签页 ===== */
+.admin-tabs{display:flex;gap:.5rem;margin-bottom:1.5rem;flex-wrap:wrap}
+.admin-tab{padding:.6rem 1.2rem;border:2px solid var(--border);border-radius:var(--radius-sm);background:var(--card);color:var(--text);cursor:pointer;font-size:.9rem;transition:all .2s}
+.admin-tab:hover{border-color:var(--pink-light)}
+.admin-tab.active{background:linear-gradient(135deg,var(--pink),var(--purple));color:#fff;border-color:transparent}
+
+/* ===== 面板 ===== */
+.admin-panel{display:none}
+.admin-panel.active{display:block}
+
+/* ===== 文章列表项 ===== */
+.batch-bar{display:flex;align-items:center;gap:1rem;margin-bottom:1rem;padding:.6rem 1rem;background:var(--bg);border-radius:var(--radius-sm)}
+.batch-info{color:var(--text-muted);font-size:.82rem}
+.batch-del{padding:.3rem .8rem;background:#ff4757;color:#fff;border:none;border-radius:4px;cursor:pointer;font-size:.82rem;margin-left:auto}
+.batch-del:hover{background:#ff3344}
+.post-item{display:flex;align-items:center;gap:1rem;padding:.8rem 1rem;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);margin-bottom:.5rem;transition:box-shadow .2s}
+.post-item:hover{box-shadow:var(--shadow)}
+.post-item .post-item-info{flex:1;min-width:0}
+.post-item .post-item-title{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.post-item .post-item-meta{font-size:.78rem;color:var(--text-muted);margin-top:.2rem}
+.post-item .post-item-actions{display:flex;gap:.4rem;flex-shrink:0}
+.post-item .post-item-actions button{padding:.3rem .7rem;border:1px solid var(--border);border-radius:4px;background:var(--bg);color:var(--text);cursor:pointer;font-size:.78rem;transition:all .2s}
+.post-item .post-item-actions button:hover{border-color:var(--pink)}
+.post-item .post-item-actions button.del{color:#ff4757}
+.post-item .post-item-actions button.del:hover{background:#ff4757;color:#fff;border-color:#ff4757}
+.post-item .post-item-actions button.top{color:var(--orange)}
+.badge{display:inline-block;padding:.15rem .5rem;border-radius:10px;font-size:.72rem;font-weight:600}
+.badge-draft{background:#fff3cd;color:#856404}
+.badge-top{background:#ffe0cc;color:#cc6600}
+.badge-private{background:#e0d0e0;color:#664466}
+
+/* ===== 编辑器 ===== */
+.editor-card{padding:1.5rem;background:var(--card);border-radius:var(--radius);border:1px solid var(--border)}
+.editor-toolbar{display:flex;gap:.3rem;margin-bottom:1rem;flex-wrap:wrap;padding:.5rem;background:var(--bg);border-radius:var(--radius-sm)}
+.editor-toolbar button{padding:.4rem .7rem;border:1px solid var(--border);border-radius:4px;background:var(--card);cursor:pointer;font-size:.82rem;color:var(--text-light);transition:all .2s}
+.editor-toolbar button:hover{border-color:var(--pink);color:var(--pink-deep)}
+.editor-textarea{width:100%;min-height:400px;padding:1rem;border:2px solid var(--border);border-radius:var(--radius-sm);font-family:"SF Mono","Cascadia Code","Fira Code",Consolas,monospace;font-size:.92rem;line-height:1.8;resize:vertical;background:var(--bg);color:var(--text);outline:none}
+.editor-textarea:focus{border-color:var(--pink-deep)}
+.editor-actions{display:flex;gap:.6rem;margin-top:1rem}
+.editor-preview{min-height:300px;padding:1.5rem;background:var(--bg);border-radius:var(--radius-sm);border:1px solid var(--border);margin-top:1rem}
+
+/* ===== Toast ===== */
+.toast{position:fixed;top:1rem;left:50%;transform:translateX(-50%);padding:.8rem 1.5rem;background:var(--card);border-radius:var(--radius-sm);box-shadow:var(--shadow-hover);z-index:9999;font-size:.9rem;animation:slideDown .3s ease}
+@keyframes slideDown{from{opacity:0;transform:translateX(-50%) translateY(-20px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+
+/* ===== 评论管理 ===== */
+.comment-item{border:1px solid var(--border);border-radius:var(--radius-sm);padding:.8rem 1rem;margin-bottom:.5rem;background:var(--card)}
+.comment-meta{font-size:.78rem;color:var(--text-muted);margin-bottom:.4rem}
+.comment-body{font-size:.9rem}
+.comment-del{float:right;color:#ff4757;cursor:pointer;font-size:.8rem}
+
+/* ===== 响应式 ===== */
+@media(max-width:768px){
+  .admin-body{padding:1rem}
+  .admin-nav{padding:.6rem 1rem}
+  .admin-nav-right{display:none}
+  .editor-textarea{min-height:250px}
+  .admin-tabs{flex-wrap:nowrap;overflow-x:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ 登录页 ============ -->
+<div id="login-page" class="login-page">
+  <div class="login-card">
+    <div class="login-icon">🔐</div>
+    <h2>博客后台管理</h2>
+    <p>池帥の亦殿 · 安全认证</p>
+    <div class="form-group">
+      <label>用户名</label>
+      <input class="form-control" id="login-user" type="text" placeholder="admin" value="admin" autocomplete="username">
+    </div>
+    <div class="form-group">
+      <label>密码</label>
+      <input class="form-control" id="login-pwd" type="password" placeholder="请输入管理密码" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()">
+    </div>
+    <button class="btn btn-primary" id="login-btn" onclick="doLogin()">🌸 安全登录</button>
+    <div class="login-err" id="login-err">❌ 用户名或密码错误</div>
+    <div class="login-locked" id="login-locked">⏳ 登录次数过多，请等待 30 分钟后再试</div>
+  </div>
+</div>
+
+<!-- ============ 后台面板 ============ -->
+<div id="admin-page" style="display:none">
+  <div class="admin-nav">
+    <div class="admin-nav-title">🌸 博客管理后台</div>
+    <div class="admin-nav-right">
+      <span style="color:rgba(255,255,255,.8);font-size:.88rem">👋 你好，池帥</span>
+      <button class="admin-btn-sm" onclick="window.open('/','_blank')">查看博客</button>
+      <button class="admin-btn-sm danger" onclick="doLogout()">退出登录</button>
+    </div>
+  </div>
+  
+  <div class="admin-body">
+    <!-- 统计卡片 -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin-bottom:1.5rem">
+      <div class="widget" style="text-align:center">
+        <div style="font-size:2rem;margin-bottom:.3rem">📝</div>
+        <div style="font-size:1.8rem;font-weight:700;color:var(--pink-deep)" id="admin-stat-posts">0</div>
+        <div style="font-size:.82rem;color:var(--text-muted)">篇文章</div>
+      </div>
+      <div class="widget" style="text-align:center">
+        <div style="font-size:2rem;margin-bottom:.3rem">🏷️</div>
+        <div style="font-size:1.8rem;font-weight:700;color:var(--purple)" id="admin-stat-cats">0</div>
+        <div style="font-size:.82rem;color:var(--text-muted)">个分类</div>
+      </div>
+      <div class="widget" style="text-align:center">
+        <div style="font-size:2rem;margin-bottom:.3rem">💬</div>
+        <div style="font-size:1.8rem;font-weight:700;color:var(--mint)" id="admin-stat-comments">0</div>
+        <div style="font-size:.82rem;color:var(--text-muted)">条评论</div>
+      </div>
+      <div class="widget" style="text-align:center">
+        <div style="font-size:2rem;margin-bottom:.3rem">👁️</div>
+        <div style="font-size:1.8rem;font-weight:700;color:var(--orange)" id="admin-stat-views">0</div>
+        <div style="font-size:.82rem;color:var(--text-muted)">总阅读</div>
+      </div>
+    </div>
+
+    <!-- 标签页 -->
+    <div class="admin-tabs">
+      <button class="admin-tab active" onclick="switchTab('posts',this)">📝 文章管理</button>
+      <button class="admin-tab" onclick="switchTab('new',this)">✏️ 写文章</button>
+      <button class="admin-tab" onclick="switchTab('comments',this)">💬 评论管理</button>
+      <button class="admin-tab" onclick="switchTab('settings',this)">⚙️ 网站设置</button>
+      <button class="admin-tab" onclick="switchTab('password',this)">🔒 修改密码</button>
+      <button class="admin-tab" onclick="switchTab('tools',this)">🛠️ 数据工具</button>
+    </div>
+
+    <!-- 文章列表 -->
+    <div class="admin-panel active" id="panel-posts">
+      <div class="batch-bar">
+        <input type="checkbox" class="check-all" id="check-all" onclick="toggleCheckAll(this)">
+        <span class="batch-info" id="batch-info">已选 0 篇</span>
+        <button class="batch-del" onclick="batchDelete()">🗑️ 批量删除</button>
+        <span style="margin-left:auto;font-size:.78rem;color:var(--text-muted)" id="posts-total-count"></span>
+      </div>
+      <div id="admin-post-list"></div>
+    </div>
+
+    <!-- 写/编辑文章 -->
+    <div class="admin-panel" id="panel-new">
+      <div class="editor-card">
+        <h3 style="margin-bottom:1.2rem;color:var(--pink-deep)" id="editor-title-label">✏️ 写新文章</h3>
+        <input type="hidden" id="edit-id">
+        <div class="form-group">
+          <label>文章标题 *</label>
+          <input class="form-control" id="f-title" placeholder="给文章起个好听的名字…">
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+          <div class="form-group">
+            <label>分类</label>
+            <input class="form-control" id="f-cat" placeholder="如：生活常识、技术笔记" list="cat-list-datalist">
+            <datalist id="cat-list-datalist"></datalist>
+          </div>
+          <div class="form-group">
+            <label>标签（逗号分隔）</label>
+            <input class="form-control" id="f-tags" placeholder="如：生活,健康,技巧">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>封面（emoji 或图片URL）</label>
+          <input class="form-control" id="f-cover" placeholder="如：🌸 或 https://...">
+        </div>
+        <div class="editor-toolbar">
+          <button title="标题H2" onclick="insertMd('## ','')">H2</button>
+          <button title="标题H3" onclick="insertMd('### ','')">H3</button>
+          <button title="加粗" onclick="insertMd('**','**')"><b>B</b></button>
+          <button title="斜体" onclick="insertMd('*','*')"><i>I</i></button>
+          <button title="引用" onclick="insertMd('> ','')">引用</button>
+          <button title="有序列表" onclick="insertMd('1. ','')">1.</button>
+          <button title="无序列表" onclick="insertMd('- ','')">-</button>
+          <button title="链接" onclick="insertMd('[','](https://)')">链接</button>
+          <button title="图片" onclick="insertMd('![','](https://)')">图片</button>
+          <button title="代码块" onclick="insertMd('```\n','\n```')">代码</button>
+          <button title="分割线" onclick="insertMd('\n---\n','')">---</button>
+          <button title="表格" onclick="insertTable()">表格</button>
+          <button style="background:var(--pink-pale);border-color:var(--pink);color:var(--pink-deep)" onclick="previewPost()">👁️ 预览</button>
+        </div>
+        <textarea class="editor-textarea" id="f-body" placeholder="在此撰写 Markdown 内容…&#10;&#10;提示：支持 Markdown 语法，可拖拽图片到编辑器上传"></textarea>
+        <div id="editor-preview" class="editor-preview" style="display:none"></div>
+        <div class="editor-actions">
+          <button class="btn btn-primary" onclick="savePost(false)">💾 发布文章</button>
+          <button class="btn" style="background:var(--bg);color:var(--text);border:2px solid var(--border)" onclick="savePost(true)">📝 保存草稿</button>
+          <button class="btn" style="background:transparent;color:var(--text-muted);border:2px solid var(--border)" onclick="cancelEdit()">取消</button>
+          <span style="margin-left:auto;font-size:.78rem;color:var(--text-muted);align-self:center" id="autosave-status"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 评论管理 -->
+    <div class="admin-panel" id="panel-comments">
+      <div id="admin-comments-list"></div>
+    </div>
+
+    <!-- 网站设置 -->
+    <div class="admin-panel" id="panel-settings">
+      <div class="widget">
+        <h3 style="margin-bottom:1rem;color:var(--pink-deep)">网站信息</h3>
+        <div class="form-group">
+          <label>博客标题</label>
+          <input class="form-control" id="s-title" placeholder="池帥の亦殿">
+        </div>
+        <div class="form-group">
+          <label>副标题</label>
+          <input class="form-control" id="s-sub" placeholder="记录生活，分享美好">
+        </div>
+        <div class="form-group">
+          <label>博主简介</label>
+          <input class="form-control" id="s-bio" placeholder="关于博主的简短介绍">
+        </div>
+        <div class="form-group">
+          <label>联系邮箱（公开显示）</label>
+          <input class="form-control" id="s-email" type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>每页显示文章数</label>
+          <input class="form-control" id="s-ppp" type="number" min="1" max="50" value="5">
+        </div>
+        <div class="form-group">
+          <label>建站日期</label>
+          <input class="form-control" id="s-startDate" type="date">
+        </div>
+        <button class="btn btn-primary" onclick="saveSettings()">💾 保存设置</button>
+      </div>
+    </div>
+
+    <!-- 修改密码 -->
+    <div class="admin-panel" id="panel-password">
+      <div class="widget">
+        <h3 style="margin-bottom:1rem;color:var(--pink-deep)">修改管理密码</h3>
+        <p style="color:var(--text-muted);font-size:.88rem;margin-bottom:1rem">
+          ⚠️ 密码经过 SHA-256 哈希加密存储。请牢记新密码，忘记后无法找回！
+        </p>
+        <div class="form-group">
+          <label>当前密码</label>
+          <input class="form-control" id="pw-old" type="password" placeholder="输入当前密码">
+        </div>
+        <div class="form-group">
+          <label>新密码</label>
+          <input class="form-control" id="pw-new" type="password" placeholder="输入新密码（至少6位）">
+        </div>
+        <div class="form-group">
+          <label>确认新密码</label>
+          <input class="form-control" id="pw-confirm" type="password" placeholder="再次输入新密码">
+        </div>
+        <button class="btn btn-primary" onclick="changePassword()">🔒 更新密码</button>
+      </div>
+    </div>
+
+    <!-- 数据工具 -->
+    <div class="admin-panel" id="panel-tools">
+      <div class="widget">
+        <h3 style="margin-bottom:1rem;color:var(--pink-deep)">数据备份与恢复</h3>
+        <p style="color:var(--text-muted);font-size:.88rem;margin-bottom:1rem">
+          导出所有数据（文章、评论、设置）为 JSON 文件。可用于备份、迁移或数据恢复。
+        </p>
+        <div style="display:flex;gap:.6rem;flex-wrap:wrap">
+          <button class="btn btn-primary" onclick="exportAllData()">📥 导出全部数据</button>
+          <button class="btn" style="background:var(--bg);color:var(--text);border:2px solid var(--border)" onclick="document.getElementById('import-file').click()">
+            📤 导入数据
+          </button>
+          <input type="file" id="import-file" accept=".json" style="display:none" onchange="importAllData(this)">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ======================== 数据层（与 index.html 共享 localStorage 结构） ========================
+const DB = {
+  KEY_POSTS:'blog_posts', KEY_CFG:'blog_cfg', KEY_AUTH:'blog_auth',
+  KEY_LOGIN:'blog_login', KEY_COMMENTS:'blog_comments', KEY_STATS:'blog_stats',
+  KEY_SUBS:'blog_subs', KEY_DRAFT:'blog_draft', KEY_THEME:'blog_theme',
+  KEY_LOCKOUT:'blog_lockout',
+  get posts(){return JSON.parse(localStorage.getItem(this.KEY_POSTS)||'[]')},
+  set posts(v){localStorage.setItem(this.KEY_POSTS,JSON.stringify(v))},
+  get cfg(){return Object.assign({
+    title:'池帥の亦殿',sub:'记录生活，分享美好，写下每一个值得被记住的瞬间 ✨',
+    bio:'喜欢文艺、捣鼓技术和华丽的普通人 🌙',
+    email:'0d@live.com',ppp:5,
+    startDate: new Date().toISOString().slice(0,10)
+  }, JSON.parse(localStorage.getItem(this.KEY_CFG)||'{}'))},
+  set cfg(v){localStorage.setItem(this.KEY_CFG,JSON.stringify(v))},
+  get pwd(){return localStorage.getItem(this.KEY_AUTH)||''},
+  set pwd(v){localStorage.setItem(this.KEY_AUTH,v)},
+  get loggedIn(){return sessionStorage.getItem(this.KEY_LOGIN)==='1'},
+  login(){sessionStorage.setItem(this.KEY_LOGIN,'1')},
+  logout(){sessionStorage.removeItem(this.KEY_LOGIN)},
+  get comments(){return JSON.parse(localStorage.getItem(this.KEY_COMMENTS)||'{}')},
+  set comments(v){localStorage.setItem(this.KEY_COMMENTS,JSON.stringify(v))},
+  get stats(){return JSON.parse(localStorage.getItem(this.KEY_STATS)||'{}')},
+  set stats(v){localStorage.setItem(this.KEY_STATS,JSON.stringify(v))},
+  get subs(){return JSON.parse(localStorage.getItem(this.KEY_SUBS)||'[]')},
+  set subs(v){localStorage.setItem(this.KEY_SUBS,JSON.stringify(v))},
+  get draft(){return JSON.parse(localStorage.getItem(this.KEY_DRAFT)||'null')},
+  set draft(v){if(v===null)localStorage.removeItem(this.KEY_DRAFT);else localStorage.setItem(this.KEY_DRAFT,JSON.stringify(v))}
+};
+
+// ======================== SHA-256 哈希 ========================
+async function sha256(text){
+  const encoder = new TextEncoder();
+  const data = encoder.encode(text);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map(b => b.toString(16).padStart(2,'0')).join('');
+}
+
+// ======================== 默认密码哈希（admin20230731） ========================
+const DEFAULT_PWD_HASH = 'b03c5d7a6d9e82c1e2bb9f291e7e8b2075a4e6f791fc28f8d38c1e8a0bc7d2e4';
+
+// ======================== 登录锁定 ========================
+const MAX_ATTEMPTS = 5;
+const LOCKOUT_DURATION = 30 * 60 * 1000; // 30分钟
+
+function getLockoutInfo(){
+  const raw = localStorage.getItem(DB.KEY_LOCKOUT);
+  if(!raw) return {attempts:0, lockedUntil:0};
+  return JSON.parse(raw);
+}
+function setLockoutInfo(info){
+  localStorage.setItem(DB.KEY_LOCKOUT, JSON.stringify(info));
+}
+
+async function doLogin(){
+  const user = document.getElementById('login-user').value.trim();
+  const pwd = document.getElementById('login-pwd').value;
+  const errEl = document.getElementById('login-err');
+  const lockedEl = document.getElementById('login-locked');
+  const btn = document.getElementById('login-btn');
+  
+  // 检查锁定状态
+  const lockInfo = getLockoutInfo();
+  if(lockInfo.lockedUntil > Date.now()){
+    const remainMin = Math.ceil((lockInfo.lockedUntil - Date.now()) / 60000);
+    lockedEl.textContent = '⏳ 登录次数过多，请等待 ' + remainMin + ' 分钟后再试';
+    lockedEl.style.display = 'block';
+    return;
+  }
+  lockedEl.style.display = 'none';
+  
+  if(user !== 'admin'){
+    errEl.textContent = '❌ 用户名错误';
+    errEl.style.display = 'block';
+    return;
+  }
+  
+  if(!pwd){
+    errEl.textContent = '❌ 请输入密码';
+    errEl.style.display = 'block';
+    return;
+  }
+  
+  btn.disabled = true;
+  btn.textContent = '⏳ 验证中…';
+  
+  try{
+    const inputHash = await sha256(pwd);
+    const storedHash = DB.pwd || DEFAULT_PWD_HASH;
+    
+    if(inputHash === storedHash){
+      // 登录成功，重置锁定
+      setLockoutInfo({attempts:0, lockedUntil:0});
+      DB.login();
+      showAdmin();
+      toast('🌸 欢迎回来，池帥！');
+    } else {
+      // 密码错误
+      lockInfo.attempts = (lockInfo.attempts || 0) + 1;
+      const remaining = MAX_ATTEMPTS - lockInfo.attempts;
+      
+      if(remaining <= 0){
+        lockInfo.lockedUntil = Date.now() + LOCKOUT_DURATION;
+        setLockoutInfo(lockInfo);
+        lockedEl.textContent = '⏳ 登录次数过多，已锁定 30 分钟';
+        lockedEl.style.display = 'block';
+      } else {
+        setLockoutInfo(lockInfo);
+        errEl.textContent = '❌ 密码错误，还剩 ' + remaining + ' 次尝试机会';
+        errEl.style.display = 'block';
+      }
+    }
+  } catch(e){
+    errEl.textContent = '❌ 系统错误，请刷新重试';
+    errEl.style.display = 'block';
+  }
+  
+  btn.disabled = false;
+  btn.textContent = '🌸 安全登录';
+  document.getElementById('login-pwd').value = '';
+}
+
+// ======================== 首次设置默认密码哈希 ========================
+async function initDefaultPassword(){
+  if(!DB.pwd){
+    // 首次使用：将默认密码哈希存入
+    DB.pwd = DEFAULT_PWD_HASH;
+  }
+}
+
+// ======================== 显示后台 ========================
+function showAdmin(){
+  document.getElementById('login-page').style.display = 'none';
+  document.getElementById('admin-page').style.display = 'block';
+  updateAdminStats();
+  renderAdminList();
+}
+
+function doLogout(){
+  DB.logout();
+  document.getElementById('admin-page').style.display = 'none';
+  document.getElementById('login-page').style.display = 'flex';
+  document.getElementById('login-pwd').value = '';
+  toast('已安全退出');
+}
+
+// ======================== Toast ========================
+function toast(msg, dur=2500){
+  const el = document.createElement('div');
+  el.className = 'toast';
+  el.textContent = msg;
+  document.body.appendChild(el);
+  setTimeout(() => {el.style.opacity='0';el.style.transition='opacity .3s';setTimeout(()=>el.remove(),300)}, dur);
+}
+
+// ======================== 标签切换 ========================
+function switchTab(tab, el){
+  document.querySelectorAll('.admin-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.admin-panel').forEach(p=>p.classList.remove('active'));
+  const panel = document.getElementById('panel-'+tab);
+  if(panel) panel.classList.add('active');
+  if(el) el.classList.add('active');
+  if(tab==='posts') renderAdminList();
+  if(tab==='settings') loadSettings();
+  if(tab==='comments') renderAdminComments();
+}
+
+// ======================== 统计 ========================
+function updateAdminStats(){
+  const posts = DB.posts;
+  const published = posts.filter(p=>!p.draft);
+  document.getElementById('admin-stat-posts').textContent = published.length;
+  
+  const cats = new Set(published.map(p=>p.cat));
+  document.getElementById('admin-stat-cats').textContent = cats.size;
+  
+  const comments = DB.comments;
+  let totalComments = 0;
+  for(const key in comments) totalComments += (comments[key]||[]).length;
+  document.getElementById('admin-stat-comments').textContent = totalComments;
+  
+  let totalViews = 0;
+  published.forEach(p => totalViews += (p.views||0));
+  document.getElementById('admin-stat-views').textContent = totalViews;
+}
+
+// ======================== 文章列表 ========================
+function renderAdminList(){
+  const posts = DB.posts.sort((a,b)=>b.id-a.id);
+  document.getElementById('posts-total-count').textContent = '共 '+posts.length+' 篇文章';
+  
+  let html = '';
+  posts.forEach(p => {
+    const badges = [];
+    if(p.draft) badges.push('<span class="badge badge-draft">草稿</span>');
+    if(p.top) badges.push('<span class="badge badge-top">置顶</span>');
+    html += '<div class="post-item">'+
+      '<input type="checkbox" class="batch-cb" data-id="'+p.id+'" onchange="updateBatchInfo()">'+
+      '<div class="post-item-info">'+
+        '<div class="post-item-title">'+escHtml(p.title)+' '+badges.join(' ')+'</div>'+
+        '<div class="post-item-meta">'+p.date+' · '+p.cat+' · 👁️'+(p.views||0)+' · '+countWords(p.body||'')+'字</div>'+
+      '</div>'+
+      '<div class="post-item-actions">'+
+        '<button class="top" onclick="toggleTop('+p.id+')">'+(p.top?'取消置顶':'置顶')+'</button>'+
+        '<button onclick="editPost('+p.id+')">编辑</button>'+
+        '<button class="del" onclick="deletePost('+p.id+')">删除</button>'+
+      '</div>'+
+    '</div>';
+  });
+  document.getElementById('admin-post-list').innerHTML = html || '<p style="color:var(--text-muted);text-align:center;padding:2rem">还没有文章，点击「写文章」开始创作吧 ✨</p>';
+  document.getElementById('check-all').checked = false;
+  document.getElementById('batch-info').textContent = '已选 0 篇';
+}
+
+function toggleCheckAll(cb){
+  document.querySelectorAll('.batch-cb').forEach(c=>c.checked=cb.checked);
+  updateBatchInfo();
+}
+
+function updateBatchInfo(){
+  const count = document.querySelectorAll('.batch-cb:checked').length;
+  document.getElementById('batch-info').textContent = '已选 '+count+' 篇';
+}
+
+function batchDelete(){
+  const cbs = document.querySelectorAll('.batch-cb:checked');
+  if(cbs.length === 0){toast('请先选择要删除的文章');return;}
+  if(!confirm('确定要删除选中的 '+cbs.length+' 篇文章吗？此操作不可恢复！')) return;
+  const ids = Array.from(cbs).map(c=>parseInt(c.dataset.id));
+  DB.posts = DB.posts.filter(p=>!ids.includes(p.id));
+  toast('已删除 '+ids.length+' 篇');
+  renderAdminList(); updateAdminStats();
+}
+
+function toggleTop(id){
+  const posts = DB.posts;
+  const p = posts.find(p=>p.id===id);
+  if(p){p.top=!p.top; DB.posts=posts; toast(p.top?'已置顶':'已取消置顶')}
+  renderAdminList();
+}
+
+function deletePost(id){
+  const posts = DB.posts;
+  const p = posts.find(p=>p.id===id);
+  if(!p) return;
+  if(!confirm('确定要删除「'+p.title+'」吗？此操作不可恢复！')) return;
+  DB.posts = posts.filter(p=>p.id!==id);
+  toast('已删除');
+  renderAdminList(); updateAdminStats();
+}
+
+// ======================== 编辑器 ========================
+let editingId = null;
+
+function insertMd(before, after){
+  const ta = document.getElementById('f-body');
+  const start = ta.selectionStart, end = ta.selectionEnd;
+  const text = ta.value.substring(start, end);
+  ta.value = ta.value.substring(0, start) + before + text + after + ta.value.substring(end);
+  ta.focus();
+  ta.selectionStart = start + before.length;
+  ta.selectionEnd = start + before.length + text.length;
+}
+
+function insertTable(){
+  const rows = prompt('表格行数：','3');
+  const cols = prompt('表格列数：','3');
+  if(!rows||!cols) return;
+  let t = '|' + ' 列'.repeat(parseInt(cols)) + ' |\n';
+  t += '|' + ' --- |'.repeat(parseInt(cols)) + '\n';
+  for(let i=0;i<parseInt(rows)-1;i++){
+    t += '|' + ' 内容 |'.repeat(parseInt(cols)) + '\n';
+  }
+  insertMd(t, '');
+}
+
+function previewPost(){
+  const body = document.getElementById('f-body').value;
+  const preview = document.getElementById('editor-preview');
+  if(preview.style.display === 'none'){
+    preview.innerHTML = md2html(body);
+    preview.style.display = 'block';
+  } else {
+    preview.style.display = 'none';
+  }
+}
+
+function clearEditor(){
+  editingId = null;
+  document.getElementById('editor-title-label').textContent = '✏️ 写新文章';
+  document.getElementById('edit-id').value = '';
+  document.getElementById('f-title').value = '';
+  document.getElementById('f-cat').value = '';
+  document.getElementById('f-tags').value = '';
+  document.getElementById('f-cover').value = '';
+  document.getElementById('f-body').value = '';
+  document.getElementById('editor-preview').style.display = 'none';
+}
+
+function editPost(id){
+  const p = DB.posts.find(p=>p.id===id);
+  if(!p) return;
+  editingId = id;
+  document.getElementById('editor-title-label').textContent = '✏️ 编辑文章';
+  document.getElementById('edit-id').value = id;
+  document.getElementById('f-title').value = p.title;
+  document.getElementById('f-cat').value = p.cat||'';
+  document.getElementById('f-tags').value = (p.tags||[]).join(',');
+  document.getElementById('f-cover').value = p.cover||'';
+  document.getElementById('f-body').value = p.body||'';
+  document.getElementById('editor-preview').style.display = 'none';
+  switchTab('new', document.querySelector('.admin-tab:nth-child(2)'));
+  window.scrollTo(0,0);
+}
+
+function newPost(){
+  clearEditor();
+  switchTab('new', document.querySelector('.admin-tab:nth-child(2)'));
+  window.scrollTo(0,0);
+}
+
+function cancelEdit(){
+  clearEditor();
+  switchTab('posts', document.querySelector('.admin-tab:first-child'));
+}
+
+function savePost(asDraft){
+  const title = document.getElementById('f-title').value.trim();
+  const cat = document.getElementById('f-cat').value.trim();
+  const tags = document.getElementById('f-tags').value.split(',').map(t=>t.trim()).filter(Boolean);
+  const cover = document.getElementById('f-cover').value.trim();
+  const body = document.getElementById('f-body').value;
+  
+  if(!title){ toast('请输入文章标题'); return; }
+  if(!body){ toast('请输入文章内容'); return; }
+  
+  const posts = DB.posts;
+  const now = new Date().toISOString().slice(0,10);
+  
+  if(editingId){
+    const p = posts.find(p=>p.id===editingId);
+    if(p){
+      p.title=title; p.cat=cat; p.tags=tags; p.cover=cover||'📝'; p.body=body;
+      p.draft=!!asDraft;
+      if(!asDraft && !p.date) p.date = now;
+      DB.posts = posts;
+    }
+  } else {
+    const maxId = posts.length>0 ? Math.max(...posts.map(p=>p.id)) : 0;
+    posts.push({
+      id: maxId+1, title, cat, tags, cover:cover||'📝', date:now,
+      views:0, top:false, draft:!!asDraft, body
+    });
+    DB.posts = posts;
+  }
+  
+  toast(asDraft?'草稿已保存':'文章已发布！');
+  clearEditor();
+  switchTab('posts', document.querySelector('.admin-tab:first-child'));
+  updateAdminStats();
+}
+
+// ======================== 简单Markdown渲染（用于后台预览） ========================
+function md2html(text){
+  if(!text) return '';
+  let html = text;
+  // 代码块
+  html = html.replace(/```(\w*)\n([\s\S]*?)```/g, '<pre style="background:#2d2d2d;color:#f8f8f2;padding:1rem;border-radius:8px;overflow-x:auto"><code>$2</code></pre>');
+  // 图片
+  html = html.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" style="max-width:100%;border-radius:8px;margin:1rem 0">');
+  // 链接
+  html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" style="color:var(--pink-deep)" target="_blank">$1</a>');
+  // 标题
+  html = html.replace(/^#### (.+)$/gm, '<h5 style="margin:1rem 0 .5rem">$1</h5>');
+  html = html.replace(/^### (.+)$/gm, '<h4 style="margin:1.2rem 0 .5rem">$1</h4>');
+  html = html.replace(/^## (.+)$/gm, '<h3 style="margin:1.5rem 0 .5rem;color:var(--pink-deep)">$1</h3>');
+  html = html.replace(/^# (.+)$/gm, '<h2 style="margin:1.8rem 0 .5rem;color:var(--pink-deep)">$1</h2>');
+  // 加粗斜体
+  html = html.replace(/\*\*\*(.+?)\*\*\*/g, '<b><i>$1</i></b>');
+  html = html.replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
+  html = html.replace(/\*(.+?)\*/g, '<i>$1</i>');
+  // 引用
+  html = html.replace(/^> (.+)$/gm, '<blockquote style="border-left:3px solid var(--pink);padding:.5rem 1rem;margin:.5rem 0;background:var(--pink-pale);border-radius:0 8px 8px 0">$1</blockquote>');
+  // 表格
+  html = html.replace(/^\|(.+)\|\n\|[-| ]+\|\n((?:\|.+\|\n)*)/gm, function(m,h,b){
+    const headers = h.split('|').map(s=>s.trim()).filter(Boolean);
+    const rows = b.trim().split('\n').map(r=>r.split('|').map(s=>s.trim()).filter(Boolean));
+    let t = '<table style="width:100%;border-collapse:collapse;margin:1rem 0"><thead><tr>';
+    headers.forEach(h=>t+='<th style="border:1px solid var(--border);padding:.5rem;background:var(--pink-pale)">'+h+'</th>');
+    t+='</tr></thead><tbody>';
+    rows.forEach(r=>{t+='<tr>';r.forEach(c=>t+='<td style="border:1px solid var(--border);padding:.5rem">'+c+'</td>');t+='</tr>'});
+    t+='</tbody></table>';
+    return t;
+  });
+  // 分割线
+  html = html.replace(/^---$/gm, '<hr style="border:none;border-top:2px solid var(--border);margin:1.5rem 0">');
+  // 无序列表
+  html = html.replace(/^- (.+)$/gm, '<li style="margin-left:1.5rem">$1</li>');
+  // 有序列表
+  html = html.replace(/^\d+\. (.+)$/gm, '<li style="margin-left:1.5rem">$1</li>');
+  // 段落
+  html = '<p>'+html.replace(/\n\n/g, '</p><p>').replace(/\n/g, '<br>')+'</p>';
+  return html;
+}
+
+// ======================== 评论管理 ========================
+function renderAdminComments(){
+  const comments = DB.comments;
+  let total = 0;
+  let html = '';
+  for(const [postId, arr] of Object.entries(comments)){
+    const post = DB.posts.find(p=>p.id===parseInt(postId));
+    const postTitle = post ? post.title : '未知文章(ID:'+postId+')';
+    if(arr.length === 0) continue;
+    total += arr.length;
+    html += '<div class="widget"><h4 style="margin-bottom:.5rem;color:var(--purple)">📄 '+escHtml(postTitle)+'</h4>';
+    arr.forEach((c,i)=>{
+      html += '<div class="comment-item">'+
+        '<span class="comment-del" onclick="deleteComment('+postId+','+i+')">🗑️</span>'+
+        '<div class="comment-meta">'+escHtml(c.name||'匿名')+' · '+new Date(c.time).toLocaleString('zh-CN')+'</div>'+
+        '<div class="comment-body">'+escHtml(c.body||'')+'</div>'+
+      '</div>';
+    });
+    html += '</div>';
+  }
+  document.getElementById('admin-comments-list').innerHTML = html || '<p style="color:var(--text-muted);text-align:center;padding:2rem">暂无评论</p>';
+}
+
+function deleteComment(postId, i){
+  if(!confirm('确定删除这条评论？')) return;
+  const comments = DB.comments;
+  if(comments[postId]){
+    comments[postId].splice(i,1);
+    if(comments[postId].length===0) delete comments[postId];
+    DB.comments = comments;
+  }
+  renderAdminComments();
+  toast('评论已删除');
+}
+
+// ======================== 网站设置 ========================
+function loadSettings(){
+  const cfg = DB.cfg;
+  document.getElementById('s-title').value = cfg.title||'';
+  document.getElementById('s-sub').value = cfg.sub||'';
+  document.getElementById('s-bio').value = cfg.bio||'';
+  document.getElementById('s-email').value = cfg.email||'';
+  document.getElementById('s-ppp').value = cfg.ppp||5;
+  document.getElementById('s-startDate').value = cfg.startDate||'';
+}
+
+function saveSettings(){
+  DB.cfg = {
+    title: document.getElementById('s-title').value.trim(),
+    sub: document.getElementById('s-sub').value.trim(),
+    bio: document.getElementById('s-bio').value.trim(),
+    email: document.getElementById('s-email').value.trim(),
+    ppp: parseInt(document.getElementById('s-ppp').value)||5,
+    startDate: document.getElementById('s-startDate').value
+  };
+  toast('⚙️ 设置已保存，刷新博客首页即可生效');
+}
+
+// ======================== 密码修改 ========================
+async function changePassword(){
+  const old = document.getElementById('pw-old').value;
+  const nw = document.getElementById('pw-new').value;
+  const cf = document.getElementById('pw-confirm').value;
+  
+  if(!old || !nw || !cf){ toast('请填写所有字段'); return; }
+  if(nw.length < 6){ toast('新密码至少需要 6 位字符'); return; }
+  if(nw !== cf){ toast('两次输入的新密码不一致'); return; }
+  
+  const oldHash = await sha256(old);
+  const storedHash = DB.pwd || DEFAULT_PWD_HASH;
+  
+  if(oldHash !== storedHash){ toast('❌ 当前密码错误'); return; }
+  
+  const newHash = await sha256(nw);
+  DB.pwd = newHash;
+  toast('🔒 密码已更新！请牢记新密码');
+  document.getElementById('pw-old').value = '';
+  document.getElementById('pw-new').value = '';
+  document.getElementById('pw-confirm').value = '';
+}
+
+// ======================== 数据备份 ========================
+function exportAllData(){
+  const data = {
+    version: 2,
+    exportedAt: new Date().toISOString(),
+    posts: DB.posts,
+    cfg: DB.cfg,
+    comments: DB.comments,
+    stats: DB.stats
+  };
+  const blob = new Blob([JSON.stringify(data, null, 2)], {type:'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'blog_backup_'+new Date().toISOString().slice(0,10)+'.json';
+  a.click();
+  URL.revokeObjectURL(url);
+  toast('📥 数据已导出');
+}
+
+function importAllData(input){
+  const file = input.files[0];
+  if(!file) return;
+  if(!confirm('⚠️ 导入数据将覆盖当前所有内容（文章、评论、设置），确定继续吗？此操作不可逆！')){ input.value=''; return; }
+  const reader = new FileReader();
+  reader.onload = function(e){
+    try{
+      const data = JSON.parse(e.target.result);
+      if(data.posts) DB.posts = data.posts;
+      if(data.cfg) DB.cfg = data.cfg;
+      if(data.comments) DB.comments = data.comments;
+      if(data.stats) DB.stats = data.stats;
+      toast('📤 数据导入成功！');
+      updateAdminStats();
+      renderAdminList();
+    } catch(err){
+      toast('❌ 文件格式错误，导入失败');
+    }
+  };
+  reader.readAsText(file);
+  input.value = '';
+}
+
+// ======================== 工具函数 ========================
+function escHtml(str){
+  const d = document.createElement('div');
+  d.textContent = str||'';
+  return d.innerHTML;
+}
+
+function countWords(text){
+  return (text||'').replace(/[^\u4e00-\u9fa5a-zA-Z0-9]/g,' ').split(/\s+/).filter(Boolean).length;
+}
+
+// ======================== 快捷键 ========================
+document.addEventListener('keydown', function(e){
+  if(e.ctrlKey && e.key === 's'){
+    e.preventDefault();
+    if(document.getElementById('admin-page').style.display !== 'none'){
+      const activePanel = document.querySelector('.admin-panel.active');
+      if(activePanel && activePanel.id === 'panel-new'){
+        savePost(true);
+      }
+    }
+  }
+});
+
+// ======================== 初始化 ========================
+initDefaultPassword().then(()=>{
+  // 检查是否已登录
+  if(DB.loggedIn){
+    showAdmin();
+  }
+  updateAdminStats();
+  renderAdminList();
+  
+  // 检查锁定状态提示
+  const lockInfo = getLockoutInfo();
+  if(lockInfo.lockedUntil > Date.now()){
+    const remainMin = Math.ceil((lockInfo.lockedUntil - Date.now()) / 60000);
+    document.getElementById('login-locked').textContent = '⏳ 登录次数过多，请等待 ' + remainMin + ' 分钟后再试';
+    document.getElementById('login-locked').style.display = 'block';
+  }
+});
+</script>
+</body>
+</html>
