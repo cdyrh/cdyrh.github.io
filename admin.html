@@ -367,6 +367,20 @@ const DB = {
   set draft(v){if(v===null)localStorage.removeItem(this.KEY_DRAFT);else localStorage.setItem(this.KEY_DRAFT,JSON.stringify(v))}
 };
 
+// ======================== 强制重置（URL 参数 ?reset） ========================
+(function(){
+  if(location.search.includes('reset')){
+    localStorage.removeItem('blog_lockout');
+    localStorage.removeItem('blog_auth');
+    sessionStorage.removeItem('blog_login');
+    console.log('🔧 已重置：清除 lockout + auth，重新初始化');
+    // 去掉 ?reset 参数，避免重复重置
+    if(history.replaceState){
+      history.replaceState(null,'',location.pathname + location.search.replace(/[?&]reset[^&]*/,'').replace(/^\?$/,''));
+    }
+  }
+})();
+
 // ======================== SHA-256 哈希 ========================
 // 纯 JS SHA-256 实现（兼容 IE/360兼容模式等不支持 crypto.subtle 的浏览器）
 function sha256PureJS(text){
