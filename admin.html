@@ -287,6 +287,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC
           <input class="form-control" id="s-startDate" type="date">
         </div>
         <button class="btn btn-primary" onclick="saveSettings()">💾 保存设置</button>
+        <div style="margin-top:1rem;padding:.8rem 1rem;background:var(--bg);border-radius:var(--radius-sm);font-family:monospace;font-size:.82rem;line-height:1.6">
+          <div style="color:var(--text-muted);margin-bottom:.4rem">📋 存储验证（当前 localStorage 值）：</div>
+          <div id="cfg-verify-display" style="color:var(--text)">点击 "保存设置" 后自动更新</div>
+        </div>
       </div>
     </div>
 
@@ -791,6 +795,7 @@ function loadSettings(){
     document.getElementById('s-ppp').value = cfg.ppp||5;
     document.getElementById('s-startDate').value = cfg.startDate||'';
     console.log('📖 loadSettings: ppp=' + cfg.ppp + ', raw localStorage ppp=' + (JSON.parse(localStorage.getItem(DB.KEY_CFG)||'{}').ppp||'?'));
+    showCfgVerify();
   } catch(e){
     console.error('loadSettings error:', e);
     toast('❌ 加载设置失败：' + e.message);
@@ -807,17 +812,77 @@ function saveSettings(){
       ppp: parseInt(document.getElementById('s-ppp').value)||5,
       startDate: document.getElementById('s-startDate').value
     };
+    
+    // 方法1: 通过 setter 写入
     DB.cfg = newCfg;
-    // 验证写入
-    const verify = JSON.parse(localStorage.getItem(DB.KEY_CFG)||'{}');
-    console.log('🔧 saveSettings: ppp=' + newCfg.ppp + ', saved=' + (verify.ppp||'?')); 
-    if(verify.ppp !== newCfg.ppp){
-      console.error('⚠️ localStorage 写入验证失败！请检查浏览器存储空间');
+    
+    // 方法2: 再直接 setItem 一次（双保险）
+    localStorage.setItem(DB.KEY_CFG, JSON.stringify(newCfg));
+    
+    // 多层验证
+    const rawItem = localStorage.getItem(DB.KEY_CFG);
+    const verify = rawItem ? JSON.parse(rawItem) : {};
+    const pppMatch = (rawItem||'').match(/"ppp"\s*:\s*(\d+)/);
+    const regexPpp = pppMatch ? parseInt(pppMatch[1]) : null;
+    
+    console.log('🔧 saveSettings: 输入ppp=' + newCfg.ppp);
+    console.log('🔧 saveSettings: setter后getItem=', rawItem);
+    console.log('🔧 saveSettings: verify.ppp=' + verify.ppp + ', regex.ppp=' + regexPpp);
+    console.log('🔧 saveSettings: key=' + DB.KEY_CFG + ', length=' + rawItem.length + ' bytes');
+    
+    if(verify.ppp !== newCfg.ppp || regexPpp !== newCfg.ppp){
+      console.error('⚠️ 保存验证失败！input=' + newCfg.ppp + ', verify.ppp=' + verify.ppp + ', regex.ppp=' + regexPpp);
+      toast('❌ 保存验证失败，请查看控制台（F12）');
+      return;
     }
-    toast('⚙️ 设置已保存（ppp=' + newCfg.ppp + '），刷新博客首页即可生效');
+    
+    toast('⚙️ 设置已保存！（ppp=' + newCfg.ppp + '），刷新博客首页即可生效');
+    showCfgVerify();
   } catch(e){
     console.error('saveSettings error:', e);
     toast('❌ 保存失败：' + e.message);
+  }
+}
+
+// 诊断函数：在控制台运行 checkSettings() 查看当前存储的配置
+window.checkSettings = function(){
+  const raw = localStorage.getItem('blog_cfg');
+  console.log('=== 配置诊断 ===');
+  console.log('1. blog_cfg 原始值:', raw);
+  if(raw){
+    try{
+      const obj = JSON.parse(raw);
+      console.log('2. 解析结果:', obj);
+      console.log('3. ppp =', obj.ppp, '(type:', typeof obj.ppp + ')');
+    } catch(e){
+      console.log('2. 解析失败: ' + e.message);
+    }
+  } else {
+    console.log('2. blog_cfg 不存在（null）');
+  }
+  console.log('3. 所有 localStorage keys:', Object.keys(localStorage).filter(k=>k.startsWith('blog_')));
+  console.log('4. 当前 origin:', location.protocol + '//' + location.host);
+  return raw;
+};
+
+// 在设置面板显示当前存储的配置值
+function showCfgVerify(){
+  const el = document.getElementById('cfg-verify-display');
+  if(!el) return;
+  const raw = localStorage.getItem('blog_cfg');
+  const origin = location.protocol + '//' + location.host;
+  if(raw){
+    try{
+      const obj = JSON.parse(raw);
+      el.innerHTML = '✅ 存储正常<br>ppp = <b style="color:var(--pink-deep)">' + obj.ppp + '</b> (每页' + obj.ppp + '篇文章)<br>origin: ' + origin + '<br><span style="font-size:.72rem;color:var(--text-muted)">' + raw.substring(0,80) + '...</span>';
+      el.style.color = 'var(--text)';
+    } catch(e){
+      el.innerHTML = '⚠️ 解析失败: ' + e.message;
+      el.style.color = '#ff4757';
+    }
+  } else {
+    el.innerHTML = '❌ <b>blog_cfg 不存在</b><br>origin: ' + origin + '<br><span style="font-size:.76rem">请先点击"💾 保存设置"</span>';
+    el.style.color = '#ff4757';
   }
 }
 
