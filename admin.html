@@ -373,7 +373,8 @@ async function sha256(text){
 }
 
 // ======================== 默认密码哈希（admin20230731） ========================
-const DEFAULT_PWD_HASH = 'b03c5d7a6d9e82c1e2bb9f291e7e8b2075a4e6f791fc28f8d38c1e8a0bc7d2e4';
+const OLD_BROKEN_HASH = 'b03c5d7a6d9e82c1e2bb9f291e7e8b2075a4e6f791fc28f8d38c1e8a0bc7d2e4';
+const DEFAULT_PWD_HASH = '7be804cadeced87af4cd04bcc65f3df455edda2bae5406646a8945ad23910639';
 
 // ======================== 登录锁定 ========================
 const MAX_ATTEMPTS = 5;
@@ -458,8 +459,13 @@ async function doLogin(){
 
 // ======================== 首次设置默认密码哈希 ========================
 async function initDefaultPassword(){
-  if(!DB.pwd){
+  const stored = DB.pwd;
+  if(!stored){
     // 首次使用：将默认密码哈希存入
+    DB.pwd = DEFAULT_PWD_HASH;
+  } else if(stored === OLD_BROKEN_HASH){
+    // 修复旧版本错误哈希
+    console.log('检测到旧版错误密码哈希，已自动修复');
     DB.pwd = DEFAULT_PWD_HASH;
   }
 }
