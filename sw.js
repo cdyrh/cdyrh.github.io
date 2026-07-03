@@ -1,6 +1,6 @@
 // Service Worker for 池帥の亦殿
 // Cache strategy: Network-first for pages, Cache-first for static assets
-const CACHE_NAME = 'blog-v1-20260703';
+const CACHE_NAME = 'blog-v2-20260703';
 
 const STATIC_ASSETS = [
   '/',
