@@ -3195,6 +3195,34 @@ function heroSearch(){
   window.scrollTo({top:500,behavior:'smooth'});
 }
 
+// ======================== 强读配置（绕过可能的 getter 缓存） ========================
+function readCfgRaw(){
+  const raw = localStorage.getItem('blog_cfg');
+  const parsed = raw ? JSON.parse(raw) : null;
+  console.log('🔍 readCfgRaw: raw localStorage =', raw);
+  console.log('🔍 readCfgRaw: parsed =', parsed);
+  return parsed;
+}
+
+function getPpp(){
+  // 方法1: 通过 DB.cfg getter
+  const cfg1 = DB.cfg;
+  // 方法2: 直接读 localStorage
+  const raw = readCfgRaw();
+  const ppp2 = (raw && typeof raw.ppp === 'number') ? raw.ppp : null;
+  // 方法3: 从原始 JSON 字符串中提取（最底层验证）
+  const rawStr = localStorage.getItem('blog_cfg') || '';
+  const m = rawStr.match(/"ppp"\s*:\s*(\d+)/);
+  const ppp3 = m ? parseInt(m[1]) : null;
+  
+  console.log('🔍 getPpp: DB.cfg.ppp=' + cfg1.ppp + ', raw.ppp=' + ppp2 + ', regex.ppp=' + ppp3);
+  
+  // 优先用直接提取的值（最可靠）
+  if(ppp3 !== null && ppp3 > 0 && ppp3 <= 50) return ppp3;
+  if(ppp2 !== null && ppp2 > 0 && ppp2 <= 50) return ppp2;
+  return cfg1.ppp || 5;
+}
+
 function renderHome(){
   applyConfig();
   renderStats();
@@ -3214,8 +3242,8 @@ function renderHome(){
     (p.tags||[]).some(t=>t.toLowerCase().includes(q))
   );
 
-  const ppp = cfg.ppp||5;
-  console.log('📖 renderHome: cfg.ppp=' + cfg.ppp + ', using ppp=' + ppp + ', total posts=' + posts.length);
+  const ppp = getPpp();
+  console.log('📖 renderHome: final ppp=' + ppp + ', total posts=' + posts.length);
   const total = Math.ceil(posts.length/ppp)||1;
   if(currentPage>total) currentPage=1;
   const page = posts.slice((currentPage-1)*ppp, currentPage*ppp);
@@ -3843,9 +3871,33 @@ if('serviceWorker' in navigator){
   });
 }
 
+// ======================== 诊断函数 ========================
+window.checkCfg = function(){
+  const raw = localStorage.getItem('blog_cfg');
+  console.log('========== 配置诊断 (index) ==========');
+  console.log('1. blog_cfg 原始值:', raw);
+  console.log('2. 所有 blog_* keys:', Object.keys(localStorage).filter(k=>k.startsWith('blog_')));
+  console.log('3. 当前 origin:', location.protocol + '//' + location.host + location.pathname);
+  console.log('4. DB.cfg (通过getter):', DB.cfg);
+  if(raw){
+    try{
+      const obj = JSON.parse(raw);
+      console.log('5. 直接解析 ppp =', obj.ppp, '(type:', typeof obj.ppp + ')');
+    } catch(e){
+      console.log('5. 解析失败: ' + e.message);
+    }
+  } else {
+    console.log('5. blog_cfg 不存在 — 将使用默认值 ppp=5');
+  }
+  console.log('========================================');
+  return raw;
+};
+
 // ======================== 初始化 ========================
 window.addEventListener('DOMContentLoaded',()=>{
   try{
+    // 首页诊断
+    window.checkCfg();
     initTheme();
     initStats();
     applyConfig();
