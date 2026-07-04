@@ -6,7 +6,7 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<meta name="build-version" content="2026-07-04T11:10">
+<meta name="build-version" content="2026-07-04T23:50">
 <title>池帥の亦殿 🌸</title>
 <meta name="description" id="meta-desc" content="池帥的个人博客，记录生活，分享美好">
 <meta name="keywords" id="meta-kw" content="博客,生活,技术,随笔">
@@ -550,6 +550,46 @@ textarea.form-control{resize:vertical;min-height:300px;line-height:1.7;font-fami
 .rss-link{display:flex;align-items:center;gap:.4rem;color:var(--orange);
   font-size:.82rem;text-decoration:none;cursor:pointer}
 .rss-link:hover{color:var(--pink-deep)}
+
+/* ===== 全网比价 ===== */
+@keyframes pcSlideIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.pc-box{display:flex;flex-direction:column;gap:.6rem}
+.pc-desc{font-size:.82rem;color:var(--text-light);margin:0;line-height:1.5}
+.pc-input-row{display:flex;gap:.5rem}
+.pc-input{flex:1;padding:.5rem .8rem;border-radius:var(--radius-sm);
+  border:1.5px solid var(--border);font-family:var(--font);font-size:.85rem;
+  color:var(--text);background:var(--card);outline:none;transition:border-color .2s}
+.pc-input:focus{border-color:var(--pink-light)}
+.pc-input::placeholder{color:var(--text-muted)}
+.pc-btn{background:linear-gradient(135deg,var(--pink),var(--purple));
+  border:none;border-radius:var(--radius-sm);color:#fff;padding:.5rem 1rem;
+  cursor:pointer;font-family:var(--font);font-size:.82rem;font-weight:600;
+  white-space:nowrap;transition:opacity .2s,transform .1s}
+.pc-btn:hover{opacity:.88}
+.pc-btn:active{transform:scale(.96)}
+.pc-tags{display:flex;flex-wrap:wrap;gap:.3rem}
+.pc-tag{padding:.15rem .55rem;border-radius:20px;font-size:.74rem;
+  background:var(--pink-pale);color:var(--pink-deep);cursor:pointer;
+  transition:all .2s;user-select:none}
+.pc-tag:hover{background:linear-gradient(135deg,var(--pink-light),var(--purple-light));color:#fff}
+.pc-results{display:none;flex-direction:column;gap:.35rem;margin-top:.2rem}
+.pc-results.show{display:flex}
+.pc-platform{display:flex;align-items:center;gap:.55rem;padding:.5rem .7rem;
+  border-radius:var(--radius-sm);border:1.5px solid var(--border);
+  background:var(--card);text-decoration:none;cursor:pointer;
+  transition:all .2s;animation:pcSlideIn .3s ease both}
+.pc-platform:hover{border-color:var(--pink-light);box-shadow:0 2px 12px rgba(200,100,200,.1);transform:translateX(3px)}
+.pc-platform-icon{font-size:1.15rem;width:26px;text-align:center;flex-shrink:0}
+.pc-platform-info{flex:1;min-width:0;display:flex;flex-direction:column;gap:.05rem}
+.pc-platform-name{font-size:.83rem;font-weight:600;color:var(--text)}
+.pc-platform-hint{font-size:.7rem;color:var(--text-muted)}
+.pc-platform-arrow{color:var(--pink-deep);font-size:.76rem;white-space:nowrap;font-weight:600}
+.pc-all-btn{margin-top:.3rem;padding:.5rem;border:none;border-radius:var(--radius-sm);
+  background:linear-gradient(135deg,var(--mint),var(--mint-light));
+  color:#fff;font-size:.8rem;font-weight:600;cursor:pointer;font-family:var(--font);
+  transition:opacity .2s,transform .1s}
+.pc-all-btn:hover{opacity:.88}
+.pc-all-btn:active{transform:scale(.97)}
 </style>
 
 <!-- Open Graph / 社交分享 -->
@@ -623,6 +663,25 @@ textarea.form-control{resize:vertical;min-height:300px;line-height:1.7;font-fami
           <div class="stat-item"><div class="stat-num" id="stat-posts">0</div><div class="stat-label">文章</div></div>
           <div class="stat-item"><div class="stat-num" id="stat-cats">0</div><div class="stat-label">分类</div></div>
           <div class="stat-item"><div class="stat-num" id="stat-days">0</div><div class="stat-label">天</div></div>
+        </div>
+      </div>
+
+      <!-- 全网比价 -->
+      <div class="widget fade-in stagger-1">
+        <div class="widget-title">🔍 全网比价</div>
+        <div class="pc-box">
+          <p class="pc-desc">输入商品名，一键对比全网价格</p>
+          <div class="pc-input-row">
+            <input class="pc-input" id="pc-keyword" placeholder="例如：空气炸锅" type="text" onkeydown="if(event.key==='Enter')doPriceCompare()">
+            <button class="pc-btn" onclick="doPriceCompare()">比价</button>
+          </div>
+          <div class="pc-tags">
+            <span class="pc-tag" onclick="quickFill('iPhone 16')">iPhone 16</span>
+            <span class="pc-tag" onclick="quickFill('空气炸锅')">空气炸锅</span>
+            <span class="pc-tag" onclick="quickFill('机械键盘')">机械键盘</span>
+            <span class="pc-tag" onclick="quickFill('蓝牙耳机')">蓝牙耳机</span>
+          </div>
+          <div id="pc-results" class="pc-results"></div>
         </div>
       </div>
 
@@ -3936,6 +3995,51 @@ function shareWeibo(url,title){ window.open(`https://service.weibo.com/share/sha
 function copyLink(){
   const url=location.href;
   navigator.clipboard?navigator.clipboard.writeText(url).then(()=>toast('🔗 链接已复制')):(()=>{const ta=document.createElement('textarea');ta.value=url;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);toast('🔗 链接已复制');})();
+}
+
+// ======================== 全网比价 ========================
+var PC_PLATFORMS = [
+  {icon:'🛒', name:'淘宝',   hint:'综合 · 销量排序',   url:'https://s.taobao.com/search?q='},
+  {icon:'📦', name:'京东',   hint:'自营 · 正品保障',   url:'https://search.jd.com/Search?keyword='},
+  {icon:'🟠', name:'拼多多', hint:'百亿补贴 · 低价',   url:'https://mobile.yangkeduo.com/goods.html?search_key='},
+  {icon:'💎', name:'唯品会', hint:'品牌特卖 · 折扣',   url:'https://www.vip.com/search?keyword='},
+  {icon:'🐱', name:'天猫',   hint:'正品 · 品牌旗舰',   url:'https://list.tmall.com/search_product.htm?q='},
+  {icon:'🏬', name:'苏宁',   hint:'家电数码 · 快递',   url:'https://search.suning.com/'},
+  {icon:'🏭', name:'1688',   hint:'批发价 · 源头工厂', url:'https://s.1688.com/selloffer/offer_search.htm?keywords='},
+  {icon:'🌎', name:'别样',   hint:'海外比价 · 直邮',   url:'https://www.biesthu.com/search?q='}
+];
+function quickFill(kw){
+  var inp=document.getElementById('pc-keyword');
+  inp.value=kw; doPriceCompare();
+}
+function doPriceCompare(){
+  var kw=document.getElementById('pc-keyword').value.trim();
+  if(!kw){toast('请输入商品名称～');return;}
+  var enc=encodeURIComponent(kw);
+  var box=document.getElementById('pc-results');
+  var html='';
+  PC_PLATFORMS.forEach(function(p,i){
+    var u = p.name==='苏宁' ? p.url+enc+'/' : p.url+enc;
+    html+='<a class="pc-platform" href="'+u+'" target="_blank" rel="noopener" style="animation-delay:'+(i*0.05)+'s">'
+      +'<span class="pc-platform-icon">'+p.icon+'</span>'
+      +'<span class="pc-platform-info">'
+      +'<span class="pc-platform-name">'+p.name+'</span>'
+      +'<span class="pc-platform-hint">'+p.hint+'</span>'
+      +'</span>'
+      +'<span class="pc-platform-arrow">去比价 →</span>'
+      +'</a>';
+  });
+  html+='<button class="pc-all-btn" onclick="openAllCompare(\''+kw.replace(/'/g,"\\'")+'\')">🚀 一键打开全部比价</button>';
+  box.innerHTML=html;
+  box.classList.add('show');
+  toast('已生成 '+PC_PLATFORMS.length+' 个平台比价链接 👇');
+}
+function openAllCompare(kw){
+  var enc=encodeURIComponent(kw);
+  PC_PLATFORMS.forEach(function(p){
+    var u = p.name==='苏宁' ? p.url+enc+'/' : p.url+enc;
+    window.open(u,'_blank');
+  });
 }
 
 // ======================== 订阅 ========================
