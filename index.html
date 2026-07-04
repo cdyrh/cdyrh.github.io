@@ -6,7 +6,7 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<meta name="build-version" content="2026-07-05T00:05">
+<meta name="build-version" content="2026-07-05T00:15">
 <title>池帥の亦殿 🌸</title>
 <meta name="description" id="meta-desc" content="池帥的个人博客，记录生活，分享美好">
 <meta name="keywords" id="meta-kw" content="博客,生活,技术,随笔">
@@ -4020,9 +4020,9 @@ function copyLink(){
 
 // 聚合比价网站（已汇总各平台价格，无需登录即可查看）
 var PC_AGGREGATORS = [
-  {icon:'🏆', name:'慢慢买', hint:'全网比价 · 价格历史 · 降价提醒', url:'https://www.manmanbuy.com/search.aspx?key='},
-  {icon:'💰', name:'什么值得买', hint:'好价爆料 · 网友评测 · 优惠券', url:'https://search.smzdm.com/?c=home&s='},
-  {icon:'📊', name:'历史价格查询', hint:'查历史最低价 · 价格走势图', url:'https://www.manmanbuy.com/history.aspx?key='}
+  {icon:'💰', name:'什么值得买', hint:'好价爆料 · 网友评测 · 优惠券 · 免登录', url:'https://search.smzdm.com/?c=home&s='},
+  {icon:'🌍', name:'亚马逊海外购', hint:'海外正品 · 全球比价 · 直邮中国', url:'https://www.amazon.com/s?k='},
+  {icon:'📊', name:'慢慢买', hint:'查历史价格走势 · 降价提醒', url:'https://www.manmanbuy.com/'}
 ];
 
 // 各大购物平台直达
@@ -4034,7 +4034,8 @@ var PC_PLATFORMS = [
   {icon:'🐱', name:'天猫',   hint:'正品 · 品牌旗舰',   url:'https://list.tmall.com/search_product.htm?q='},
   {icon:'🏬', name:'苏宁',   hint:'家电数码 · 快递',   url:'https://search.suning.com/'},
   {icon:'🏭', name:'1688',   hint:'批发价 · 源头工厂', url:'https://s.1688.com/selloffer/offer_search.htm?keywords='},
-  {icon:'🌎', name:'别样',   hint:'海外比价 · 直邮',   url:'https://www.biesthu.com/search?q='}
+  {icon:'🌎', name:'别样',   hint:'海外比价 · 直邮',   url:'https://www.biesthu.com/search?q='},
+  {icon:'🌍', name:'亚马逊', hint:'海外购 · 全球直邮', url:'https://www.amazon.com/s?k='}
 ];
 
 function quickFill(kw){
@@ -4052,7 +4053,8 @@ function doPriceCompare(){
   // 聚合比价（主推 · 免登录看全网价格）
   html+='<div class="pc-agg-label">⚡ 一键查看全网价格（免登录）</div>';
   PC_AGGREGATORS.forEach(function(p,i){
-    html+='<a class="pc-agg-card" href="'+p.url+enc+'" target="_blank" rel="noopener" style="animation-delay:'+(i*0.06)+'s">'
+    var link = p.url.indexOf('=')>-1 ? p.url+enc : p.url;
+    html+='<a class="pc-agg-card" href="'+link+'" target="_blank" rel="noopener" style="animation-delay:'+(i*0.06)+'s">'
       +'<span class="pc-agg-icon">'+p.icon+'</span>'
       +'<span class="pc-agg-info">'
       +'<span class="pc-agg-name">'+p.name+'</span>'
@@ -4082,11 +4084,11 @@ function doPriceCompare(){
   html+='</div>';
 
   // 说明
-  html+='<p class="pc-note">💡「慢慢买」已汇总淘宝/京东/拼多多/天猫等全网价格，点击即可查看各平台实时报价，无需登录任何账号。「什么值得买」可查看网友爆料好价和评测，「历史价格查询」可看价格走势。</p>';
+  html+='<p class="pc-note">💡「什么值得买」可查看网友爆料好价和评测，无需登录。「亚马逊海外购」可直接搜索海外正品价格。「慢慢买」打开后可在搜索框输入商品名或粘贴商品链接查询历史价格走势。</p>';
 
   box.innerHTML=html;
   box.classList.add('show');
-  toast('已生成比价链接 👇 优先使用「慢慢买」查看全网价格');
+  toast('已生成比价链接 👇 优先使用「什么值得买」和「亚马逊」查看价格');
 }
 
 function toggleDirectList(btn){
@@ -4103,7 +4105,8 @@ function toggleDirectList(btn){
 function openAllAggregators(kw){
   var enc=encodeURIComponent(kw);
   PC_AGGREGATORS.forEach(function(p){
-    window.open(p.url+enc,'_blank');
+    var link = p.url.indexOf('=')>-1 ? p.url+enc : p.url;
+    window.open(link,'_blank');
   });
 }
 
