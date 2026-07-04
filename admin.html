@@ -280,7 +280,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC
         </div>
         <div class="form-group">
           <label>每页显示文章数</label>
-          <input class="form-control" id="s-ppp" type="number" min="1" max="50" value="5">
+          <input class="form-control" id="s-ppp" type="number" min="1" max="50" value="6">
         </div>
         <div class="form-group">
           <label>建站日期</label>
@@ -348,9 +348,9 @@ const DB = {
   get cfg(){try{return Object.assign({
     title:'池帥の亦殿',sub:'记录生活，分享美好，写下每一个值得被记住的瞬间 ✨',
     bio:'喜欢文艺、捣鼓技术和华丽的普通人 🌙',
-    email:'0d@live.com',ppp:5,
+    email:'0d@live.com',ppp:6,
     startDate: new Date().toISOString().slice(0,10)
-  }, JSON.parse(localStorage.getItem(this.KEY_CFG)||'{}'))}catch(e){console.error('cfg parse error:',e);return {ppp:5,title:'池帥の亦殿'}}},
+  }, JSON.parse(localStorage.getItem(this.KEY_CFG)||'{}'))}catch(e){console.error('cfg parse error:',e);return {ppp:6,title:'池帥の亦殿'}}},
   set cfg(v){localStorage.setItem(this.KEY_CFG,JSON.stringify(v))},
   get pwd(){return localStorage.getItem(this.KEY_AUTH)||''},
   set pwd(v){localStorage.setItem(this.KEY_AUTH,v)},
@@ -861,7 +861,7 @@ function loadSettings(){
     document.getElementById('s-sub').value = cfg.sub||'';
     document.getElementById('s-bio').value = cfg.bio||'';
     document.getElementById('s-email').value = cfg.email||'';
-    document.getElementById('s-ppp').value = cfg.ppp||5;
+    document.getElementById('s-ppp').value = cfg.ppp||6;
     document.getElementById('s-startDate').value = cfg.startDate||'';
     console.log('📖 loadSettings: ppp=' + cfg.ppp + ', raw localStorage ppp=' + (JSON.parse(localStorage.getItem(DB.KEY_CFG)||'{}').ppp||'?'));
     showCfgVerify();
@@ -878,7 +878,7 @@ function saveSettings(){
       sub: document.getElementById('s-sub').value.trim(),
       bio: document.getElementById('s-bio').value.trim(),
       email: document.getElementById('s-email').value.trim(),
-      ppp: parseInt(document.getElementById('s-ppp').value)||5,
+      ppp: parseInt(document.getElementById('s-ppp').value)||6,
       startDate: document.getElementById('s-startDate').value
     };
     
