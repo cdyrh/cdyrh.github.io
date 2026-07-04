@@ -6,7 +6,7 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<meta name="build-version" content="2026-07-05T00:15">
+<meta name="build-version" content="2026-07-05T00:25">
 <title>池帥の亦殿 🌸</title>
 <meta name="description" id="meta-desc" content="池帥的个人博客，记录生活，分享美好">
 <meta name="keywords" id="meta-kw" content="博客,生活,技术,随笔">
@@ -4020,9 +4020,9 @@ function copyLink(){
 
 // 聚合比价网站（已汇总各平台价格，无需登录即可查看）
 var PC_AGGREGATORS = [
+  {icon:'📊', name:'慢慢买', hint:'全网比价 · 历史价格 · 降价提醒 · 免登录', url:'https://s.manmanbuy.com/Default.aspx?key='},
   {icon:'💰', name:'什么值得买', hint:'好价爆料 · 网友评测 · 优惠券 · 免登录', url:'https://search.smzdm.com/?c=home&s='},
-  {icon:'🌍', name:'亚马逊海外购', hint:'海外正品 · 全球比价 · 直邮中国', url:'https://www.amazon.com/s?k='},
-  {icon:'📊', name:'慢慢买', hint:'查历史价格走势 · 降价提醒', url:'https://www.manmanbuy.com/'}
+  {icon:'🌍', name:'亚马逊海外购', hint:'海外正品 · 全球比价 · 直邮中国', url:'https://www.amazon.com/s?k='}
 ];
 
 // 各大购物平台直达
@@ -4084,11 +4084,11 @@ function doPriceCompare(){
   html+='</div>';
 
   // 说明
-  html+='<p class="pc-note">💡「什么值得买」可查看网友爆料好价和评测，无需登录。「亚马逊海外购」可直接搜索海外正品价格。「慢慢买」打开后可在搜索框输入商品名或粘贴商品链接查询历史价格走势。</p>';
+  html+='<p class="pc-note">💡「慢慢买」已汇总淘宝/京东/拼多多/天猫等全网价格，直接显示各平台报价，无需登录。「什么值得买」可查看网友爆料好价和评测。「亚马逊海外购」可搜索海外正品价格。</p>';
 
   box.innerHTML=html;
   box.classList.add('show');
-  toast('已生成比价链接 👇 优先使用「什么值得买」和「亚马逊」查看价格');
+  toast('已生成比价链接 👇 优先点击「慢慢买」一键查看全网价格');
 }
 
 function toggleDirectList(btn){
