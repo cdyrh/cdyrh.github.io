@@ -6,7 +6,7 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<meta name="build-version" content="2026-07-04T23:50">
+<meta name="build-version" content="2026-07-05T00:05">
 <title>池帥の亦殿 🌸</title>
 <meta name="description" id="meta-desc" content="池帥的个人博客，记录生活，分享美好">
 <meta name="keywords" id="meta-kw" content="博客,生活,技术,随笔">
@@ -574,7 +574,24 @@ textarea.form-control{resize:vertical;min-height:300px;line-height:1.7;font-fami
 .pc-tag:hover{background:linear-gradient(135deg,var(--pink-light),var(--purple-light));color:#fff}
 .pc-results{display:none;flex-direction:column;gap:.35rem;margin-top:.2rem}
 .pc-results.show{display:flex}
-.pc-platform{display:flex;align-items:center;gap:.55rem;padding:.5rem .7rem;
+.pc-agg-label{font-size:.76rem;font-weight:700;color:var(--pink-deep);margin-top:.3rem;display:flex;align-items:center;gap:.3rem}
+.pc-agg-card{display:flex;align-items:center;gap:.55rem;padding:.6rem .7rem;
+  border-radius:var(--radius-sm);border:2px solid var(--pink-light);
+  background:linear-gradient(135deg,var(--pink-pale),transparent);text-decoration:none;cursor:pointer;
+  transition:all .2s;animation:pcSlideIn .3s ease both}
+.pc-agg-card:hover{border-color:var(--pink);box-shadow:0 2px 12px rgba(200,100,200,.15);transform:translateX(3px)}
+.pc-agg-icon{font-size:1.3rem;width:30px;text-align:center;flex-shrink:0}
+.pc-agg-info{flex:1;min-width:0;display:flex;flex-direction:column;gap:.05rem}
+.pc-agg-name{font-size:.85rem;font-weight:700;color:var(--text)}
+.pc-agg-hint{font-size:.7rem;color:var(--text-muted)}
+.pc-agg-arrow{color:var(--pink-deep);font-size:.76rem;white-space:nowrap;font-weight:600}
+.pc-direct-toggle{margin-top:.3rem;padding:.4rem;border:none;border-radius:var(--radius-sm);
+  background:var(--pink-pale);color:var(--pink-deep);font-size:.76rem;font-weight:600;
+  cursor:pointer;font-family:var(--font);transition:all .2s;display:flex;align-items:center;justify-content:center;gap:.3rem}
+.pc-direct-toggle:hover{background:var(--pink-light);color:#fff}
+.pc-direct-list{display:none;flex-direction:column;gap:.3rem;margin-top:.3rem}
+.pc-direct-list.show{display:flex}
+.pc-platform{display:flex;align-items:center;gap:.55rem;padding:.45rem .7rem;
   border-radius:var(--radius-sm);border:1.5px solid var(--border);
   background:var(--card);text-decoration:none;cursor:pointer;
   transition:all .2s;animation:pcSlideIn .3s ease both}
@@ -584,6 +601,8 @@ textarea.form-control{resize:vertical;min-height:300px;line-height:1.7;font-fami
 .pc-platform-name{font-size:.83rem;font-weight:600;color:var(--text)}
 .pc-platform-hint{font-size:.7rem;color:var(--text-muted)}
 .pc-platform-arrow{color:var(--pink-deep);font-size:.76rem;white-space:nowrap;font-weight:600}
+.pc-note{font-size:.72rem;color:var(--text-muted);line-height:1.5;margin:.3rem 0 0 0;padding:.4rem .6rem;
+  border-radius:var(--radius-sm);background:var(--bg);border:1px dashed var(--border)}
 .pc-all-btn{margin-top:.3rem;padding:.5rem;border:none;border-radius:var(--radius-sm);
   background:linear-gradient(135deg,var(--mint),var(--mint-light));
   color:#fff;font-size:.8rem;font-weight:600;cursor:pointer;font-family:var(--font);
@@ -670,10 +689,10 @@ textarea.form-control{resize:vertical;min-height:300px;line-height:1.7;font-fami
       <div class="widget fade-in stagger-1">
         <div class="widget-title">🔍 全网比价</div>
         <div class="pc-box">
-          <p class="pc-desc">输入商品名，一键对比全网价格</p>
+          <p class="pc-desc">输入商品名，一键查看全网各平台价格对比</p>
           <div class="pc-input-row">
             <input class="pc-input" id="pc-keyword" placeholder="例如：空气炸锅" type="text" onkeydown="if(event.key==='Enter')doPriceCompare()">
-            <button class="pc-btn" onclick="doPriceCompare()">比价</button>
+            <button class="pc-btn" onclick="doPriceCompare()">一键比价</button>
           </div>
           <div class="pc-tags">
             <span class="pc-tag" onclick="quickFill('iPhone 16')">iPhone 16</span>
@@ -3998,6 +4017,15 @@ function copyLink(){
 }
 
 // ======================== 全网比价 ========================
+
+// 聚合比价网站（已汇总各平台价格，无需登录即可查看）
+var PC_AGGREGATORS = [
+  {icon:'🏆', name:'慢慢买', hint:'全网比价 · 价格历史 · 降价提醒', url:'https://www.manmanbuy.com/search.aspx?key='},
+  {icon:'💰', name:'什么值得买', hint:'好价爆料 · 网友评测 · 优惠券', url:'https://search.smzdm.com/?c=home&s='},
+  {icon:'📊', name:'历史价格查询', hint:'查历史最低价 · 价格走势图', url:'https://www.manmanbuy.com/history.aspx?key='}
+];
+
+// 各大购物平台直达
 var PC_PLATFORMS = [
   {icon:'🛒', name:'淘宝',   hint:'综合 · 销量排序',   url:'https://s.taobao.com/search?q='},
   {icon:'📦', name:'京东',   hint:'自营 · 正品保障',   url:'https://search.jd.com/Search?keyword='},
@@ -4008,32 +4036,77 @@ var PC_PLATFORMS = [
   {icon:'🏭', name:'1688',   hint:'批发价 · 源头工厂', url:'https://s.1688.com/selloffer/offer_search.htm?keywords='},
   {icon:'🌎', name:'别样',   hint:'海外比价 · 直邮',   url:'https://www.biesthu.com/search?q='}
 ];
+
 function quickFill(kw){
   var inp=document.getElementById('pc-keyword');
   inp.value=kw; doPriceCompare();
 }
+
 function doPriceCompare(){
   var kw=document.getElementById('pc-keyword').value.trim();
   if(!kw){toast('请输入商品名称～');return;}
   var enc=encodeURIComponent(kw);
   var box=document.getElementById('pc-results');
   var html='';
+
+  // 聚合比价（主推 · 免登录看全网价格）
+  html+='<div class="pc-agg-label">⚡ 一键查看全网价格（免登录）</div>';
+  PC_AGGREGATORS.forEach(function(p,i){
+    html+='<a class="pc-agg-card" href="'+p.url+enc+'" target="_blank" rel="noopener" style="animation-delay:'+(i*0.06)+'s">'
+      +'<span class="pc-agg-icon">'+p.icon+'</span>'
+      +'<span class="pc-agg-info">'
+      +'<span class="pc-agg-name">'+p.name+'</span>'
+      +'<span class="pc-agg-hint">'+p.hint+'</span>'
+      +'</span>'
+      +'<span class="pc-agg-arrow">查看 →</span>'
+      +'</a>';
+  });
+
+  // 一键打开全部聚合比价
+  html+='<button class="pc-all-btn" onclick="openAllAggregators(\''+kw.replace(/'/g,"\\'")+'\')">🚀 一键打开全部比价</button>';
+
+  // 直达各平台（可折叠）
+  html+='<button class="pc-direct-toggle" onclick="toggleDirectList(this)">▸ 直达各平台搜索</button>';
+  html+='<div id="pc-direct-list" class="pc-direct-list">';
   PC_PLATFORMS.forEach(function(p,i){
     var u = p.name==='苏宁' ? p.url+enc+'/' : p.url+enc;
-    html+='<a class="pc-platform" href="'+u+'" target="_blank" rel="noopener" style="animation-delay:'+(i*0.05)+'s">'
+    html+='<a class="pc-platform" href="'+u+'" target="_blank" rel="noopener" style="animation-delay:'+(i*0.04)+'s">'
       +'<span class="pc-platform-icon">'+p.icon+'</span>'
       +'<span class="pc-platform-info">'
       +'<span class="pc-platform-name">'+p.name+'</span>'
       +'<span class="pc-platform-hint">'+p.hint+'</span>'
       +'</span>'
-      +'<span class="pc-platform-arrow">去比价 →</span>'
+      +'<span class="pc-platform-arrow">搜索 →</span>'
       +'</a>';
   });
-  html+='<button class="pc-all-btn" onclick="openAllCompare(\''+kw.replace(/'/g,"\\'")+'\')">🚀 一键打开全部比价</button>';
+  html+='</div>';
+
+  // 说明
+  html+='<p class="pc-note">💡「慢慢买」已汇总淘宝/京东/拼多多/天猫等全网价格，点击即可查看各平台实时报价，无需登录任何账号。「什么值得买」可查看网友爆料好价和评测，「历史价格查询」可看价格走势。</p>';
+
   box.innerHTML=html;
   box.classList.add('show');
-  toast('已生成 '+PC_PLATFORMS.length+' 个平台比价链接 👇');
+  toast('已生成比价链接 👇 优先使用「慢慢买」查看全网价格');
 }
+
+function toggleDirectList(btn){
+  var list=document.getElementById('pc-direct-list');
+  if(list.classList.contains('show')){
+    list.classList.remove('show');
+    btn.innerHTML='▸ 直达各平台搜索';
+  }else{
+    list.classList.add('show');
+    btn.innerHTML='▾ 直达各平台搜索';
+  }
+}
+
+function openAllAggregators(kw){
+  var enc=encodeURIComponent(kw);
+  PC_AGGREGATORS.forEach(function(p){
+    window.open(p.url+enc,'_blank');
+  });
+}
+
 function openAllCompare(kw){
   var enc=encodeURIComponent(kw);
   PC_PLATFORMS.forEach(function(p){
