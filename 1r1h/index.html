@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>亦然亦航 - 博客</title>
+<meta name="description" content="记录双胞胎帅哥亦然与亦航的日常">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  background:#f5f0eb;color:#333;line-height:1.8;min-height:100vh;
+}
+.header{
+  background:linear-gradient(135deg,#2c3e50,#34495e);
+  color:#fff;padding:32px 20px;text-align:center;
+}
+.header h1{font-size:1.6rem;font-weight:600;letter-spacing:2px}
+.header p{font-size:.85rem;opacity:.75;margin-top:6px}
+.header .badge{
+  display:inline-block;background:rgba(255,255,255,.15);border-radius:12px;
+  padding:3px 12px;font-size:.75rem;margin-top:10px
+}
+.container{max-width:720px;margin:0 auto;padding:20px 16px 40px}
+.article-card{
+  background:#fff;border-radius:12px;padding:18px 20px;margin-bottom:14px;
+  box-shadow:0 2px 12px rgba(0,0,0,.06);cursor:pointer;
+  transition:transform .15s,box-shadow .15s;border-left:3px solid transparent;
+}
+.article-card:hover{transform:translateY(-1px);box-shadow:0 4px 20px rgba(0,0,0,.1)}
+.article-card.active{border-left-color:#2c3e50}
+.article-card .title{font-size:1.05rem;font-weight:600;color:#2c3e50;margin-bottom:4px}
+.article-card .meta{font-size:.78rem;color:#999;margin-bottom:6px}
+.article-card .summary{font-size:.88rem;color:#666;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.article-card .content{
+  display:none;margin-top:14px;padding-top:14px;border-top:1px solid #eee;
+  font-size:.9rem;color:#444;line-height:1.9;
+}
+.article-card .content.show{display:block}
+.article-card .content img{max-width:100%;border-radius:8px;margin:8px 0}
+.article-card .content h1,.article-card .content h2,.article-card .content h3{color:#2c3e50;margin:14px 0 8px}
+.article-card .content h1{font-size:1.2rem}.article-card .content h2{font-size:1.05rem}.article-card .content h3{font-size:.95rem}
+.article-card .content blockquote{
+  border-left:3px solid #2c3e50;padding:6px 14px;margin:10px 0;
+  background:#f8f9fa;color:#555;font-style:italic;border-radius:0 6px 6px 0
+}
+.article-card .content table{width:100%;border-collapse:collapse;margin:10px 0;font-size:.82rem}
+.article-card .content table td,.article-card .content table th{border:1px solid #ddd;padding:6px 10px}
+.article-card .content table th{background:#f0f4f8}
+.article-card .content code{background:#f4f4f4;padding:1px 5px;border-radius:3px;font-size:.82rem}
+.article-card .content pre{background:#282c34;color:#abb2bf;padding:12px;border-radius:8px;overflow-x:auto;font-size:.8rem;line-height:1.5}
+.article-card .expand-hint{font-size:.75rem;color:#2c3e50;margin-top:6px;display:flex;align-items:center;gap:4px}
+.loading{text-align:center;padding:60px 20px;color:#999}
+.loading .spinner{width:32px;height:32px;border:3px solid #eee;border-top-color:#2c3e50;border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 12px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.error-msg{text-align:center;padding:40px 20px;color:#c0392b}
+.footer{text-align:center;padding:20px;font-size:.75rem;color:#aaa;border-top:1px solid #eee;margin-top:20px}
+.source-link{color:#2c3e50;text-decoration:none;border-bottom:1px dotted #2c3e50}
+.source-link:hover{border-bottom-style:solid}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>亦然亦航</h1>
+  <p>记录双胞胎兄弟的成长日常</p>
+  <div class="badge">内容来自 www.1r1h.com</div>
+</div>
+<div class="container" id="article-list">
+  <div class="loading"><div class="spinner"></div><p>正在加载文章列表...</p></div>
+</div>
+<div class="footer">
+  来源：<a class="source-link" href="https://www.1r1h.com/" target="_blank">www.1r1h.com</a>
+  &nbsp;|&nbsp; 本站仅为代理展示，如需访问原站请点击上方链接
+</div>
+<script>
+(function(){
+var listEl = document.getElementById('article-list');
+var XML_URL = 'https://www.1r1h.com/atom.xml';
+var ORIGIN = 'https://www.1r1h.com';
+
+function fetchXML(url, cb){
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', url, true);
+  xhr.timeout = 15000;
+  xhr.onload = function(){ if(xhr.status>=200&&xhr.status<400) cb(null, xhr.responseXML||xhr.responseText); else cb('请求失败: '+xhr.status); };
+  xhr.onerror = function(){ cb('网络错误，请检查连接'); };
+  xhr.ontimeout = function(){ cb('请求超时'); };
+  xhr.send();
+}
+
+function parseArticles(xml){
+  var entries = xml.querySelectorAll('entry');
+  var result = [];
+  entries.forEach(function(e){
+    var title = (e.querySelector('title')||{}).textContent||'';
+    var link = '';
+    var links = e.querySelectorAll('link');
+    for(var i=0;i<links.length;i++){
+      if(links[i].getAttribute('rel')==='alternate'||!links[i].getAttribute('rel')){
+        link = links[i].getAttribute('href');break;
+      }
+    }
+    var summary = (e.querySelector('summary')||{}).textContent||'';
+    var published = (e.querySelector('published')||{}).textContent||'';
+    var content = (e.querySelector('content')||{}).textContent||'';
+    // Strip HTML tags for summary
+    var plainSummary = summary.replace(/<[^>]*>/g,'').replace(/\s+/g,' ').trim();
+    if(!plainSummary && content){
+      plainSummary = content.replace(/<[^>]*>/g,'').replace(/\s+/g,' ').trim().substring(0,150);
+    }
+    // Parse date
+    var dateStr = published.substring(0,10);
+    result.push({
+      title: title,
+      link: link,
+      summary: plainSummary,
+      date: dateStr,
+      content: content
+    });
+  });
+  return result;
+}
+
+function renderList(articles){
+  if(!articles.length){ listEl.innerHTML='<div class="error-msg">暂无文章</div>';return; }
+  var html = '';
+  articles.forEach(function(a,i){
+    html += '<div class="article-card" data-idx="'+i+'">';
+    html += '<div class="title">'+escHtml(a.title)+'</div>';
+    html += '<div class="meta">'+a.date+'</div>';
+    if(a.summary) html += '<div class="summary">'+escHtml(a.summary)+'</div>';
+    html += '<div class="expand-hint">点击展开阅读全文</div>';
+    html += '<div class="content" id="content-'+i+'"></div>';
+    html += '</div>';
+  });
+  listEl.innerHTML = html;
+
+  // Click handler
+  var cards = listEl.querySelectorAll('.article-card');
+  cards.forEach(function(card){
+    card.addEventListener('click', function(){
+      var idx = parseInt(this.getAttribute('data-idx'));
+      var contentEl = document.getElementById('content-'+idx);
+      if(contentEl.classList.contains('show')){
+        // Collapse
+        contentEl.classList.remove('show');
+        this.classList.remove('active');
+        this.querySelector('.expand-hint').textContent = '点击展开阅读全文';
+      } else {
+        // Load content
+        var art = articles[idx];
+        this.querySelector('.expand-hint').textContent = '加载中...';
+        loadArticleContent(art, idx, function(){});
+      }
+    });
+  });
+}
+
+function loadArticleContent(art, idx, cb){
+  var contentEl = document.getElementById('content-'+idx);
+  var card = contentEl.parentElement;
+  var hint = card.querySelector('.expand-hint');
+
+  // Try atom content first
+  if(art.content && art.content.trim().length > 100){
+    contentEl.innerHTML = art.content;
+    contentEl.classList.add('show');
+    card.classList.add('active');
+    hint.textContent = '点击收起';
+    cb();
+    return;
+  }
+
+  // Fallback: fetch article page and extract content
+  fetchArticlePage(art.link, function(err, bodyHtml){
+    if(err){
+      hint.textContent = '加载失败，点击重试';
+      cb(err);
+      return;
+    }
+    contentEl.innerHTML = bodyHtml;
+    contentEl.classList.add('show');
+    card.classList.add('active');
+    hint.textContent = '点击收起';
+    cb();
+  });
+}
+
+function fetchArticlePage(url, cb){
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', url, true);
+  xhr.timeout = 15000;
+  xhr.onload = function(){
+    if(xhr.status>=200&&xhr.status<400){
+      var html = xhr.responseText;
+      // Extract main content area from Hexo page
+      var match = html.match(/<article[^>]*class="[^"]*post-content[^"]*"[^>]*>([\s\S]*?)<\/article>/i);
+      if(!match) match = html.match(/<div[^>]*class="[^"]*post-body[^"]*"[^>]*>([\s\S]*?)<\/div>/i);
+      if(!match) match = html.match(/<main[^>]*>([\s\S]*?)<\/main>/i);
+      if(!match) match = html.match(/<div[^>]*class="[^"]*article-content[^"]*"[^>]*>([\s\S]*?)<\/div>/i);
+      if(match){ cb(null, match[1]); }
+      else { cb(null, '<p>未能提取文章内容，请<a href="'+url+'" target="_blank">访问原文</a></p>'); }
+    } else { cb('HTTP '+xhr.status); }
+  };
+  xhr.onerror = function(){ cb('网络错误'); };
+  xhr.ontimeout = function(){ cb('请求超时'); };
+  xhr.send();
+}
+
+function escHtml(s){
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// Init
+fetchXML(XML_URL, function(err, xml){
+  if(err){ listEl.innerHTML='<div class="error-msg">加载失败：'+escHtml(err)+'<br><a href="'+ORIGIN+'">直接访问原站</a></div>';return; }
+  var articles = parseArticles(xml);
+  renderList(articles);
+});
+})();
+</script>
+</body>
+</html>
