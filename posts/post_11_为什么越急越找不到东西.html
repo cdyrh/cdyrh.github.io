@@ -7,7 +7,6 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<meta name="build-version" content="2026-06-21T08:00">
 <title>为什么越急越找不到东西？🔍 — 池帥の亦殿</title>
 <meta name="description" content="# 着急的时候，钥匙永远隐身  早上要迟到了，钥匙不见了。越着急越找不到，冷静下来往桌上一看——它明明就在那儿。  ## 大脑在搞什么鬼  当你焦虑或紧张时，大">
 <style>
@@ -475,23 +474,5 @@ function exportBackup(){
     <button id="back-to-top" title="回到顶部" onclick="scrollToTop()">⬆</button>
 
 
-<!-- 版本检测：自动刷新确保访客看到最新文章 -->
-<script>
-(function(){
-  // Reload guard: if URL already has ?v= param, skip to prevent infinite loop
-  var urlParams = new URLSearchParams(window.location.search);
-  if(urlParams.get('v')) return;
-  var bv = document.querySelector('meta[name="build-version"]');
-  var cur = bv ? bv.content : '';
-  fetch('/version.json', {cache:'no-store'})
-    .then(function(r){ return r.json(); })
-    .then(function(d){
-      if(d.version && d.version !== cur){
-        location.replace(location.href.split('?')[0] + '?v=' + d.version);
-      }
-    })
-    .catch(function(){});
-})();
-</script>
 </body>
 </html>
