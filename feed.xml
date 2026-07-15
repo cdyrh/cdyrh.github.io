@@ -6,13 +6,29 @@
     <atom:link href="https://cdyrh.github.io/feed.xml" rel="self" type="application/rss+xml"/>
     <description>池帅的个人博客，记录生活，分享美好</description>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 14 Jul 2026 08:49:00 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 15 Jul 2026 08:00:00 +0800</lastBuildDate>
     <generator>WorkBuddy RSS Generator</generator>
     <image>
       <url>https://cdyrh.github.io/favicon.ico</url>
       <title>池帅の亦殿</title>
       <link>https://cdyrh.github.io/</link>
-    </image>        <item>
+    </image>            <item>
+      <title>夏天电费暴涨？10个省电妙招让空调不再'吃电' ❄️</title>
+      <link>https://cdyrh.github.io/#post-51</link>
+      <guid isPermaLink="false">cdyrh-blog-51</guid>
+      <description>七月的温州，35度高温天天见，空调从早开到晚——月底一看电费单，心凉了半截。
+
+## 一、温度设置：差1度，差很多
+## 二、物理配合：让冷气不白跑
+## 三、空调本身：保养到位才省电
+## 四、使用习惯：小改变大省电
+## 算笔账：省电到底能省多少？
+## 写在最后
+</description>
+      <pubDate>Wed, 15 Jul 2026 08:00:00 +0800</pubDate>
+      <category>生活常识</category>
+    </item>
+<item>
       <title>夏日驱蚊大全：15个让蚊子远离你的实用妙招 🦟</title>
       <link>https://cdyrh.github.io/#post-50</link>
       <guid isPermaLink="false">cdyrh-blog-50</guid>
@@ -25,7 +41,7 @@
 ## 五、被咬了怎么办：止痒消肿有讲究
 ## 写在最后
 </description>
-      <pubDate>Tue, 14 Jul 2026 08:49:00 +0800</pubDate>
+      <pubDate>Wed, 15 Jul 2026 08:00:00 +0800</pubDate>
       <category>生活常识</category>
     </item>
 <item>
