@@ -7,7 +7,7 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<title>电脑、手机、键盘越用越卡？6个清洁提速小妙招，旧设备满血复活 - 池帅の亦殿</title>
+<title>电脑、手机、键盘越用越卡？6个清洁提速小妙招，旧设备满血复活 - 池帥的博客</title>
 <meta name="description" content="电脑、手机、键盘越用越卡？6个清洁提速小妙招，旧设备满血复活">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌸</text></svg>">
 
@@ -540,16 +540,16 @@ body {
     <div class="toc-box" id="toc-box">
       <div class="toc-title">📋 文章目录</div>
       <ul class="toc-list" id="toc-list">
-        <li><a href="#sec-1">一、屏幕和外壳：别再用纸巾乱擦</a></li>
-        <li><a href="#sec-2">二、键盘缝隙：倒置拍打 + 软毛刷</a></li>
-        <li><a href="#sec-3">三、散热口除尘：提速的关键一步</a></li>
-        <li><a href="#sec-4">四、手机充电口和扬声器：牙签 + 酒精棉</a></li>
-        <li><a href="#sec-5">五、软件减负：清缓存、关自启</a></li>
-        <li><a href="#sec-6">六、电池保养：别等耗尽再充</a></li>
-      </ul>
+<li class=""><a href="#sec-1">一、屏幕和外壳：别再用纸巾乱擦</a></li>
+<li class=""><a href="#sec-2">二、键盘缝隙：倒置拍打 + 软毛刷</a></li>
+<li class=""><a href="#sec-3">三、散热口除尘：提速的关键一步</a></li>
+<li class=""><a href="#sec-4">四、手机充电口和扬声器：牙签 + 酒精棉</a></li>
+<li class=""><a href="#sec-5">五、软件减负：清缓存、关自启</a></li>
+<li class=""><a href="#sec-6">六、电池保养：别等耗尽再充</a></li>
+</ul>
     </div>    <!-- 阅读统计 -->
     <div class="reading-stats" id="reading-stats">
-      <span>📝 字数：<strong id="word-count">1,527</strong></span>
+      <span>📝 字数：<strong id="word-count">1,244</strong></span>
       <span>⏱ 阅读：<strong id="read-time">约 4 分钟</strong></span>
     </div>
 <div class="post-body" id="post-body">
@@ -576,7 +576,35 @@ body {
 <hr>
 <p>养成上面这些小习惯，设备清爽了，心情也跟着清爽。不用急着换新，先给它一次彻底的大扫除吧。你还有什么私藏的提速妙招？欢迎在评论区聊聊。</p>
 <p><em>（本文配图来自 Unsplash，仅供示意）</em></p>
+<div class="share-bar">
+      <span class="share-label">分享到：</span>
+      <button class="share-btn wx" onclick="shareWX()" title="微信分享">💬</button>
+      <button class="share-btn qq" onclick="shareQQ()" title="QQ分享">🐧</button>
+      <button class="share-btn wb" onclick="shareWB()" title="微博分享">📢</button>
+      <button class="share-btn cp" onclick="copyLink()" title="复制链接">🔗</button>
+    </div>
+  
+    <!-- 留言区 -->
+    <div class="comment-section" id="comment-section">
+      <h3>💬 留言区</h3>
+      <div class="comment-form" id="comment-form">
+        <div class="honeypot" aria-hidden="true">
+          <label>网站</label><input type="text" name="website" id="hp-website" tabindex="-1" autocomplete="off">
+        </div>
+        <input type="text" id="c-name" placeholder="你的昵称（必填）" maxlength="30" required>
+        <textarea id="c-text" placeholder="写点什么吧..." maxlength="1000" required></textarea>
+        <button class="comment-submit" onclick="submitComment()">✨ 发布留言</button>
+        <div class="comment-notice">📌 留言会保存在本地浏览器中，仅你可见</div>
+      </div>
+      <div class="comment-list" id="comment-list"></div>
+    </div>
+
+    <div class="back-home" id="back-home">
+      <a href="../">← 返回首页 池帅の亦殿</a>
+    </div>
+  </div>
 </div>
+
 <script>
 // ======================== 粒子背景 ========================
 (function(){
@@ -707,7 +735,7 @@ window.addEventListener('DOMContentLoaded', function(){
 </script>
 
 <script>
-document.getElementById("post-tags").innerHTML = ['数码', '清洁', '电脑提速', '手机保养', '设备维护'].map(function(t) {
+document.getElementById("post-tags").innerHTML = ["数码", "清洁", "电脑提速", "手机保养", "设备维护"].map(function(t) {
   return '<span class="tag">' + t + '</span>';
 }).join("");
 </script>
@@ -812,7 +840,7 @@ function scrollToTop(){ window.scrollTo({top:0, behavior:'smooth'}); }
 
 // ======================== 评论/留言系统 ========================
 (function loadComments(){
-  var key = 'blog_comments_' + (window.location.pathname.replace(/[^a-zA-Z0-9]/g,'_'));
+  var key = 'blog_comments_post_65';
   var list = document.getElementById('comment-list');
   if(!list) return;
   var comments = [];
@@ -840,7 +868,7 @@ function submitComment(){
   if(text.length > 1000){ alert('留言内容过长，请控制在1000字以内'); return; }
   var spamWords = /广告|推广|加微信|加QQ|赚钱|兼职|代购|http|www\./i;
   if(spamWords.test(text)){ alert('留言内容包含敏感词，请修改后重试'); return; }
-  var key = 'blog_comments_' + (window.location.pathname.replace(/[^a-zA-Z0-9]/g,'_'));
+  var key = 'blog_comments_post_65';
   var comments = [];
   try{ comments = JSON.parse(localStorage.getItem(key) || '[]'); }
   catch(e){ comments = []; }
@@ -875,7 +903,7 @@ function exportBackup(){
       url: window.location.href,
       content: document.getElementById('post-body') ? document.getElementById('post-body').innerHTML : '',
       timestamp: new Date().toISOString(),
-      comments: JSON.parse(localStorage.getItem('blog_comments_' + (window.location.pathname.replace(/[^a-zA-Z0-9]/g,'_'))) || '[]')
+      comments: JSON.parse(localStorage.getItem('blog_comments_post_65') || '[]')
     };
     var blob = new Blob([JSON.stringify(data, null, 2)], {type:'application/json'});
     var a = document.createElement('a');
