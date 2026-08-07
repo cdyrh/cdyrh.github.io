@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<!-- 防缓存：确保访客始终看到最新文章 -->
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>蚊子专叮你、灭蚊灯没用、花露水白涂？8个灭蚊防叮妙招，整夜安睡不被吵 🦟 - 池帥的博客</title>
+<meta name="description" content="蚊子专叮你、灭蚊灯没用、花露水白涂？8个灭蚊防叮妙招，整夜安睡不被吵 🦟">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌸</text></svg>">
+
+<!-- 中文字体 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<style>
+/* ===== CSS Reset ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== 主题变量 ===== */
+:root {
+  --pink: #ff8fab;
+  --pink-light: #ffb3c6;
+  --pink-pale: #fff0f5;
+  --pink-deep: #e85d8a;
+  --purple: #c77dff;
+  --purple-light: #e0aaff;
+  --purple-pale: #f8f0ff;
+  --text: #4a4063;
+  --text-light: #7c6f9f;
+  --text-muted: #b0a8c8;
+  --bg: #fdf4ff;
+  --card: #ffffff;
+  --border: #f0d9ff;
+  --radius: 18px;
+  --radius-sm: 10px;
+}
+
+[data-theme="dark"] {
+  --text: #e2d9f3;
+  --text-light: #c4b5e0;
+  --text-muted: #8b7aaf;
+  --bg: #1a1225;
+  --card: #241a34;
+  --border: #3d2d5a;
+  --pink-pale: #2d1a2e;
+  --purple-pale: #201630;
+}
+
+body {
+  font-family: 'Noto Serif SC', 'SimSun', 'STSong', serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
+  transition: background 0.3s, color 0.3s;
+  padding-top: 64px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== 导航栏 ===== */
+.nav {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 2px solid var(--border);
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: 64px;
+}
+
+[data-theme="dark"] .nav {
+  background: rgba(26, 18, 37, 0.92);
+}
+
+.nav-logo {
+  font-size: 1.2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-decoration: none;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.nav-back {
+  background: none;
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  padding: 0.35rem 0.9rem;
+  cursor: pointer;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 0.9rem;
+  color: var(--text-light);
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.nav-back:hover {
+  background: var(--pink-pale);
+}
+
+#dark-toggle {
+  background: none;
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  padding: 0.35rem 0.7rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s;
+  color: var(--text-light);
+}
+
+#dark-toggle:hover {
+  background: var(--pink-pale);
+}
+
+/* ===== 文章容器（核心修复：确保居中）===== */
+.post-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 2rem 1rem;
+}
+
+.post-container {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.post-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 2rem 0;
+}
+
+.post-cover {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.post-title {
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
+  background: linear-gradient(135deg, var(--pink-deep), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.4;
+}
+
+.post-meta {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.post-meta span {
+  margin: 0 0.5rem;
+}
+
+.post-tags {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 0.8rem;
+}
+
+.tag {
+  background: var(--pink-pale);
+  color: var(--pink-deep);
+  padding: 0.2rem 0.7rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+}
+
+/* ===== 文章正文 ===== */
+.post-body {
+  background: var(--card);
+  border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+  box-shadow: 0 8px 32px rgba(200, 100, 200, 0.12);
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  font-size: 1.05rem;
+  line-height: 2;
+}
+
+.post-body h1,
+.post-body h2,
+.post-body h3,
+.post-body h4 {
+  color: var(--pink-deep);
+  margin: 1.8rem 0 1rem;
+  line-height: 1.4;
+}
+
+.post-body h1 { font-size: 1.6rem; }
+.post-body h2 { font-size: 1.4rem; }
+.post-body h3 { font-size: 1.2rem; }
+
+.post-body p {
+  margin-bottom: 1.2rem;
+  line-height: 2;
+}
+
+.post-body ul,
+.post-body ol {
+  margin: 0 0 1.2rem 1.5rem;
+  padding-left: 0.5rem;
+}
+
+.post-body li {
+  margin-bottom: 0.6rem;
+  line-height: 1.8;
+}
+
+.post-body code:not(pre code) {
+  background: var(--pink-pale);
+  color: var(--pink-deep);
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.9em;
+  font-family: 'Courier New', monospace;
+}
+
+.post-body pre {
+  border-radius: var(--radius-sm);
+  margin-bottom: 1.2rem;
+  overflow-x: auto;
+  padding: 1.2rem;
+  background: #282c34;
+}
+
+.post-body blockquote {
+  border-left: 3px solid var(--pink-light);
+  padding: 0.8rem 1.2rem;
+  color: var(--text-light);
+  font-style: italic;
+  margin-bottom: 1.2rem;
+  background: var(--pink-pale);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.post-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.2rem;
+  font-size: 0.92rem;
+}
+
+.post-body th {
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  color: #fff;
+  padding: 0.6rem 0.8rem;
+  text-align: left;
+}
+
+.post-body td {
+  padding: 0.55rem 0.8rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.post-body img {
+  max-width: 100%;
+  border-radius: 12px;
+  margin: 1rem 0;
+}
+
+.post-body a {
+  color: var(--pink-deep);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--pink-light);
+  transition: all 0.2s;
+}
+
+.post-body a:hover {
+  color: var(--purple);
+  border-bottom-color: var(--purple);
+}
+
+/* ===== 分享栏 ===== */
+.share-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  padding: 1.2rem;
+  background: var(--card);
+  border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+  box-shadow: 0 8px 32px rgba(200, 100, 200, 0.12);
+  margin-bottom: 2rem;
+}
+
+.share-label {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-right: 0.3rem;
+}
+
+.share-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.share-btn:hover {
+  transform: translateY(-3px) scale(1.1);
+}
+
+.share-btn.wx { background: #07c160; color: #fff; }
+.share-btn.qq { background: #12b7f5; color: #fff; }
+.share-btn.wb { background: #e6162d; color: #fff; }
+.share-btn.cp { background: var(--purple-pale); color: var(--purple); }
+
+/* ===== 返回首页 ===== */
+.back-home {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.back-home a {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  border-radius: 24px;
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  transition: opacity 0.2s;
+}
+
+.back-home a:hover {
+  opacity: 0.85;
+}
+
+/* ===== 粒子背景 ===== */
+#particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.post-wrapper {
+  position: relative;
+  z-index: 1;
+}
+</style>
+
+    <style>
+    /* ===== TOC (文章目录) ===== */
+    .toc-box {
+      background: var(--pink-pale, #fff0f5);
+      border-radius: 10px;
+      border: 1.5px solid var(--border, #f0d9ff);
+      padding: 1rem 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+    .toc-title {
+      font-weight: 700;
+      color: var(--pink-deep, #e85d8a);
+      margin-bottom: 0.6rem;
+      font-size: 0.92rem;
+    }
+    .toc-list {
+      list-style: none;
+      padding: 0;
+    }
+    .toc-list li { line-height: 2; }
+    .toc-list a {
+      color: var(--text-light, #7c6f9f);
+      text-decoration: none;
+      font-size: 0.88rem;
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+      display: block;
+      transition: all 0.15s;
+    }
+    .toc-list a:hover {
+      color: var(--pink-deep, #e85d8a);
+      background: rgba(255, 143, 171, 0.1);
+    }
+    .toc-list .toc-h3 {
+      padding-left: 1.2rem;
+      font-size: 0.84rem;
+    }
+    </style>
+
+    <style>
+    /* ===== 回到顶部按钮 ===== */
+    #back-to-top {
+      position:fixed;bottom:2rem;right:2rem;z-index:999;
+      width:48px;height:48px;border-radius:50%;
+      background:linear-gradient(135deg,var(--pink),var(--purple));
+      color:#fff;border:none;cursor:pointer;font-size:1.3rem;
+      box-shadow:0 4px 16px rgba(200,100,200,.35);
+      opacity:0;transform:translateY(20px);
+      transition:all .3s ease;
+      pointer-events:none;
+      display:flex;align-items:center;justify-content:center;
+    }
+    #back-to-top.show{opacity:1;transform:translateY(0);pointer-events:auto}
+    #back-to-top:hover{transform:translateY(-4px) scale(1.05);box-shadow:0 8px 24px rgba(200,100,200,.5)}
+    
+    /* ===== 阅读统计 ===== */
+    .reading-stats {
+      display:flex;gap:1.2rem;align-items:center;flex-wrap:wrap;
+      font-size:.85rem;color:var(--text-muted);margin-bottom:1.2rem;
+      padding:0.6rem 0;border-bottom:1px dashed var(--border);
+    }
+    .reading-stats span{display:flex;align-items:center;gap:.3rem}
+    
+    /* ===== 图片懒加载 ===== */
+    .post-body img.lazy-img{opacity:0;transition:opacity .4s ease;min-height:80px;background:linear-gradient(135deg,var(--pink-pale),var(--purple-pale));border-radius:12px}
+    .post-body img.lazy-loaded{opacity:1;background:none;min-height:auto}
+    
+    /* ===== 评论/留言区 ===== */
+    .comment-section {
+      background:var(--card);border-radius:var(--radius);
+      border:1.5px solid var(--border);
+      box-shadow:0 8px 32px rgba(200,100,200,.12);
+      padding:1.8rem;margin-bottom:2rem;
+    }
+    .comment-section h3{color:var(--pink-deep);margin-bottom:1rem;font-size:1.1rem}
+    .comment-form{display:flex;flex-direction:column;gap:.8rem}
+    .comment-form input[type="text"],
+    .comment-form textarea{
+      width:100%;padding:.8rem 1rem;border:1.5px solid var(--border);
+      border-radius:10px;font-size:.9rem;
+      font-family:inherit;color:var(--text);
+      background:var(--bg);transition:border-color .2s;
+    }
+    .comment-form input[type="text"]:focus,
+    .comment-form textarea:focus{
+      outline:none;border-color:var(--pink);
+    }
+    .comment-form textarea{min-height:100px;resize:vertical}
+    .comment-submit{
+      align-self:flex-end;padding:.6rem 1.5rem;border:none;
+      border-radius:20px;background:linear-gradient(135deg,var(--pink),var(--purple));
+      color:#fff;font-weight:700;cursor:pointer;font-size:.9rem;
+      transition:opacity .2s;
+    }
+    .comment-submit:hover{opacity:.85}
+    .comment-notice{font-size:.78rem;color:var(--text-muted);text-align:center}
+    .comment-item{
+      padding:1rem 0;border-bottom:1px dashed var(--border);
+    }
+    .comment-item:last-child{border-bottom:none}
+    .c-name{font-weight:700;color:var(--text);font-size:.9rem}
+    .c-time{font-weight:400;color:var(--text-muted);font-size:.78rem;margin-left:.5rem}
+    .c-text{color:var(--text-light);font-size:.88rem;margin-top:.3rem;line-height:1.7}
+    .honeypot{position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden}
+    .comment-list{margin-top:1rem}
+    .backup-btn{
+      position:fixed;bottom:7rem;right:2rem;z-index:999;
+      padding:.5rem 1rem;border-radius:20px;border:1.5px solid var(--border);
+      background:var(--card);color:var(--text-light);cursor:pointer;
+      font-size:.82rem;transition:all .2s;opacity:.75;
+    }
+    .backup-btn:hover{opacity:1;background:var(--pink-pale);color:var(--pink-deep);border-color:var(--pink-light)}
+    .to-start-btn{
+      position:fixed;bottom:12rem;right:2rem;z-index:999;
+      padding:.5rem 1rem;border-radius:20px;border:1.5px solid var(--border);
+      background:var(--card);color:var(--text-light);cursor:pointer;
+      font-size:.82rem;transition:all .2s;opacity:.75;
+    }
+    .to-start-btn:hover{opacity:1;background:var(--pink-pale);color:var(--pink-deep);border-color:var(--pink-light)}
+    </style>
+
+
+</head>
+<body>
+
+<!-- 粒子背景 -->
+<canvas id="particles"></canvas>
+
+<!-- 导航 -->
+<nav class="nav">
+  <a href="../" class="nav-logo">池帅の亦殿 🌸</a>
+  <div class="nav-actions">
+    <a href="../" class="nav-back">← 返回首页</a>
+    <button id="dark-toggle" onclick="toggleDark()">🌙</button>
+  </div>
+</nav>
+
+<!-- 文章 -->
+<div class="post-wrapper">
+  <div class="post-container">
+    <div class="post-header">
+      <div class="post-cover">🦟</div>
+      <h1 class="post-title">蚊子专叮你、灭蚊灯没用、花露水白涂？8个灭蚊防叮妙招，整夜安睡不被吵 🦟</h1>
+      <div class="post-meta">
+        <span>📅 2026-08-07</span>
+        <span>📂 生活常识</span>
+      </div>
+      <div class="post-tags" id="post-tags"></div>
+    </div>
+  
+    
+    <!-- TOC 文章目录 -->
+    <div class="toc-box" id="toc-box">
+      <div class="toc-title">📋 文章目录</div>
+      <ul class="toc-list" id="toc-list">
+<li class=""><a href="#sec-1">一、蚊子专挑你叮，跟「血甜」没关系</a></li>
+<li class=""><a href="#sec-2">二、灭蚊第一步不是杀，是断了它的「育儿房」</a></li>
+<li class=""><a href="#sec-3">三、纱窗、门缝、下水道，把入口全堵上</a></li>
+<li class=""><a href="#sec-4">四、蚊香和电蚊液，八成人用错了时间</a></li>
+<li class=""><a href="#sec-5">五、紫光灭蚊灯基本没用，除非它会「呼吸」</a></li>
+<li class=""><a href="#sec-6">六、驱蚊液认三个成分，别只看「天然温和」</a></li>
+<li class=""><a href="#sec-7">七、关灯后找蚊子，有个笨但极准的办法</a></li>
+<li class=""><a href="#sec-8">八、被叮了别抓：止痒的正确顺序</a></li>
+<li class=""><a href="#sec-9">一张表看懂：不同场景怎么防</a></li>
+<li class=""><a href="#sec-10">婴幼儿和孕妇要特别注意的几点</a></li>
+<li class=""><a href="#sec-11">写在最后</a></li>
+</ul>
+    </div>    <!-- 阅读统计 -->
+    <div class="reading-stats" id="reading-stats">
+      <span>📝 字数：<strong id="word-count">3,522</strong></span>
+      <span>⏱ 阅读：<strong id="read-time">约 9 分钟</strong></span>
+    </div>
+<div class="post-body" id="post-body">
+<p>立秋刚过，蚊子反而更凶了。</p>
+<p>这不是错觉。八月中下旬到九月，是蚊子一年里最后的繁殖高峰，气温从酷暑的三十七八度回落到三十度上下，正好落进蚊子最活跃的舒适区。夏天最热那几天它们其实躲着不动，眼下才是真正的"报复性出动"。</p>
+<p>很多人一到这个季节就陷入死循环：蚊香点了，灭蚊灯买了，花露水喷了一层又一层，晚上照样被"嗡"醒，第二天腿上还是三个大包。问题往往不在于你没努力，而在于用错了方法、用错了时间。</p>
+<p>这篇把家里灭蚊这件事从头理一遍，八个真正有效的办法，都是能当天就用上的。</p>
+<p><img src="images/post_72_1.jpg" alt="夏夜的窗边" loading="lazy" style="max-width:100%;border-radius:12px;margin:1rem 0"></p>
+<h2 id="sec-1">一、蚊子专挑你叮，跟"血甜"没关系</h2>
+<p>先破一个流传最广的谣言：没有任何证据表明蚊子偏爱"血甜"的人。血糖高低跟被叮的概率毫无关系。</p>
+<p>蚊子找人靠的是一套三级定位系统：</p>
+<ol><li><strong>远距离（10 到 50 米）——闻二氧化碳</strong>。你呼出的气体是它最先锁定的信号。呼吸量大的人（体型偏胖、刚运动完、正在喝酒的人）自然更显眼。</li><li><strong>中距离（1 到 10 米）——闻体味</strong>。皮肤表面细菌分解汗液产生的乳酸、氨、辛烯醇，是第二层指引。出汗多、脚汗重的人被叮概率明显更高。</li><li><strong>近距离（1 米内）——看颜色、感体温</strong>。蚊子偏好深色，黑色、深蓝、深红在它眼里对比最强烈；体温高的皮肤区域是最后的落点。</li></ol>
+<p>所以同一屋檐下，为什么总是你被叮？大概率是这三条里占了两条：刚洗完澡还在散热、穿着深色睡衣、或者刚从外面回来一身汗还没擦。</p>
+<p><strong>能立刻改的两件事</strong>：睡前用清水冲一下脚和腿（去掉汗味），换浅色睡衣。这两件事看起来微不足道，实测能减少相当一部分叮咬。</p>
+<blockquote>顺带一提，喝酒后被叮的概率确实会上升——酒精代谢会让体温和呼吸频率同时升高，等于把两个信号都放大了。</blockquote>
+<h2 id="sec-2">二、灭蚊第一步不是杀，是断了它的"育儿房"</h2>
+<p>一只雌蚊一生能产卵三到五次，一次一两百枚。你打死一只成蚊，可能已经晚了；但你倒掉一盆积水，等于消灭了未来一两百只。</p>
+<p>蚊子幼虫（孑孓）必须在<strong>静止的水</strong>里长大，从卵到会飞只要七到十天。所以家里只要有一处积水超过一周，就是一个小型蚊子工厂。</p>
+<p><strong>逐个排查这些地方</strong>，几乎每家都能找出至少两处：</p>
+<ul>
+<li>阳台的花盆托盘（头号重灾区，浇完水的积水正好合适）</li>
+<li>水培植物的花瓶（富贵竹、绿萝的养水瓶）</li>
+<li>空调外机的接水盘、除湿机水箱</li>
+<li>卫生间地漏下方的存水弯（这个不用倒，但要保证经常有水流冲刷）</li>
+<li>拖把桶、闲置水桶、洗衣机底部凹槽</li>
+<li>楼下或院子里的废旧轮胎、饮料瓶盖、雨后的塑料布褶皱</li>
+</ul>
+<p><strong>处理原则很简单</strong>：能倒的倒掉，倒不掉的加盖，加不了盖的每五天换一次水。水培植物换水时记得把根须和瓶壁一起冲洗，卵会粘在壁上。</p>
+<p>这一步做扎实，家里蚊子数量在两周内会有肉眼可见的下降，效果比任何一款灭蚊产品都实在。</p>
+<h2 id="sec-3">三、纱窗、门缝、下水道，把入口全堵上</h2>
+<p>家里的蚊子，除了自己繁殖的，剩下都是外面飞进来的。找出它们的通道，比在屋里追着打有用得多。</p>
+<p><strong>纱窗要检查这三处</strong>：网面有没有破洞（哪怕一个指甲盖大小）、纱窗和窗框之间有没有缝隙、推拉窗合拢处的毛条是否老化脱落。蚊子能钻过的缝隙比想象中小得多，一两毫米就够。破洞用纱窗修补贴，缝隙用密封毛条，成本都是几块钱。</p>
+<p><strong>卫生间和厨房的下水道</strong>是最容易被忽略的通道。楼道公共管井里的蚊子会顺着管道爬上来，尤其是长期不用的地漏（水封干了就等于开了一扇门）。解决办法：常用的地漏保证每周有水流过，不常用的直接用地漏塞封住，或者装一个带硅胶密封片的防臭地漏芯。</p>
+<p><strong>入户门下方的缝隙</strong>也别放过。老房子门底缝隙常常有一两厘米，装一条门底密封条，既防蚊又能挡灰尘和穿堂风。</p>
+<p><strong>傍晚这段时间少开窗</strong>。蚊子的活动高峰是日落前后一到两小时和天亮前后，这两个时段如果开窗通风，等于主动放它们进来。想通风就趁中午，那会儿蚊子基本不动。</p>
+<h2 id="sec-4">四、蚊香和电蚊液，八成人用错了时间</h2>
+<p>先说结论：<strong>这类产品要在你睡前一小时就开始用，而不是躺下才点。</strong></p>
+<p>蚊香、电蚊液的有效成分是拟除虫菊酯，它需要时间在空气中扩散并达到有效浓度。你钻进被窝才打开，等药效起来，蚊子早叮完一轮了。</p>
+<p><strong>正确用法</strong>：</p>
+<ul>
+<li>睡前一小时，关好门窗，在卧室点上蚊香或插好电蚊液</li>
+<li>期间人尽量不待在房间里，让浓度充分累积</li>
+<li>睡觉前开窗通风五到十分钟，把浮尘和高浓度气味放掉一部分，再关窗睡觉</li>
+<li>电蚊液一瓶大约能用三十个晚上，超期后浓度会明显下降，别舍不得换</li>
+</ul>
+<p><strong>几个安全细节</strong>：房间面积小于十平米时，蚊香建议放在门口附近而不是床头；有哮喘、鼻炎的人优先选电蚊液（无烟）而不是盘式蚊香；无论哪种，都不要在完全密闭且有人长时间停留的空间连续使用整夜。</p>
+<p><img src="images/post_72_2.jpg" alt="卧室的夜灯" loading="lazy" style="max-width:100%;border-radius:12px;margin:1rem 0"></p>
+<h2 id="sec-5">五、紫光灭蚊灯基本没用，除非它会"呼吸"</h2>
+<p>那种插电就亮紫光、噼啪作响的灭蚊灯，在阳台上挂一夜，早上倒出来一堆虫子——但你仔细看，里面大多是飞蛾、蚊蚋、金龟子，真正的库蚊、伊蚊寥寥无几。</p>
+<p>原因前面说过了：<strong>蚊子找人靠的是二氧化碳和体味，不是光。</strong> 趋光性强的是蛾类。紫外灯对蚊子的吸引力，远远比不上房间里正在呼吸的你。</p>
+<p>真正有效的灭蚊灯只有一类：<strong>带二氧化碳或热诱导模拟的捕蚊机</strong>。它通过释放微量二氧化碳、模拟人体温度和湿度来欺骗蚊子，再用气流把它吸进网兜里风干。这类机器价格要高不少，而且有两个使用要点：</p>
+<ol><li><strong>放在人少的角落，不要放在床边</strong>。它是靠"比你更像人"来工作的，你在旁边它就抢不过你。</li><li><strong>要连续开</strong>，至少开几天到一周。它的原理是持续捕捉成蚊、打断繁殖循环，不是开一晚就见效的应急工具。</li></ol>
+<p>如果预算有限，与其买普通紫光灭蚊灯，不如把钱花在纱窗修补和蚊帐上，性价比高得多。</p>
+<p><strong>蚊帐其实是被严重低估的方案</strong>：零药物、零耗电、一劳永逸，对婴幼儿和孕妇尤其友好。唯一要注意的是睡前先用电蚊拍在帐内清一遍，别把蚊子关在里面。</p>
+<h2 id="sec-6">六、驱蚊液认三个成分，别只看"天然温和"</h2>
+<p>出门在外靠驱蚊剂，但市面上产品鱼龙混杂。判断一款驱蚊液靠不靠谱，<strong>只看成分表里有没有这三个名字</strong>：</p>
+<ul>
+<li><strong>避蚊胺（DEET）</strong>：效果最强、研究最充分。浓度决定时长而不是强度——10% 约管两小时，20% 约管四到五小时，30% 约管六小时以上。日常出门 10% 到 15% 完全够用。</li>
+<li><strong>派卡瑞丁（Picaridin / 埃卡瑞丁）</strong>：效果接近避蚊胺，但没有黏腻感、不腐蚀塑料（不会把眼镜框、手表带弄花），气味也淡，综合体验更好。</li>
+<li><strong>驱蚊酯（IR3535 / 伊默宁）</strong>：温和度最高，适合儿童，但持续时间较短，需要两三小时补涂一次。</li>
+</ul>
+<p><strong>关键的一点</strong>：正规驱蚊产品在国内属于农药管理范畴，包装上必须有"农药登记证号"（格式类似 WP 开头或数字编号）。<strong>没有这个编号的，无论宣传得多天然，驱蚊效果基本可以认为不存在。</strong></p>
+<p>至于花露水——普通花露水的主要成分是酒精和香精，作用是叮咬后清凉止痒，<strong>它本身不驱蚊</strong>。只有标注了"驱蚊花露水"并带农药登记证号的那种才有效。这是很多人年年白涂的原因。</p>
+<p><strong>使用要点</strong>：喷在裸露皮肤和衣物外侧，脚踝、小腿、手腕这些薄皮部位重点照顾；不要喷在伤口和眼周；回到室内后用肥皂洗掉。</p>
+<h2 id="sec-7">七、关灯后找蚊子，有个笨但极准的办法</h2>
+<p>半夜被"嗡"醒，开灯一看，蚊子没影了——它就贴在天花板或墙角，跟阴影融为一体。</p>
+<p><strong>手电筒贴墙扫射法</strong>：关掉大灯，用手机手电贴着墙面平行照过去。这样光线是"擦"过墙面的，蚊子的身体会在墙上投出一道明显的长影子，比正面直射好找十倍。天花板同理，从侧面斜着照。</p>
+<p><strong>优先搜这几个位置</strong>：天花板四角、窗帘褶皱内侧、床底、衣柜和墙的夹缝、以及挂在墙上的衣服背面。蚊子吸完血飞不快，通常会停在离你两三米内的高处消化。</p>
+<p><strong>还有个更省事的办法</strong>：睡前把卧室灯全关，只留卫生间的灯亮着并开着门。等十几分钟，相当一部分蚊子会被引到亮处，这时候进去关门用电蚊拍收网。</p>
+<p>电蚊拍挥的时候别猛甩，蚊子能感知气流会闪避。<strong>贴着它慢慢推过去</strong>，成功率反而高。</p>
+<h2 id="sec-8">八、被叮了别抓：止痒的正确顺序</h2>
+<p>痒的根源是蚊子唾液里的蛋白质引发的组胺反应。抓挠会让组胺进一步释放，越抓越痒，还容易抓破感染、留色素沉淀。</p>
+<p><strong>正确顺序是这三步</strong>：</p>
+<ol><li><strong>先冷敷</strong>。用冰袋或冷毛巾敷三到五分钟，低温能抑制神经传导和组胺释放，是见效最快的一步。</li><li><strong>再用碱性物质中和</strong>。肥皂水或稀释的小苏打水涂在包上，能中和酸性物质、缓解刺痒。</li><li><strong>最后上药</strong>。普通的包用炉甘石洗剂就够；红肿明显的可以用含薄荷脑的止痒膏；如果起大片风团、局部发烫或者出现水疱，说明是过敏反应，需要用含抗组胺或弱效激素的外用药，必要时看医生。</li></ol>
+<p><strong>几个不要</strong>：不要用指甲掐十字（这是加重刺激，只是用痛感暂时掩盖痒感）；不要用热水烫（短时舒服，之后痒得更厉害）；不要用牙膏（含氟和摩擦剂，可能刺激皮肤）。</p>
+<p>儿童被叮后容易肿成大包（皮肤薄、反应重），及时冷敷加炉甘石通常一两天就消。如果包上出现明显水疱或化脓，别自己处理。</p>
+<p><img src="images/post_72_3.jpg" alt="清晨的庭院" loading="lazy" style="max-width:100%;border-radius:12px;margin:1rem 0"></p>
+<h2 id="sec-9">一张表看懂：不同场景怎么防</h2>
+<div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;margin:1.2rem 0;font-size:.95rem;border-radius:10px;overflow:hidden"><thead><tr><th style="padding:.6rem .7rem;text-align:left;border:1px solid rgba(128,128,128,.28);font-weight:700">场景</th><th style="padding:.6rem .7rem;text-align:left;border:1px solid rgba(128,128,128,.28);font-weight:700">首选方案</th><th style="padding:.6rem .7rem;text-align:left;border:1px solid rgba(128,128,128,.28);font-weight:700">补充手段</th><th style="padding:.6rem .7rem;text-align:left;border:1px solid rgba(128,128,128,.28);font-weight:700">别指望</th></tr></thead><tbody><tr><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">卧室睡觉</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">蚊帐 / 睡前1小时电蚊液</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">纱窗修补、浅色睡衣</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">紫光灭蚊灯</td></tr><tr><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">客厅活动</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">电蚊拍 + 关好门窗</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">傍晚不开窗</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">超声波驱蚊APP</td></tr><tr><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">阳台花园</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">清理所有积水</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">二氧化碳捕蚊机</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">驱蚊草、香茅盆栽</td></tr><tr><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">户外散步</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">派卡瑞丁驱蚊液</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">穿浅色长裤、避开黄昏</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">普通花露水</td></tr><tr><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">婴儿房</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">蚊帐（唯一推荐）</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">物理防护、勤清积水</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">蚊香、电蚊液</td></tr><tr><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">露营野外</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">20%以上避蚊胺</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">长袖长裤、帐篷纱门</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">驱蚊手环</td></tr></tbody></table></div>
+<p>顺便说三个已被反复证伪的"神器"：<strong>超声波驱蚊 APP</strong>（蚊子听不到那个频段）、<strong>驱蚊手环</strong>（有效范围只有紧贴手腕的几厘米）、<strong>盆栽驱蚊草</strong>（要把叶子揉碎才会释放气味，摆着完全没用）。</p>
+<h2 id="sec-10">婴幼儿和孕妇要特别注意的几点</h2>
+<ul>
+<li><strong>两个月以下婴儿</strong>：不使用任何化学驱蚊产品，只用蚊帐和纱窗。</li>
+<li><strong>两个月到两岁</strong>：可用驱蚊酯（IR3535）或浓度 10% 以下的派卡瑞丁，避免避蚊胺；不要涂在手上（会吃）。</li>
+<li><strong>孕妇</strong>：避蚊胺和派卡瑞丁在常规浓度下均被认为安全，但优先选择物理防护；蚊香、电蚊液尽量不在卧室整夜使用。</li>
+<li><strong>所有人</strong>：驱蚊液不要和防晒霜混着叠涂太厚，正确顺序是先防晒、隔五到十分钟再驱蚊。</li>
+</ul>
+<h2 id="sec-11">写在最后</h2>
+<p>灭蚊这件事，最容易犯的错是<strong>把力气全花在"杀"上，而忽略了"堵"和"断"</strong>。</p>
+<p>真正管用的顺序其实是倒过来的：先断掉积水（不让它出生），再堵住入口（不让它进来），最后才是驱和杀（对付漏网之鱼）。前两步做好了，后面根本用不上多少药。</p>
+<p>八月的蚊子还能猖獗一个多月。今晚花十分钟，把阳台的花盆托盘倒一倒，顺手检查一下纱窗有没有破洞——就从这两件最不起眼的小事开始。</p>
+<p>祝你今夜安睡，一个包都不带。🦟</p>
+</div>
+<div class="share-bar">
+      <span class="share-label">分享到：</span>
+      <button class="share-btn wx" onclick="shareWX()" title="微信分享">💬</button>
+      <button class="share-btn qq" onclick="shareQQ()" title="QQ分享">🐧</button>
+      <button class="share-btn wb" onclick="shareWB()" title="微博分享">📢</button>
+      <button class="share-btn cp" onclick="copyLink()" title="复制链接">🔗</button>
+    </div>
+  
+    <!-- 留言区 -->
+    <div class="comment-section" id="comment-section">
+      <h3>💬 留言区</h3>
+      <div class="comment-form" id="comment-form">
+        <div class="honeypot" aria-hidden="true">
+          <label>网站</label><input type="text" name="website" id="hp-website" tabindex="-1" autocomplete="off">
+        </div>
+        <input type="text" id="c-name" placeholder="你的昵称（必填）" maxlength="30" required>
+        <textarea id="c-text" placeholder="写点什么吧..." maxlength="1000" required></textarea>
+        <button class="comment-submit" onclick="submitComment()">✨ 发布留言</button>
+        <div class="comment-notice">📌 留言会保存在本地浏览器中，仅你可见</div>
+      </div>
+      <div class="comment-list" id="comment-list"></div>
+    </div>
+
+    <div class="back-home" id="back-home">
+      <a href="../">← 返回首页 池帅の亦殿</a>
+    </div>
+  </div>
+</div>
+
+<script>
+// ======================== 粒子背景 ========================
+(function(){
+  var canvas = document.getElementById('particles');
+  var ctx = canvas.getContext('2d');
+  var particles = [];
+  var W, H;
+  
+  function resize(){
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+  
+  var SYMBOLS = ['🌸','✨','💖','🌙','⭐','🎀','🍃','💫'];
+  
+  function createParticle(){
+    return {
+      x: Math.random() * W,
+      y: H + 20,
+      symbol: SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)],
+      size: 12 + Math.random() * 18,
+      speed: 0.3 + Math.random() * 0.8,
+      drift: (Math.random() - 0.5) * 0.5,
+      opacity: 0.3 + Math.random() * 0.5,
+      rotation: Math.random() * 360,
+      rotSpeed: (Math.random() - 0.5) * 2
+    };
+  }
+  
+  for(var i = 0; i < 25; i++) particles.push(createParticle());
+  
+  function animate(){
+    ctx.clearRect(0, 0, W, H);
+    particles.forEach(function(p){
+      ctx.save();
+      ctx.globalAlpha = p.opacity;
+      ctx.font = p.size + 'px serif';
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.rotation * Math.PI / 180);
+      ctx.fillText(p.symbol, 0, 0);
+      ctx.restore();
+      p.y -= p.speed;
+      p.x += p.drift;
+      p.rotation += p.rotSpeed;
+      if(p.y < -30) Object.assign(p, createParticle());
+    });
+    if(Math.random() < 0.02 && particles.length < 30) particles.push(createParticle());
+    if(particles.length > 30) particles.shift();
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+
+// ======================== 暗黑模式 ========================
+function toggleDark(){
+  var html = document.documentElement;
+  var next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('blog_theme', next);
+}
+(function(){
+  var saved = localStorage.getItem('blog_theme');
+  if(saved) document.documentElement.setAttribute('data-theme', saved);
+})();
+
+// ======================== 分享功能 ========================
+function shareWX(){
+  var qrUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' + encodeURIComponent(location.href);
+  var modal = document.getElementById('wx-share-modal');
+  if(!modal){
+    modal = document.createElement('div');
+    modal.id = 'wx-share-modal';
+    modal.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;z-index:9999;';
+    modal.innerHTML = '<div style="background:#fff;border-radius:16px;padding:2rem;text-align:center;max-width:280px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,.3);">'
+      + '<div style="font-size:2rem;margin-bottom:.5rem">💬</div>'
+      + '<h3 style="color:#07c160;margin-bottom:1rem;font-size:1.1rem">微信扫码分享</h3>'
+      + '<img id="wx-share-qr" style="width:180px;height:180px;border-radius:8px;border:2px solid #eee;" />'
+      + '<p style="margin-top:1rem;color:#888;font-size:.85rem;line-height:1.6">打开微信扫一扫<br>即可分享给好友或朋友圈</p>'
+      + '<button onclick="document.getElementById(\'wx-share-modal\').style.display=\'none\'" style="margin-top:1rem;padding:.5rem 1.5rem;background:#07c160;color:#fff;border:none;border-radius:20px;cursor:pointer;font-size:.9rem">关闭</button>'
+      + '</div>';
+    modal.onclick = function(e){ if(e.target===modal) modal.style.display='none'; };
+    document.body.appendChild(modal);
+  }
+  document.getElementById('wx-share-qr').src = qrUrl;
+  modal.style.display = 'flex';
+}
+function shareQQ(){
+  var url = encodeURIComponent(location.href);
+  var title = encodeURIComponent(document.title);
+  window.open('https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=' + url + '&title=' + title + '&summary=&site=%E6%B1%A0%E5%B8%85%E3%81%AE%E4%BA%A6%E6%AE%BF', '_blank', 'width=700,height=600');
+}
+function shareWB(){
+  var url = encodeURIComponent(location.href);
+  var title = encodeURIComponent(document.title);
+  window.open('https://service.weibo.com/share/share.php?url=' + url + '&title=' + title + '&language=zh_cn', '_blank', 'width=700,height=550');
+}
+function copyLink(){
+  var url = location.origin + location.pathname;
+  var btn = (event && event.currentTarget) || null;
+  function showToast(){
+    if(btn){ var orig=btn.innerHTML; btn.innerHTML='✅'; btn.style.background='#4caf50'; setTimeout(function(){ btn.innerHTML=orig; btn.style.background=''; },2000); }
+    var t=document.createElement('div');
+    t.textContent='🔗 链接已复制！';
+    t.style.cssText='position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.78);color:#fff;padding:.6rem 1.5rem;border-radius:20px;font-size:.9rem;z-index:9999;pointer-events:none;';
+    document.body.appendChild(t);
+    setTimeout(function(){ t.remove(); },2500);
+  }
+  if(navigator.clipboard && window.isSecureContext){
+    navigator.clipboard.writeText(url).then(showToast).catch(function(){
+      try{ var ta=document.createElement('textarea'); ta.value=url; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); showToast(); }catch(e){}
+    });
+  } else {
+    try{ var ta=document.createElement('textarea'); ta.value=url; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); showToast(); }catch(e){}
+  }
+}
+
+// ======================== 代码高亮 ========================
+window.addEventListener('DOMContentLoaded', function(){
+  if(typeof hljs !== 'undefined'){
+    document.querySelectorAll('pre code').forEach(function(b){
+      try{ hljs.highlightElement(b); }catch(e){}
+    });
+  }
+  buildTOC_legacy();
+});
+</script>
+
+<script>
+document.getElementById("post-tags").innerHTML = ["灭蚊", "防蚊", "驱蚊液", "生活技巧", "夏季除虫"].map(function(t) {
+  return '<span class="tag">' + t + '</span>';
+}).join("");
+</script>
+
+<script>
+// ======================== 文章目录 TOC ========================
+    function buildTOC_legacy() { // 动态重建 TOC - 已修复
+      var body = document.getElementById('post-body');
+      if (!body) return;
+      var headings = body.querySelectorAll('h2, h3');
+      var tocBox = document.getElementById('toc-box');
+      var tocList = document.getElementById('toc-list');
+      if (headings.length < 2) {
+        if (tocBox) tocBox.style.display = 'none';
+        return;
+      }
+      if (tocBox) tocBox.style.display = 'block';
+      tocList.innerHTML = '';
+      for (var i = 0; i < headings.length; i++) {
+        var h = headings[i];
+        var level = h.tagName === 'H3' ? 'toc-h3' : '';
+        var li = document.createElement('li');
+        if (level) li.className = level;
+        var a = document.createElement('a');
+        // 自动生成 ID：如果标题没有 id，从文本内容生成
+        var headingId = h.id;
+        if (!headingId) {
+          headingId = h.textContent.replace(/[^\w\u4e00-\u9fff]/g, '').substring(0, 50);
+          h.id = headingId;
+        }
+        a.href = '#' + headingId;
+        a.textContent = h.textContent;
+        a.onclick = function(e) {
+          e.preventDefault();
+          var targetId = this.getAttribute('href').slice(1);
+          var el = document.getElementById(targetId);
+          if (el) el.scrollIntoView({behavior: 'smooth'});
+          return false;
+        };
+        li.appendChild(a);
+        tocList.appendChild(li);
+      }
+    }
+    
+    // TOC已改为静态HTML
+</script>
+
+<script>
+// ======================== 回到顶部 ========================
+(function backToTop(){
+  var btn = document.getElementById('back-to-top');
+  if(!btn) return;
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if(!ticking){
+      requestAnimationFrame(function(){
+        var y = window.pageYOffset || document.documentElement.scrollTop;
+        if(y > 400){ btn.classList.add('show'); }
+        else { btn.classList.remove('show'); }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, {passive:true});
+})();
+function scrollToTop(){ window.scrollTo({top:0, behavior:'smooth'}); }
+
+// ======================== 图片懒加载 ========================
+(function lazyLoadImgs(){
+  if(!('IntersectionObserver' in window)) return;
+  var imgs = document.querySelectorAll('.post-body img:not(.lazy-img):not(.lazy-loaded)');
+  imgs.forEach(function(img){
+    if(img.src && !img.loading){
+      img.classList.add('lazy-img');
+      img.setAttribute('loading','lazy');
+    }
+  });
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        var img = entry.target;
+        if(img.dataset.src){
+          img.src = img.dataset.src;
+          img.removeAttribute('data-src');
+        }
+        img.classList.add('lazy-loaded');
+        img.classList.remove('lazy-img');
+        observer.unobserve(img);
+      }
+    });
+  },{rootMargin:'200px'});
+  document.querySelectorAll('.post-body img[data-src]').forEach(function(img){
+    observer.observe(img);
+  });
+  document.querySelectorAll('.post-body img').forEach(function(img){
+    img.setAttribute('loading','lazy');
+    if(!img.complete){ img.classList.add('lazy-img'); }
+    img.addEventListener('load',function(){ img.classList.add('lazy-loaded'); });
+    if(img.complete){ img.classList.add('lazy-loaded'); }
+  });
+})();
+
+// ======================== 评论/留言系统 ========================
+(function loadComments(){
+  var key = 'blog_comments_post_72';
+  var list = document.getElementById('comment-list');
+  if(!list) return;
+  var comments = [];
+  try{ comments = JSON.parse(localStorage.getItem(key) || '[]'); }
+  catch(e){ comments = []; }
+  var html = '';
+  comments.forEach(function(c){
+    html += '<div class="comment-item"><div class="c-name">' +
+      escapeHtml(c.name) + '<span class="c-time">' + c.time + '</span></div>' +
+      '<div class="c-text">' + escapeHtml(c.text) + '</div></div>';
+  });
+  list.innerHTML = html;
+})();
+
+function submitComment(){
+  var nameEl = document.getElementById('c-name');
+  var textEl = document.getElementById('c-text');
+  var hpEl = document.getElementById('hp-website');
+  if(!nameEl || !textEl) return;
+  if(hpEl && hpEl.value.trim() !== ''){ alert('留言失败，请重试'); return; }
+  var name = nameEl.value.trim();
+  var text = textEl.value.trim();
+  if(!name){ alert('请输入昵称'); nameEl.focus(); return; }
+  if(!text){ alert('请输入留言内容'); textEl.focus(); return; }
+  if(text.length > 1000){ alert('留言内容过长，请控制在1000字以内'); return; }
+  var spamWords = /广告|推广|加微信|加QQ|赚钱|兼职|代购|http|www\./i;
+  if(spamWords.test(text)){ alert('留言内容包含敏感词，请修改后重试'); return; }
+  var key = 'blog_comments_post_72';
+  var comments = [];
+  try{ comments = JSON.parse(localStorage.getItem(key) || '[]'); }
+  catch(e){ comments = []; }
+  var now = new Date();
+  var timeStr = now.getFullYear()+'-'+pad(now.getMonth()+1)+'-'+pad(now.getDate())+' '+
+                pad(now.getHours())+':'+pad(now.getMinutes());
+  comments.push({name:name, text:text, time:timeStr});
+  localStorage.setItem(key, JSON.stringify(comments));
+  nameEl.value = '';
+  textEl.value = '';
+  var list = document.getElementById('comment-list');
+  if(list){
+    var html2 = '';
+    comments.forEach(function(c){
+      html2 += '<div class="comment-item"><div class="c-name">' +
+        escapeHtml(c.name) + '<span class="c-time">' + c.time + '</span></div>' +
+        '<div class="c-text">' + escapeHtml(c.text) + '</div></div>';
+    });
+    list.innerHTML = html2;
+  }
+  alert('留言已保存');
+}
+
+function pad(n){ return n < 10 ? '0' + n : '' + n; }
+function escapeHtml(s){ var d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+
+// ======================== 全站备份导出 ========================
+function exportBackup(){
+  try{
+    var data = {
+      title: document.title,
+      url: window.location.href,
+      content: document.getElementById('post-body') ? document.getElementById('post-body').innerHTML : '',
+      timestamp: new Date().toISOString(),
+      comments: JSON.parse(localStorage.getItem('blog_comments_post_72') || '[]')
+    };
+    var blob = new Blob([JSON.stringify(data, null, 2)], {type:'application/json'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'backup_' + new Date().toISOString().slice(0,10) + '.json';
+    a.click();
+    URL.revokeObjectURL(a.href);
+    alert('当前文章备份已导出');
+  } catch(e){ alert('导出失败: ' + e.message); }
+}
+</script>
+
+
+    <!-- 回到顶部 -->
+    <button id="back-to-top" title="回到顶部" onclick="scrollToTop()">⬆</button>
+
+    <!-- 返回文首 -->
+    <button class="to-start-btn" onclick="scrollToTop()" title="返回文章开始">🔝 返回文首</button>
+
+    <!-- 备份按钮 -->
+    <button class="backup-btn" onclick="exportBackup()" title="一键导出全站内容">💾 导出备份</button>
+
+
+</body>
+</html>
