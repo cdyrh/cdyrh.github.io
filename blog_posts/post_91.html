@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<!-- 防缓存：确保访客始终看到最新文章 -->
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>垃圾桶一开就臭、厨余招小飞虫、垃圾袋总漏汤？8个垃圾处理与除臭妙招，夏天厨房也清爽 🗑️ - 池帥的博客</title>
+<meta name="description" content="垃圾桶一开就臭、厨余招小飞虫、垃圾袋总漏汤？8个垃圾处理与除臭妙招，夏天厨房也清爽 🗑️">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌸</text></svg>">
+
+<!-- 中文字体 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<style>
+/* ===== CSS Reset ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== 主题变量 ===== */
+:root {
+  --pink: #ff8fab;
+  --pink-light: #ffb3c6;
+  --pink-pale: #fff0f5;
+  --pink-deep: #e85d8a;
+  --purple: #c77dff;
+  --purple-light: #e0aaff;
+  --purple-pale: #f8f0ff;
+  --text: #4a4063;
+  --text-light: #7c6f9f;
+  --text-muted: #b0a8c8;
+  --bg: #fdf4ff;
+  --card: #ffffff;
+  --border: #f0d9ff;
+  --radius: 18px;
+  --radius-sm: 10px;
+}
+
+[data-theme="dark"] {
+  --text: #e2d9f3;
+  --text-light: #c4b5e0;
+  --text-muted: #8b7aaf;
+  --bg: #1a1225;
+  --card: #241a34;
+  --border: #3d2d5a;
+  --pink-pale: #2d1a2e;
+  --purple-pale: #201630;
+}
+
+body {
+  font-family: 'Noto Serif SC', 'SimSun', 'STSong', serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
+  transition: background 0.3s, color 0.3s;
+  padding-top: 64px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== 导航栏 ===== */
+.nav {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 2px solid var(--border);
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: 64px;
+}
+
+[data-theme="dark"] .nav {
+  background: rgba(26, 18, 37, 0.92);
+}
+
+.nav-logo {
+  font-size: 1.2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-decoration: none;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.nav-back {
+  background: none;
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  padding: 0.35rem 0.9rem;
+  cursor: pointer;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 0.9rem;
+  color: var(--text-light);
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.nav-back:hover {
+  background: var(--pink-pale);
+}
+
+#dark-toggle {
+  background: none;
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  padding: 0.35rem 0.7rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s;
+  color: var(--text-light);
+}
+
+#dark-toggle:hover {
+  background: var(--pink-pale);
+}
+
+/* ===== 文章容器（核心修复：确保居中）===== */
+.post-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 2rem 1rem;
+}
+
+.post-container {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.post-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 2rem 0;
+}
+
+.post-cover {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.post-title {
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
+  background: linear-gradient(135deg, var(--pink-deep), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.4;
+}
+
+.post-meta {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.post-meta span {
+  margin: 0 0.5rem;
+}
+
+.post-tags {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 0.8rem;
+}
+
+.tag {
+  background: var(--pink-pale);
+  color: var(--pink-deep);
+  padding: 0.2rem 0.7rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+}
+
+/* ===== 文章正文 ===== */
+.post-body {
+  background: var(--card);
+  border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+  box-shadow: 0 8px 32px rgba(200, 100, 200, 0.12);
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  font-size: 1.05rem;
+  line-height: 2;
+}
+
+.post-body h1,
+.post-body h2,
+.post-body h3,
+.post-body h4 {
+  color: var(--pink-deep);
+  margin: 1.8rem 0 1rem;
+  line-height: 1.4;
+}
+
+.post-body h1 { font-size: 1.6rem; }
+.post-body h2 { font-size: 1.4rem; }
+.post-body h3 { font-size: 1.2rem; }
+
+.post-body p {
+  margin-bottom: 1.2rem;
+  line-height: 2;
+}
+
+.post-body ul,
+.post-body ol {
+  margin: 0 0 1.2rem 1.5rem;
+  padding-left: 0.5rem;
+}
+
+.post-body li {
+  margin-bottom: 0.6rem;
+  line-height: 1.8;
+}
+
+.post-body code:not(pre code) {
+  background: var(--pink-pale);
+  color: var(--pink-deep);
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.9em;
+  font-family: 'Courier New', monospace;
+}
+
+.post-body pre {
+  border-radius: var(--radius-sm);
+  margin-bottom: 1.2rem;
+  overflow-x: auto;
+  padding: 1.2rem;
+  background: #282c34;
+}
+
+.post-body blockquote {
+  border-left: 3px solid var(--pink-light);
+  padding: 0.8rem 1.2rem;
+  color: var(--text-light);
+  font-style: italic;
+  margin-bottom: 1.2rem;
+  background: var(--pink-pale);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.post-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.2rem;
+  font-size: 0.92rem;
+}
+
+.post-body th {
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  color: #fff;
+  padding: 0.6rem 0.8rem;
+  text-align: left;
+}
+
+.post-body td {
+  padding: 0.55rem 0.8rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.post-body img {
+  max-width: 100%;
+  border-radius: 12px;
+  margin: 1rem 0;
+}
+
+.post-body a {
+  color: var(--pink-deep);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--pink-light);
+  transition: all 0.2s;
+}
+
+.post-body a:hover {
+  color: var(--purple);
+  border-bottom-color: var(--purple);
+}
+
+/* ===== 分享栏 ===== */
+.share-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  padding: 1.2rem;
+  background: var(--card);
+  border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+  box-shadow: 0 8px 32px rgba(200, 100, 200, 0.12);
+  margin-bottom: 2rem;
+}
+
+.share-label {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-right: 0.3rem;
+}
+
+.share-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.share-btn:hover {
+  transform: translateY(-3px) scale(1.1);
+}
+
+.share-btn.wx { background: #07c160; color: #fff; }
+.share-btn.qq { background: #12b7f5; color: #fff; }
+.share-btn.wb { background: #e6162d; color: #fff; }
+.share-btn.cp { background: var(--purple-pale); color: var(--purple); }
+
+/* ===== 返回首页 ===== */
+.back-home {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.back-home a {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  border-radius: 24px;
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  transition: opacity 0.2s;
+}
+
+.back-home a:hover {
+  opacity: 0.85;
+}
+
+/* ===== 粒子背景 ===== */
+#particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.post-wrapper {
+  position: relative;
+  z-index: 1;
+}
+</style>
+
+    <style>
+    /* ===== TOC (文章目录) ===== */
+    .toc-box {
+      background: var(--pink-pale, #fff0f5);
+      border-radius: 10px;
+      border: 1.5px solid var(--border, #f0d9ff);
+      padding: 1rem 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+    .toc-title {
+      font-weight: 700;
+      color: var(--pink-deep, #e85d8a);
+      margin-bottom: 0.6rem;
+      font-size: 0.92rem;
+    }
+    .toc-list {
+      list-style: none;
+      padding: 0;
+    }
+    .toc-list li { line-height: 2; }
+    .toc-list a {
+      color: var(--text-light, #7c6f9f);
+      text-decoration: none;
+      font-size: 0.88rem;
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+      display: block;
+      transition: all 0.15s;
+    }
+    .toc-list a:hover {
+      color: var(--pink-deep, #e85d8a);
+      background: rgba(255, 143, 171, 0.1);
+    }
+    .toc-list .toc-h3 {
+      padding-left: 1.2rem;
+      font-size: 0.84rem;
+    }
+    </style>
+
+    <style>
+    /* ===== 回到顶部按钮 ===== */
+    #back-to-top {
+      position:fixed;bottom:2rem;right:2rem;z-index:999;
+      width:48px;height:48px;border-radius:50%;
+      background:linear-gradient(135deg,var(--pink),var(--purple));
+      color:#fff;border:none;cursor:pointer;font-size:1.3rem;
+      box-shadow:0 4px 16px rgba(200,100,200,.35);
+      opacity:0;transform:translateY(20px);
+      transition:all .3s ease;
+      pointer-events:none;
+      display:flex;align-items:center;justify-content:center;
+    }
+    #back-to-top.show{opacity:1;transform:translateY(0);pointer-events:auto}
+    #back-to-top:hover{transform:translateY(-4px) scale(1.05);box-shadow:0 8px 24px rgba(200,100,200,.5)}
+    
+    /* ===== 阅读统计 ===== */
+    .reading-stats {
+      display:flex;gap:1.2rem;align-items:center;flex-wrap:wrap;
+      font-size:.85rem;color:var(--text-muted);margin-bottom:1.2rem;
+      padding:0.6rem 0;border-bottom:1px dashed var(--border);
+    }
+    .reading-stats span{display:flex;align-items:center;gap:.3rem}
+    
+    /* ===== 图片懒加载 ===== */
+    .post-body img.lazy-img{opacity:0;transition:opacity .4s ease;min-height:80px;background:linear-gradient(135deg,var(--pink-pale),var(--purple-pale));border-radius:12px}
+    .post-body img.lazy-loaded{opacity:1;background:none;min-height:auto}
+    
+    /* ===== 评论/留言区 ===== */
+    .comment-section {
+      background:var(--card);border-radius:var(--radius);
+      border:1.5px solid var(--border);
+      box-shadow:0 8px 32px rgba(200,100,200,.12);
+      padding:1.8rem;margin-bottom:2rem;
+    }
+    .comment-section h3{color:var(--pink-deep);margin-bottom:1rem;font-size:1.1rem}
+    .comment-form{display:flex;flex-direction:column;gap:.8rem}
+    .comment-form input[type="text"],
+    .comment-form textarea{
+      width:100%;padding:.8rem 1rem;border:1.5px solid var(--border);
+      border-radius:10px;font-size:.9rem;
+      font-family:inherit;color:var(--text);
+      background:var(--bg);transition:border-color .2s;
+    }
+    .comment-form input[type="text"]:focus,
+    .comment-form textarea:focus{
+      outline:none;border-color:var(--pink);
+    }
+    .comment-form textarea{min-height:100px;resize:vertical}
+    .comment-submit{
+      align-self:flex-end;padding:.6rem 1.5rem;border:none;
+      border-radius:20px;background:linear-gradient(135deg,var(--pink),var(--purple));
+      color:#fff;font-weight:700;cursor:pointer;font-size:.9rem;
+      transition:opacity .2s;
+    }
+    .comment-submit:hover{opacity:.85}
+    .comment-notice{font-size:.78rem;color:var(--text-muted);text-align:center}
+    .comment-item{
+      padding:1rem 0;border-bottom:1px dashed var(--border);
+    }
+    .comment-item:last-child{border-bottom:none}
+    .c-name{font-weight:700;color:var(--text);font-size:.9rem}
+    .c-time{font-weight:400;color:var(--text-muted);font-size:.78rem;margin-left:.5rem}
+    .c-text{color:var(--text-light);font-size:.88rem;margin-top:.3rem;line-height:1.7}
+    .honeypot{position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden}
+    .comment-list{margin-top:1rem}
+    .backup-btn{
+      position:fixed;bottom:7rem;right:2rem;z-index:999;
+      padding:.5rem 1rem;border-radius:20px;border:1.5px solid var(--border);
+      background:var(--card);color:var(--text-light);cursor:pointer;
+      font-size:.82rem;transition:all .2s;opacity:.75;
+    }
+    .backup-btn:hover{opacity:1;background:var(--pink-pale);color:var(--pink-deep);border-color:var(--pink-light)}
+    .to-start-btn{
+      position:fixed;bottom:12rem;right:2rem;z-index:999;
+      padding:.5rem 1rem;border-radius:20px;border:1.5px solid var(--border);
+      background:var(--card);color:var(--text-light);cursor:pointer;
+      font-size:.82rem;transition:all .2s;opacity:.75;
+    }
+    .to-start-btn:hover{opacity:1;background:var(--pink-pale);color:var(--pink-deep);border-color:var(--pink-light)}
+    </style>
+
+
+</head>
+<body>
+
+<!-- 粒子背景 -->
+<canvas id="particles"></canvas>
+
+<!-- 导航 -->
+<nav class="nav">
+  <a href="../" class="nav-logo">池帅の亦殿 🌸</a>
+  <div class="nav-actions">
+    <a href="../" class="nav-back">← 返回首页</a>
+    <button id="dark-toggle" onclick="toggleDark()">🌙</button>
+  </div>
+</nav>
+
+<!-- 文章 -->
+<div class="post-wrapper">
+  <div class="post-container">
+    <div class="post-header">
+      <div class="post-cover">🗑️</div>
+      <h1 class="post-title">垃圾桶一开就臭、厨余招小飞虫、垃圾袋总漏汤？8个垃圾处理与除臭妙招，夏天厨房也清爽 🗑️</h1>
+      <div class="post-meta">
+        <span>📅 2026-08-27</span>
+        <span>📂 生活常识</span>
+      </div>
+      <div class="post-tags" id="post-tags"></div>
+    </div>
+  
+    
+    <!-- TOC 文章目录 -->
+    <div class="toc-box" id="toc-box">
+      <div class="toc-title">📋 文章目录</div>
+      <ul class="toc-list" id="toc-list">
+<li class=""><a href="#sec-1">一、湿垃圾先"脱水"，臭味就少一半</a></li>
+<li class=""><a href="#sec-2">二、桶底垫一层"吸味三件套"</a></li>
+<li class=""><a href="#sec-3">三、垃圾袋"双层套 + 打死结"，杜绝漏汤</a></li>
+<li class=""><a href="#sec-4">四、桶盖内侧是"最臭的地方"，很多人从没擦过</a></li>
+<li class=""><a href="#sec-5">五、洗桶别只冲水，要"泡 + 晒"</a></li>
+<li class=""><a href="#sec-6">六、小飞虫的根源是"果皮 + 潮湿"，两天一清就绝迹</a></li>
+<li class=""><a href="#sec-7">七、干湿分开，桶要选对不要贪大</a></li>
+<li class=""><a href="#sec-8">八、可回收和有害垃圾，攒之前先"处理干净"</a></li>
+<li class=""><a href="#sec-9">常见问题速查表</a></li>
+<li class=""><a href="#sec-10">一周维护节奏表</a></li>
+<li class=""><a href="#sec-11">写在最后</a></li>
+</ul>
+    </div>    <!-- 阅读统计 -->
+    <div class="reading-stats" id="reading-stats">
+      <span>📝 字数：<strong id="word-count">2,997</strong></span>
+      <span>⏱ 阅读：<strong id="read-time">约 10 分钟</strong></span>
+    </div>
+<div class="post-body" id="post-body">
+<p>夏天最让人头疼的，不是热，是<strong>厨房垃圾桶那股说不出的味儿</strong>。明明每天都倒，可一掀盖子还是一股酸腐气往脸上扑；垃圾袋提起来底下"滴滴答答"漏了一路；桶边上还围着一圈小飞虫，赶都赶不走。</p>
+<p>其实垃圾桶臭不是"垃圾多"的问题，而是<strong>汤汁、湿气、温度</strong>三样凑齐了。这 8 个妙招从倒垃圾的手法到桶体的清洁，一条条把味儿的源头掐掉，做完当天就能感觉出区别。</p>
+<p><img src="/blog_posts/images/post_91_1.jpg" alt="垃圾桶除臭" loading="lazy" style="max-width:100%;border-radius:12px;margin:1rem 0"></p>
+<h2 id="sec-1">一、湿垃圾先"脱水"，臭味就少一半</h2>
+<p>厨余为什么臭？因为水多。菜叶、果皮、剩菜汤里的水分是细菌繁殖的温床，夏天两三个小时就开始发酵产酸。</p>
+<p><strong>做法</strong>：</p>
+<ul><li>洗菜择下来的菜叶、烂叶，先在水槽滤篮里<strong>沥 10 分钟</strong>再丢桶</li><li>剩菜剩汤别整碗倒，<strong>先把汤水倒进下水道</strong>（油大的先用厨房纸吸一遍），固体部分再进垃圾桶</li><li>西瓜皮、菠萝皮这种"含水量爆表"的，切小块后铺在旧报纸上稍微吸一下水</li></ul>
+<p>就这一步，垃圾桶的味道能降下去一大半。真正让桶发臭的不是垃圾本身，是<strong>渗出来积在桶底的那层汁水</strong>。</p>
+<h2 id="sec-2">二、桶底垫一层"吸味三件套"</h2>
+<p>垃圾袋总有渗漏的时候，桶底那层黏液是臭味的老巢。在套袋之前，往桶底先垫一层吸附材料：</p>
+<div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;margin:1.2rem 0;font-size:.95rem;border-radius:10px;overflow:hidden"><thead><tr><th style="padding:.6rem .7rem;text-align:left;border:1px solid rgba(128,128,128,.28);font-weight:700">垫底材料</th><th style="padding:.6rem .7rem;text-align:left;border:1px solid rgba(128,128,128,.28);font-weight:700">吸味效果</th><th style="padding:.6rem .7rem;text-align:left;border:1px solid rgba(128,128,128,.28);font-weight:700">更换周期</th><th style="padding:.6rem .7rem;text-align:left;border:1px solid rgba(128,128,128,.28);font-weight:700">成本</th></tr></thead><tbody><tr><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">旧报纸 2-3 张</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">吸水好、吸味一般</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">每次换袋</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">几乎免费</td></tr><tr><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">厨房纸 + 小苏打一勺</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">吸水吸味都好</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">2-3 天</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">极低</td></tr><tr><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">用完的咖啡渣（晒干）</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">吸味极强、带香气</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">3-5 天</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">免费</td></tr><tr><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">猫砂（膨润土型）薄薄一层</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">吸水锁味最强</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">一周</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">低</td></tr></tbody></table></div>
+<p>最推荐<strong>咖啡渣</strong>和<strong>小苏打</strong>：咖啡渣里的多孔结构能吸附硫化物和胺类（就是那股腐臭味的主要成分），小苏打能中和发酵产生的酸性气体。喝完咖啡的渣别扔，摊在盘子上晾干，装罐备用，比市面上的除味剂便宜又好用。</p>
+<h2 id="sec-3">三、垃圾袋"双层套 + 打死结"，杜绝漏汤</h2>
+<p>垃圾袋漏，八成是因为<strong>套得不对</strong>。</p>
+<ul><li><strong>双层套法</strong>：内层套一个小袋专收湿垃圾，外层是桶的大袋。湿垃圾满了先扎紧内袋再丢，外袋始终是干的</li><li><strong>别套太满</strong>：袋子装到七分就换，撑得太满一提就破</li><li><strong>打死结不打活扣</strong>：湿垃圾袋一定要<strong>把袋口拧几圈再打死结</strong>，活扣一提就散，汤汁全洒电梯里</li><li>袋子破口预防：鱼骨、竹签、玻璃碎片这类尖锐物，<strong>先用旧报纸包一层</strong>再丢</li></ul>
+<p>小技巧：套袋时把袋口向外翻折 5 厘米卡在桶沿上，袋子不会往下掉，取的时候也顺手。</p>
+<h2 id="sec-4">四、桶盖内侧是"最臭的地方"，很多人从没擦过</h2>
+<p>掀开盖子那股冲鼻子的味，很多时候不是桶里的，是<strong>盖子内侧</strong>的。湿垃圾蒸发的水汽在盖子内侧凝结，日积月累结成一层黏腻的膜，细菌疯长。</p>
+<p><strong>清洁做法</strong>：</p>
+<ol><li>喷一层小苏打水（1 杯水 + 1 勺小苏打，摇匀）静置 3 分钟</li><li>用旧牙刷刷盖子的边槽和铰链缝——这两处最容易藏污</li><li>清水冲净、<strong>彻底晾干</strong>再装回去（潮着装回去等于白洗）</li></ol>
+<p>建议<strong>每周一次</strong>顺手做，比等到发臭再大清洁省力得多。</p>
+<h2 id="sec-5">五、洗桶别只冲水，要"泡 + 晒"</h2>
+<p>垃圾桶洗完还是有味，是因为塑料表面有细微划痕，异味分子钻进去了，冲水冲不掉。</p>
+<p><strong>深度清洁配方（每 2 周一次）</strong>：</p>
+<ul><li>温水半桶 + <strong>白醋 100 毫升</strong> + 小苏打 2 勺，泡 30 分钟</li><li>泡完用海绵擦一遍桶壁和桶底四角</li><li>冲净后<strong>倒扣在太阳下晒 1 小时</strong>——紫外线杀菌比任何洗剂都强</li></ul>
+<p>如果异味特别顽固，泡完擦干后在桶内壁<strong>喷一层稀释的漂白水</strong>（1:50），静置 5 分钟再冲净晒干，基本能"归零"。</p>
+<p><img src="/blog_posts/images/post_91_2.jpg" alt="厨余垃圾处理" loading="lazy" style="max-width:100%;border-radius:12px;margin:1rem 0"></p>
+<h2 id="sec-6">六、小飞虫的根源是"果皮 + 潮湿"，两天一清就绝迹</h2>
+<p>厨房那些小飞虫（果蝇），<strong>从产卵到成虫只要 8-10 天</strong>，夏天更快。它们最爱的是发酵的果皮和湿垃圾表面。</p>
+<p>对付它们靠三步：</p>
+<ul><li><strong>断粮</strong>：香蕉皮、西瓜皮、葡萄梗这类甜性果皮，<strong>当天就扎袋丢出去</strong>，别在桶里过夜</li><li><strong>诱杀</strong>：一个小碗倒<strong>苹果醋 + 两滴洗碗液</strong>，用保鲜膜封口扎几个小孔放在桶边，一晚能诱进十几只（洗碗液破坏表面张力，虫子进去就出不来）</li><li><strong>断根</strong>：水槽滤篮、下水道口的残渣也是它们的产卵地，每晚冲一遍热水</li></ul>
+<p>坚持三天，飞虫基本消失。喷杀虫剂只能杀成虫，虫卵还在，两天后又是一批——所以<strong>清源比喷药重要</strong>。</p>
+<h2 id="sec-7">七、干湿分开，桶要选对不要贪大</h2>
+<p>很多人图省事用一个大桶装所有垃圾，结果<strong>干垃圾被湿垃圾的汁水泡透</strong>，纸巾、纸盒全部变成臭源。</p>
+<p>推荐配置：</p>
+<div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;margin:1.2rem 0;font-size:.95rem;border-radius:10px;overflow:hidden"><thead><tr><th style="padding:.6rem .7rem;text-align:left;border:1px solid rgba(128,128,128,.28);font-weight:700">位置</th><th style="padding:.6rem .7rem;text-align:left;border:1px solid rgba(128,128,128,.28);font-weight:700">桶型</th><th style="padding:.6rem .7rem;text-align:left;border:1px solid rgba(128,128,128,.28);font-weight:700">容量</th><th style="padding:.6rem .7rem;text-align:left;border:1px solid rgba(128,128,128,.28);font-weight:700">说明</th></tr></thead><tbody><tr><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">水槽下方 / 台面边</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">带盖小桶</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">5-8 升</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">只装厨余湿垃圾，容量小逼你天天倒</td></tr><tr><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">客厅 / 卧室</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">无盖或翻盖</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">8-12 升</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">干垃圾为主，几天倒一次没问题</td></tr><tr><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">阳台</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">带盖大桶</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">15-20 升</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">暂存已扎紧的垃圾袋、可回收物</td></tr></tbody></table></div>
+<p>关键在于<strong>厨余桶要小</strong>。桶越大，人越倾向于"再攒攒"，攒的这两天就是发酵产臭的时间。小桶天天倒，反而是最省事的做法。</p>
+<p>另外，脚踏式带盖桶比手掀式卫生得多——做菜时手上油腻腻的，不用碰盖子。</p>
+<h2 id="sec-8">八、可回收和有害垃圾，攒之前先"处理干净"</h2>
+<p>纸箱、塑料瓶、玻璃罐这些能卖能回收的，攒在阳台没问题，但<strong>攒之前必须处理</strong>：</p>
+<ul><li><strong>饮料瓶</strong>：倒净残液、<strong>冲一遍水</strong>、拧掉瓶盖踩扁（不冲的话糖水在瓶底发酵，一星期就一股酒糟味）</li><li><strong>外卖盒</strong>：刮掉残渣、冲干净、叠起来（油腻的外卖盒其实不属于可回收，直接丢干垃圾）</li><li><strong>纸箱</strong>：<strong>撕掉胶带</strong>、拆平叠放，别沾水（湿了就卖不上价，还会长霉）</li><li><strong>过期药品、电池、灯管</strong>：单独装个小盒放阳台，攒够了送小区的有害垃圾投放点，<strong>千万别混进普通垃圾</strong></li></ul>
+<p>顺手做的这几步，能让阳台从"废品站"变回"阳台"。</p>
+<p><img src="/blog_posts/images/post_91_3.jpg" alt="清洁整理" loading="lazy" style="max-width:100%;border-radius:12px;margin:1rem 0"></p>
+<h2 id="sec-9">常见问题速查表</h2>
+<div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;margin:1.2rem 0;font-size:.95rem;border-radius:10px;overflow:hidden"><thead><tr><th style="padding:.6rem .7rem;text-align:left;border:1px solid rgba(128,128,128,.28);font-weight:700">症状</th><th style="padding:.6rem .7rem;text-align:left;border:1px solid rgba(128,128,128,.28);font-weight:700">真正原因</th><th style="padding:.6rem .7rem;text-align:left;border:1px solid rgba(128,128,128,.28);font-weight:700">对症做法</th></tr></thead><tbody><tr><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">一掀盖就臭</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">盖子内侧结了黏膜</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">小苏打水喷 + 牙刷刷边槽，每周一次</td></tr><tr><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">换了新袋还是臭</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">桶底积了旧汁水</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">白醋+小苏打泡 30 分钟，晒干</td></tr><tr><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">垃圾袋总漏</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">湿垃圾水太多、袋子撑太满</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">湿垃圾先沥水，装七分就换，双层套</td></tr><tr><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">桶边一堆小飞虫</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">甜性果皮过夜发酵</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">果皮当天丢，苹果醋诱杀碗</td></tr><tr><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">干垃圾也发臭</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">干湿混装被泡透</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">厨余单独用小桶，干湿分开</td></tr><tr><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">提袋时汤汁洒一路</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">打了活扣</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">袋口拧几圈打死结</td></tr><tr><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">阳台可回收物有酒糟味</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">饮料瓶没冲净</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">倒净冲水再攒</td></tr><tr><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">洗完晾干还有味</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">塑料划痕吸味</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">1:50 漂白水擦一遍再晒</td></tr></tbody></table></div>
+<h2 id="sec-10">一周维护节奏表</h2>
+<div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;margin:1.2rem 0;font-size:.95rem;border-radius:10px;overflow:hidden"><thead><tr><th style="padding:.6rem .7rem;text-align:left;border:1px solid rgba(128,128,128,.28);font-weight:700">频率</th><th style="padding:.6rem .7rem;text-align:left;border:1px solid rgba(128,128,128,.28);font-weight:700">要做的事</th><th style="padding:.6rem .7rem;text-align:left;border:1px solid rgba(128,128,128,.28);font-weight:700">耗时</th></tr></thead><tbody><tr><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">每天</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">厨余扎袋丢出去、水槽滤篮冲一遍</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">2 分钟</td></tr><tr><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">每 2-3 天</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">换桶底吸味垫（报纸/咖啡渣/小苏打）</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">1 分钟</td></tr><tr><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">每周</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">擦桶盖内侧和边槽、擦桶身外壁</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">5 分钟</td></tr><tr><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">每 2 周</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">整桶白醋+小苏打浸泡、日晒消毒</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">30 分钟（泡的时间不用守着）</td></tr><tr><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">每月</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">清理阳台可回收物、送有害垃圾投放点</td><td style="padding:.55rem .7rem;border:1px solid rgba(128,128,128,.22)">15 分钟</td></tr></tbody></table></div>
+<h2 id="sec-11">写在最后</h2>
+<p>垃圾桶这事儿，说到底就一句话：<strong>别让水在桶里待着</strong>。</p>
+<p>湿垃圾沥水、桶底垫吸味材料、袋子打死结、盖子内侧每周擦一次——这四件事加起来一天不到 3 分钟，却能让整个厨房的空气质量上一个台阶。夏天最容易出味儿，也是最能立竿见影看到效果的季节。</p>
+<p>今晚倒垃圾的时候，试试先把汤水倒掉、桶底铺一层晾干的咖啡渣。明天早上掀盖子那一下，你就知道值不值了。🗑️</p>
+<div class="share-bar">
+      <span class="share-label">分享到：</span>
+      <button class="share-btn wx" onclick="shareWX()" title="微信分享">💬</button>
+      <button class="share-btn qq" onclick="shareQQ()" title="QQ分享">🐧</button>
+      <button class="share-btn wb" onclick="shareWB()" title="微博分享">📢</button>
+      <button class="share-btn cp" onclick="copyLink()" title="复制链接">🔗</button>
+    </div>
+  
+    <!-- 留言区 -->
+    <div class="comment-section" id="comment-section">
+      <h3>💬 留言区</h3>
+      <div class="comment-form" id="comment-form">
+        <div class="honeypot" aria-hidden="true">
+          <label>网站</label><input type="text" name="website" id="hp-website" tabindex="-1" autocomplete="off">
+        </div>
+        <input type="text" id="c-name" placeholder="你的昵称（必填）" maxlength="30" required>
+        <textarea id="c-text" placeholder="写点什么吧..." maxlength="1000" required></textarea>
+        <button class="comment-submit" onclick="submitComment()">✨ 发布留言</button>
+        <div class="comment-notice">📌 留言会保存在本地浏览器中，仅你可见</div>
+      </div>
+      <div class="comment-list" id="comment-list"></div>
+    </div>
+
+    <div class="back-home" id="back-home">
+      <a href="../">← 返回首页 池帅の亦殿</a>
+    </div>
+  </div>
+</div>
+
+<script>
+// ======================== 粒子背景 ========================
+(function(){
+  var canvas = document.getElementById('particles');
+  var ctx = canvas.getContext('2d');
+  var particles = [];
+  var W, H;
+  
+  function resize(){
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+  
+  var SYMBOLS = ['🌸','✨','💖','🌙','⭐','🎀','🍃','💫'];
+  
+  function createParticle(){
+    return {
+      x: Math.random() * W,
+      y: H + 20,
+      symbol: SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)],
+      size: 12 + Math.random() * 18,
+      speed: 0.3 + Math.random() * 0.8,
+      drift: (Math.random() - 0.5) * 0.5,
+      opacity: 0.3 + Math.random() * 0.5,
+      rotation: Math.random() * 360,
+      rotSpeed: (Math.random() - 0.5) * 2
+    };
+  }
+  
+  for(var i = 0; i < 25; i++) particles.push(createParticle());
+  
+  function animate(){
+    ctx.clearRect(0, 0, W, H);
+    particles.forEach(function(p){
+      ctx.save();
+      ctx.globalAlpha = p.opacity;
+      ctx.font = p.size + 'px serif';
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.rotation * Math.PI / 180);
+      ctx.fillText(p.symbol, 0, 0);
+      ctx.restore();
+      p.y -= p.speed;
+      p.x += p.drift;
+      p.rotation += p.rotSpeed;
+      if(p.y < -30) Object.assign(p, createParticle());
+    });
+    if(Math.random() < 0.02 && particles.length < 30) particles.push(createParticle());
+    if(particles.length > 30) particles.shift();
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+
+// ======================== 暗黑模式 ========================
+function toggleDark(){
+  var html = document.documentElement;
+  var next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('blog_theme', next);
+}
+(function(){
+  var saved = localStorage.getItem('blog_theme');
+  if(saved) document.documentElement.setAttribute('data-theme', saved);
+})();
+
+// ======================== 分享功能 ========================
+function shareWX(){
+  var qrUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' + encodeURIComponent(location.href);
+  var modal = document.getElementById('wx-share-modal');
+  if(!modal){
+    modal = document.createElement('div');
+    modal.id = 'wx-share-modal';
+    modal.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;z-index:9999;';
+    modal.innerHTML = '<div style="background:#fff;border-radius:16px;padding:2rem;text-align:center;max-width:280px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,.3);">'
+      + '<div style="font-size:2rem;margin-bottom:.5rem">💬</div>'
+      + '<h3 style="color:#07c160;margin-bottom:1rem;font-size:1.1rem">微信扫码分享</h3>'
+      + '<img id="wx-share-qr" style="width:180px;height:180px;border-radius:8px;border:2px solid #eee;" />'
+      + '<p style="margin-top:1rem;color:#888;font-size:.85rem;line-height:1.6">打开微信扫一扫<br>即可分享给好友或朋友圈</p>'
+      + '<button onclick="document.getElementById(\'wx-share-modal\').style.display=\'none\'" style="margin-top:1rem;padding:.5rem 1.5rem;background:#07c160;color:#fff;border:none;border-radius:20px;cursor:pointer;font-size:.9rem">关闭</button>'
+      + '</div>';
+    modal.onclick = function(e){ if(e.target===modal) modal.style.display='none'; };
+    document.body.appendChild(modal);
+  }
+  document.getElementById('wx-share-qr').src = qrUrl;
+  modal.style.display = 'flex';
+}
+function shareQQ(){
+  var url = encodeURIComponent(location.href);
+  var title = encodeURIComponent(document.title);
+  window.open('https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=' + url + '&title=' + title + '&summary=&site=%E6%B1%A0%E5%B8%85%E3%81%AE%E4%BA%A6%E6%AE%BF', '_blank', 'width=700,height=600');
+}
+function shareWB(){
+  var url = encodeURIComponent(location.href);
+  var title = encodeURIComponent(document.title);
+  window.open('https://service.weibo.com/share/share.php?url=' + url + '&title=' + title + '&language=zh_cn', '_blank', 'width=700,height=550');
+}
+function copyLink(){
+  var url = location.origin + location.pathname;
+  var btn = (event && event.currentTarget) || null;
+  function showToast(){
+    if(btn){ var orig=btn.innerHTML; btn.innerHTML='✅'; btn.style.background='#4caf50'; setTimeout(function(){ btn.innerHTML=orig; btn.style.background=''; },2000); }
+    var t=document.createElement('div');
+    t.textContent='🔗 链接已复制！';
+    t.style.cssText='position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.78);color:#fff;padding:.6rem 1.5rem;border-radius:20px;font-size:.9rem;z-index:9999;pointer-events:none;';
+    document.body.appendChild(t);
+    setTimeout(function(){ t.remove(); },2500);
+  }
+  if(navigator.clipboard && window.isSecureContext){
+    navigator.clipboard.writeText(url).then(showToast).catch(function(){
+      try{ var ta=document.createElement('textarea'); ta.value=url; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); showToast(); }catch(e){}
+    });
+  } else {
+    try{ var ta=document.createElement('textarea'); ta.value=url; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); showToast(); }catch(e){}
+  }
+}
+
+// ======================== 代码高亮 ========================
+window.addEventListener('DOMContentLoaded', function(){
+  if(typeof hljs !== 'undefined'){
+    document.querySelectorAll('pre code').forEach(function(b){
+      try{ hljs.highlightElement(b); }catch(e){}
+    });
+  }
+  buildTOC_legacy();
+});
+</script>
+
+<script>
+document.getElementById("post-tags").innerHTML = ["垃圾桶除臭", "厨余处理", "小飞虫", "干湿分类", "生活技巧"].map(function(t) {
+  return '<span class="tag">' + t + '</span>';
+}).join("");
+</script>
+
+<script>
+// ======================== 文章目录 TOC ========================
+    function buildTOC_legacy() { // 动态重建 TOC - 已修复
+      var body = document.getElementById('post-body');
+      if (!body) return;
+      var headings = body.querySelectorAll('h2, h3');
+      var tocBox = document.getElementById('toc-box');
+      var tocList = document.getElementById('toc-list');
+      if (headings.length < 2) {
+        if (tocBox) tocBox.style.display = 'none';
+        return;
+      }
+      if (tocBox) tocBox.style.display = 'block';
+      tocList.innerHTML = '';
+      for (var i = 0; i < headings.length; i++) {
+        var h = headings[i];
+        var level = h.tagName === 'H3' ? 'toc-h3' : '';
+        var li = document.createElement('li');
+        if (level) li.className = level;
+        var a = document.createElement('a');
+        // 自动生成 ID：如果标题没有 id，从文本内容生成
+        var headingId = h.id;
+        if (!headingId) {
+          headingId = h.textContent.replace(/[^\w\u4e00-\u9fff]/g, '').substring(0, 50);
+          h.id = headingId;
+        }
+        a.href = '#' + headingId;
+        a.textContent = h.textContent;
+        a.onclick = function(e) {
+          e.preventDefault();
+          var targetId = this.getAttribute('href').slice(1);
+          var el = document.getElementById(targetId);
+          if (el) el.scrollIntoView({behavior: 'smooth'});
+          return false;
+        };
+        li.appendChild(a);
+        tocList.appendChild(li);
+      }
+    }
+    
+    // TOC已改为静态HTML
+</script>
+
+<script>
+// ======================== 回到顶部 ========================
+(function backToTop(){
+  var btn = document.getElementById('back-to-top');
+  if(!btn) return;
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if(!ticking){
+      requestAnimationFrame(function(){
+        var y = window.pageYOffset || document.documentElement.scrollTop;
+        if(y > 400){ btn.classList.add('show'); }
+        else { btn.classList.remove('show'); }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, {passive:true});
+})();
+function scrollToTop(){ window.scrollTo({top:0, behavior:'smooth'}); }
+
+// ======================== 图片懒加载 ========================
+(function lazyLoadImgs(){
+  if(!('IntersectionObserver' in window)) return;
+  var imgs = document.querySelectorAll('.post-body img:not(.lazy-img):not(.lazy-loaded)');
+  imgs.forEach(function(img){
+    if(img.src && !img.loading){
+      img.classList.add('lazy-img');
+      img.setAttribute('loading','lazy');
+    }
+  });
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        var img = entry.target;
+        if(img.dataset.src){
+          img.src = img.dataset.src;
+          img.removeAttribute('data-src');
+        }
+        img.classList.add('lazy-loaded');
+        img.classList.remove('lazy-img');
+        observer.unobserve(img);
+      }
+    });
+  },{rootMargin:'200px'});
+  document.querySelectorAll('.post-body img[data-src]').forEach(function(img){
+    observer.observe(img);
+  });
+  document.querySelectorAll('.post-body img').forEach(function(img){
+    img.setAttribute('loading','lazy');
+    if(!img.complete){ img.classList.add('lazy-img'); }
+    img.addEventListener('load',function(){ img.classList.add('lazy-loaded'); });
+    if(img.complete){ img.classList.add('lazy-loaded'); }
+  });
+})();
+
+// ======================== 评论/留言系统 ========================
+(function loadComments(){
+  var key = 'blog_comments_post_91';
+  var list = document.getElementById('comment-list');
+  if(!list) return;
+  var comments = [];
+  try{ comments = JSON.parse(localStorage.getItem(key) || '[]'); }
+  catch(e){ comments = []; }
+  var html = '';
+  comments.forEach(function(c){
+    html += '<div class="comment-item"><div class="c-name">' +
+      escapeHtml(c.name) + '<span class="c-time">' + c.time + '</span></div>' +
+      '<div class="c-text">' + escapeHtml(c.text) + '</div></div>';
+  });
+  list.innerHTML = html;
+})();
+
+function submitComment(){
+  var nameEl = document.getElementById('c-name');
+  var textEl = document.getElementById('c-text');
+  var hpEl = document.getElementById('hp-website');
+  if(!nameEl || !textEl) return;
+  if(hpEl && hpEl.value.trim() !== ''){ alert('留言失败，请重试'); return; }
+  var name = nameEl.value.trim();
+  var text = textEl.value.trim();
+  if(!name){ alert('请输入昵称'); nameEl.focus(); return; }
+  if(!text){ alert('请输入留言内容'); textEl.focus(); return; }
+  if(text.length > 1000){ alert('留言内容过长，请控制在1000字以内'); return; }
+  var spamWords = /广告|推广|加微信|加QQ|赚钱|兼职|代购|http|www\./i;
+  if(spamWords.test(text)){ alert('留言内容包含敏感词，请修改后重试'); return; }
+  var key = 'blog_comments_post_91';
+  var comments = [];
+  try{ comments = JSON.parse(localStorage.getItem(key) || '[]'); }
+  catch(e){ comments = []; }
+  var now = new Date();
+  var timeStr = now.getFullYear()+'-'+pad(now.getMonth()+1)+'-'+pad(now.getDate())+' '+
+                pad(now.getHours())+':'+pad(now.getMinutes());
+  comments.push({name:name, text:text, time:timeStr});
+  localStorage.setItem(key, JSON.stringify(comments));
+  nameEl.value = '';
+  textEl.value = '';
+  var list = document.getElementById('comment-list');
+  if(list){
+    var html2 = '';
+    comments.forEach(function(c){
+      html2 += '<div class="comment-item"><div class="c-name">' +
+        escapeHtml(c.name) + '<span class="c-time">' + c.time + '</span></div>' +
+        '<div class="c-text">' + escapeHtml(c.text) + '</div></div>';
+    });
+    list.innerHTML = html2;
+  }
+  alert('留言已保存');
+}
+
+function pad(n){ return n < 10 ? '0' + n : '' + n; }
+function escapeHtml(s){ var d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+
+// ======================== 全站备份导出 ========================
+function exportBackup(){
+  try{
+    var data = {
+      title: document.title,
+      url: window.location.href,
+      content: document.getElementById('post-body') ? document.getElementById('post-body').innerHTML : '',
+      timestamp: new Date().toISOString(),
+      comments: JSON.parse(localStorage.getItem('blog_comments_post_91') || '[]')
+    };
+    var blob = new Blob([JSON.stringify(data, null, 2)], {type:'application/json'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'backup_' + new Date().toISOString().slice(0,10) + '.json';
+    a.click();
+    URL.revokeObjectURL(a.href);
+    alert('当前文章备份已导出');
+  } catch(e){ alert('导出失败: ' + e.message); }
+}
+</script>
+
+
+    <!-- 回到顶部 -->
+    <button id="back-to-top" title="回到顶部" onclick="scrollToTop()">⬆</button>
+
+    <!-- 返回文首 -->
+    <button class="to-start-btn" onclick="scrollToTop()" title="返回文章开始">🔝 返回文首</button>
+
+    <!-- 备份按钮 -->
+    <button class="backup-btn" onclick="exportBackup()" title="一键导出全站内容">💾 导出备份</button>
+
+
+</body>
+</html>
