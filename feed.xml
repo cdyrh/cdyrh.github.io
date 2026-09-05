@@ -6,13 +6,62 @@
     <atom:link href="https://cdyrh.github.io/feed.xml" rel="self" type="application/rss+xml"/>
     <description>池帅的个人博客，记录生活，分享美好</description>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 04 Sep 2026 01:34:49 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 05 Sep 2026 01:36:01 GMT</lastBuildDate>
     <generator>WorkBuddy RSS Generator</generator>
     <image>
       <url>https://cdyrh.github.io/favicon.ico</url>
       <title>池帅の亦殿</title>
       <link>https://cdyrh.github.io/</link>
     </image>
+    <item>
+    <title>手机越用越卡？6个不花一分钱的提速与省电妙招 🔋</title>
+    <link>https://cdyrh.github.io/blog_posts/post_100.html</link>
+    <guid isPermaLink="true">https://cdyrh.github.io/blog_posts/post_100.html</guid>
+    <pubDate>Sat, 05 Sep 2026 00:00:00 GMT</pubDate>
+    <category>技术</category>
+    <description><![CDATA[手机越用越卡？6个不花一分钱的提速与省电妙招 🔋]]></description>
+    <content:encoded><![CDATA[<p><img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=900&q=80" alt="手机省电提速" loading="lazy" onload="this.classList.add('lazy-loaded')" style="max-width:100%;border-radius:12px;margin:1rem 0;opacity:0;transition:opacity .4s" class="lazy-img"></p>
+<p>你有没有这种感觉：刚买回来的手机丝滑得像德芙，用上半年就开始卡顿、发热、掉电飞快。多数人第一反应是「该换手机了」，其实大概率是手机被你用「脏」了。</p>
+<p>真正让手机变卡变耗电的，往往不是硬件老化，而是缓存堆积、后台偷跑、动画冗余这些软件层面的小毛病。下面 6 个妙招，不花一分钱、不动一根螺丝，照着做，老手机也能再战两年。</p>
+<h2 id="h-%E4%B8%80%E3%80%81%E5%85%88%E7%BB%99%E6%89%8B%E6%9C%BA%E7%98%A6%E4%B8%AA%E8%BA%AB%EF%BC%9A%E6%B8%85%E7%90%86%E7%BC%93%E5%AD%98%E6%AF%94%E5%8D%B8%E8%BD%BD%20App%20%E6%9B%B4%E7%AE%A1%E7%94%A8">一、先给手机瘦个身：清理缓存比卸载 App 更管用</h2>
+<p>很多人清理手机只知道删照片、卸 App，却忽略了最大头的「缓存垃圾」。微信、抖音、淘宝这类常用 App，用一个月就能积攒几 GB 的缓存，它们平时不显示在你的存储占用里，却悄悄拖慢系统。</p>
+<p>正确做法：</p>
+<li>打开微信 → 我 → 设置 → 通用 → 存储空间 → 清理缓存（注意是「缓存」不是「聊天记录」，聊天记录别误删）</li>
+<li>安卓手机进 设置 → 存储 → 清理加速，把「应用缓存」一键清掉</li>
+<li>iOS 用户没有系统级缓存清理，但可以卸载后重装体积膨胀的 App（长按图标选「卸载 App」，数据会保留，重装后体积回到初始大小）</li>
+<p>实测一台用了两年的安卓机，仅清理微信和抖音缓存就腾出 6.3 GB，打开应用的响应速度肉眼可见地变快。</p>
+<h2 id="h-%E4%BA%8C%E3%80%81%E5%85%B3%E6%8E%89%E8%BF%99%203%20%E4%B8%AA%E5%90%8E%E5%8F%B0%E5%BC%80%E5%85%B3%EF%BC%8C%E7%BB%AD%E8%88%AA%E7%AB%8B%E5%88%BB%E5%A4%9A%E6%92%91%E5%8D%8A%E5%A4%A9">二、关掉这 3 个后台开关，续航立刻多撑半天</h2>
+<p>掉电快，八成是后台在偷跑。三个最该关的开关：</p>
+<li>后台 App 刷新：iOS 在 设置 → 通用 → 后台 App 刷新，只给微信、导航这类必要 App 保留，其余全关。安卓在 设置 → 应用 → 自启动管理，把不常用的全禁掉。</li>
+<li>定位权限设为「仅使用时」：地图、外卖需要定位，但多数 App 根本用不到常驻定位。逐项检查 设置 → 隐私 → 定位服务，把「始终」改成「使用 App 期间」。</li>
+<li>抬起亮屏 / 息屏显示：这两个功能看似方便，实则一直在消耗屏幕和传感器电量。夜里睡觉前关掉，一晚上能少掉 5% 到 8% 的电。</li>
+<p>关完这三处，中等使用强度下，原本撑不到下班的电量，能稳稳撑到回家。</p>
+<p><img src="https://images.unsplash.com/photo-1556656793-08538906a9f8?auto=format&fit=crop&w=900&q=80" alt="充电也有讲究" loading="lazy" onload="this.classList.add('lazy-loaded')" style="max-width:100%;border-radius:12px;margin:1rem 0;opacity:0;transition:opacity .4s" class="lazy-img"></p>
+<h2 id="h-%E4%B8%89%E3%80%81%E5%8A%A8%E7%94%BB%E5%85%B3%E4%B8%80%E6%A1%A3%EF%BC%8C%E8%80%81%E6%89%8B%E6%9C%BA%E7%9E%AC%E9%97%B4%E4%B8%9D%E6%BB%91">三、动画关一档，老手机瞬间丝滑</h2>
+<p>手机系统的过渡动画很漂亮，但也最吃处理器。把动画调快或关掉，操作跟手感会明显提升。</p>
+<li>iOS：打开 设置 → 辅助功能 → 动态效果 → 开启「减弱动态效果」，同时进 设置 → 辅助功能 → 触控 → 辅助触控，可以把常用操作做成快捷键。</li>
+<li>安卓：进 设置 → 关于手机 → 连点「版本号」7 次开启开发者模式，回到 系统 → 开发者选项，把「窗口动画缩放」「过渡动画缩放」「Animator 时长缩放」全部设为 0.5x 或直接关闭。</li>
+<p>这一步对三年以上的老机型尤其明显，滑动列表时掉帧和卡顿会少一大半。</p>
+<h2 id="h-%E5%9B%9B%E3%80%81%E7%85%A7%E7%89%87%E5%88%AB%E5%A1%9E%E6%BB%A1%E6%89%8B%E6%9C%BA%EF%BC%9A%E4%BA%91%E7%AB%AF%E5%8A%A0%E8%87%AA%E5%8A%A8%E6%B8%85%E7%90%86%E5%8F%8C%E4%BF%9D%E9%99%A9">四、照片别塞满手机：云端加自动清理双保险</h2>
+<p>手机存储一满，系统就会频繁卡顿，因为读写空间被挤压。照片和视频是存储杀手，解决办法不是删，而是「搬」。</p>
+<li>开启厂商自带的云空间（华为云、小米云、iCloud、Google 相册都行），设为「仅保留优化后的小图，原图存云端」</li>
+<li>微信里 设置 → 通用 → 照片、视频、文件和通话 → 关闭「自动下载」，避免群聊图片把手机塞爆</li>
+<li>每月固定一天，把相册里重复、模糊、截屏废图批量清理，用手机自带的「清理建议」功能几分钟搞定</li>
+<p>照片搬上云之后，本地只留缩略图，128 GB 的手机能当 256 GB 用。</p>
+<h2 id="h-%E4%BA%94%E3%80%81%E5%85%85%E7%94%B5%E6%9C%89%E8%AE%B2%E7%A9%B6%EF%BC%9A%E8%BF%99%E6%A0%B7%E5%85%85%E7%94%B5%E6%B1%A0%E5%A4%9A%E7%94%A8%E4%B8%A4%E5%B9%B4">五、充电有讲究：这样充电池多用两年</h2>
+<p>锂电池最怕两件事：长期满电存放、长期低电耗尽。想让电池健康度掉得慢，记住三点：</p>
+<li>随用随充，别等 20% 以下才充，也别每次都充到 100% 不拔。保持在 20% 到 80% 之间最养电池。</li>
+<li>边玩大型游戏边充最伤电池，发热加过充双重打击，长期这样电池半年就衰。</li>
+<li>长期不用的备用机，充到 50% 左右关机存放，每月拿出来补一次电。</li>
+<p>不少手机已经支持「智能充电保护」（iOS 的优化电池充电、安卓的电池保护），记得在设置里打开，它会学习你的作息，夜里先充到 80%，起床前再充满，减少满电静置时间。</p>
+<h2 id="h-%E5%85%AD%E3%80%81%E7%BB%88%E6%9E%81%E5%85%9C%E5%BA%95%EF%BC%9A%E9%87%8D%E7%BD%AE%E5%89%8D%E5%85%88%E5%81%9A%E8%BF%99%E4%B8%A4%E4%BB%B6%E4%BA%8B">六、终极兜底：重置前先做这两件事</h2>
+<p>如果上面五招都试了还是卡，最后的大招是「恢复出厂设置」。但别急着点，先做两件事保平安：</p>
+<li>完整备份：云备份加电脑本地备份各来一份，通讯录、照片、微信聊天记录重点确认已同步</li>
+<li>退出账号锁：重置前退出 Apple ID / 谷歌账号 / 各品牌账户，否则重置后可能触发激活锁，自己都进不去</li>
+<p>重置完成后，只装真正常用的十几个 App，不常用的坚决不装。你会发现，手机回到了刚买那天的状态——不是因为它变新了，而是因为你终于用对了它。</p>
+<hr>
+<p>手机卡顿和省电，从来不是玄学，而是一组可以拆解的生活习惯。今晚花十分钟，按上面的顺序过一遍，明天你的手机就会用更轻快的方式，陪你多走两年。</p>]]></content:encoded>
+    </item>
     <item>
     <title>衣服沾了油渍、口红、血渍？6种常见污渍的家庭去渍急救配方 🧴</title>
     <link>https://cdyrh.github.io/blog_posts/post_99.html</link>
