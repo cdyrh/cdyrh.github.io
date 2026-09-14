@@ -6,13 +6,68 @@
     <atom:link href="https://cdyrh.github.io/feed.xml" rel="self" type="application/rss+xml"/>
     <description>池帅的个人博客，记录生活，分享美好</description>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 13 Sep 2026 01:16:12 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 14 Sep 2026 01:17:18 GMT</lastBuildDate>
     <generator>WorkBuddy RSS Generator</generator>
     <image>
       <url>https://cdyrh.github.io/favicon.ico</url>
       <title>池帅の亦殿</title>
       <link>https://cdyrh.github.io/</link>
     </image>
+    <item>
+    <title>Wi-Fi 信号差、网速慢？6个不花一分钱让家里网络提速覆盖的小妙招 📶</title>
+    <link>https://cdyrh.github.io/blog_posts/post_108.html</link>
+    <guid isPermaLink="true">https://cdyrh.github.io/blog_posts/post_108.html</guid>
+    <pubDate>Mon, 14 Sep 2026 00:00:00 GMT</pubDate>
+    <category>技术</category>
+    <description><![CDATA[Wi-Fi 信号差、网速慢？6个不花一分钱让家里网络提速覆盖的小妙招 📶]]></description>
+    <content:encoded><![CDATA[<p>每天刷视频卡成幻灯片、开个会议就掉线、卧室里信号只剩一格……家里的 Wi-Fi 明明办的是百兆甚至千兆宽带，用起来却像回到了拨号时代。其实绝大多数「网速慢」并不是运营商的问题，而是路由器摆错了、设置没调好、干扰没避开。</p>
+<p>下面这 6 个妙招全部零成本，不需要买新设备，照着做基本都能让网速和覆盖有明显提升。</p>
+<p><img src="https://images.unsplash.com/photo-1606851094291-6efae152bb87?w=1200&q=80" alt="路由器与家庭网络" loading="lazy" onload="this.classList.add('lazy-loaded')" style="max-width:100%;border-radius:12px;margin:1rem 0;opacity:0;transition:opacity .4s" class="lazy-img"></p>
+<h2 id="h-%E4%B8%80%E3%80%81%E6%8A%8A%E8%B7%AF%E7%94%B1%E5%99%A8%E6%91%86%E5%9C%A8%E5%AE%B6%E7%9A%84%E3%80%8C%E6%AD%A3%E4%B8%AD%E5%BF%83%E3%80%81%E9%AB%98%E5%A4%84%E3%80%81%E7%A9%BA%E6%97%B7%E5%A4%84%E3%80%8D">一、把路由器摆在家的「正中心、高处、空旷处」</h2>
+<p>这是最容易被忽略、却最影响信号的一步。很多人图省事，把光猫和路由器塞进弱电箱、塞到电视柜最里层，或者贴着墙角放在地上——结果信号被铁皮柜、墙体、地面层层削弱。</p>
+<p>正确做法是：</p>
+<li>尽量放在房屋平面的大致中心位置，让信号向四周均匀扩散；</li>
+<li>放在离地一米以上的桌面或柜顶，别直接放地上（无线电波有向上发散的特性）；</li>
+<li>周围不要堆杂物，尤其避开金属文件柜、微波炉、鱼缸等会反射或吸收信号的物体；</li>
+<li>天线尽量一根竖直、一根倾斜，覆盖不同方向的设备。</li>
+<p>如果房子是长条形或复式，中心位置难兼顾，至少保证路由器到常用设备（客厅电视、卧室床头）之间没有厚墙和金属门阻隔。</p>
+<h2 id="h-%E4%BA%8C%E3%80%81%E7%BB%99%202.4G%20Wi-Fi%20%E6%8D%A2%E4%B8%AA%E3%80%8C%E4%B8%8D%E5%A0%B5%E8%BD%A6%E3%80%8D%E7%9A%84%E4%BF%A1%E9%81%93">二、给 2.4G Wi-Fi 换个「不堵车」的信道</h2>
+<p>2.4G 频段一共只有 13 个信道，相邻的信道还会互相重叠。当你和楼上楼下邻居都用默认的「自动」信道时，很可能整栋楼都挤在信道 6 上，晚高峰互相干扰，网速自然暴跌。</p>
+<p>解决办法很简单：</p>
+<li>用手机 App（如 Wi-Fi 分析仪类工具）扫一下周围，看哪个信道最空；</li>
+<li>把路由器的 2.4G 信道手动固定到 1、6、11 这三个互不重叠的信道之一，优先选邻居最少的那一个；</li>
+<li>改完保存重启，通常能立刻感觉到刷网页更顺。</li>
+<p>&gt; 小提醒：5G 频段信道多、干扰少，但如果你的设备离路由器较远，5G 穿墙弱反而会变慢，这时候反而该连 2.4G。</p>
+<h2 id="h-%E4%B8%89%E3%80%81%E5%8F%8C%E9%A2%91%E5%88%86%E5%BC%80%E7%94%A8%EF%BC%9A%E6%89%8B%E6%9C%BA%E5%B9%B3%E6%9D%BF%E8%B5%B0%205G%EF%BC%8C%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85%E8%B5%B0%202.4G">三、双频分开用：手机平板走 5G，智能家居走 2.4G</h2>
+<p>现在很多路由器把 2.4G 和 5G 合并成一个名字（双频合一），系统自动帮你选。听起来很智能，但实际常常「该连近的却连了远的」，导致设备总是在两个频段间反复横跳，反而更卡。</p>
+<p>更稳的玩法是进路由器后台，把两个频段改成不同的名称，比如：</p>
+<li>客厅电视、手机、笔记本这些近距离高速设备，连名字带 5G 的那个，享受更快的速率；</li>
+<li>智能音箱、摄像头、扫地机器人这些对速度不敏感、但可能离路由器较远的设备，连 2.4G 那个，靠它更好的穿墙能力保连接。</li>
+<p>手动分流之后，关键任务有专属快车道，整体体验会顺滑很多。</p>
+<p><img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=1200&q=80" alt="用笔记本处理家庭网络" loading="lazy" onload="this.classList.add('lazy-loaded')" style="max-width:100%;border-radius:12px;margin:1rem 0;opacity:0;transition:opacity .4s" class="lazy-img"></p>
+<h2 id="h-%E5%9B%9B%E3%80%81%E5%AE%9A%E6%9C%9F%E9%87%8D%E5%90%AF%20%2B%20%E9%A1%BA%E6%89%8B%E5%8D%87%E7%BA%A7%E5%9B%BA%E4%BB%B6">四、定期重启 + 顺手升级固件</h2>
+<p>路由器也是一台小电脑，长时间不关机，缓存堆积、连接表打满，就会越用越慢、偶尔还莫名其妙掉线。很多人家里的路由器从装好那天起到现在就没关过。</p>
+<p>建议：</p>
+<li>每周手动重启一次（很多路由器能设置定时重启，设在凌晨三点的空闲时段最省心）；</li>
+<li>进管理后台看看有没有「固件升级」，厂商的更新往往修复了掉线、降速的 bug，还能提升稳定性；</li>
+<li>如果路由器已经服役五六年、只支持老旧的 Wi-Fi 4/5，那再怎么调也有限，可以考虑换一台支持 Wi-Fi 6 的入门机型。</li>
+<h2 id="h-%E4%BA%94%E3%80%81%E6%8A%8A%20DNS%20%E6%8D%A2%E6%88%90%E6%9B%B4%E5%BF%AB%E7%9A%84%E5%85%AC%E5%85%B1%E6%9C%8D%E5%8A%A1%E5%99%A8">五、把 DNS 换成更快的公共服务器</h2>
+<p>你访问一个网站，第一步是先「问路」——把这个网址翻译成 IP 地址，这个「问路员」就是 DNS。运营商自带的 DNS 有时响应慢、甚至被劫持弹广告，会让你明明网速不慢，打开网页却要转圈好几秒。</p>
+<p>在路由器或手机 Wi-Fi 设置里，把 DNS 手动改成公共服务器通常能提速：</p>
+<li>国内通用：114.114.114.114 和 223.5.5.5；</li>
+<li>看重隐私的可以选 1.1.1.1 这类。</li>
+<p>改完之后，网页打开速度、APP 加载图片的响应往往都有肉眼可见的改善。</p>
+<p>&gt; 注意：DNS 只影响「找地址」的快慢，不提升下载电影的峰值带宽。如果测速软件显示带宽本身就不达标，那要从光猫、网线、套餐上找原因。</p>
+<h2 id="h-%E5%85%AD%E3%80%81%E4%BF%A1%E5%8F%B7%E6%AD%BB%E8%A7%92%E5%88%AB%E6%85%8C%EF%BC%9A%E6%97%A7%E8%B7%AF%E7%94%B1%E5%99%A8%E5%8F%98%20AP%E3%80%81%E6%98%93%E6%8B%89%E7%BD%90%E5%BD%93%E5%8F%8D%E5%B0%84%E6%9D%BF">六、信号死角别慌：旧路由器变 AP、易拉罐当反射板</h2>
+<p>总有一两个房间（比如卫生间、阳台、地下室）信号特别差。不一定要买贵的中继器，先试这几个零成本办法：</p>
+<li>翻出家里闲置的旧路由器，用网线连上主路由的 LAN 口，关掉它的 DHCP，设成「AP 模式」或改个同名同密码的 Wi-Fi，就能当信号扩展点用；</li>
+<li>把铝制易拉罐剪开做成弧形反射板，套在路由器天线上，把信号「聚」向信号弱的那个方向；</li>
+<li>跨楼层或隔墙太远时，可以考虑电力猫（利用家里电线传信号），不过这算轻度投入，预算够再上。</li>
+<p><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80" alt="整洁的家庭办公桌与网络" loading="lazy" onload="this.classList.add('lazy-loaded')" style="max-width:100%;border-radius:12px;margin:1rem 0;opacity:0;transition:opacity .4s" class="lazy-img"></p>
+<h2 id="h-%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E">写在最后</h2>
+<p>网速慢别急着投诉运营商，也别急着花钱换套餐。先把路由器摆正、信道调开、双频分开、定期重启、DNS 换好、死角补上——这一套组合拳下来，绝大多数家庭都能把现有的宽带潜力榨干，刷剧开会不再转圈。</p>
+<p>你家的 Wi-Fi 是哪个环节的坑？欢迎在评论区聊聊，一起把网速救回来。</p>]]></content:encoded>
+    </item>
     <item>
     <title>绿植总养死？5个让绿萝吊兰发财树轻松爆盆的养护小妙招 🌿</title>
     <link>https://cdyrh.github.io/blog_posts/post_107.html</link>
