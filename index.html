@@ -1952,45 +1952,43 @@ const DB = {
 
   }catch(e){console.error('迁移失败:',e)}
 
-  if(!localStorage.getItem(DB.KEY_POSTS)){
+  writePosts(); // ⚡ 始终以页面内嵌 posts-data 为准渲染（HTML 走 SW network-first，天然最新），localStorage 仅作离线兜底
 
-    writePosts();
-
-  }
-
-
-
-  // ⚡ 全自动更新检测：fetch 自身 HEAD，对比 Last-Modified
-
-  // 只要你推了新代码到 GitHub，下次访客打开博客自动刷新，无需手动改任何版本号
-
-  fetch(location.href, { method: 'HEAD', cache: 'no-store' })
-
-    .then(res => {
-
-      const serverTime = res.headers.get('Last-Modified') || res.headers.get('ETag') || '';
-
-      const localTime  = localStorage.getItem('blog_server_mtime') || '';
-
-      if(serverTime && serverTime !== localTime){
-
-        // 服务器有新版本 → 清空旧数据，写入最新文章，刷新页面
-
-        localStorage.removeItem(DB.KEY_POSTS);
-
-        localStorage.setItem('blog_server_mtime', serverTime);
-
-        writePosts();
-
-        // 延迟 100ms 再重载，让 writePosts 有时间落盘
-
-        setTimeout(() => location.reload(), 100);
-
-      }
-
-    })
-
-    .catch(() => { /* 离线或请求失败时静默忽略，不影响正常使用 */ });
+  // ⚡ 全自动更新检测 v2：自包含 + 8s 超时 + 2 分钟轮询 + visibilitychange + 防循环重载
+  // 修复：旧版检测排在长 IIFE 末尾且无超时/无重试，请求失败即永久失效，导致博客不自动刷新。
+  // 现在：页面被浏览器/CDN 缓存(max-age=600)时，靠 HEAD Last-Modified 检测新版本自动重载；
+  // 标签页保持打开时每 2 分钟复查，切回标签页立即复查。任何异常均静默，不影响正常浏览。
+  (function setupAutoUpdate(){
+    function checkUpdate(){
+      try{
+        var ctrl = ('AbortController' in window) ? new AbortController() : null;
+        var timer = ctrl ? setTimeout(function(){ ctrl.abort(); }, 8000) : null;
+        var opt = { method: 'HEAD', cache: 'no-store' };
+        if(ctrl) opt.signal = ctrl.signal;
+        fetch(location.href, opt).then(function(res){
+          if(timer) clearTimeout(timer);
+          var serverTime = res.headers.get('Last-Modified') || res.headers.get('ETag') || '';
+          if(!serverTime) return;
+          var localTime = localStorage.getItem('blog_server_mtime') || '';
+          if(serverTime === localTime) return;
+          localStorage.setItem('blog_server_mtime', serverTime);
+          // 防循环重载：30 秒内最多自动重载一次
+          var last = parseInt(localStorage.getItem('blog_reload_ts') || '0', 10);
+          var now = Date.now();
+          if(now - last < 30000) return;
+          localStorage.setItem('blog_reload_ts', String(now));
+          // 无需清空文章缓存：重载后新 HTML 会以内嵌数据重新写入 localStorage
+          setTimeout(function(){ location.reload(); }, 100);
+        }).catch(function(){ /* 离线/超时/网络失败时静默忽略 */ });
+      }catch(e){ /* 任何异常不影响正常浏览 */ }
+    }
+    checkUpdate();
+    setInterval(checkUpdate, 120000);
+    document.addEventListener('visibilitychange', function(){
+      if(!document.hidden) checkUpdate();
+    });
+    window.blogCheckUpdate = checkUpdate; // 诊断入口：控制台执行 blogCheckUpdate() 手动触发检测
+  })();
 
 })();
 
