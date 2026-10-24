@@ -27,6 +27,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 INDEX = os.path.join(HERE, 'index.html')
 DATA = os.path.join(HERE, 'posts_data.json')
 FEED = os.path.join(HERE, 'feed.xml')
+VERSION = os.path.join(HERE, 'version.json')
+SW = os.path.join(HERE, 'sw.js')
 NODE = r'C:\Users\Administrator\.workbuddy\binaries\node\versions\22.22.2\node.exe'
 
 SITE = 'https://cdyrh.github.io/'
@@ -154,6 +156,60 @@ def build_feed(posts, rendered):
     print('[ok] feed.xml 已重建，条目数 =', len(items))
 
 
+def compute_build(posts, bump=False):
+    """build 号 = 最新文章日期-最新id-总篇数（内容不变则不变，保证幂等）"""
+    latest = max(posts, key=lambda p: (str(p.get('date') or ''), p.get('id') or 0))
+    bid = '%s-%s-%d' % (
+        str(latest.get('date') or '1970-01-01').replace('-', ''),
+        latest.get('id'),
+        len(posts),
+    )
+    if bump:
+        bid += '-' + datetime.datetime.now().strftime('%H%M%S')
+    return bid, latest
+
+
+def update_build_version(posts, bump=False):
+    """每次构建同步维护版本三件套：version.json + index.html 的 blog-build meta + sw.js 缓存名。
+
+    前端 index.html 靠轮询 version.json 的 build 判断是否有新文章，不一致就强制重载；
+    sw.js 的 CACHE_NAME 随 build 变化 → 浏览器认为 SW 已更新 → 清掉旧缓存。
+    三步齐备，页面才能在每天发文后自己刷新，而不是停留在昨天的内容。
+    """
+    bid, latest = compute_build(posts, bump)
+
+    info = {
+        'version': bid,
+        'build': bid,
+        'latestId': latest.get('id'),
+        'latestDate': latest.get('date'),
+        'latestTitle': latest.get('title', ''),
+        'count': len(posts),
+        'buildTime': datetime.datetime.now().astimezone().isoformat(timespec='seconds'),
+    }
+    json.dump(info, open(VERSION, 'w', encoding='utf-8'), ensure_ascii=False, indent=2)
+
+    html = open(INDEX, encoding='utf-8').read()
+    tag = '<meta name="blog-build" content="%s">' % bid
+    if re.search(r'<meta name="blog-build"[^>]*>', html):
+        html = re.sub(r'<meta name="blog-build"[^>]*>', lambda m: tag, html, count=1)
+    else:
+        m = re.search(r'<title>.*?</title>', html, re.S)
+        if not m:
+            raise RuntimeError('找不到 <title>，无法注入 blog-build meta')
+        html = html[:m.end()] + '\n\n' + tag + html[m.end():]
+    open(INDEX, 'w', encoding='utf-8').write(html)
+
+    sw = open(SW, encoding='utf-8').read()
+    sw_new = re.sub(r"const CACHE_NAME = '[^']*';",
+                    lambda m: "const CACHE_NAME = 'blog-v3-%s';" % bid, sw, count=1)
+    if sw_new != sw:
+        open(SW, 'w', encoding='utf-8').write(sw_new)
+
+    print('[ok] build =', bid, '（version.json / index.html meta / sw.js 缓存名 已同步）')
+    return bid
+
+
 def main():
     posts = load_posts()
     html = open(INDEX, encoding='utf-8').read()
@@ -161,6 +217,7 @@ def main():
     update_index_block(posts)
     rendered = render_bodies(posts, md2html_src)
     build_feed(posts, rendered)
+    update_build_version(posts, bump=('--bump' in sys.argv))
     # 清理临时文件
     for f in ('_posts_in.json', '_rendered.json', '_render.js'):
         try:
