@@ -2,7 +2,7 @@
 // 策略：页面 / version.json → 直连网络（禁缓存）；静态资源 → cache-first
 // ⚠️ CACHE_NAME 由 build_posts.py 在每次发布时自动改写为 blog-v3-<build>，
 //    版本变化即让浏览器认为 SW 已更新 → skipWaiting + 清理旧缓存，避免用户长期看到旧首页。
-const CACHE_NAME = 'blog-v3-20261026-149-148';
+const CACHE_NAME = 'blog-v3-20261027-150-149';
 
 const STATIC_ASSETS = [
   '/404.html',
