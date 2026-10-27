@@ -54,7 +54,8 @@ self.addEventListener('fetch', event => {
   if (req.method === 'HEAD') return;
 
   // 版本号文件与 SW 自身：永不缓存，保证发布后能被立刻感知
-  if (url.pathname === '/version.json' || url.pathname === '/sw.js') return;
+  if (url.pathname === '/version.json' || url.pathname === '/sw.js'
+      || url.pathname === '/hot_tags.json') return;
 
   const accept = req.headers.get('accept') || '';
   const isPage = accept.includes('text/html')

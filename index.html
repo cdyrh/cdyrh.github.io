@@ -1494,7 +1494,9 @@ textarea.form-control{resize:vertical;min-height:300px;line-height:1.7;font-fami
 
           </div>
 
-          <div class="pc-tags">
+          <div class="pc-tags" id="pc-tags">
+
+            <!-- HOT_TAGS_DYNAMIC_v1: 默认词为兜底，运行时由 hot_tags.json 覆盖 -->
 
             <span class="pc-tag" onclick="quickFill('iPhone 16')">iPhone 16</span>
 
@@ -3395,6 +3397,54 @@ var PC_PLATFORMS = [
 ];
 
 
+
+// === 热门关键词动态加载 (HOT_TAGS_DYNAMIC_v1) ===
+// hot_tags.json 由定时任务更新；请求失败 / 超时 / 结构异常时静默保留 HTML 里的默认词。
+function pcEsc(s){
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+function renderHotTags(list){
+  var box=document.getElementById('pc-tags');
+  if(!box || !list || !list.length) return;
+  var html='', n=0;
+  list.forEach(function(it){
+    var kw = (typeof it==='string') ? it : (it && it.kw);
+    if(!kw || n>=8) return;
+    var hot = (it && it.hot) ? it.hot : '';
+    html += '<span class="pc-tag" data-kw="'+pcEsc(kw)+'" title="'
+          + pcEsc(hot? hot+' · 点击立即比价' : '点击立即比价')+'">'+pcEsc(kw)+'</span>';
+    n++;
+  });
+  if(!html) return;
+  box.innerHTML=html;
+  // 事件委托：关键词里若含引号也不会破坏绑定（内联 onclick 会被转义破坏）
+  if(!box._pcBound){
+    box._pcBound = true;
+    box.addEventListener('click', function(e){
+      var t = e.target && e.target.closest ? e.target.closest('.pc-tag') : null;
+      if(!t || !t.dataset) return;
+      if(t.dataset.kw) quickFill(t.dataset.kw);
+    });
+  }
+}
+function loadHotTags(){
+  var timer=setTimeout(function(){ timer=null; }, 2500);
+  fetch('hot_tags.json?t='+Date.now(), {cache:'no-store'})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(d){
+      if(!timer) return;
+      clearTimeout(timer);
+      var items = d && (d.items || (d.length ? d : null));
+      if(items && items.length) renderHotTags(items);
+    })
+    .catch(function(){});
+}
+if(document.readyState==='loading'){
+  document.addEventListener('DOMContentLoaded', loadHotTags);
+}else{
+  loadHotTags();
+}
 
 function quickFill(kw){
 
