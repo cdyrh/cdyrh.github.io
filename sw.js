@@ -2,7 +2,7 @@
 // 策略：页面 / version.json → 直连网络（禁缓存）；静态资源 → cache-first
 // ⚠️ CACHE_NAME 由 build_posts.py 在每次发布时自动改写为 blog-v3-<build>，
 //    版本变化即让浏览器认为 SW 已更新 → skipWaiting + 清理旧缓存，避免用户长期看到旧首页。
-const CACHE_NAME = 'blog-v3-20261107-161-160-152606';
+const CACHE_NAME = 'blog-v3-20261107-161-160-160012';
 
 const STATIC_ASSETS = [
   '/404.html',
@@ -46,6 +46,30 @@ self.addEventListener('fetch', event => {
   const url = new URL(req.url);
 
   if (req.method !== 'GET' && req.method !== 'HEAD') return;
+
+  // ⚡ 详情页引用的境外渲染阻塞资源（Google Fonts / cdnjs 代码高亮）在国内经常超时，
+  //    同步 <script> 和 <link rel=stylesheet> 会一直卡住首屏。1.5 秒内拿不到就返回
+  //    同类型的空资源：高亮 JS 给一个 stub（详情页自身是 typeof hljs 判断，不会报错），
+  //    CSS 给空样式（字体回退到系统字）。网络正常时仍加载真实资源，样式不变。
+  const host = url.hostname;
+  if (host === 'fonts.googleapis.com' || host === 'fonts.gstatic.com' || host === 'cdnjs.cloudflare.com') {
+    const isJs = /\.js(\?|$)/.test(url.pathname);
+    const empty = () => new Response(
+      isJs ? 'window.hljs=window.hljs||{highlightAll:function(){},highlightElement:function(){}};' : '',
+      { status: 200, headers: { 'Content-Type': isJs ? 'application/javascript; charset=utf-8' : 'text/css; charset=utf-8' } }
+    );
+    event.respondWith(new Promise(resolve => {
+      let done = false;
+      const t = setTimeout(() => { if (!done) { done = true; resolve(empty()); } }, 1500);
+      fetch(req).then(r => {
+        if (!done) { done = true; clearTimeout(t); resolve(r); }
+      }).catch(() => {
+        if (!done) { done = true; clearTimeout(t); resolve(empty()); }
+      });
+    }));
+    return;
+  }
+
   if (url.hostname !== 'cdyrh.github.io' && url.hostname !== 'www.aj1j.com') return;
   if (url.pathname.startsWith('/admin')) return;
 

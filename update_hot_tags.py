@@ -78,6 +78,17 @@ SEASON = {
 }
 
 
+# 热搜词若命中这些字眼，属于时政 / 社会新闻 / 突发个案，不适合出现在比价插件里
+BLOCK = ['事故', '起诉', '死亡', '被刺', '逝世', '去世', '判刑', '爆炸', '地震',
+         '火灾', '战争', '官员', '主席', '总理', '疫情', '病例', '癌', '诈骗',
+         '坠', '遇难', '失联', '拘留', '逮捕', '落马', '被查', '冲突', '袭击',
+         '游行', '选举', '法案', '老人', '学生', '女子', '男子', '外卖员']
+
+# 抓不到热搜时的常青好物池，按日期轮换，保证每天仍有新鲜词
+EVERGREEN = ['空气炸锅', '蓝牙耳机', '机械键盘', '充电宝', '咖啡', '面膜',
+             '羽绒服', '扫地机器人', '电动牙刷', '保温杯', '显示器', '猫粮']
+
+
 def fetch_hot():
     req = urllib.request.Request(API, headers={'User-Agent': UA, 'Referer': 'https://top.baidu.com/'})
     raw = urllib.request.urlopen(req, timeout=15).read().decode('utf-8', 'ignore')
@@ -95,6 +106,8 @@ def match(hot_list):
     picked, used_kw = [], set()
     for rank, it in enumerate(hot_list):
         w = it['word']
+        if any(b in w for b in BLOCK):
+            continue
         low = w.lower()
         for key, kw in RULES:
             if key.lower() in low:
@@ -107,6 +120,19 @@ def match(hot_list):
                 break
         if len(picked) >= 4:
             break
+    return picked
+
+
+def fill_evergreen(picked, want=6):
+    """按日期轮换常青好物，保证每天热搜命中少时也能凑满且内容有变化。"""
+    offset = datetime.date.today().toordinal() % len(EVERGREEN)
+    have = {p['kw'] for p in picked}
+    for k in (EVERGREEN[offset:] + EVERGREEN[:offset]):
+        if len(picked) >= want:
+            break
+        if k not in have:
+            picked.append({'kw': k, 'hot': '常青好物'})
+            have.add(k)
     return picked
 
 
@@ -161,13 +187,21 @@ def main():
         return
 
     if not hot:
-        print('[skip] 无热搜数据，保留现有 hot_tags.json 不动'); return
+        # 抓不到热搜也要更新：以前这里直接 return，导致 hot_tags.json 连续几天不变化，
+        # 前端再怎么轮询都只显示旧词。用「当季词 + 按日轮换的常青好物」兜底。
+        print('[warn] 热搜抓取失败，改用当季 + 常青词兜底')
+        picked = fill_evergreen(fill_season([], want=3), 6)
+        if '--dry-run' in args:
+            print(json.dumps(picked, ensure_ascii=False, indent=2))
+            return
+        write_json(picked, '当季热销 + 常青好物（热搜抓取失败兜底）')
+        return
 
     picked = match(hot)
     print('[ok] 热搜匹配到 %d 个比价词' % len(picked))
     if len(picked) < 4:
         print('[warn] 匹配不足 4 个，用当季词补齐')
-    picked = fill_season(picked)
+    picked = fill_evergreen(fill_season(picked), 6)
 
     if '--dry-run' in args:
         print(json.dumps(picked, ensure_ascii=False, indent=2)); return

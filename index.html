@@ -16,7 +16,7 @@
 
 <title>池帥の亦殿 🌸</title>
 
-<meta name="blog-build" content="20261107-161-160-152606">
+<meta name="blog-build" content="20261107-161-160-160012">
 
 <meta name="description" id="meta-desc" content="池帥的个人博客，记录生活，分享美好">
 
@@ -1480,6 +1480,8 @@ textarea.form-control{resize:vertical;min-height:300px;line-height:1.7;font-fami
 
           </div>
 
+          <div id="pc-tags-meta" style="font-size:.72rem;color:var(--text-muted);margin-top:-.2rem"></div>
+
           <div id="pc-results" class="pc-results"></div>
 
         </div>
@@ -2445,7 +2447,7 @@ function heroSearch(){
 
   renderHome();
 
-  window.scrollTo({top:500,behavior:'smooth'});
+  scrollToPosts();
 
 }
 
@@ -2508,6 +2510,8 @@ function getPpp(){
 
 
 function renderHome(){
+
+  syncFilterUrl();
 
   applyConfig();
 
@@ -2641,7 +2645,7 @@ function renderHome(){
 
       b.textContent=i;
 
-      b.onclick=()=>{currentPage=i;renderHome();window.scrollTo({top:500,behavior:'smooth'})};
+      b.onclick=()=>{currentPage=i;renderHome();scrollToPosts()};
 
       pag.appendChild(b);
 
@@ -2652,6 +2656,10 @@ function renderHome(){
 
 
   renderSidebar();
+
+  bindSidebarFilters();
+
+  renderFilterBar();
 
 }
 
@@ -2679,9 +2687,9 @@ function renderSidebar(){
 
   const catEl = document.getElementById('cat-list');
 
-  catEl.innerHTML = `<div class="cat-item" style="${!currentCat?'background:var(--pink-pale);color:var(--pink-deep)':''}" onclick="filterCat(null)"><span>📚 全部</span><span class="cat-count">${posts.filter(p=>!p.draft).length}</span></div>`
+  catEl.innerHTML = `<div class="cat-item" style="${!currentCat?'background:var(--pink-pale);color:var(--pink-deep)':''}" data-cat=""><span>📚 全部</span><span class="cat-count">${posts.filter(p=>!p.draft).length}</span></div>`
 
-    + cats.map(c=>`<div class="cat-item" style="${currentCat===c?'background:var(--pink-pale);color:var(--pink-deep)':''}" onclick="filterCat('${c}')"><span>${c}</span><span class="cat-count">${posts.filter(p=>p.cat===c&&!p.draft).length}</span></div>`).join('');
+    + cats.map(c=>`<div class="cat-item" style="${currentCat===c?'background:var(--pink-pale);color:var(--pink-deep)':''}" data-cat="${sideEsc(c)}"><span>${c}</span><span class="cat-count">${posts.filter(p=>p.cat===c&&!p.draft).length}</span></div>`).join('');
 
 
 
@@ -2701,7 +2709,7 @@ function renderSidebar(){
 
     Object.entries(tagCount).sort((a,b)=>b[1]-a[1]).slice(0,15).map(([t,c],i)=>`
 
-      <span class="tag" style="background:${colors[i%4]};color:${textColors[i%4]};cursor:pointer;border-color:${textColors[i%4]}" onclick="filterTag('${t}')">${t}${c>1?` (${c})`:''}</span>`).join('');
+      <span class="tag" style="background:${colors[i%4]};color:${textColors[i%4]};cursor:pointer;border-color:${textColors[i%4]}" data-tag="${sideEsc(t)}">${t}${c>1?` (${c})`:''}</span>`).join('');
 
 
 
@@ -2711,7 +2719,7 @@ function renderSidebar(){
 
   document.getElementById('hot-posts').innerHTML = hotPosts.map(p=>`
 
-    <div class="rec-item" onclick="openPost(${p.id})">
+    <div class="rec-item" data-post="${p.id}" onclick="openPost(${p.id})">
 
       <span style="font-size:1.1rem">${p.cover||'📝'}</span>
 
@@ -2729,7 +2737,7 @@ function renderSidebar(){
 
   document.getElementById('recent-posts').innerHTML = recentPosts.map(p=>`
 
-    <div class="rec-item" onclick="openPost(${p.id})">
+    <div class="rec-item" data-post="${p.id}" onclick="openPost(${p.id})">
 
       <span style="font-size:1rem">${p.cover||'📝'}</span>
 
@@ -2751,7 +2759,7 @@ function renderSidebar(){
 
   document.getElementById('rec-posts').innerHTML = shuffled.map(p=>`
 
-    <div class="rec-item" onclick="openPost(${p.id})">
+    <div class="rec-item" data-post="${p.id}" onclick="openPost(${p.id})">
 
       <span style="font-size:1rem">${p.cover||'📝'}</span>
 
@@ -2771,13 +2779,13 @@ function renderSidebar(){
 
 function filterCat(cat){
 
-  currentCat = cat; currentPage = 1; currentSearch = '';
+  currentCat = cat || null; currentPage = 1; currentSearch = '';
 
-  document.getElementById('hero-search').value = '';
+  var hs=document.getElementById('hero-search'); if(hs) hs.value='';
 
   renderHome();
 
-  window.scrollTo({top:500,behavior:'smooth'});
+  scrollToPosts();
 
 }
 
@@ -2785,15 +2793,13 @@ function filterCat(cat){
 
 function filterTag(tag){
 
-  currentSearch = tag;
+  currentCat = null; currentPage = 1; currentSearch = tag || '';
 
-  document.getElementById('hero-search').value = tag;
-
-  currentCat = null; currentPage = 1;
+  var hs=document.getElementById('hero-search'); if(hs) hs.value=currentSearch;
 
   renderHome();
 
-  window.scrollTo({top:500,behavior:'smooth'});
+  scrollToPosts();
 
 }
 
@@ -3419,23 +3425,71 @@ function renderHotTags(list){
     });
   }
 }
+var __hotLoading=false, __hotLast=0;
+
 function loadHotTags(){
-  var timer=setTimeout(function(){ timer=null; }, 2500);
-  fetch('hot_tags.json?t='+Date.now(), {cache:'no-store'})
-    .then(function(r){ return r.ok ? r.json() : null; })
+
+  if(__hotLoading) return;
+
+  __hotLoading=true;
+
+  var ctrl = ('AbortController' in window) ? new AbortController() : null;
+
+  var timer = ctrl ? setTimeout(function(){ ctrl.abort(); }, 8000) : null;
+
+  var opt = {cache:'no-store'};
+
+  if(ctrl) opt.signal = ctrl.signal;
+
+  fetch('hot_tags.json?t='+Date.now(), opt)
+
+    .then(function(r){ if(timer) clearTimeout(timer); return r.ok ? r.json() : null; })
+
     .then(function(d){
-      if(!timer) return;
-      clearTimeout(timer);
+
+      __hotLoading=false; __hotLast=Date.now();
+
       var items = d && (d.items || (d.length ? d : null));
+
       if(items && items.length) renderHotTags(items);
+
+      var meta=document.getElementById('pc-tags-meta');
+
+      if(meta && d) meta.textContent='热搜 '+(d.updated||'今日')+' 更新 · 自动刷新';
+
     })
-    .catch(function(){});
+
+    .catch(function(){ __hotLoading=false; });
+
 }
+
 if(document.readyState==='loading'){
+
   document.addEventListener('DOMContentLoaded', loadHotTags);
+
 }else{
+
   loadHotTags();
+
 }
+
+// 页面开着时每 3 分钟拉一次；切回标签页 / 窗口获得焦点时立即补一次
+
+setInterval(function(){ if(!document.hidden) loadHotTags(); }, 180000);
+
+document.addEventListener('visibilitychange', function(){
+
+  if(!document.hidden && Date.now()-__hotLast > 60000) loadHotTags();
+
+});
+
+window.addEventListener('focus', function(){
+
+  if(Date.now()-__hotLast > 60000) loadHotTags();
+
+});
+
+
 
 function quickFill(kw){
 
@@ -4101,13 +4155,114 @@ window.checkCfg = function(){
 
 
 
-// ======================== 初始化 ========================
+// ======================== 筛选直达（URL 可分享 / 刷新保持） ========================
+function sideEsc(v){
+  return String(v==null?'':v).replace(/&/g,'&amp;').replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+function bindSidebarFilter(el, kind){
+  if(!el || el._filterBound) return;
+  el._filterBound=true;
+  el.addEventListener('click', function(e){
+    var t=e.target && e.target.closest ? e.target.closest('[data-cat],[data-tag]') : null;
+    if(!t) return;
+    if(kind==='cat') filterCat(t.getAttribute('data-cat')||null);
+    else filterTag(t.getAttribute('data-tag')||'');
+  });
+}
+function bindSidebarFilters(){
+  bindSidebarFilter(document.getElementById('cat-list'),'cat');
+  bindSidebarFilter(document.getElementById('tag-cloud'),'tag');
+}
+function syncFilterUrl(){
+  try{
+    var u=new URL(location.href);
+    ['cat','tag','q'].forEach(function(k){ u.searchParams.delete(k); });
+    if(currentCat) u.searchParams.set('cat', currentCat);
+    else if(currentSearch) u.searchParams.set('tag', currentSearch);
+    history.replaceState(null,'',u.toString());
+  }catch(e){}
+}
+function scrollToPosts(){
+  var el=document.getElementById('posts-container');
+  if(!el) return;
+  var y=el.getBoundingClientRect().top + window.scrollY - 80;
+  try{ window.scrollTo({top:Math.max(0,y),behavior:'smooth'}); }
+  catch(e){ window.scrollTo(0,Math.max(0,y)); }
+}
+function clearFilter(){
+  currentCat=null; currentSearch=''; currentPage=1;
+  var hs=document.getElementById('hero-search'); if(hs) hs.value='';
+  renderHome();
+}
+function renderFilterBar(){
+  var bar=document.getElementById('filter-bar');
+  if(!bar){
+    bar=document.createElement('div'); bar.id='filter-bar';
+    bar.style.cssText='display:none;align-items:center;gap:.8rem;margin:0 0 1rem;padding:.6rem .9rem;background:var(--pink-pale);border-radius:var(--radius-sm);font-size:.9rem;color:var(--pink-deep)';
+    var c=document.getElementById('posts-container');
+    if(!c || !c.parentNode) return;
+    c.parentNode.insertBefore(bar,c);
+  }
+  if(!currentCat && !currentSearch){ bar.style.display='none'; return; }
+  bar.style.display='flex';
+  bar.textContent = currentCat ? ('\u{1F4DA} 分类：'+currentCat+'  ') : ('\u{1F50E} 搜索：'+currentSearch+'  ');
+  var btn=document.createElement('button');
+  btn.textContent='\u2715 清除筛选';
+  btn.style.cssText='margin-left:auto;border:0;background:transparent;color:var(--pink-deep);cursor:pointer;font-family:var(--font);font-size:.85rem';
+  btn.onclick=clearFilter;
+  bar.appendChild(btn);
+}
+function applyUrlFilter(){
+  try{
+    var p=new URLSearchParams(location.search);
+    var cat=p.get('cat'), tag=p.get('tag'), q=p.get('q');
+    if(cat) currentCat=cat;
+    if(tag) currentSearch=tag;
+    else if(q) currentSearch=q;
+    var hs=document.getElementById('hero-search');
+    if(hs && currentSearch) hs.value=currentSearch;
+    return !!(cat||tag||q);
+  }catch(e){ return false; }
+}
 
+// ======================== 详情页预取：侧栏点击提速 ========================
+var __prefetched={};
+function prefetchPost(id){
+  if(!id || __prefetched[id]) return;
+  __prefetched[id]=1;
+  try{
+    var l=document.createElement('link');
+    l.rel='prefetch'; l.href='blog_posts/post_'+id+'.html';
+    document.head.appendChild(l);
+  }catch(e){}
+}
+function __bindPrefetch(type, passive){
+  document.addEventListener(type, function(e){
+    var t=e.target && e.target.closest ? e.target.closest('[data-post]') : null;
+    if(t) prefetchPost(t.getAttribute('data-post'));
+  }, passive ? {passive:true} : false);
+}
+__bindPrefetch('mouseover', true);
+__bindPrefetch('touchstart', true);
+window.addEventListener('load', function(){
+  var ids=[].map.call(document.querySelectorAll('[data-post]'), function(x){
+    return x.getAttribute('data-post');
+  });
+  var uniq=[];
+  ids.forEach(function(id){ if(id && uniq.indexOf(id)<0) uniq.push(id); });
+  uniq=uniq.slice(0,12);
+  var run=function(){
+    uniq.forEach(function(id,i){ setTimeout(function(){ prefetchPost(id); }, i*250); });
+  };
+  if(window.requestIdleCallback) requestIdleCallback(run,{timeout:6000});
+  else setTimeout(run,1500);
+});
+
+// ======================== 初始化 ========================
 window.addEventListener('DOMContentLoaded',()=>{
 
   try{
-
-    // 首页诊断
 
     window.checkCfg();
 
@@ -4117,13 +4272,17 @@ window.addEventListener('DOMContentLoaded',()=>{
 
     applyConfig();
 
+    var __hasFilter = applyUrlFilter();
+
     renderHome();
 
     renderStatsBar();
 
+    if(__hasFilter) setTimeout(scrollToPosts, 350);
+
   } catch(e){
 
-    console.error('🚨 DOMContentLoaded FATAL ERROR:', e.message, e.stack);
+    console.error('DOMContentLoaded FATAL ERROR:', e.message, e.stack);
 
   }
 
