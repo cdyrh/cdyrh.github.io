@@ -613,7 +613,7 @@ function renderAdminList(){
       '<input type="checkbox" class="batch-cb" data-id="'+p.id+'" onchange="updateBatchInfo()">'+
       '<div class="post-item-info">'+
         '<div class="post-item-title">'+escHtml(p.title)+' '+badges.join(' ')+'</div>'+
-        '<div class="post-item-meta">'+p.date+' · '+p.cat+' · 👁️'+(p.views||0)+' · '+countWords(p.body||'')+'字</div>'+
+        '<div class="post-item-meta">'+p.date+' · '+p.cat+' · 👁️'+(p.views||0)+' · '+(p.words||countWords(p.body||''))+'字</div>'+
       '</div>'+
       '<div class="post-item-actions">'+
         '<button class="top" onclick="toggleTop('+p.id+')">'+(p.top?'取消置顶':'置顶')+'</button>'+
@@ -1045,6 +1045,30 @@ document.addEventListener('keydown', function(e){
   }
 });
 
+
+// ======================== 正文兜底（配合首页瘦身） ========================
+// 首页只写入列表数据（不含 body）。后台首次打开时若发现正文缺失，
+// 才按需拉取 posts_data.json 补齐 —— 普通访客首页永远不会下载这份全文。
+function ensureBodies(){
+  var posts;
+  try { posts = DB.posts; } catch(e){ return Promise.resolve(); }
+  if(!Array.isArray(posts) || !posts.length || posts.every(function(p){return p.body;}))
+    return Promise.resolve();
+  return fetch('posts_data.json?t=' + Date.now())
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(full){
+      if(!Array.isArray(full)) return;
+      var map = {};
+      full.forEach(function(p){ map[String(p.id)] = p.body||''; });
+      var merged = posts.map(function(p){
+        return p.body ? p : Object.assign({}, p, {body: map[String(p.id)]||''});
+      });
+      DB.posts = merged;
+      if(typeof renderAdminList === 'function') renderAdminList();
+    })
+    .catch(function(){});
+}
+
 // ======================== 初始化 ========================
 initDefaultPassword().then(()=>{
   // 检查是否已登录
@@ -1053,6 +1077,7 @@ initDefaultPassword().then(()=>{
   }
   updateAdminStats();
   renderAdminList();
+  ensureBodies();
   
   // 检查锁定状态提示
   const lockInfo = getLockoutInfo();

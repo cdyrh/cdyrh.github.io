@@ -61,9 +61,44 @@ def extract_md2html(html):
     return html[i:j + 1]
 
 
+def plain_text(md):
+    """把 Markdown 正文压成纯文本（口径与前端 getExcerpt 一致，另外剥掉图片/链接）。"""
+    s = re.sub(r'```[\s\S]*?```', '', md or '')
+    s = re.sub(r'!\[[^\]]*\]\([^)]*\)', '', s)          # 图片
+    s = re.sub(r'\[([^\]]*)\]\([^)]*\)', r'\1', s)       # 链接文字保留
+    s = re.sub(r'https?://\S+', '', s)
+    s = re.sub(r'[#*`>_!|\[\]]', '', s)
+    return re.sub(r'\s+', ' ', s).strip()
+
+
+def word_count(md):
+    """与前端 countWords 同口径：中文按字、英文按词。"""
+    s = re.sub(r'```[\s\S]*?```', '', md or '')
+    s = re.sub(r'[#*`>_\[\]!]', '', s)
+    s = re.sub(r'https?://\S+', '', s).strip()
+    return len(re.findall(r'[\u4e00-\u9fa5]', s)) + len(re.findall(r'[a-zA-Z]+', s))
+
+
+# 首页列表需要的字段（body 全文不进首页，点文章会跳到独立静态页）
+SLIM_FIELDS = ('id', 'title', 'cat', 'tags', 'cover', 'date', 'views',
+               'top', 'draft', 'pin', 'thumb', 'private', 'summary', 'excerpt')
+
+
+def slim_post(p):
+    """首页瘦身数据：元数据 + 摘要 + 字数，去掉 body 全文。"""
+    out = {k: p[k] for k in SLIM_FIELDS if k in p}
+    out['excerpt'] = plain_text(p.get('body', ''))[:240]
+    out['words'] = word_count(p.get('body', ''))
+    return out
+
+
 def update_index_block(posts):
+    # ⚡ 首页只注入列表数据。以前把 160 篇全文一起塞进 HTML，首页高达 978KB，
+    #    国内访问 GitHub Pages 要等几秒甚至几十秒，左侧列表必须等整个 HTML 下完才渲染。
+    #    正文由 build_feed / 独立静态详情页承载，首页不需要 body。
+    slim = [slim_post(p) for p in posts]
     html = open(INDEX, encoding='utf-8').read()
-    json_text = json.dumps(posts, ensure_ascii=False).replace('<', '\\u003c')
+    json_text = json.dumps(slim, ensure_ascii=False).replace('<', '\\u003c')
     new_block = '<script type="application/json" id="posts-data">\n' + json_text + '\n</script>'
     pat = re.compile(r'<script type="application/json" id="posts-data">.*?</script>', re.S)
     if pat.search(html):
@@ -76,7 +111,79 @@ def update_index_block(posts):
             raise RuntimeError('找不到注入位置')
         html = html[:s] + new_block + '\n' + html[s:]
     open(INDEX, 'w', encoding='utf-8').write(html)
-    print('[ok] index.html posts-data 块已更新，文章数 =', len(posts))
+    raw = len(json.dumps(posts, ensure_ascii=False).encode('utf-8'))
+    light = len(json_text.encode('utf-8'))
+    print('[ok] index.html posts-data 已瘦身：%d 篇，数据块 %d B（原 %d B，省 %.1f%%）'
+          % (len(posts), light, raw, 100 * (1 - light / raw)))
+
+
+def first_page_html(posts):
+    """生成首屏 6 张卡片的静态 HTML —— 浏览器流式解析到这里就能显示文章，
+    不用等整份 HTML + JSON 下载完、也不用等 DOMContentLoaded 后 JS 渲染。
+    JS 启动后 renderHome() 会用真实数据接管，视觉上无缝。"""
+    import html as _html
+
+    def e(v):
+        return _html.escape(str(v or ''), quote=True)
+
+    def fmt_date(d):
+        return str(d or '').replace('-', '.')
+
+    def read_time(words):
+        mins = -(-int(words or 0) // 300)  # ceil
+        return '< 1 分钟' if mins < 1 else '约 %d 分钟' % mins
+
+    ordered = sorted(posts, key=lambda p: (not p.get('top', False),
+                                           -int(p.get('pin') or 0),
+                                           -int(p.get('id') or 0)))
+    page = ordered[:6]
+    cards = []
+    for p in page:
+        excerpt = plain_text(p.get('body', ''))[:100]
+        if len(plain_text(p.get('body', ''))) > 100:
+            excerpt += '…'
+        badges = ('<span class="badge-top">📌 置顶</span>' if p.get('top') else '') + \
+                 ('<span class="badge-priv">📋 草稿</span>' if p.get('draft') else '')
+        tags = ''.join('<span class="tag" style="font-size:.76rem;padding:.1rem .5rem">%s</span>'
+                       % e(t) for t in (p.get('tags') or [])[:2])
+        cover = ('<div class="post-card-cover"><img src="%s" alt="缩略图"></div>' % e(p['thumb'])
+                 if p.get('thumb') else
+                 '<div class="post-card-cover">%s</div>' % e(p.get('cover') or '📝'))
+        cards.append(
+            '<div class="post-card" onclick="openPost(%s)">' % e(p.get('id'))
+            + cover
+            + '<div class="post-card-body"><div class="post-meta">'
+            + '<span class="post-cat">%s</span>' % e(p.get('cat') or '随笔')
+            + '<span class="post-date">📅 %s</span>' % e(fmt_date(p.get('date')))
+            + badges
+            + '</div><h3>%s</h3><p>%s</p></div>' % (e(p.get('title')), e(excerpt))
+            + '<div class="post-footer">'
+            + '<span class="post-stat">👁️ %d</span>' % int(p.get('views') or 0)
+            + '<span class="post-stat">💬 0</span>'
+            + '<span class="post-stat">📖 %s</span>' % e(read_time(word_count(p.get('body', ''))))
+            + tags + '</div></div>'
+        )
+    return ''.join(cards)
+
+
+def update_first_page(posts):
+    """把首屏静态卡片写进 #posts-container（用注释标记包裹，便于每次构建覆盖）。"""
+    html = open(INDEX, encoding='utf-8').read()
+    start, end = '<!--FIRST_PAGE_START-->', '<!--FIRST_PAGE_END-->'
+    cards = first_page_html(posts)
+    if start in html and end in html:
+        a = html.index(start) + len(start)
+        b = html.index(end)
+        html = html[:a] + '\n' + cards + '\n' + html[b:]
+    else:
+        tag = '<div id="posts-container" class="posts-grid"></div>'
+        if tag not in html:
+            print('[warn] 找不到 #posts-container，跳过首屏静态化')
+            return
+        html = html.replace(tag, '<div id="posts-container" class="posts-grid">'
+                            + start + '\n' + cards + '\n' + end + '</div>', 1)
+    open(INDEX, 'w', encoding='utf-8').write(html)
+    print('[ok] 首屏静态卡片已生成（%d 篇）' % min(6, len(posts)))
 
 
 def render_bodies(posts, md2html_src):
@@ -215,6 +322,7 @@ def main():
     html = open(INDEX, encoding='utf-8').read()
     md2html_src = extract_md2html(html)
     update_index_block(posts)
+    update_first_page(posts)
     rendered = render_bodies(posts, md2html_src)
     build_feed(posts, rendered)
     update_build_version(posts, bump=('--bump' in sys.argv))

@@ -2,7 +2,7 @@
 // 策略：页面 / version.json → 直连网络（禁缓存）；静态资源 → cache-first
 // ⚠️ CACHE_NAME 由 build_posts.py 在每次发布时自动改写为 blog-v3-<build>，
 //    版本变化即让浏览器认为 SW 已更新 → skipWaiting + 清理旧缓存，避免用户长期看到旧首页。
-const CACHE_NAME = 'blog-v3-20261107-161-160';
+const CACHE_NAME = 'blog-v3-20261107-161-160-152606';
 
 const STATIC_ASSETS = [
   '/404.html',
@@ -63,17 +63,33 @@ self.addEventListener('fetch', event => {
     || url.pathname.endsWith('.html')
     || url.pathname.endsWith('.xml');
 
-  // 页面与 RSS：network-first（且强制 no-store 绕开 HTTP 缓存），失败才回退缓存
+  // ⚡ 页面与 RSS：stale-while-revalidate（缓存优先，后台静默更新）
+  // 以前是 network-first + no-store，每次打开都要等 GitHub Pages 回源，国内往往几秒起步。
+  // 现在同一 build 内重复打开直接读缓存（毫秒级），后台再拉取新版写回缓存。
+  // 缓存 key 带 CACHE_NAME：build_posts.py 每次发文都会改写 CACHE_NAME，
+  // 新版本自动 miss → 走网络拿最新 HTML，不会出现「一直看旧文章」。
+  // 另有 version.json 轮询 + ?_v= 强制重载作为第二重保险。
   if (isPage) {
+    const pageKey = url.pathname + '?__sw=' + CACHE_NAME;
+    const network = fetch(req, { cache: 'no-store' }).then(response => {
+      if (response && response.ok) {
+        const cloned = response.clone();
+        caches.open(CACHE_NAME).then(cache => cache.put(pageKey, cloned)).catch(() => {});
+      }
+      return response;
+    }).catch(() => null);
+
     event.respondWith(
-      fetch(req, { cache: 'no-store' }).then(response => {
-        if (response && response.ok) {
-          const cloned = response.clone();
-          caches.open(CACHE_NAME).then(cache => cache.put(req, cloned)).catch(() => {});
+      caches.open(CACHE_NAME).then(async cache => {
+        const cached = await cache.match(pageKey);
+        if (cached) {
+          event.waitUntil(network);   // 后台刷新，不阻塞本次渲染
+          return cached;
         }
-        return response;
-      }).catch(() => {
-        return caches.match(req).then(hit => hit || caches.match('/404.html'));
+        const fresh = await network;
+        if (fresh) return fresh;
+        const fallback = await cache.match(req);
+        return fallback || caches.match('/404.html') || Response.error();
       })
     );
     return;
