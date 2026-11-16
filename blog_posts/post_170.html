@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<!-- 防缓存：确保访客始终看到最新文章 -->
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>铁锅生锈、砧板发霉、菜刀变钝？6个让厨房用具干净耐用又顺手的小妙招 🍳 - 池帅の亦殿</title>
+<meta name="description" content="铁锅生锈、砧板发霉、菜刀变钝？6个让厨房用具干净耐用又顺手的小妙招 🍳">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍳</text></svg>">
+
+<!-- 中文字体 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<style>
+/* ===== CSS Reset ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== 主题变量 ===== */
+:root {
+  --pink: #ff8fab;
+  --pink-light: #ffb3c6;
+  --pink-pale: #fff0f5;
+  --pink-deep: #e85d8a;
+  --purple: #c77dff;
+  --purple-light: #e0aaff;
+  --purple-pale: #f8f0ff;
+  --text: #4a4063;
+  --text-light: #7c6f9f;
+  --text-muted: #b0a8c8;
+  --bg: #fdf4ff;
+  --card: #ffffff;
+  --border: #f0d9ff;
+  --radius: 18px;
+  --radius-sm: 10px;
+}
+
+[data-theme="dark"] {
+  --text: #e2d9f3;
+  --text-light: #c4b5e0;
+  --text-muted: #8b7aaf;
+  --bg: #1a1225;
+  --card: #241a34;
+  --border: #3d2d5a;
+  --pink-pale: #2d1a2e;
+  --purple-pale: #201630;
+}
+
+body {
+  font-family: 'Noto Serif SC', 'SimSun', 'STSong', serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
+  transition: background 0.3s, color 0.3s;
+  padding-top: 64px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== 导航栏 ===== */
+.nav {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 2px solid var(--border);
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: 64px;
+}
+
+[data-theme="dark"] .nav {
+  background: rgba(26, 18, 37, 0.92);
+}
+
+.nav-logo {
+  font-size: 1.2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-decoration: none;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.nav-back {
+  background: none;
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  padding: 0.35rem 0.9rem;
+  cursor: pointer;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 0.9rem;
+  color: var(--text-light);
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.nav-back:hover {
+  background: var(--pink-pale);
+}
+
+#dark-toggle {
+  background: none;
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  padding: 0.35rem 0.7rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s;
+  color: var(--text-light);
+}
+
+#dark-toggle:hover {
+  background: var(--pink-pale);
+}
+
+/* ===== 文章容器（核心修复：确保居中）===== */
+.post-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 2rem 1rem;
+}
+
+.post-container {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.post-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 2rem 0;
+}
+
+.post-cover {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.post-title {
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
+  background: linear-gradient(135deg, var(--pink-deep), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.4;
+}
+
+.post-meta {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.post-meta span {
+  margin: 0 0.5rem;
+}
+
+.post-tags {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 0.8rem;
+}
+
+.tag {
+  background: var(--pink-pale);
+  color: var(--pink-deep);
+  padding: 0.2rem 0.7rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+}
+
+/* ===== 文章正文 ===== */
+.post-body {
+  background: var(--card);
+  border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+  box-shadow: 0 8px 32px rgba(200, 100, 200, 0.12);
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  font-size: 1.05rem;
+  line-height: 2;
+}
+
+.post-body h1,
+.post-body h2,
+.post-body h3,
+.post-body h4 {
+  color: var(--pink-deep);
+  margin: 1.8rem 0 1rem;
+  line-height: 1.4;
+}
+
+.post-body h1 { font-size: 1.6rem; }
+.post-body h2 { font-size: 1.4rem; }
+.post-body h3 { font-size: 1.2rem; }
+
+.post-body p {
+  margin-bottom: 1.2rem;
+  line-height: 2;
+}
+
+.post-body ul,
+.post-body ol {
+  margin: 0 0 1.2rem 1.5rem;
+  padding-left: 0.5rem;
+}
+
+.post-body li {
+  margin-bottom: 0.6rem;
+  line-height: 1.8;
+}
+
+.post-body code:not(pre code) {
+  background: var(--pink-pale);
+  color: var(--pink-deep);
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.9em;
+  font-family: 'Courier New', monospace;
+}
+
+.post-body pre {
+  border-radius: var(--radius-sm);
+  margin-bottom: 1.2rem;
+  overflow-x: auto;
+  padding: 1.2rem;
+  background: #282c34;
+}
+
+.post-body blockquote {
+  border-left: 3px solid var(--pink-light);
+  padding: 0.8rem 1.2rem;
+  color: var(--text-light);
+  font-style: italic;
+  margin-bottom: 1.2rem;
+  background: var(--pink-pale);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.post-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.2rem;
+  font-size: 0.92rem;
+}
+
+.post-body th {
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  color: #fff;
+  padding: 0.6rem 0.8rem;
+  text-align: left;
+}
+
+.post-body td {
+  padding: 0.55rem 0.8rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.post-body img {
+  max-width: 100%;
+  border-radius: 12px;
+  margin: 1rem 0;
+}
+
+.post-body a {
+  color: var(--pink-deep);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--pink-light);
+  transition: all 0.2s;
+}
+
+.post-body a:hover {
+  color: var(--purple);
+  border-bottom-color: var(--purple);
+}
+
+/* ===== 分享栏 ===== */
+.share-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  padding: 1.2rem;
+  background: var(--card);
+  border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+  box-shadow: 0 8px 32px rgba(200, 100, 200, 0.12);
+  margin-bottom: 2rem;
+}
+
+.share-label {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-right: 0.3rem;
+}
+
+.share-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.share-btn:hover {
+  transform: translateY(-3px) scale(1.1);
+}
+
+.share-btn.wx { background: #07c160; color: #fff; }
+.share-btn.qq { background: #12b7f5; color: #fff; }
+.share-btn.wb { background: #e6162d; color: #fff; }
+.share-btn.cp { background: var(--purple-pale); color: var(--purple); }
+
+/* ===== 返回首页 ===== */
+.back-home {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.back-home a {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  border-radius: 24px;
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  transition: opacity 0.2s;
+}
+
+.back-home a:hover {
+  opacity: 0.85;
+}
+
+/* ===== 粒子背景 ===== */
+#particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.post-wrapper {
+  position: relative;
+  z-index: 1;
+}
+</style>
+
+    <style>
+    /* ===== TOC (文章目录) ===== */
+    .toc-box {
+      background: var(--pink-pale, #fff0f5);
+      border-radius: 10px;
+      border: 1.5px solid var(--border, #f0d9ff);
+      padding: 1rem 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+    .toc-title {
+      font-weight: 700;
+      color: var(--pink-deep, #e85d8a);
+      margin-bottom: 0.6rem;
+      font-size: 0.92rem;
+    }
+    .toc-list {
+      list-style: none;
+      padding: 0;
+    }
+    .toc-list li { line-height: 2; }
+    .toc-list a {
+      color: var(--text-light, #7c6f9f);
+      text-decoration: none;
+      font-size: 0.88rem;
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+      display: block;
+      transition: all 0.15s;
+    }
+    .toc-list a:hover {
+      color: var(--pink-deep, #e85d8a);
+      background: rgba(255, 143, 171, 0.1);
+    }
+    .toc-list .toc-h3 {
+      padding-left: 1.2rem;
+      font-size: 0.84rem;
+    }
+    </style>
+
+    <style>
+    /* ===== 回到顶部按钮 ===== */
+    #back-to-top {
+      position:fixed;bottom:2rem;right:2rem;z-index:999;
+      width:48px;height:48px;border-radius:50%;
+      background:linear-gradient(135deg,var(--pink),var(--purple));
+      color:#fff;border:none;cursor:pointer;font-size:1.3rem;
+      box-shadow:0 4px 16px rgba(200,100,200,.35);
+      opacity:0;transform:translateY(20px);
+      transition:all .3s ease;
+      pointer-events:none;
+      display:flex;align-items:center;justify-content:center;
+    }
+    #back-to-top.show{opacity:1;transform:translateY(0);pointer-events:auto}
+    #back-to-top:hover{transform:translateY(-4px) scale(1.05);box-shadow:0 8px 24px rgba(200,100,200,.5)}
+    
+    /* ===== 阅读统计 ===== */
+    .reading-stats {
+      display:flex;gap:1.2rem;align-items:center;flex-wrap:wrap;
+      font-size:.85rem;color:var(--text-muted);margin-bottom:1.2rem;
+      padding:0.6rem 0;border-bottom:1px dashed var(--border);
+    }
+    .reading-stats span{display:flex;align-items:center;gap:.3rem}
+    
+    /* ===== 图片懒加载 ===== */
+    .post-body img.lazy-img{opacity:0;transition:opacity .4s ease;min-height:80px;background:linear-gradient(135deg,var(--pink-pale),var(--purple-pale));border-radius:12px}
+    .post-body img.lazy-loaded{opacity:1;background:none;min-height:auto}
+    
+    /* ===== 评论/留言区 ===== */
+    .comment-section {
+      background:var(--card);border-radius:var(--radius);
+      border:1.5px solid var(--border);
+      box-shadow:0 8px 32px rgba(200,100,200,.12);
+      padding:1.8rem;margin-bottom:2rem;
+    }
+    .comment-section h3{color:var(--pink-deep);margin-bottom:1rem;font-size:1.1rem}
+    .comment-form{display:flex;flex-direction:column;gap:.8rem}
+    .comment-form input[type="text"],
+    .comment-form textarea{
+      width:100%;padding:.8rem 1rem;border:1.5px solid var(--border);
+      border-radius:10px;font-size:.9rem;
+      font-family:inherit;color:var(--text);
+      background:var(--bg);transition:border-color .2s;
+    }
+    .comment-form input[type="text"]:focus,
+    .comment-form textarea:focus{
+      outline:none;border-color:var(--pink);
+    }
+    .comment-form textarea{min-height:100px;resize:vertical}
+    .comment-submit{
+      align-self:flex-end;padding:.6rem 1.5rem;border:none;
+      border-radius:20px;background:linear-gradient(135deg,var(--pink),var(--purple));
+      color:#fff;font-weight:700;cursor:pointer;font-size:.9rem;
+      transition:opacity .2s;
+    }
+    .comment-submit:hover{opacity:.85}
+    .comment-notice{font-size:.78rem;color:var(--text-muted);text-align:center}
+    .comment-item{
+      padding:1rem 0;border-bottom:1px dashed var(--border);
+    }
+    .comment-item:last-child{border-bottom:none}
+    .c-name{font-weight:700;color:var(--text);font-size:.9rem}
+    .c-time{font-weight:400;color:var(--text-muted);font-size:.78rem;margin-left:.5rem}
+    .c-text{color:var(--text-light);font-size:.88rem;margin-top:.3rem;line-height:1.7}
+    .honeypot{position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden}
+    .comment-list{margin-top:1rem}
+    .backup-btn{
+      position:fixed;bottom:7rem;right:2rem;z-index:999;
+      padding:.5rem 1rem;border-radius:20px;border:1.5px solid var(--border);
+      background:var(--card);color:var(--text-light);cursor:pointer;
+      font-size:.82rem;transition:all .2s;opacity:.75;
+    }
+    .backup-btn:hover{opacity:1;background:var(--pink-pale);color:var(--pink-deep);border-color:var(--pink-light)}
+    .to-start-btn{
+      position:fixed;bottom:12rem;right:2rem;z-index:999;
+      padding:.5rem 1rem;border-radius:20px;border:1.5px solid var(--border);
+      background:var(--card);color:var(--text-light);cursor:pointer;
+      font-size:.82rem;transition:all .2s;opacity:.75;
+    }
+    .to-start-btn:hover{opacity:1;background:var(--pink-pale);color:var(--pink-deep);border-color:var(--pink-light)}
+    </style>
+
+
+</head>
+<body>
+
+<!-- 粒子背景 -->
+<canvas id="particles"></canvas>
+
+<!-- 导航 -->
+<nav class="nav">
+  <a href="../" class="nav-logo">池帅の亦殿 🌸</a>
+  <div class="nav-actions">
+    <a href="../" class="nav-back">← 返回首页</a>
+    <button id="dark-toggle" onclick="toggleDark()">🌙</button>
+  </div>
+</nav>
+
+<!-- 文章 -->
+<div class="post-wrapper">
+  <div class="post-container">
+    <div class="post-header">
+      <div class="post-cover">🍳</div>
+      <h1 class="post-title">铁锅生锈、砧板发霉、菜刀变钝？6个让厨房用具干净耐用又顺手的小妙招 🍳</h1>
+      <div class="post-meta">
+        <span>📅 2026-11-16</span>
+        <span>📂 生活常识</span>
+      </div>
+      <div class="post-tags" id="post-tags"></div>
+    </div>
+  
+    
+    <!-- TOC 文章目录 -->
+    <div class="toc-box" id="toc-box">
+      <div class="toc-title">📋 文章目录</div>
+                    <ul class="toc-list" id="toc-list">
+<li><a href="#h-%E5%A6%99%E6%8B%9B%E4%B8%80%EF%BC%9A%E9%93%81%E9%94%85%E7%94%9F%E9%94%88%E5%8F%88%E7%B2%98%E9%94%85%EF%BC%9F%E5%85%88%E5%BC%80%E9%94%85%E5%86%8D%E5%85%BB%E9%94%85%EF%BC%8C%E5%88%AB%E7%94%A8%E9%92%A2%E4%B8%9D%E7%90%83">妙招一：铁锅生锈又粘锅？先开锅再养锅，别用钢丝球</a></li>
+<li><a href="#h-%E5%A6%99%E6%8B%9B%E4%BA%8C%EF%BC%9A%E9%94%85%E5%BA%95%E7%A7%AF%E7%A2%B3%E3%80%81%E9%94%85%E8%BA%AB%E6%9C%89%E6%B2%B9%E5%93%88%E5%91%B3%EF%BC%9F%E5%B0%8F%E8%8B%8F%E6%89%93%E7%B3%8A%E6%95%B7%E4%B8%80%E6%95%B7">妙招二：锅底积碳、锅身有油哈味？小苏打糊敷一敷</a></li>
+<li><a href="#h-%E5%A6%99%E6%8B%9B%E4%B8%89%EF%BC%9A%E7%A0%A7%E6%9D%BF%E5%8F%91%E9%BB%91%E5%8F%91%E9%9C%89%EF%BC%9F%E5%B0%8F%E8%8B%8F%E6%89%93%E5%8A%A0%E6%9F%A0%E6%AA%AC%EF%BC%8C%E7%AB%96%E8%B5%B7%E6%9D%A5%E6%99%BE">妙招三：砧板发黑发霉？小苏打加柠檬，竖起来晾</a></li>
+<li><a href="#h-%E5%A6%99%E6%8B%9B%E5%9B%9B%EF%BC%9A%E8%8F%9C%E5%88%80%E5%8F%98%E9%92%9D%E8%BF%98%E5%AE%B9%E6%98%93%E9%94%88%EF%BC%9F%E7%A3%A8%E5%88%80%E6%9C%89%E8%A7%92%E5%BA%A6%EF%BC%8C%E7%94%A8%E5%AE%8C%E8%A6%81%E6%93%A6%E5%B9%B2">妙招四：菜刀变钝还容易锈？磨刀有角度，用完要擦干</a></li>
+<li><a href="#h-%E5%A6%99%E6%8B%9B%E4%BA%94%EF%BC%9A%E6%B0%B4%E6%A7%BD%E4%B8%8B%E6%B0%B4%E5%8F%A3%E5%A0%B5%E5%8F%88%E8%87%AD%EF%BC%9F%E5%B0%8F%E8%8B%8F%E6%89%93%E5%8A%A0%E7%99%BD%E9%86%8B%EF%BC%8C%E7%AE%A1%E9%81%93%E6%B8%85%E7%88%BD">妙招五：水槽下水口堵又臭？小苏打加白醋，管道清爽</a></li>
+<li><a href="#h-%E5%A6%99%E6%8B%9B%E5%85%AD%EF%BC%9A%E6%8A%B9%E5%B8%83%E6%B5%B7%E7%BB%B5%E5%8F%91%E8%87%AD%E3%80%81%E6%B2%B9%E7%83%9F%E6%9C%BA%E6%BB%A4%E7%BD%91%E9%BB%8F%E6%89%8B%EF%BC%9F%E5%AE%9A%E6%9C%9F%E6%B8%85%E6%B4%81%E5%88%AB%E5%81%B7%E6%87%92">妙招六：抹布海绵发臭、油烟机滤网黏手？定期清洁别偷懒</a></li>
+<li><a href="#h-%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E">写在最后</a></li>
+</ul>
+    </div>    <!-- 阅读统计 -->
+    <div class="reading-stats" id="reading-stats">
+      <span>📝 字数：<strong id="word-count">1,688</strong></span>
+      <span>⏱ 阅读：<strong id="read-time">约 6 分钟</strong></span>
+    </div>
+<div class="post-body" id="post-body"><p>厨房是家里最「费工具」的地方——铁锅天天炒，用久了生锈粘锅；砧板切完肉又切菜，缝隙发黑发霉；菜刀看着亮堂，切个番茄却压出一滩汁；抽油烟机、水槽、抹布更是油乎乎一片。很多人要么抄起钢丝球硬刷，把锅的油膜和手感全毁了；要么干脆将就着用，越用越不顺手。其实厨房用具的清洁养护，讲究的是「顺材质、用巧劲」——铁锅要养不能狠刷，砧板要除霉更要防潮，刀具要锋利也得防锈。下面这 6 个居家小妙招，用的都是小苏打、白醋、食盐、柠檬这些随手可得的东西，不花什么钱，也不用费多大劲，就能让锅具、砧板、刀具干净耐用、越用越顺手。</p>
+<h2 id="h-%E5%A6%99%E6%8B%9B%E4%B8%80%EF%BC%9A%E9%93%81%E9%94%85%E7%94%9F%E9%94%88%E5%8F%88%E7%B2%98%E9%94%85%EF%BC%9F%E5%85%88%E5%BC%80%E9%94%85%E5%86%8D%E5%85%BB%E9%94%85%EF%BC%8C%E5%88%AB%E7%94%A8%E9%92%A2%E4%B8%9D%E7%90%83">妙招一：铁锅生锈又粘锅？先开锅再养锅，别用钢丝球</h2>
+<p>新铁锅到手别急着炒，先「开锅」：用热水加一点洗洁精把出厂油洗掉，擦干后上小火烤干，乘热用一块肥猪肉皮或厨房纸蘸油，反复擦拭锅面，让油渗进铁的气孔，形成第一层油膜。养锅的关键就两个字——「干燥」。每次炒完菜，趁锅还热用热水和软刷洗，别用钢丝球，那会把辛苦养出的油膜刮没；洗完立刻上炉子小火烤干水分，再薄薄抹一层油。哪怕偶尔生锈也别慌，用白醋加粗盐擦一擦，冲净烤干后重新抹油，锈斑就能压下去。坚持一两周，锅面会越来越黑亮，煎鱼煎蛋基本不粘，比不粘锅还顺手。</p>
+<p><img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=1000&q=80" alt="一口养得油亮的铸铁炒锅" loading="lazy" onload="this.classList.add('lazy-loaded')" style="max-width:100%;border-radius:12px;margin:1rem 0;opacity:0;transition:opacity .4s" class="lazy-img"></p>
+<h2 id="h-%E5%A6%99%E6%8B%9B%E4%BA%8C%EF%BC%9A%E9%94%85%E5%BA%95%E7%A7%AF%E7%A2%B3%E3%80%81%E9%94%85%E8%BA%AB%E6%9C%89%E6%B2%B9%E5%93%88%E5%91%B3%EF%BC%9F%E5%B0%8F%E8%8B%8F%E6%89%93%E7%B3%8A%E6%95%B7%E4%B8%80%E6%95%B7">妙招二：锅底积碳、锅身有油哈味？小苏打糊敷一敷</h2>
+<p>锅用久了，外壁容易积一层黑黑的碳垢，锅身还带股放久了的油哈味。对付这种顽固油污，别硬刮，用「小苏打糊」最省事：小苏打加少量清水调成能挂住的糊状，均匀涂在锅底和锅壁的油污处，静置二十分钟，让碱性慢慢软化油垢；再用百洁布柔软的一面打圈擦，黑垢就会成片掉下来。焦得特别死的局部，可以盖一张厨房纸、喷点白醋加温水下一点小苏打，闷一会儿再擦。处理完用温水冲净、彻底烤干，最后抹薄油养一层。铝锅、不粘锅别用这招猛搓，涂层经不起磨，改用温水加洗洁精软布擦即可。</p>
+<h2 id="h-%E5%A6%99%E6%8B%9B%E4%B8%89%EF%BC%9A%E7%A0%A7%E6%9D%BF%E5%8F%91%E9%BB%91%E5%8F%91%E9%9C%89%EF%BC%9F%E5%B0%8F%E8%8B%8F%E6%89%93%E5%8A%A0%E6%9F%A0%E6%AA%AC%EF%BC%8C%E7%AB%96%E8%B5%B7%E6%9D%A5%E6%99%BE">妙招三：砧板发黑发霉？小苏打加柠檬，竖起来晾</h2>
+<p>砧板最怕「湿着收」。切完菜随手一冲就平放在台面上，缝隙里的水分闷几天，就长出黑霉点。正确做法是洗完后「立起来」晾，让两面都通风。已经发霉的，先撒一层小苏打，挤上半个柠檬的汁或用白醋，静置十分钟后用硬毛刷顺着木纹刷，霉斑和异味一起去掉，再用大量清水冲净、竖着晾干。木质砧板每月可以用食盐搓一遍：粗盐撒在表面，用半个柠檬来回磨，既能去渍又能除味。塑料砧板则可以用稀释的84消毒液泡十分钟再冲净。记住一条：生熟分开、用完即洗、洗后立晾，砧板能用好多年不发霉。</p>
+<p><img src="https://images.unsplash.com/photo-1556909212-d5b604d0c90d?w=1000&q=80" alt="干净整洁的厨房木质砧板与食材" loading="lazy" onload="this.classList.add('lazy-loaded')" style="max-width:100%;border-radius:12px;margin:1rem 0;opacity:0;transition:opacity .4s" class="lazy-img"></p>
+<h2 id="h-%E5%A6%99%E6%8B%9B%E5%9B%9B%EF%BC%9A%E8%8F%9C%E5%88%80%E5%8F%98%E9%92%9D%E8%BF%98%E5%AE%B9%E6%98%93%E9%94%88%EF%BC%9F%E7%A3%A8%E5%88%80%E6%9C%89%E8%A7%92%E5%BA%A6%EF%BC%8C%E7%94%A8%E5%AE%8C%E8%A6%81%E6%93%A6%E5%B9%B2">妙招四：菜刀变钝还容易锈？磨刀有角度，用完要擦干</h2>
+<p>菜刀不快，切菜全靠「压」，又累又不安全。变钝了不一定要送出去磨，家里备一块磨刀石就能搞定：先把磨刀石泡水十分钟，刀身与石面保持约十五到二十度角，从刀根到刀尖匀速来回推拉，两面交替各磨二三十下，最后在磨刀棒的皮革面来回荡几下去掉毛边。没有磨刀石，用碗底粗边临时蹭几下也能应急。磨完用清水冲净、干布擦干，刀身薄薄抹一层食用油防锈。日常用刀还有三个好习惯：别用刀背拍蒜、别砍硬骨头、别把刀泡在水槽里，用完立刻洗净擦干挂起来，锋利度和防锈都能保持得更好。</p>
+<h2 id="h-%E5%A6%99%E6%8B%9B%E4%BA%94%EF%BC%9A%E6%B0%B4%E6%A7%BD%E4%B8%8B%E6%B0%B4%E5%8F%A3%E5%A0%B5%E5%8F%88%E8%87%AD%EF%BC%9F%E5%B0%8F%E8%8B%8F%E6%89%93%E5%8A%A0%E7%99%BD%E9%86%8B%EF%BC%8C%E7%AE%A1%E9%81%93%E6%B8%85%E7%88%BD">妙招五：水槽下水口堵又臭？小苏打加白醋，管道清爽</h2>
+<p>厨房水槽天天排油污，时间一长下水口挂满油泥，还反出一股臭味。与其等堵了再通，不如定期养护：每周用水槽塞堵住下水管，倒入半杯小苏打，再倒半杯白醋，酸碱反应会起泡翻腾，静置十五到二十分钟，用一大壶滚水冲下去，管壁上的油泥就被冲走了。平时洗完碗，先把餐巾纸、菜叶捞出来丢掉，别让残渣进管道；可以装一个细密的滤网兜，每周清一次。水槽边缘和下水口盖板也别忘刷，用小苏打加柠檬擦一遍，不锈钢立刻亮起来。这样维护下来，下水快、没异味，也省得叫人上门疏通。</p>
+<p><img src="https://images.unsplash.com/photo-1585515320310-259814833e62?w=1000&q=80" alt="明亮整洁的现代厨房水槽一角" loading="lazy" onload="this.classList.add('lazy-loaded')" style="max-width:100%;border-radius:12px;margin:1rem 0;opacity:0;transition:opacity .4s" class="lazy-img"></p>
+<h2 id="h-%E5%A6%99%E6%8B%9B%E5%85%AD%EF%BC%9A%E6%8A%B9%E5%B8%83%E6%B5%B7%E7%BB%B5%E5%8F%91%E8%87%AD%E3%80%81%E6%B2%B9%E7%83%9F%E6%9C%BA%E6%BB%A4%E7%BD%91%E9%BB%8F%E6%89%8B%EF%BC%9F%E5%AE%9A%E6%9C%9F%E6%B8%85%E6%B4%81%E5%88%AB%E5%81%B7%E6%87%92">妙招六：抹布海绵发臭、油烟机滤网黏手？定期清洁别偷懒</h2>
+<p>厨房里最脏的往往不是锅，而是那块天天擦台面的抹布和油烟机滤网。抹布海绵用几天就发黏发臭，是因为纤维里藏满细菌——最简单的办法是每周用沸水加两勺小苏打煮五分钟，或微波高火转两分钟消毒，之后拧干晾在通风处；海绵变黏就别心疼，直接换新的，几块钱换一家人的卫生。油烟机滤网拆下来，放进热水加小苏打和洗洁精里泡二十分钟，用旧牙刷刷净油网孔洞，冲干后装回，吸力立马好转。灶台墙面的油渍，喷上小苏打水闷一会儿再擦，比干擦省力得多。</p>
+<h2 id="h-%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E">写在最后</h2>
+<p>厨房用具的养护，其实没什么高深学问，核心就三件事：用对方法、及时清洁、用完干燥。铁锅靠养不靠刷，砧板靠晾不靠泡，刀具靠磨更靠擦干，管道靠养护不靠疏通——这 6 个妙招用的都是小苏打、白醋、食盐、柠檬这些家里现成的东西，成本几乎为零。不用一次全做，这周先把铁锅的油膜养起来、把砧板立起来晾，你会发现厨房顺手了不少，做饭的心情也跟着变好。把这件小事坚持下去，一口好锅、一块干净的砧板，能用上很多年。</p><div class="share-bar">
+      <span class="share-label">分享到：</span>
+      <button class="share-btn wx" onclick="shareWX()" title="微信分享">💬</button>
+      <button class="share-btn qq" onclick="shareQQ()" title="QQ分享">🐧</button>
+      <button class="share-btn wb" onclick="shareWB()" title="微博分享">📢</button>
+      <button class="share-btn cp" onclick="copyLink()" title="复制链接">🔗</button>
+    </div>
+  
+    <!-- 留言区 -->
+    <div class="comment-section" id="comment-section">
+      <h3>💬 留言区</h3>
+      <div class="comment-form" id="comment-form">
+        <div class="honeypot" aria-hidden="true">
+          <label>网站</label><input type="text" name="website" id="hp-website" tabindex="-1" autocomplete="off">
+        </div>
+        <input type="text" id="c-name" placeholder="你的昵称（必填）" maxlength="30" required>
+        <textarea id="c-text" placeholder="写点什么吧..." maxlength="1000" required></textarea>
+        <button class="comment-submit" onclick="submitComment()">✨ 发布留言</button>
+        <div class="comment-notice">📌 留言会保存在本地浏览器中，仅你可见</div>
+      </div>
+      <div class="comment-list" id="comment-list"></div>
+    </div>
+
+    <div class="back-home" id="back-home">
+      <a href="../">← 返回首页 池帅の亦殿</a>
+    </div>
+  </div>
+</div>
+
+<script>
+// ======================== 粒子背景 ========================
+(function(){
+  var canvas = document.getElementById('particles');
+  var ctx = canvas.getContext('2d');
+  var particles = [];
+  var W, H;
+  
+  function resize(){
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+  
+  var SYMBOLS = ['🌸','✨','💖','🌙','⭐','🎀','🍃','💫'];
+  
+  function createParticle(){
+    return {
+      x: Math.random() * W,
+      y: H + 20,
+      symbol: SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)],
+      size: 12 + Math.random() * 18,
+      speed: 0.3 + Math.random() * 0.8,
+      drift: (Math.random() - 0.5) * 0.5,
+      opacity: 0.3 + Math.random() * 0.5,
+      rotation: Math.random() * 360,
+      rotSpeed: (Math.random() - 0.5) * 2
+    };
+  }
+  
+  for(var i = 0; i < 25; i++) particles.push(createParticle());
+  
+  function animate(){
+    ctx.clearRect(0, 0, W, H);
+    particles.forEach(function(p){
+      ctx.save();
+      ctx.globalAlpha = p.opacity;
+      ctx.font = p.size + 'px serif';
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.rotation * Math.PI / 180);
+      ctx.fillText(p.symbol, 0, 0);
+      ctx.restore();
+      p.y -= p.speed;
+      p.x += p.drift;
+      p.rotation += p.rotSpeed;
+      if(p.y < -30) Object.assign(p, createParticle());
+    });
+    if(Math.random() < 0.02 && particles.length < 30) particles.push(createParticle());
+    if(particles.length > 30) particles.shift();
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+
+// ======================== 暗黑模式 ========================
+function toggleDark(){
+  var html = document.documentElement;
+  var next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('blog_theme', next);
+}
+(function(){
+  var saved = localStorage.getItem('blog_theme');
+  if(saved) document.documentElement.setAttribute('data-theme', saved);
+})();
+
+// ======================== 分享功能 ========================
+function shareWX(){
+  var qrUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' + encodeURIComponent(location.href);
+  var modal = document.getElementById('wx-share-modal');
+  if(!modal){
+    modal = document.createElement('div');
+    modal.id = 'wx-share-modal';
+    modal.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;z-index:9999;';
+    modal.innerHTML = '<div style="background:#fff;border-radius:16px;padding:2rem;text-align:center;max-width:280px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,.3);">'
+      + '<div style="font-size:2rem;margin-bottom:.5rem">💬</div>'
+      + '<h3 style="color:#07c160;margin-bottom:1rem;font-size:1.1rem">微信扫码分享</h3>'
+      + '<img id="wx-share-qr" style="width:180px;height:180px;border-radius:8px;border:2px solid #eee;" />'
+      + '<p style="margin-top:1rem;color:#888;font-size:.85rem;line-height:1.6">打开微信扫一扫<br>即可分享给好友或朋友圈</p>'
+      + '<button onclick="document.getElementById(\'wx-share-modal\').style.display=\'none\'" style="margin-top:1rem;padding:.5rem 1.5rem;background:#07c160;color:#fff;border:none;border-radius:20px;cursor:pointer;font-size:.9rem">关闭</button>'
+      + '</div>';
+    modal.onclick = function(e){ if(e.target===modal) modal.style.display='none'; };
+    document.body.appendChild(modal);
+  }
+  document.getElementById('wx-share-qr').src = qrUrl;
+  modal.style.display = 'flex';
+}
+function shareQQ(){
+  var url = encodeURIComponent(location.href);
+  var title = encodeURIComponent(document.title);
+  window.open('https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=' + url + '&title=' + title + '&summary=&site=%E6%B1%A0%E5%B8%85%E3%81%AE%E4%BA%A6%E6%AE%BF', '_blank', 'width=700,height=600');
+}
+function shareWB(){
+  var url = encodeURIComponent(location.href);
+  var title = encodeURIComponent(document.title);
+  window.open('https://service.weibo.com/share/share.php?url=' + url + '&title=' + title + '&language=zh_cn', '_blank', 'width=700,height=550');
+}
+function copyLink(){
+  var url = location.origin + location.pathname;
+  var btn = (event && event.currentTarget) || null;
+  function showToast(){
+    if(btn){ var orig=btn.innerHTML; btn.innerHTML='✅'; btn.style.background='#4caf50'; setTimeout(function(){ btn.innerHTML=orig; btn.style.background=''; },2000); }
+    var t=document.createElement('div');
+    t.textContent='🔗 链接已复制！';
+    t.style.cssText='position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.78);color:#fff;padding:.6rem 1.5rem;border-radius:20px;font-size:.9rem;z-index:9999;pointer-events:none;';
+    document.body.appendChild(t);
+    setTimeout(function(){ t.remove(); },2500);
+  }
+  if(navigator.clipboard && window.isSecureContext){
+    navigator.clipboard.writeText(url).then(showToast).catch(function(){
+      try{ var ta=document.createElement('textarea'); ta.value=url; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); showToast(); }catch(e){}
+    });
+  } else {
+    try{ var ta=document.createElement('textarea'); ta.value=url; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); showToast(); }catch(e){}
+  }
+}
+
+// ======================== 代码高亮 ========================
+window.addEventListener('DOMContentLoaded', function(){
+  if(typeof hljs !== 'undefined'){
+    document.querySelectorAll('pre code').forEach(function(b){
+      try{ hljs.highlightElement(b); }catch(e){}
+    });
+  }
+  buildTOC_legacy();
+});
+</script>
+
+<script>
+document.getElementById("post-tags").innerHTML = ["厨房清洁", "铁锅保养", "砧板除霉", "刀具养护", "居家打扫", "生活小技巧"].map(function(t) {
+  return '<span class="tag">' + t + '</span>';
+}).join("");
+</script>
+
+<script>
+// ======================== 文章目录 TOC ========================
+    function buildTOC_legacy() { // 动态重建 TOC - 已修复
+      var body = document.getElementById('post-body');
+      if (!body) return;
+      var headings = body.querySelectorAll('h2, h3');
+      var tocBox = document.getElementById('toc-box');
+      var tocList = document.getElementById('toc-list');
+      if (headings.length < 2) {
+        if (tocBox) tocBox.style.display = 'none';
+        return;
+      }
+      if (tocBox) tocBox.style.display = 'block';
+      tocList.innerHTML = '';
+      for (var i = 0; i < headings.length; i++) {
+        var h = headings[i];
+        var level = h.tagName === 'H3' ? 'toc-h3' : '';
+        var li = document.createElement('li');
+        if (level) li.className = level;
+        var a = document.createElement('a');
+        // 自动生成 ID：如果标题没有 id，从文本内容生成
+        var headingId = h.id;
+        if (!headingId) {
+          headingId = h.textContent.replace(/[^\w\u4e00-\u9fff]/g, '').substring(0, 50);
+          h.id = headingId;
+        }
+        a.href = '#' + headingId;
+        a.textContent = h.textContent;
+        a.onclick = function(e) {
+          e.preventDefault();
+          var targetId = this.getAttribute('href').slice(1);
+          var el = document.getElementById(targetId);
+          if (el) el.scrollIntoView({behavior: 'smooth'});
+          return false;
+        };
+        li.appendChild(a);
+        tocList.appendChild(li);
+      }
+    }
+    
+    // TOC已改为静态HTML
+</script>
+
+<script>
+// ======================== 回到顶部 ========================
+(function backToTop(){
+  var btn = document.getElementById('back-to-top');
+  if(!btn) return;
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if(!ticking){
+      requestAnimationFrame(function(){
+        var y = window.pageYOffset || document.documentElement.scrollTop;
+        if(y > 400){ btn.classList.add('show'); }
+        else { btn.classList.remove('show'); }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, {passive:true});
+})();
+function scrollToTop(){ window.scrollTo({top:0, behavior:'smooth'}); }
+
+// ======================== 图片懒加载 ========================
+(function lazyLoadImgs(){
+  if(!('IntersectionObserver' in window)) return;
+  var imgs = document.querySelectorAll('.post-body img:not(.lazy-img):not(.lazy-loaded)');
+  imgs.forEach(function(img){
+    if(img.src && !img.loading){
+      img.classList.add('lazy-img');
+      img.setAttribute('loading','lazy');
+    }
+  });
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        var img = entry.target;
+        if(img.dataset.src){
+          img.src = img.dataset.src;
+          img.removeAttribute('data-src');
+        }
+        img.classList.add('lazy-loaded');
+        img.classList.remove('lazy-img');
+        observer.unobserve(img);
+      }
+    });
+  },{rootMargin:'200px'});
+  document.querySelectorAll('.post-body img[data-src]').forEach(function(img){
+    observer.observe(img);
+  });
+  document.querySelectorAll('.post-body img').forEach(function(img){
+    img.setAttribute('loading','lazy');
+    if(!img.complete){ img.classList.add('lazy-img'); }
+    img.addEventListener('load',function(){ img.classList.add('lazy-loaded'); });
+    if(img.complete){ img.classList.add('lazy-loaded'); }
+  });
+})();
+
+// ======================== 评论/留言系统 ========================
+(function loadComments(){
+  var key = 'blog_comments_' + (window.location.pathname.replace(/[^a-zA-Z0-9]/g,'_'));
+  var list = document.getElementById('comment-list');
+  if(!list) return;
+  var comments = [];
+  try{ comments = JSON.parse(localStorage.getItem(key) || '[]'); }
+  catch(e){ comments = []; }
+  var html = '';
+  comments.forEach(function(c){
+    html += '<div class="comment-item"><div class="c-name">' +
+      escapeHtml(c.name) + '<span class="c-time">' + c.time + '</span></div>' +
+      '<div class="c-text">' + escapeHtml(c.text) + '</div></div>';
+  });
+  list.innerHTML = html;
+})();
+
+function submitComment(){
+  var nameEl = document.getElementById('c-name');
+  var textEl = document.getElementById('c-text');
+  var hpEl = document.getElementById('hp-website');
+  if(!nameEl || !textEl) return;
+  if(hpEl && hpEl.value.trim() !== ''){ alert('留言失败，请重试'); return; }
+  var name = nameEl.value.trim();
+  var text = textEl.value.trim();
+  if(!name){ alert('请输入昵称'); nameEl.focus(); return; }
+  if(!text){ alert('请输入留言内容'); textEl.focus(); return; }
+  if(text.length > 1000){ alert('留言内容过长，请控制在1000字以内'); return; }
+  var spamWords = /广告|推广|加微信|加QQ|赚钱|兼职|代购|http|www\./i;
+  if(spamWords.test(text)){ alert('留言内容包含敏感词，请修改后重试'); return; }
+  var key = 'blog_comments_' + (window.location.pathname.replace(/[^a-zA-Z0-9]/g,'_'));
+  var comments = [];
+  try{ comments = JSON.parse(localStorage.getItem(key) || '[]'); }
+  catch(e){ comments = []; }
+  var now = new Date();
+  var timeStr = now.getFullYear()+'-'+pad(now.getMonth()+1)+'-'+pad(now.getDate())+' '+
+                pad(now.getHours())+':'+pad(now.getMinutes());
+  comments.push({name:name, text:text, time:timeStr});
+  localStorage.setItem(key, JSON.stringify(comments));
+  nameEl.value = '';
+  textEl.value = '';
+  var list = document.getElementById('comment-list');
+  if(list){
+    var html2 = '';
+    comments.forEach(function(c){
+      html2 += '<div class="comment-item"><div class="c-name">' +
+        escapeHtml(c.name) + '<span class="c-time">' + c.time + '</span></div>' +
+        '<div class="c-text">' + escapeHtml(c.text) + '</div></div>';
+    });
+    list.innerHTML = html2;
+  }
+  alert('留言已保存');
+}
+
+function pad(n){ return n < 10 ? '0' + n : '' + n; }
+function escapeHtml(s){ var d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+
+// ======================== 全站备份导出 ========================
+function exportBackup(){
+  try{
+    var data = {
+      title: document.title,
+      url: window.location.href,
+      content: document.getElementById('post-body') ? document.getElementById('post-body').innerHTML : '',
+      timestamp: new Date().toISOString(),
+      comments: JSON.parse(localStorage.getItem('blog_comments_' + (window.location.pathname.replace(/[^a-zA-Z0-9]/g,'_'))) || '[]')
+    };
+    var blob = new Blob([JSON.stringify(data, null, 2)], {type:'application/json'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'backup_' + new Date().toISOString().slice(0,10) + '.json';
+    a.click();
+    URL.revokeObjectURL(a.href);
+    alert('当前文章备份已导出');
+  } catch(e){ alert('导出失败: ' + e.message); }
+}
+</script>
+
+
+    <!-- 回到顶部 -->
+    <button id="back-to-top" title="回到顶部" onclick="scrollToTop()">⬆</button>
+
+    <!-- 返回文首 -->
+    <button class="to-start-btn" onclick="scrollToTop()" title="返回文章开始">🔝 返回文首</button>
+
+    <!-- 备份按钮 -->
+    <button class="backup-btn" onclick="exportBackup()" title="一键导出全站内容">💾 导出备份</button>
+
+
+</body>
+</html>
