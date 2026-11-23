@@ -10,11 +10,22 @@ const STATIC_ASSETS = [
 ];
 
 self.addEventListener('install', event => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => {
-      return cache.addAll(STATIC_ASSETS.map(u => new Request(u, { cache: 'reload' })));
-    }).catch(err => console.log('SW install cache error:', err))
-  );
+  event.waitUntil((async () => {
+    // ⚡ 每次 sw.js 本身发生变化（哪怕 CACHE_NAME 没变，例如只改了取数策略），
+    //    都把全部旧缓存清掉再重建。否则同一 build 内留下的旧首页 HTML 会在
+    //    网络超时时被当作兜底返回，用户又会看到旧日期首页。
+    //    注意：CACHE_NAME 未变时浏览器不会重复 install，所以这里只在 SW 真更新时执行一次。
+    try {
+      const keys = await caches.keys();
+      await Promise.all(keys.map(k => caches.delete(k)));
+    } catch (e) { /* 清缓存失败不影响安装 */ }
+    try {
+      const cache = await caches.open(CACHE_NAME);
+      await cache.addAll(STATIC_ASSETS.map(u => new Request(u, { cache: 'reload' })));
+    } catch (err) {
+      console.log('SW install cache error:', err);
+    }
+  })());
   self.skipWaiting();
 });
 
