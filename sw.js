@@ -87,35 +87,53 @@ self.addEventListener('fetch', event => {
     || url.pathname.endsWith('.html')
     || url.pathname.endsWith('.xml');
 
-  // ⚡ 页面与 RSS：stale-while-revalidate（缓存优先，后台静默更新）
-  // 以前是 network-first + no-store，每次打开都要等 GitHub Pages 回源，国内往往几秒起步。
-  // 现在同一 build 内重复打开直接读缓存（毫秒级），后台再拉取新版写回缓存。
-  // 缓存 key 带 CACHE_NAME：build_posts.py 每次发文都会改写 CACHE_NAME，
-  // 新版本自动 miss → 走网络拿最新 HTML，不会出现「一直看旧文章」。
-  // 另有 version.json 轮询 + ?_v= 强制重载作为第二重保险。
+  // ⚡ 页面与 RSS：network-first（最多等 4 秒，超时降级缓存）
+  //
+  // 【为什么不再用 stale-while-revalidate】旧版是「缓存优先 + 后台更新」，虽然快，
+  // 但用户在发布次日打开首页时，SW 直接把上一份缓存 HTML 吐出来（stale），
+  // 而缓存 key 只取 pathname、不含 query —— 所以前端自检 reload 到 ?_v=<build>
+  // 依然命中同一份旧缓存，等于白重载，必须手动再刷一次才更新。
+  // 这正是「打开还是昨天首页、手动刷新才出最新」的根因。
+  //
+  // 改为 network-first 后：每次打开都先向服务器要最新 HTML，拿到就渲染并回写缓存；
+  // 网络慢/断网时最多等 4 秒后回落到缓存，不会白屏；后台仍会把成功响应写入缓存。
+  // 对自检触发的强制重载（URL 带 _v=）放宽到 9 秒，避免刚 reload 又回落旧缓存。
   if (isPage) {
     const pageKey = url.pathname + '?__sw=' + CACHE_NAME;
-    const network = fetch(req, { cache: 'no-store' }).then(response => {
-      if (response && response.ok) {
-        const cloned = response.clone();
-        caches.open(CACHE_NAME).then(cache => cache.put(pageKey, cloned)).catch(() => {});
-      }
-      return response;
-    }).catch(() => null);
+    const isForcedReload = url.searchParams.has('_v');
+    const TIMEOUT = isForcedReload ? 9000 : 4000;
 
-    event.respondWith(
-      caches.open(CACHE_NAME).then(async cache => {
-        const cached = await cache.match(pageKey);
-        if (cached) {
-          event.waitUntil(network);   // 后台刷新，不阻塞本次渲染
-          return cached;
+    event.respondWith((async () => {
+      const cache = await caches.open(CACHE_NAME);
+      const network = fetch(req, { cache: 'no-store' }).then(response => {
+        if (response && response.ok) {
+          cache.put(pageKey, response.clone()).catch(() => {});
         }
-        const fresh = await network;
-        if (fresh) return fresh;
-        const fallback = await cache.match(req);
-        return fallback || caches.match('/404.html') || Response.error();
-      })
-    );
+        return response;
+      });
+      network.catch(() => {});   // 超时后 network 仍会跑完，先吞掉可能的未处理拒绝
+
+      const cached = await cache.match(pageKey);
+
+      // 首次访问（无任何缓存）：只能等网络
+      if (!cached) {
+        try {
+          return await network;
+        } catch (e) {
+          return (await caches.match('/404.html')) || Response.error();
+        }
+      }
+
+      // 有缓存兜底：优先网络，超时才用缓存
+      try {
+        return await Promise.race([
+          network,
+          new Promise((_, reject) => setTimeout(() => reject(new Error('sw-timeout')), TIMEOUT))
+        ]);
+      } catch (e) {
+        return cached;
+      }
+    })());
     return;
   }
 

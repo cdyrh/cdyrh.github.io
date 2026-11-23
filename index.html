@@ -1957,14 +1957,35 @@ const DB = {
     var CURRENT = meta ? (meta.getAttribute('content') || '') : '';
     if(!CURRENT) return;   // 没有 build 标记时不动，避免误重载
     var checking = false;
+    var reloading = false;
     function reloadTo(build){
-      try{
-        var u = new URL(location.href);
-        u.searchParams.set('_v', build);
-        location.replace(u.toString());
-      }catch(e){
-        location.reload();
+      if(reloading) return;
+      reloading = true;
+      function go(){
+        try{
+          var u = new URL(location.href);
+          u.searchParams.set('_v', build);
+          location.replace(u.toString());
+        }catch(e){
+          location.reload();
+        }
       }
+      // ⚡ 关键：先清掉 Service Worker 里残留的旧首页缓存再跳转。
+      //    老访客浏览器里装的可能还是「缓存优先」的旧 SW，若不清缓存，
+      //    ?_v= 重载仍会命中旧 HTML（旧版缓存 key 不含 query），等于白跳一次。
+      //    清完缓存后旧 SW 查不到缓存 → 只能走网络 → 必然拿到最新首页。
+      try{
+        if(window.caches && caches.keys){
+          var guard = false;
+          var safeGo = function(){ if(!guard){ guard = true; go(); } };
+          caches.keys().then(function(keys){
+            return Promise.all(keys.map(function(k){ return caches.delete(k); }));
+          }).then(safeGo).catch(safeGo);
+          setTimeout(safeGo, 900);   // 兜底：删除卡住也照常跳转，不阻塞用户
+          return;
+        }
+      }catch(e){}
+      go();
     }
     function checkUpdate(){
       if(checking) return;
@@ -1988,8 +2009,10 @@ const DB = {
           .catch(function(){ checking = false; });
       }catch(e){ checking = false; }
     }
-    setTimeout(checkUpdate, 2500);
-    setInterval(function(){ if(!document.hidden) checkUpdate(); }, 60000);
+    // ⚡ 尽早上报：600ms 就开始第一次版本核查（version.json 只有几百字节，很快），
+    //    一旦发现比本页 build 新，立刻 ?_v=<build> 重载 → 用户不必手动刷新。
+    setTimeout(checkUpdate, 600);
+    setInterval(function(){ if(!document.hidden) checkUpdate(); }, 30000);
     document.addEventListener('visibilitychange', function(){ if(!document.hidden) checkUpdate(); });
     window.blogCheckUpdate = checkUpdate; // 诊断入口：控制台执行 blogCheckUpdate() 手动触发
   })();
@@ -4103,7 +4126,12 @@ if('serviceWorker' in navigator){
 
   window.addEventListener('load', function(){
 
-    navigator.serviceWorker.register('/sw.js').catch(function(){});
+    // updateViaCache:'none' —— 让浏览器每次检查 sw.js 都直连网络，
+    // 不被 GitHub Pages 的 Cache-Control: max-age=600 挡住（否则新 SW 最迟要等 10 分钟）。
+    navigator.serviceWorker.register('/sw.js', { updateViaCache: 'none' }).then(function(reg){
+      try { reg.update(); } catch(e){}
+      setInterval(function(){ try { reg.update(); } catch(e){} }, 60000);
+    }).catch(function(){});
 
   });
 
