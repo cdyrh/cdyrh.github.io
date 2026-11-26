@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<!-- 防缓存：确保访客始终看到最新文章 -->
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>一到冬天窗户就结露、玻璃流水、窗框还发霉？6个让窗户干爽、家里不潮的小妙招 🪟 - 池帅の亦殿</title>
+<meta name="description" content="一到冬天窗户就结露、玻璃流水、窗框还发霉？6个让窗户干爽、家里不潮的小妙招 🪟">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪟</text></svg>">
+
+<!-- 中文字体 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<style>
+/* ===== CSS Reset ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== 主题变量 ===== */
+:root {
+  --pink: #ff8fab;
+  --pink-light: #ffb3c6;
+  --pink-pale: #fff0f5;
+  --pink-deep: #e85d8a;
+  --purple: #c77dff;
+  --purple-light: #e0aaff;
+  --purple-pale: #f8f0ff;
+  --text: #4a4063;
+  --text-light: #7c6f9f;
+  --text-muted: #b0a8c8;
+  --bg: #fdf4ff;
+  --card: #ffffff;
+  --border: #f0d9ff;
+  --radius: 18px;
+  --radius-sm: 10px;
+}
+
+[data-theme="dark"] {
+  --text: #e2d9f3;
+  --text-light: #c4b5e0;
+  --text-muted: #8b7aaf;
+  --bg: #1a1225;
+  --card: #241a34;
+  --border: #3d2d5a;
+  --pink-pale: #2d1a2e;
+  --purple-pale: #201630;
+}
+
+body {
+  font-family: 'Noto Serif SC', 'SimSun', 'STSong', serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
+  transition: background 0.3s, color 0.3s;
+  padding-top: 64px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== 导航栏 ===== */
+.nav {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 2px solid var(--border);
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: 64px;
+}
+
+[data-theme="dark"] .nav {
+  background: rgba(26, 18, 37, 0.92);
+}
+
+.nav-logo {
+  font-size: 1.2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-decoration: none;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.nav-back {
+  background: none;
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  padding: 0.35rem 0.9rem;
+  cursor: pointer;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 0.9rem;
+  color: var(--text-light);
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.nav-back:hover {
+  background: var(--pink-pale);
+}
+
+#dark-toggle {
+  background: none;
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  padding: 0.35rem 0.7rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s;
+  color: var(--text-light);
+}
+
+#dark-toggle:hover {
+  background: var(--pink-pale);
+}
+
+/* ===== 文章容器（核心修复：确保居中）===== */
+.post-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 2rem 1rem;
+}
+
+.post-container {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.post-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 2rem 0;
+}
+
+.post-cover {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.post-title {
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
+  background: linear-gradient(135deg, var(--pink-deep), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.4;
+}
+
+.post-meta {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.post-meta span {
+  margin: 0 0.5rem;
+}
+
+.post-tags {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 0.8rem;
+}
+
+.tag {
+  background: var(--pink-pale);
+  color: var(--pink-deep);
+  padding: 0.2rem 0.7rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+}
+
+/* ===== 文章正文 ===== */
+.post-body {
+  background: var(--card);
+  border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+  box-shadow: 0 8px 32px rgba(200, 100, 200, 0.12);
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  font-size: 1.05rem;
+  line-height: 2;
+}
+
+.post-body h1,
+.post-body h2,
+.post-body h3,
+.post-body h4 {
+  color: var(--pink-deep);
+  margin: 1.8rem 0 1rem;
+  line-height: 1.4;
+}
+
+.post-body h1 { font-size: 1.6rem; }
+.post-body h2 { font-size: 1.4rem; }
+.post-body h3 { font-size: 1.2rem; }
+
+.post-body p {
+  margin-bottom: 1.2rem;
+  line-height: 2;
+}
+
+.post-body ul,
+.post-body ol {
+  margin: 0 0 1.2rem 1.5rem;
+  padding-left: 0.5rem;
+}
+
+.post-body li {
+  margin-bottom: 0.6rem;
+  line-height: 1.8;
+}
+
+.post-body code:not(pre code) {
+  background: var(--pink-pale);
+  color: var(--pink-deep);
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.9em;
+  font-family: 'Courier New', monospace;
+}
+
+.post-body pre {
+  border-radius: var(--radius-sm);
+  margin-bottom: 1.2rem;
+  overflow-x: auto;
+  padding: 1.2rem;
+  background: #282c34;
+}
+
+.post-body blockquote {
+  border-left: 3px solid var(--pink-light);
+  padding: 0.8rem 1.2rem;
+  color: var(--text-light);
+  font-style: italic;
+  margin-bottom: 1.2rem;
+  background: var(--pink-pale);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.post-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.2rem;
+  font-size: 0.92rem;
+}
+
+.post-body th {
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  color: #fff;
+  padding: 0.6rem 0.8rem;
+  text-align: left;
+}
+
+.post-body td {
+  padding: 0.55rem 0.8rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.post-body img {
+  max-width: 100%;
+  border-radius: 12px;
+  margin: 1rem 0;
+}
+
+.post-body a {
+  color: var(--pink-deep);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--pink-light);
+  transition: all 0.2s;
+}
+
+.post-body a:hover {
+  color: var(--purple);
+  border-bottom-color: var(--purple);
+}
+
+/* ===== 分享栏 ===== */
+.share-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  padding: 1.2rem;
+  background: var(--card);
+  border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+  box-shadow: 0 8px 32px rgba(200, 100, 200, 0.12);
+  margin-bottom: 2rem;
+}
+
+.share-label {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-right: 0.3rem;
+}
+
+.share-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.share-btn:hover {
+  transform: translateY(-3px) scale(1.1);
+}
+
+.share-btn.wx { background: #07c160; color: #fff; }
+.share-btn.qq { background: #12b7f5; color: #fff; }
+.share-btn.wb { background: #e6162d; color: #fff; }
+.share-btn.cp { background: var(--purple-pale); color: var(--purple); }
+
+/* ===== 返回首页 ===== */
+.back-home {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.back-home a {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  border-radius: 24px;
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  transition: opacity 0.2s;
+}
+
+.back-home a:hover {
+  opacity: 0.85;
+}
+
+/* ===== 粒子背景 ===== */
+#particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.post-wrapper {
+  position: relative;
+  z-index: 1;
+}
+</style>
+
+    <style>
+    /* ===== TOC (文章目录) ===== */
+    .toc-box {
+      background: var(--pink-pale, #fff0f5);
+      border-radius: 10px;
+      border: 1.5px solid var(--border, #f0d9ff);
+      padding: 1rem 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+    .toc-title {
+      font-weight: 700;
+      color: var(--pink-deep, #e85d8a);
+      margin-bottom: 0.6rem;
+      font-size: 0.92rem;
+    }
+    .toc-list {
+      list-style: none;
+      padding: 0;
+    }
+    .toc-list li { line-height: 2; }
+    .toc-list a {
+      color: var(--text-light, #7c6f9f);
+      text-decoration: none;
+      font-size: 0.88rem;
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+      display: block;
+      transition: all 0.15s;
+    }
+    .toc-list a:hover {
+      color: var(--pink-deep, #e85d8a);
+      background: rgba(255, 143, 171, 0.1);
+    }
+    .toc-list .toc-h3 {
+      padding-left: 1.2rem;
+      font-size: 0.84rem;
+    }
+    </style>
+
+    <style>
+    /* ===== 回到顶部按钮 ===== */
+    #back-to-top {
+      position:fixed;bottom:2rem;right:2rem;z-index:999;
+      width:48px;height:48px;border-radius:50%;
+      background:linear-gradient(135deg,var(--pink),var(--purple));
+      color:#fff;border:none;cursor:pointer;font-size:1.3rem;
+      box-shadow:0 4px 16px rgba(200,100,200,.35);
+      opacity:0;transform:translateY(20px);
+      transition:all .3s ease;
+      pointer-events:none;
+      display:flex;align-items:center;justify-content:center;
+    }
+    #back-to-top.show{opacity:1;transform:translateY(0);pointer-events:auto}
+    #back-to-top:hover{transform:translateY(-4px) scale(1.05);box-shadow:0 8px 24px rgba(200,100,200,.5)}
+    
+    /* ===== 阅读统计 ===== */
+    .reading-stats {
+      display:flex;gap:1.2rem;align-items:center;flex-wrap:wrap;
+      font-size:.85rem;color:var(--text-muted);margin-bottom:1.2rem;
+      padding:0.6rem 0;border-bottom:1px dashed var(--border);
+    }
+    .reading-stats span{display:flex;align-items:center;gap:.3rem}
+    
+    /* ===== 图片懒加载 ===== */
+    .post-body img.lazy-img{opacity:0;transition:opacity .4s ease;min-height:80px;background:linear-gradient(135deg,var(--pink-pale),var(--purple-pale));border-radius:12px}
+    .post-body img.lazy-loaded{opacity:1;background:none;min-height:auto}
+    
+    /* ===== 评论/留言区 ===== */
+    .comment-section {
+      background:var(--card);border-radius:var(--radius);
+      border:1.5px solid var(--border);
+      box-shadow:0 8px 32px rgba(200,100,200,.12);
+      padding:1.8rem;margin-bottom:2rem;
+    }
+    .comment-section h3{color:var(--pink-deep);margin-bottom:1rem;font-size:1.1rem}
+    .comment-form{display:flex;flex-direction:column;gap:.8rem}
+    .comment-form input[type="text"],
+    .comment-form textarea{
+      width:100%;padding:.8rem 1rem;border:1.5px solid var(--border);
+      border-radius:10px;font-size:.9rem;
+      font-family:inherit;color:var(--text);
+      background:var(--bg);transition:border-color .2s;
+    }
+    .comment-form input[type="text"]:focus,
+    .comment-form textarea:focus{
+      outline:none;border-color:var(--pink);
+    }
+    .comment-form textarea{min-height:100px;resize:vertical}
+    .comment-submit{
+      align-self:flex-end;padding:.6rem 1.5rem;border:none;
+      border-radius:20px;background:linear-gradient(135deg,var(--pink),var(--purple));
+      color:#fff;font-weight:700;cursor:pointer;font-size:.9rem;
+      transition:opacity .2s;
+    }
+    .comment-submit:hover{opacity:.85}
+    .comment-notice{font-size:.78rem;color:var(--text-muted);text-align:center}
+    .comment-item{
+      padding:1rem 0;border-bottom:1px dashed var(--border);
+    }
+    .comment-item:last-child{border-bottom:none}
+    .c-name{font-weight:700;color:var(--text);font-size:.9rem}
+    .c-time{font-weight:400;color:var(--text-muted);font-size:.78rem;margin-left:.5rem}
+    .c-text{color:var(--text-light);font-size:.88rem;margin-top:.3rem;line-height:1.7}
+    .honeypot{position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden}
+    .comment-list{margin-top:1rem}
+    .backup-btn{
+      position:fixed;bottom:7rem;right:2rem;z-index:999;
+      padding:.5rem 1rem;border-radius:20px;border:1.5px solid var(--border);
+      background:var(--card);color:var(--text-light);cursor:pointer;
+      font-size:.82rem;transition:all .2s;opacity:.75;
+    }
+    .backup-btn:hover{opacity:1;background:var(--pink-pale);color:var(--pink-deep);border-color:var(--pink-light)}
+    .to-start-btn{
+      position:fixed;bottom:12rem;right:2rem;z-index:999;
+      padding:.5rem 1rem;border-radius:20px;border:1.5px solid var(--border);
+      background:var(--card);color:var(--text-light);cursor:pointer;
+      font-size:.82rem;transition:all .2s;opacity:.75;
+    }
+    .to-start-btn:hover{opacity:1;background:var(--pink-pale);color:var(--pink-deep);border-color:var(--pink-light)}
+    </style>
+
+
+</head>
+<body>
+
+<!-- 粒子背景 -->
+<canvas id="particles"></canvas>
+
+<!-- 导航 -->
+<nav class="nav">
+  <a href="../" class="nav-logo">池帅の亦殿 🌸</a>
+  <div class="nav-actions">
+    <a href="../" class="nav-back">← 返回首页</a>
+    <button id="dark-toggle" onclick="toggleDark()">🌙</button>
+  </div>
+</nav>
+
+<!-- 文章 -->
+<div class="post-wrapper">
+  <div class="post-container">
+    <div class="post-header">
+      <div class="post-cover">🪟</div>
+      <h1 class="post-title">一到冬天窗户就结露、玻璃流水、窗框还发霉？6个让窗户干爽、家里不潮的小妙招 🪟</h1>
+      <div class="post-meta">
+        <span>📅 2026-11-26</span>
+        <span>📂 生活常识</span>
+      </div>
+      <div class="post-tags" id="post-tags"></div>
+    </div>
+  
+    
+    <!-- TOC 文章目录 -->
+    <div class="toc-box" id="toc-box">
+      <div class="toc-title">📋 文章目录</div>
+                    <ul class="toc-list" id="toc-list">
+<li><a href="#h-%E5%A6%99%E6%8B%9B%E4%B8%80%EF%BC%9A%E5%85%88%E6%90%9E%E6%87%82%E3%80%8C%E7%BB%93%E9%9C%B2%E3%80%8D%E6%98%AF%E6%80%8E%E4%B9%88%E6%9D%A5%E7%9A%84%EF%BC%8C%E5%88%AB%E5%86%8D%E5%8F%AA%E6%93%A6%E6%B0%B4">妙招一：先搞懂「结露」是怎么来的，别再只擦水</a></li>
+<li><a href="#h-%E5%A6%99%E6%8B%9B%E4%BA%8C%EF%BC%9A%E6%8A%8A%E6%B0%B4%E6%B1%BD%E3%80%8C%E6%8E%90%E3%80%8D%E5%9C%A8%E6%BA%90%E5%A4%B4%EF%BC%8C%E5%81%9A%E9%A5%AD%E6%B4%97%E6%BE%A1%E5%88%AB%E8%AE%A9%E5%AE%83%E6%BB%A1%E5%B1%8B%E8%B7%91">妙招二：把水汽「掐」在源头，做饭洗澡别让它满屋跑</a></li>
+<li><a href="#h-%E5%A6%99%E6%8B%9B%E4%B8%89%EF%BC%9A%E5%86%B7%E7%8E%BB%E7%92%83%E6%9C%80%E6%80%95%E6%9A%96%E6%B9%BF%E7%A9%BA%E6%B0%94%EF%BC%8C%E9%80%9A%E9%A3%8E%E8%A6%81%E6%8C%91%E5%AF%B9%E6%97%B6%E9%97%B4">妙招三：冷玻璃最怕暖湿空气，通风要挑对时间</a></li>
+<li><a href="#h-%E5%A6%99%E6%8B%9B%E5%9B%9B%EF%BC%9A%E7%BB%99%E7%8E%BB%E7%92%83%E3%80%8C%E5%8D%87%E7%82%B9%E6%B8%A9%E3%80%8D%EF%BC%8C%E8%AE%A9%E6%B0%B4%E6%B1%BD%E6%B2%A1%E5%9C%B0%E6%96%B9%E5%87%9D">妙招四：给玻璃「升点温」，让水汽没地方凝</a></li>
+<li><a href="#h-%E5%A6%99%E6%8B%9B%E4%BA%94%EF%BC%9A%E7%AA%97%E6%A1%86%E8%A7%92%E8%90%BD%E5%92%8C%E5%AF%86%E5%B0%81%E6%9D%A1%EF%BC%8C%E5%88%AB%E8%AE%A9%E9%9C%89%E6%96%91%E5%AE%89%E5%AE%B6">妙招五：窗框角落和密封条，别让霉斑安家</a></li>
+<li><a href="#h-%E5%A6%99%E6%8B%9B%E5%85%AD%EF%BC%9A%E6%B9%BF%E5%BA%A6%E5%AE%9E%E5%9C%A8%E9%AB%98%EF%BC%8C%E8%AF%B7%E9%99%A4%E6%B9%BF%E6%9C%BA%E5%92%8C%E5%B9%B2%E7%87%A5%E5%89%82%E5%87%BA%E6%89%8B">妙招六：湿度实在高，请除湿机和干燥剂出手</a></li>
+<li><a href="#h-%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E%EF%BC%9A%E7%AA%97%E6%88%B7%E5%B9%B2%E7%88%BD%EF%BC%8C%E6%95%B4%E4%B8%AA%E5%86%AC%E5%A4%A9%E5%AE%B6%E9%87%8C%E9%83%BD%E8%88%92%E6%9C%8D">写在最后：窗户干爽，整个冬天家里都舒服</a></li>
+
+
+
+
+    
+    
+    
+    
+    
+    </div>    <!-- 阅读统计 -->
+    <div class="reading-stats" id="reading-stats">
+      <span>📝 字数：<strong id="word-count">1,837</strong></span>
+      <span>⏱ 阅读：<strong id="read-time">约 7 分钟</strong></span>
+    </div>
+<div class="post-body" id="post-body">
+<p>一到冬天，很多人家里都会出现同一幕：清晨拉开窗帘，玻璃上糊着一层密密麻麻的小水珠，用手一抹就是一道水痕；窗框边角湿漉漉的，时间一长还长出黑绿色的霉点，擦了没几天又冒出来。有人以为是窗户没擦干净，其实天天擦也没用——这些水珠叫「结露」，本质是屋里温暖潮湿的空气碰到冰冷的玻璃后，水汽凝结成了液态水。只要温差和湿度还在，擦完很快又是一层。更麻烦的是，窗台长期潮湿，墙皮会起鼓脱落，靠窗的被褥、衣柜也跟着受潮发味。今天就分享6个从源头减少结露、让窗户和家里都干爽的小妙招，材料家里大多都有，坚持做一周就能看到变化。</p>
+<h2 id="h-%E5%A6%99%E6%8B%9B%E4%B8%80%EF%BC%9A%E5%85%88%E6%90%9E%E6%87%82%E3%80%8C%E7%BB%93%E9%9C%B2%E3%80%8D%E6%98%AF%E6%80%8E%E4%B9%88%E6%9D%A5%E7%9A%84%EF%BC%8C%E5%88%AB%E5%86%8D%E5%8F%AA%E6%93%A6%E6%B0%B4">妙招一：先搞懂「结露」是怎么来的，别再只擦水</h2>
+<p>很多人对付窗户水珠的办法就是拿抹布擦，但擦只是收拾「结果」，没动「原因」。结露需要两个条件同时成立：一是玻璃温度低，二是室内空气湿度高。冬天室外零下、室内二十度，单层玻璃表面可能只有几度，屋里的暖空气一贴上去，水汽立刻冷凝。所以正确的思路是两头下手——一边降低室内湿度、减少水汽来源，一边设法提高玻璃表面温度、让水汽没那么容易凝结。可以先花几十块买个温湿度计放在窗边，正常冬季室内湿度控制在45%到65%比较舒服，一旦长期超过70%，窗户结露、墙角发霉几乎是必然的。摸清自家湿度水平，后面几条才知道该重点做哪样。</p>
+<p><img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=1000&q=80" alt="窗边明亮的阅读角与大玻璃窗" loading="lazy" onload="this.classList.add('lazy-loaded')" style="max-width:100%;border-radius:12px;margin:1rem 0;opacity:0;transition:opacity .4s" class="lazy-img"></p>
+<h2 id="h-%E5%A6%99%E6%8B%9B%E4%BA%8C%EF%BC%9A%E6%8A%8A%E6%B0%B4%E6%B1%BD%E3%80%8C%E6%8E%90%E3%80%8D%E5%9C%A8%E6%BA%90%E5%A4%B4%EF%BC%8C%E5%81%9A%E9%A5%AD%E6%B4%97%E6%BE%A1%E5%88%AB%E8%AE%A9%E5%AE%83%E6%BB%A1%E5%B1%8B%E8%B7%91">妙招二：把水汽「掐」在源头，做饭洗澡别让它满屋跑</h2>
+<p>室内水汽大部分是日常生活制造出来的。做饭时锅盖一掀，蒸汽扑满整个厨房，顺着就飘到窗户上；洗澡后浴室门一开，一股热湿气直冲全屋；还有室内晾衣服、煮火锅、养一大堆水培植物，都在悄悄往空气里加水。对策很简单：做饭时锅盖尽量盖着、油烟机提前开晚点关，让蒸汽就地排走；洗澡时浴帘拉好、排风扇开足，洗完先把浴室水汽抽干再开门，地面的积水及时刮干；衣服尽量用烘干机或阳台通风处晾，别在密闭房间里挂一屋子湿衣服。这些习惯改成之后，窗户上的水珠往往能少一大半，比事后擦十遍都管用。</p>
+<h2 id="h-%E5%A6%99%E6%8B%9B%E4%B8%89%EF%BC%9A%E5%86%B7%E7%8E%BB%E7%92%83%E6%9C%80%E6%80%95%E6%9A%96%E6%B9%BF%E7%A9%BA%E6%B0%94%EF%BC%8C%E9%80%9A%E9%A3%8E%E8%A6%81%E6%8C%91%E5%AF%B9%E6%97%B6%E9%97%B4">妙招三：冷玻璃最怕暖湿空气，通风要挑对时间</h2>
+<p>不少人一看窗户结露就大开窗户透气，结果水汽反而更重——冬天室外空气冷，虽然绝对含水量低，但一下子冲进屋里，玻璃瞬间更冷，屋里暖湿空气遇到它结露更猛。正确的做法是「挑时段短通风」：选中午前后室外温度最高、阳光好的时候，开窗10到15分钟形成对流，既换了气又不至于让玻璃骤冷；早晚最冷的时候少开或不开。通风的同时可以把室内门打开、风扇低速对着窗户吹一吹，让玻璃表面的湿空气流动起来，水珠干得更快。如果家里是南北通透的户型，利用对角窗形成穿堂风，换气效率最高，湿度也能跟着降下来。</p>
+<p><img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=1000&q=80" alt="客厅里的大面积落地窗" loading="lazy" onload="this.classList.add('lazy-loaded')" style="max-width:100%;border-radius:12px;margin:1rem 0;opacity:0;transition:opacity .4s" class="lazy-img"></p>
+<h2 id="h-%E5%A6%99%E6%8B%9B%E5%9B%9B%EF%BC%9A%E7%BB%99%E7%8E%BB%E7%92%83%E3%80%8C%E5%8D%87%E7%82%B9%E6%B8%A9%E3%80%8D%EF%BC%8C%E8%AE%A9%E6%B0%B4%E6%B1%BD%E6%B2%A1%E5%9C%B0%E6%96%B9%E5%87%9D">妙招四：给玻璃「升点温」，让水汽没地方凝</h2>
+<p>既然结露是暖湿空气遇上冷玻璃，那把玻璃表面温度提上来，问题就解决了一半。条件允许的话，把单层玻璃换成双层中空玻璃，效果最彻底；暂时换不了，可以贴一层窗户保温膜，或者加挂一层厚窗帘——夜里窗帘拉上，能把屋内暖空气和冷玻璃隔开，玻璃不再被冷风直吹，表面温度就高一些。要注意窗帘别全天严严实实拉着，白天有太阳时拉开让阳光晒一晒玻璃，既升温又杀菌。还有个细节：窗边别堆放挡住暖气的大家具，让暖气片的热气能循环到窗户附近；空调出风口也尽量别正对玻璃吹，冷风直吹会让局部更冷、更容易结露。</p>
+<h2 id="h-%E5%A6%99%E6%8B%9B%E4%BA%94%EF%BC%9A%E7%AA%97%E6%A1%86%E8%A7%92%E8%90%BD%E5%92%8C%E5%AF%86%E5%B0%81%E6%9D%A1%EF%BC%8C%E5%88%AB%E8%AE%A9%E9%9C%89%E6%96%91%E5%AE%89%E5%AE%B6">妙招五：窗框角落和密封条，别让霉斑安家</h2>
+<p>水珠最容易藏的地方是窗框凹槽、密封胶条和窗台接缝，这些缝隙潮气散不掉，几天就长出霉斑。可以准备一把旧牙刷和一小瓶除霉剂（或白醋加小苏打），定期把胶条、凹槽刷一遍，擦干后开窗通风晾透。玻璃上的水珠别等它自己干，用刮水器或干抹布顺着同一个方向刮擦，比来回乱抹更少留水痕；擦完的抹布要及时洗净晾干，别湿乎乎地搭在窗台上。密封条如果已经老化开裂、漏风进潮气，换一条新的成本很低，却能让窗边干燥不少。发现墙面起始发霉，别只用干抹布擦，戴上手套用除霉剂处理，擦干后再补一点防霉涂料，能拖住它复发。</p>
+<p><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1000&q=80" alt="带大窗的明亮客厅一角" loading="lazy" onload="this.classList.add('lazy-loaded')" style="max-width:100%;border-radius:12px;margin:1rem 0;opacity:0;transition:opacity .4s" class="lazy-img"></p>
+<h2 id="h-%E5%A6%99%E6%8B%9B%E5%85%AD%EF%BC%9A%E6%B9%BF%E5%BA%A6%E5%AE%9E%E5%9C%A8%E9%AB%98%EF%BC%8C%E8%AF%B7%E9%99%A4%E6%B9%BF%E6%9C%BA%E5%92%8C%E5%B9%B2%E7%87%A5%E5%89%82%E5%87%BA%E6%89%8B">妙招六：湿度实在高，请除湿机和干燥剂出手</h2>
+<p>如果前面几条都做了，窗边湿度还是长期超过70%，就该上「硬装备」了。除湿机是对付冬季潮湿最省心的电器，放在卧室或客厅，设定湿度55%左右自动运行，一小时能抽出不少水；没有除湿机，空调的「除湿模式」也能应急，虽然效率稍低但胜在随时可用。衣柜、窗台柜这些封闭小空间，可以放几盒氯化钙干燥剂或可重复使用的硅胶除湿盒，吸满水记得及时更换。南方没有集中供暖的家庭，屋子里湿冷，除湿配合取暖一起用，体感会舒服很多。除完湿记得把窗户擦一遍，让玻璃表面恢复干爽，结露就很难再成片出现。</p>
+<h2 id="h-%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E%EF%BC%9A%E7%AA%97%E6%88%B7%E5%B9%B2%E7%88%BD%EF%BC%8C%E6%95%B4%E4%B8%AA%E5%86%AC%E5%A4%A9%E5%AE%B6%E9%87%8C%E9%83%BD%E8%88%92%E6%9C%8D">写在最后：窗户干爽，整个冬天家里都舒服</h2>
+<p>窗户结露看着是小事，背后却是整个家的湿度管理。总结起来就三句话：源头少加水、玻璃少受冷、水汽勤擦干。做饭洗澡管住水汽、通风挑中午短时开、窗帘保温膜给玻璃升温、窗框缝隙定期除霉、湿度高了上除湿机——这几条做到位，窗户不再流水，墙角不再发霉，被褥衣柜也少受潮味。建议先从最容易的两条做起，比如「洗澡后先抽干再开门」加「窗边放个温湿度计」，观察一周看看水珠是不是少了。等习惯成了再逐条加上去，整个冬天家里都能清清爽爽。</p>
+<div class="share-bar">
+      <span class="share-label">分享到：</span>
+      <button class="share-btn wx" onclick="shareWX()" title="微信分享">💬</button>
+      <button class="share-btn qq" onclick="shareQQ()" title="QQ分享">🐧</button>
+      <button class="share-btn wb" onclick="shareWB()" title="微博分享">📢</button>
+      <button class="share-btn cp" onclick="copyLink()" title="复制链接">🔗</button>
+    </div>
+  
+    <!-- 留言区 -->
+    <div class="comment-section" id="comment-section">
+      <h3>💬 留言区</h3>
+      <div class="comment-form" id="comment-form">
+        <div class="honeypot" aria-hidden="true">
+          <label>网站</label><input type="text" name="website" id="hp-website" tabindex="-1" autocomplete="off">
+        </div>
+        <input type="text" id="c-name" placeholder="你的昵称（必填）" maxlength="30" required>
+        <textarea id="c-text" placeholder="写点什么吧..." maxlength="1000" required></textarea>
+        <button class="comment-submit" onclick="submitComment()">✨ 发布留言</button>
+        <div class="comment-notice">📌 留言会保存在本地浏览器中，仅你可见</div>
+      </div>
+      <div class="comment-list" id="comment-list"></div>
+    </div>
+
+    <div class="back-home" id="back-home">
+      <a href="../">← 返回首页 池帅の亦殿</a>
+    </div>
+  </div>
+</div>
+
+<script>
+// ======================== 粒子背景 ========================
+(function(){
+  var canvas = document.getElementById('particles');
+  var ctx = canvas.getContext('2d');
+  var particles = [];
+  var W, H;
+  
+  function resize(){
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+  
+  var SYMBOLS = ['🌸','✨','💖','🌙','⭐','🎀','🍃','💫'];
+  
+  function createParticle(){
+    return {
+      x: Math.random() * W,
+      y: H + 20,
+      symbol: SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)],
+      size: 12 + Math.random() * 18,
+      speed: 0.3 + Math.random() * 0.8,
+      drift: (Math.random() - 0.5) * 0.5,
+      opacity: 0.3 + Math.random() * 0.5,
+      rotation: Math.random() * 360,
+      rotSpeed: (Math.random() - 0.5) * 2
+    };
+  }
+  
+  for(var i = 0; i < 25; i++) particles.push(createParticle());
+  
+  function animate(){
+    ctx.clearRect(0, 0, W, H);
+    particles.forEach(function(p){
+      ctx.save();
+      ctx.globalAlpha = p.opacity;
+      ctx.font = p.size + 'px serif';
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.rotation * Math.PI / 180);
+      ctx.fillText(p.symbol, 0, 0);
+      ctx.restore();
+      p.y -= p.speed;
+      p.x += p.drift;
+      p.rotation += p.rotSpeed;
+      if(p.y < -30) Object.assign(p, createParticle());
+    });
+    if(Math.random() < 0.02 && particles.length < 30) particles.push(createParticle());
+    if(particles.length > 30) particles.shift();
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+
+// ======================== 暗黑模式 ========================
+function toggleDark(){
+  var html = document.documentElement;
+  var next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('blog_theme', next);
+}
+(function(){
+  var saved = localStorage.getItem('blog_theme');
+  if(saved) document.documentElement.setAttribute('data-theme', saved);
+})();
+
+// ======================== 分享功能 ========================
+function shareWX(){
+  var qrUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' + encodeURIComponent(location.href);
+  var modal = document.getElementById('wx-share-modal');
+  if(!modal){
+    modal = document.createElement('div');
+    modal.id = 'wx-share-modal';
+    modal.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;z-index:9999;';
+    modal.innerHTML = '<div style="background:#fff;border-radius:16px;padding:2rem;text-align:center;max-width:280px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,.3);">'
+      + '<div style="font-size:2rem;margin-bottom:.5rem">💬</div>'
+      + '<h3 style="color:#07c160;margin-bottom:1rem;font-size:1.1rem">微信扫码分享</h3>'
+      + '<img id="wx-share-qr" style="width:180px;height:180px;border-radius:8px;border:2px solid #eee;" />'
+      + '<p style="margin-top:1rem;color:#888;font-size:.85rem;line-height:1.6">打开微信扫一扫<br>即可分享给好友或朋友圈</p>'
+      + '<button onclick="document.getElementById(\'wx-share-modal\').style.display=\'none\'" style="margin-top:1rem;padding:.5rem 1.5rem;background:#07c160;color:#fff;border:none;border-radius:20px;cursor:pointer;font-size:.9rem">关闭</button>'
+      + '</div>';
+    modal.onclick = function(e){ if(e.target===modal) modal.style.display='none'; };
+    document.body.appendChild(modal);
+  }
+  document.getElementById('wx-share-qr').src = qrUrl;
+  modal.style.display = 'flex';
+}
+function shareQQ(){
+  var url = encodeURIComponent(location.href);
+  var title = encodeURIComponent(document.title);
+  window.open('https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=' + url + '&title=' + title + '&summary=&site=%E6%B1%A0%E5%B8%85%E3%81%AE%E4%BA%A6%E6%AE%BF', '_blank', 'width=700,height=600');
+}
+function shareWB(){
+  var url = encodeURIComponent(location.href);
+  var title = encodeURIComponent(document.title);
+  window.open('https://service.weibo.com/share/share.php?url=' + url + '&title=' + title + '&language=zh_cn', '_blank', 'width=700,height=550');
+}
+function copyLink(){
+  var url = location.origin + location.pathname;
+  var btn = (event && event.currentTarget) || null;
+  function showToast(){
+    if(btn){ var orig=btn.innerHTML; btn.innerHTML='✅'; btn.style.background='#4caf50'; setTimeout(function(){ btn.innerHTML=orig; btn.style.background=''; },2000); }
+    var t=document.createElement('div');
+    t.textContent='🔗 链接已复制！';
+    t.style.cssText='position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.78);color:#fff;padding:.6rem 1.5rem;border-radius:20px;font-size:.9rem;z-index:9999;pointer-events:none;';
+    document.body.appendChild(t);
+    setTimeout(function(){ t.remove(); },2500);
+  }
+  if(navigator.clipboard && window.isSecureContext){
+    navigator.clipboard.writeText(url).then(showToast).catch(function(){
+      try{ var ta=document.createElement('textarea'); ta.value=url; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); showToast(); }catch(e){}
+    });
+  } else {
+    try{ var ta=document.createElement('textarea'); ta.value=url; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); showToast(); }catch(e){}
+  }
+}
+
+// ======================== 代码高亮 ========================
+window.addEventListener('DOMContentLoaded', function(){
+  if(typeof hljs !== 'undefined'){
+    document.querySelectorAll('pre code').forEach(function(b){
+      try{ hljs.highlightElement(b); }catch(e){}
+    });
+  }
+  buildTOC_legacy();
+});
+</script>
+
+<script>
+document.getElementById("post-tags").innerHTML = ["冬季防结露", "窗户除霉", "居家除湿", "生活小技巧"].map(function(t) {
+  return '<span class="tag">' + t + '</span>';
+}).join("");
+</script>
+
+<script>
+// ======================== 文章目录 TOC ========================
+    function buildTOC_legacy() { // 动态重建 TOC - 已修复
+      var body = document.getElementById('post-body');
+      if (!body) return;
+      var headings = body.querySelectorAll('h2, h3');
+      var tocBox = document.getElementById('toc-box');
+      var tocList = document.getElementById('toc-list');
+      if (headings.length < 2) {
+        if (tocBox) tocBox.style.display = 'none';
+        return;
+      }
+      if (tocBox) tocBox.style.display = 'block';
+      tocList.innerHTML = '';
+      for (var i = 0; i < headings.length; i++) {
+        var h = headings[i];
+        var level = h.tagName === 'H3' ? 'toc-h3' : '';
+        var li = document.createElement('li');
+        if (level) li.className = level;
+        var a = document.createElement('a');
+        // 自动生成 ID：如果标题没有 id，从文本内容生成
+        var headingId = h.id;
+        if (!headingId) {
+          headingId = h.textContent.replace(/[^\w\u4e00-\u9fff]/g, '').substring(0, 50);
+          h.id = headingId;
+        }
+        a.href = '#' + headingId;
+        a.textContent = h.textContent;
+        a.onclick = function(e) {
+          e.preventDefault();
+          var targetId = this.getAttribute('href').slice(1);
+          var el = document.getElementById(targetId);
+          if (el) el.scrollIntoView({behavior: 'smooth'});
+          return false;
+        };
+        li.appendChild(a);
+        tocList.appendChild(li);
+      }
+    }
+    
+    // TOC已改为静态HTML
+</script>
+
+<script>
+// ======================== 回到顶部 ========================
+(function backToTop(){
+  var btn = document.getElementById('back-to-top');
+  if(!btn) return;
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if(!ticking){
+      requestAnimationFrame(function(){
+        var y = window.pageYOffset || document.documentElement.scrollTop;
+        if(y > 400){ btn.classList.add('show'); }
+        else { btn.classList.remove('show'); }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, {passive:true});
+})();
+function scrollToTop(){ window.scrollTo({top:0, behavior:'smooth'}); }
+
+// ======================== 图片懒加载 ========================
+(function lazyLoadImgs(){
+  if(!('IntersectionObserver' in window)) return;
+  var imgs = document.querySelectorAll('.post-body img:not(.lazy-img):not(.lazy-loaded)');
+  imgs.forEach(function(img){
+    if(img.src && !img.loading){
+      img.classList.add('lazy-img');
+      img.setAttribute('loading','lazy');
+    }
+  });
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        var img = entry.target;
+        if(img.dataset.src){
+          img.src = img.dataset.src;
+          img.removeAttribute('data-src');
+        }
+        img.classList.add('lazy-loaded');
+        img.classList.remove('lazy-img');
+        observer.unobserve(img);
+      }
+    });
+  },{rootMargin:'200px'});
+  document.querySelectorAll('.post-body img[data-src]').forEach(function(img){
+    observer.observe(img);
+  });
+  document.querySelectorAll('.post-body img').forEach(function(img){
+    img.setAttribute('loading','lazy');
+    if(!img.complete){ img.classList.add('lazy-img'); }
+    img.addEventListener('load',function(){ img.classList.add('lazy-loaded'); });
+    if(img.complete){ img.classList.add('lazy-loaded'); }
+  });
+})();
+
+// ======================== 评论/留言系统 ========================
+(function loadComments(){
+  var key = 'blog_comments_' + (window.location.pathname.replace(/[^a-zA-Z0-9]/g,'_'));
+  var list = document.getElementById('comment-list');
+  if(!list) return;
+  var comments = [];
+  try{ comments = JSON.parse(localStorage.getItem(key) || '[]'); }
+  catch(e){ comments = []; }
+  var html = '';
+  comments.forEach(function(c){
+    html += '<div class="comment-item"><div class="c-name">' +
+      escapeHtml(c.name) + '<span class="c-time">' + c.time + '</span></div>' +
+      '<div class="c-text">' + escapeHtml(c.text) + '</div></div>';
+  });
+  list.innerHTML = html;
+})();
+
+function submitComment(){
+  var nameEl = document.getElementById('c-name');
+  var textEl = document.getElementById('c-text');
+  var hpEl = document.getElementById('hp-website');
+  if(!nameEl || !textEl) return;
+  if(hpEl && hpEl.value.trim() !== ''){ alert('留言失败，请重试'); return; }
+  var name = nameEl.value.trim();
+  var text = textEl.value.trim();
+  if(!name){ alert('请输入昵称'); nameEl.focus(); return; }
+  if(!text){ alert('请输入留言内容'); textEl.focus(); return; }
+  if(text.length > 1000){ alert('留言内容过长，请控制在1000字以内'); return; }
+  var spamWords = /广告|推广|加微信|加QQ|赚钱|兼职|代购|http|www\./i;
+  if(spamWords.test(text)){ alert('留言内容包含敏感词，请修改后重试'); return; }
+  var key = 'blog_comments_' + (window.location.pathname.replace(/[^a-zA-Z0-9]/g,'_'));
+  var comments = [];
+  try{ comments = JSON.parse(localStorage.getItem(key) || '[]'); }
+  catch(e){ comments = []; }
+  var now = new Date();
+  var timeStr = now.getFullYear()+'-'+pad(now.getMonth()+1)+'-'+pad(now.getDate())+' '+
+                pad(now.getHours())+':'+pad(now.getMinutes());
+  comments.push({name:name, text:text, time:timeStr});
+  localStorage.setItem(key, JSON.stringify(comments));
+  nameEl.value = '';
+  textEl.value = '';
+  var list = document.getElementById('comment-list');
+  if(list){
+    var html2 = '';
+    comments.forEach(function(c){
+      html2 += '<div class="comment-item"><div class="c-name">' +
+        escapeHtml(c.name) + '<span class="c-time">' + c.time + '</span></div>' +
+        '<div class="c-text">' + escapeHtml(c.text) + '</div></div>';
+    });
+    list.innerHTML = html2;
+  }
+  alert('留言已保存');
+}
+
+function pad(n){ return n < 10 ? '0' + n : '' + n; }
+function escapeHtml(s){ var d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+
+// ======================== 全站备份导出 ========================
+function exportBackup(){
+  try{
+    var data = {
+      title: document.title,
+      url: window.location.href,
+      content: document.getElementById('post-body') ? document.getElementById('post-body').innerHTML : '',
+      timestamp: new Date().toISOString(),
+      comments: JSON.parse(localStorage.getItem('blog_comments_' + (window.location.pathname.replace(/[^a-zA-Z0-9]/g,'_'))) || '[]')
+    };
+    var blob = new Blob([JSON.stringify(data, null, 2)], {type:'application/json'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'backup_' + new Date().toISOString().slice(0,10) + '.json';
+    a.click();
+    URL.revokeObjectURL(a.href);
+    alert('当前文章备份已导出');
+  } catch(e){ alert('导出失败: ' + e.message); }
+}
+</script>
+
+
+    <!-- 回到顶部 -->
+    <button id="back-to-top" title="回到顶部" onclick="scrollToTop()">⬆</button>
+
+    <!-- 返回文首 -->
+    <button class="to-start-btn" onclick="scrollToTop()" title="返回文章开始">🔝 返回文首</button>
+
+    <!-- 备份按钮 -->
+    <button class="backup-btn" onclick="exportBackup()" title="一键导出全站内容">💾 导出备份</button>
+
+
+</body>
+</html>
